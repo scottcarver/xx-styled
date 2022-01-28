@@ -1,0 +1,270 @@
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+html[data-theme=custom] .xx-styled, body.wp-admin .xx-styled {
+  background-color: var(--backgroundColor0);
+  color: var(--foregroundColor);
+}
+html[data-theme=custom] .xx-styled h1, html[data-theme=custom] .xx-styled h2, html[data-theme=custom] .xx-styled h3, html[data-theme=custom] .xx-styled h4, html[data-theme=custom] .xx-styled h5, html[data-theme=custom] .xx-styled h6, body.wp-admin .xx-styled h1, body.wp-admin .xx-styled h2, body.wp-admin .xx-styled h3, body.wp-admin .xx-styled h4, body.wp-admin .xx-styled h5, body.wp-admin .xx-styled h6 {
+  color: var(--headlineColor);
+}
+html[data-theme=custom] .xx-styled a, body.wp-admin .xx-styled a {
+  color: var(--linkColor);
+}
+html[data-theme=custom] .xx-styled table th, body.wp-admin .xx-styled table th {
+  color: var(--headlineColor);
+}
+
+body.wp-admin .xx-styled {
+  max-width: 100% !important;
+}
+
+.xx-styled {
+  padding: 5vw 0;
+  font-size: 1.25em;
+  max-width: none;
+  --blueDark: #25476d;
+  --purpleDark: #353a71;
+  --greenDark: #0e4f5b;
+  --redDark: #b72c31;
+  --orangeDark: #e36942;
+  --yellowDark: #d48207;
+  --white:oldlace;
+  /*
+  style-white",
+         "color": "#FFFFFF",
+         "name": "White"
+     },
+     {
+         "slug": "style-grey",
+         "color": "#efefef",
+         "name": "Newsprint"
+     },
+     {
+         "slug": "style-newsprint",
+         "color": "#FFFFFF",
+         "name": "White"
+     },
+     {
+         "slug": "style-oregonststate",
+         "color": "#CCCCCC",
+         "name": "Oregon State"
+     },
+     {
+         "slug": "style-oregonststate-light
+  	*/
+}
+.xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
+  max-width: 800px;
+  margin: 0px auto;
+}
+.xx-styled p:first-line {
+  padding-left: 10px;
+  background: red;
+}
+.xx-styled p::before {
+  content: "";
+  width: 2em;
+  height: 1em;
+  display: block;
+}
+.xx-styled a {
+  font-weight: bold;
+}
+.xx-styled[data-theme=blue] {
+  --backgroundColor0: var(--blueDark);
+  --foregroundColor: white;
+  --headlineColor:black;
+}
+.xx-styled[data-theme=purple] {
+  --backgroundColor0: var(--purpleDark);
+  --foregroundColor: white;
+  --headlineColor:black;
+}
+.xx-styled[data-theme=green] {
+  --backgroundColor0: var(--greenDark);
+  --foregroundColor: white;
+  --headlineColor:black;
+}
+.xx-styled[data-theme=red] {
+  --backgroundColor0: var(--redDark);
+  --foregroundColor: white;
+  --headlineColor:black;
+}
+.xx-styled[data-theme=orange] {
+  --backgroundColor0: var(--orangeDark);
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=yellow] {
+  --backgroundColor0: var(--yellowDark);
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=blue-medium] {
+  --backgroundColor0: #a8bed2;
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=purple-medium] {
+  --backgroundColor0: #abacca;
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=green-medium] {
+  --backgroundColor0: #9bb8aa;
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=red-medium] {
+  --backgroundColor0: #eeb8b0;
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=orange-medium] {
+  --backgroundColor0: #e9aa95;
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=yellow-medium] {
+  --backgroundColor0: #eaca96;
+  --foregroundColor: black;
+}
+.xx-styled[data-theme=blue-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--blueDark);
+}
+.xx-styled[data-theme=purple-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--purpleDark);
+}
+.xx-styled[data-theme=green-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--greenDark);
+}
+.xx-styled[data-theme=red-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: black;
+  --headlineColor: var(--redDark);
+}
+.xx-styled[data-theme=orange-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--orangeDark);
+}
+.xx-styled[data-theme=yellow-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--yellowDark);
+}
+.xx-styled[data-theme=style-black] {
+  --backgroundColor0: #0f0f0f;
+  --foregroundColor: #9cacb4;
+  --headlineColor: #FFFFFF;
+  --linkColor: #007afc;
+}
+.xx-styled[data-theme=style-white] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--greenDark);
+}
+.xx-styled[data-theme=style-grey] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--purpleDark);
+}
+.xx-styled[data-theme=style-newsprint] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: var(--blueDark);
+}
+.xx-styled[data-theme=style-oregonststate] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: black;
+  --headlineColor: var(--redDark);
+}
+.xx-styled[data-theme=style-oregonststate-dark] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: black;
+  --headlineColor: var(--redDark);
+}
+.xx-styled[data-theme=style-oregonststate-light] {
+  --backgroundColor0: var(--white);
+  --foregroundColor: black;
+  --headlineColor: var(--redDark);
+}
+
+/*
+const myPalette = [
+    {
+        "slug": "blue",
+        "color": "#25476d",
+        "name": "Blue"
+    },
+    {
+        "slug": "purple",
+        "color": "#353a71",
+        "name": "Purple"
+    },
+    {
+        "slug": "green",
+        "color": "#0e4f5b",
+        "name": "Green"
+    },
+    {
+        "slug": "red",
+        "color": "#b72c31",
+        "name": "Pink"
+    },
+    {
+        "slug": "orange",
+        "color": "#e36942",
+        "name": "Orange"
+    },
+    {
+        "slug": "yellow",
+        "color": "#d48207",
+        "name": "Yellow"
+    },
+    {
+        "slug": "blue-light",
+        "color": "#a8bed2",
+        "name": "Light Blue"
+    },
+    {
+        "slug": "purple-light",
+        "color": "#abacca",
+        "name": "Light Purple"
+    },
+    {
+        "slug": "green-light",
+        "color": "#9bb8aa",
+        "name": "Light Green"
+    },
+    {
+        "slug": "red-light",
+        "color": "#eeb8b0",
+        "name": "Light Red"
+    },
+    {
+        "slug": "orange-light",
+        "color": "#e9aa95",
+        "name": "Light Orange"
+    },
+    {
+        "slug": "yellow-light",
+        "color": "#eaca96",
+        "name": "Light Yellow"
+    }
+];
+export default myPalette;*/
+/*
+button{
+	display:frontend;
+}*/
+[data-theme=yellow-light] {
+  background-color: yellow;
+  color: black;
+}
+
+/*
+// Editor Style
+.xx-styled{
+	background-color: var(--backgroundColor0);
+	color: var(--foregroundColor);
+	padding: 2px;
+	max-width: none;
+}
+button{
+	display:editor;
+}*/
+
+/*# sourceMappingURL=index.css.map*/
