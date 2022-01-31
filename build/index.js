@@ -115,7 +115,7 @@ function Edit(_ref) {
     style: {
       margin: '5px'
     }
-  }, "Custom StyleEnabled Value is ", styleEnabled, "?"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FormToggle, {
+  }, "Enable Named Styles ", styleEnabled, "?"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FormToggle, {
     id: "postdateenabled-form-toggle",
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)("Display Post Date?", "pxblocks"),
     checked: styleEnabled,

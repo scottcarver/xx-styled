@@ -69,7 +69,7 @@ export default function Edit({
                 </div>
                      */}
 
-                <h2 style={{margin:'5px'}}>Custom StyleEnabled Value is {styleEnabled}?</h2>
+                <h2 style={{margin:'5px'}}>Enable Named Styles {styleEnabled}?</h2>
                 <FormToggle
                     id="postdateenabled-form-toggle"
                     label={__("Display Post Date?", "pxblocks")}
@@ -94,8 +94,10 @@ export default function Edit({
                     </Fragment>
                 }
                 
+                {/* Custom Style */}
                 {styleEnabled &&    
                 <Fragment>
+
                     <Panel>
                         <PanelBody title="Foreground" icon={ more } initialOpen={ false }>
                             <PanelRow>
@@ -132,6 +134,7 @@ export default function Edit({
                             </PanelRow>
                         </PanelBody>
                     </Panel>
+
                     <Panel>
                         <PanelBody title="Background" icon={ more } initialOpen={ false }>
                             <PanelRow>
@@ -149,6 +152,7 @@ export default function Edit({
                             </PanelRow>
                         </PanelBody>
                     </Panel>
+
                 </Fragment>
             }
              </InspectorControls>
