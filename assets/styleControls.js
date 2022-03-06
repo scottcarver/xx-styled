@@ -570,8 +570,7 @@ export default class StyleControls extends Component {
 				</PanelBody>
 				<PanelBody title={__("Responsive", "pxblocks")} initialOpen={false} icon="image-flip-horizontal">
 					<PanelRow>
-					<div className="px-sidepanel px-sidepanel--grey">
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 							<label htmlFor="heightenabled-form-toggle">{__("Height Enabled", "pxblocks")}</label>
 							<FormToggle
 								id="heightenabled-form-toggle"
@@ -580,7 +579,11 @@ export default class StyleControls extends Component {
 								onChange={toggleHeightEnabled}
 							/>
 						</div>
+					</PanelRow>
+					<PanelRow>
+					
 
+					<div className="px-sidepanel px-sidepanel--grey">
 						{/* <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom" style={{'border':'dashed 1px grey'}}>
 							<BoxControl 
 								label="Desktop Spacing"
@@ -599,7 +602,7 @@ export default class StyleControls extends Component {
 								}} 
 							/>
 						</div> */}
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+						<div className="px-simplerow px-simplerow--padtop">
 							<BoxControl 
 								label="Mobile Spacing"
 								values={spacingMobile}
@@ -608,7 +611,7 @@ export default class StyleControls extends Component {
 								onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
 							/>
 						</div>
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+						<div className="px-simplerow">
 							<BoxControl 
 								label="Desktop Tablet"
 								values={spacingTablet}
@@ -617,7 +620,7 @@ export default class StyleControls extends Component {
 								onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
 							/>
 						</div>
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+						<div className="px-simplerow">
 							<BoxControl 
 								label="Desktop Spacing"
 								values={spacingDesktop}

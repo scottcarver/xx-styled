@@ -67,7 +67,6 @@ export default class OnPageStyle extends Component {
 				padding: ${spacingMobile.top} ${spacingMobile.right} ${spacingMobile.bottom} ${spacingMobile.left};
 			}
 			
-
 			.wp-block-section--${blockID} *::selection {
 				color: ${selectionFGColor};
 				background-color: ${selectionBGColor};
@@ -96,28 +95,6 @@ export default class OnPageStyle extends Component {
 					padding: ${spacingDesktop.top} ${spacingDesktop.right} ${spacingDesktop.bottom} ${spacingDesktop.left};
 				}
 			}			
-			/* For Admin */
-			.wp-block-section--${blockID} .badoop{
-				padding: ${spacingMobile.top} ${spacingMobile.right} ${spacingMobile.bottom} ${spacingMobile.left};
-			}
-			@media(min-width: 992px){
-				.wp-block-section--${blockID} .badoop{ 
-					padding: ${spacingTablet.top} ${spacingTablet.right} ${spacingTablet.bottom} ${spacingTablet.left};
-				}
-				.wp-block-section--${blockID} .subbadoop{
-					border-color:pink;
-				}
-			}
-			@media(min-width:1200px){
-				.wp-block-section--${blockID} .badoop{ 
-					padding: ${spacingDesktop.top} ${spacingDesktop.right} ${spacingDesktop.bottom} ${spacingDesktop.left};
-				}
-				.wp-block-section--${blockID} .subbadoop{
-					border-color:yellow;
-				}
-			}	
-		
-			
 		`;
 		
 		// Remove Newlines, Tabs are spaces

@@ -4,10 +4,10 @@ import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-
 import './editor.scss';
 // Node modules
 import classnames from "classnames";
-import { Fragment } from '@wordpress/element';
 // const { InnerBlocks  } = '@wp/blockEditor';
 import StyleControls from "../assets/styleControls";
 import OnPageStyle from "../assets/OnPageStyle";
+import AdminStyle from "../assets/AdminStyle";
 
 export default function Edit(props) {
 //	const props = useBlockProps();
@@ -60,20 +60,18 @@ export default function Edit(props) {
 
 	return (
 		<div {...blockProps}>
-			<Fragment>
-				<div className='badoop' style={{position:'absolute',width:'100%',height:'100%', top:0, left:0, maxWidth:"none"}}>
-					<div className='subbadoop' style={{border:"dashed 1px black",height:"100%"}}>
-						badoop
-					</div>
-				</div>
-				<InspectorControls>
-					<StyleControls {...{ setAttributes, ...props }} />
-				</InspectorControls>
-				{styleEnabled && ( 
-					<OnPageStyle {...{ setAttributes, ...props }} /> 
-				)}
-				<InnerBlocks />
-			</Fragment>
+			
+			{/* Admin Padding Preview */}
+			{styleEnabled && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
+
+			{/* Sidebar */}
+			<InspectorControls><StyleControls {...{ setAttributes, ...props }} /></InspectorControls>
+			
+			{/* Inline CSS */}
+			{styleEnabled && ( <OnPageStyle {...{ setAttributes, ...props }} /> )}
+
+			{/* Inner Blocks */}
+			<InnerBlocks />
 		</div>
 	);
 }
