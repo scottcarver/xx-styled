@@ -1,0 +1,20 @@
+
+.px-tabinsides{
+  // background:orange;
+
+  h2{ margin: 0 0 10px 0; }
+
+  &.px-tabinsides--divider{
+    border-bottom:solid 1px #ccc;
+    margin-bottom: 10px;
+    padding-bottom:10px;
+  }
+
+  &.pdx-tabinsides--dense{
+    // Color Swatch, less margin
+    .components-color-palette__item-wrapper{ margin-right:10px; }
+    // Clear Button, vertically nudged
+    .components-button{ margin-top:2px; }
+  }
+  
+}

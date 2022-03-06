@@ -1,0 +1,22 @@
+.px-link {
+	margin-top: 10px;
+	&.px-link--valid {
+		// border: solid 1px #ccc;
+		/*
+		border: solid 1px green;
+        background: lightgreen;
+         */
+	}
+
+	&.px-link--invalid {
+		padding: 5px;
+		border-radius: 3px;
+		border: solid 1px #ccc;
+		background: #eee;
+	}
+
+	// Overriding some other garbage style
+	input {
+		width: 100% !important;
+	}
+}

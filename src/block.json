@@ -1,0 +1,258 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "xx/styled",
+	"version": "0.1.0",
+	"title": "Styled Area",
+	"category": "common",
+	"icon": "fullscreen-exit-alt",
+	"description": "A Styled Area with InnerBlocks",
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": [ "wide", "full" ]
+	},
+	"attributes" : {
+		"blockID": {
+			"type": "string",
+			"default": ""
+		},
+		"babygradient": {
+			"type": "string",
+			"default": ""
+		},
+		"namedstyle": {
+			"type": "string",
+			"default": "AL"
+		},
+		"styleEnabled": {
+			"type": "boolean",
+			"default": true
+		},
+		"bgColorEnabled": {
+			"type": "boolean",
+			"default": true
+		},
+		"bgGradientEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"bgImageEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"bgGelEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"heightEnabled": {
+			"type": "boolean",
+			"default": true
+		},
+		"backgroundColorCount": {
+			"type": "string",
+			"default": "flat"
+		},
+		"backgroundStackFirst": {
+			"type": "string",
+			"default": "image"
+		},
+		"foregroundColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"headlineColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"linkColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"dropcapColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"foregroundHeadlineFont": {
+			"type": "string",
+			"default": "sans-serif"
+		},
+		"foregroundCopyFont": {
+			"type": "string",
+			"default": "serif"
+		},
+		"foregroundCaptionFont": {
+			"type": "string",
+			"default": "monospace"
+		},
+		"selectionFGColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"selectionBGColor": {
+			"type": "string",
+			"default": "#ffffff"
+		},
+		"backgroundColor0": {
+			"type": "string",
+			"default": "#ddd"
+		},
+		"backgroundColor1": {
+			"type": "string",
+			"default": "#ffffff"
+		},
+		"backgroundColor2": {
+			"type": "string",
+			"default": "#ffffff"
+		},
+		"backgroundColor3": {
+			"type": "string",
+			"default": "transparent"
+		},
+		"gradientType": {
+			"type": "string",
+			"default": "linear"
+		},
+		"backgroundColor1Start": {
+			"type": "number",
+			"default": 0
+		},
+		"backgroundColor2Start": {
+			"type": "number",
+			"default": 100
+		},
+		"gradientLinearAngle": {
+			"type": "number",
+			"default": 45
+		},
+		"gradientAlignHori": {
+			"type": "string",
+			"default": "center"
+		},
+		"gradientAlignVert": {
+			"type": "string",
+			"default": "center"
+		},
+		"gradientAlignVertCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"gradientAlignHoriCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"gradientAlignRadialHori": {
+			"type": "number",
+			"default": 50
+		},
+		"gradientAlignRadialVert": {
+			"type": "number",
+			"default": 50
+		},
+		"backgroundImage": {
+			"type": "string",
+			"default": null
+		},
+		"backgroundImageSize": {
+			"type": "string",
+			"default": "cover"
+		},
+		"backgroundImageSizeCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"backgroundImageRepeat": {
+			"type": "string",
+			"default": "no-repeat"
+		},
+		"backgroundImageAttachment": {
+			"type": "string",
+			"default": "scroll"
+		},
+		"backgroundImageAlignVert": {
+			"type": "string",
+			"default": "center"
+		},
+		"backgroundImageAlignHori": {
+			"type": "string",
+			"default": "center"
+		},
+		"backgroundImageAlignVertCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"backgroundImageAlignHoriCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"backgroundGradientSize": {
+			"type": "string",
+			"default": "cover"
+		},
+		"backgroundGradientSizeCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"backgroundGradientRepeat": {
+			"type": "string",
+			"default": "no-repeat"
+		},
+		"backgroundGradientAttachment": {
+			"type": "string",
+			"default": "scroll"
+		},
+		"backgroundGradientAlignVert": {
+			"type": "string",
+			"default": "center"
+		},
+		"backgroundGradientAlignHori": {
+			"type": "string",
+			"default": "center"
+		},
+		"backgroundGradientAlignVertCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"backgroundGradientAlignHoriCustom": {
+			"type": "number",
+			"default": 100
+		},
+		"blockAlignment": {
+			"type": "string"
+		},
+		"sectionWidth": {
+			"type": "string"
+		},
+		"spacingMobile": {
+			"type": "object",
+			"default": {
+				"top" : "10px",
+				"right" : "10px",
+				"bottom" : "10px",
+				"left" : "10px"
+			}
+		},
+		"spacingTablet": {
+			"type": "object",
+			"default": {
+				"top" : "10px",
+				"right" : "10px",
+				"bottom" : "10px",
+				"left" : "10px"
+			}
+		},
+		"spacingDesktop": {
+			"type": "object",
+			"default": {
+				"top" : "10px",
+				"right" : "10px",
+				"bottom" : "10px",
+				"left" : "10px"
+			}
+		}
+	},
+	"textdomain": "xx-deluxestyled",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

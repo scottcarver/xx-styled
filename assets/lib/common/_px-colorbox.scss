@@ -1,0 +1,102 @@
+.px-colorbox {
+	position: relative;
+
+	// Modifiers
+	&.px-colorbox-negmarginabove {
+		margin-top: -10px;
+	}
+	&.px-colorbox--marginabove {
+		margin-top: 20px;
+	}
+	// &.px-colorbox--marginbelow{margin-bottom:20px;}
+	// &.px-colorbox--paddingabove{padding-top:20px;}
+	&.px-colorbox--paddingbelow {
+		padding-bottom: 20px;
+	}
+	&.px-colorbox--lineabove {
+		border-top: solid 1px #eee;
+	}
+	&.px-colorbox--linebelow {
+		border-bottom: solid 1px #eee;
+	}
+
+	// Header label
+	h2 {
+		margin-bottom: 25px;
+	}
+
+	// Adjust standard color indicator
+	.component-color-indicator {
+		position: absolute;
+		left: -12px;
+		margin: 0;
+		height: 10px;
+		width: 10px;
+		border-radius: 100%;
+		transition: all 0.1s ease;
+		top: 5px;
+	}
+	// Adjust standard color palette
+	.components-color-palette {
+		.components-color-palette__clear {
+			position: absolute;
+			top: 0;
+			right: 0;
+			margin: 0;
+		}
+		.components-color-palette__item-wrapper {
+			margin-right: 8px;
+			margin-bottom: 8px;
+		}
+	}
+
+	// Color Picker
+	.components-color-picker__body {
+		padding: 10px 6px 0 6px;
+	}
+
+	// Give more spacing to inputs
+	.components-color-picker__inputs-wrapper {
+		// background: yellow;
+		align-items: initial;
+
+		.screen-reader-text {
+			// background: blue;
+		}
+		.components-color-picker__inputs-fields {
+			// background: red;
+			label {
+				width: 100%;
+				max-width: none;
+				text-align: center;
+			}
+			input {
+				padding: 0;
+				text-align: center;
+				line-height: 2em;
+				border-color: #ccc;
+			}
+			.edit-post-settings-sidebar__panel-block {
+				.components-panel__body .components-base-control {
+					margin-bottom: 0;
+				}
+			}
+		}
+		.components-color-picker__inputs-toggle {
+			// background: orange;
+			text-align: center;
+			padding-top: 1.5em;
+			padding-left: 5px;
+		}
+	}
+}
+
+// The Color Picker
+.edit-post-settings-sidebar__panel-block {
+	.components-panel__body .components-base-control {
+		margin-bottom: 0;
+	}
+	.components-color-picker__inputs-fields {
+		justify-content: space-between;
+	}
+}

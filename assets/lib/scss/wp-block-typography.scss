@@ -1,0 +1,78 @@
+// HEADLINES
+// Headlines, Serif
+.wp-block--headline-serif {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: serif;
+		// color: red;
+	}
+}
+// Headlines, Sans Serif
+.wp-block--headline-sans-serif {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: sans-serif;
+		// color: blue;
+	}
+}
+// Headlines, Monospace
+.wp-block--headline-monospace {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: monospace;
+		// color: green;
+	}
+}
+// COPY
+// Copy, Serif
+.wp-block--copy-serif {
+	p {
+		font-family: serif;
+	}
+}
+// Copy, Sans Serif
+.wp-block--copy-sans-serif {
+	p {
+		font-family: sans-serif;
+	}
+}
+// Headlines, Monospace
+.wp-block--copy-monospace {
+	p {
+		font-family: monospace;
+	}
+}
+// CAPTIONS
+// Captions, Serif
+.wp-block--caption-serif {
+	figure,
+	caption {
+		font-family: serif;
+	}
+}
+// Captions, Sans Serif
+.wp-block--caption-sans-serif {
+	figure,
+	caption {
+		font-family: sans-serif;
+	}
+}
+// Captions, Monospace
+.wp-block--caption-monospace {
+	figure,
+	caption {
+		font-family: monospace;
+	}
+}

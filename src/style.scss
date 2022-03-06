@@ -178,3 +178,34 @@ html {
 	--foregroundColor: black;
 	--headlineColor: var(--redDark);
 }
+
+
+
+
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+//  @import "editor.scss";
+/*
+*/
+@import "../assets/lib/_common.scss";
+@import "../assets/lib/common/_px-variables.scss"; 
+
+
+.wp-block--section{
+	max-width: none !important;
+	padding:20px;
+	
+	@media($sm-up){
+		padding:5vw;
+	}
+
+	> * {
+		max-width:800px;
+		margin:0px auto;
+	}
+}

@@ -1,0 +1,66 @@
+// Simple Rows are the simplest way to add a row to the sidebar
+.px-simplerow {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	&.px-simplerow--first {
+		// background: pink;
+		padding: 20px 10px;
+
+		label {
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+	}
+	&.px-simplerow--margintop {
+		margin-top: 10px;
+	}
+	&.px-simplerow--padtop {
+		padding-top: 10px;
+	}
+	&.px-simplerow--padbottom {
+		padding-bottom: 10px;
+	}
+	&.px-simplerow--padleft {
+		padding-left: 10px;
+	}
+	&.px-simplerow--padright {
+		padding-right: 10px;
+	}
+	&.px-simplerow--flatheadline {
+		h2 {
+			margin-top: 0;
+		}
+	}
+	&.px-simplerow--shortheadline {
+		h2 {
+			margin-top: 10px;
+		}
+	}
+	&.px-simplerow--flatbottom {
+		h2 {
+			margin-bottom: 5px;
+		}
+	}
+	&.px-simplerow--centered {
+		text-align: center;
+		h2 {
+			width: 100%;
+		}
+	}
+
+	.px-simplerow h2 {
+		margin: 25px 0 10px 0;
+	}
+
+	// Redefine buttons by adding this class
+	.components-button.is-fullwidth {
+		display: block;
+		width: 100%;
+	}
+	.components-base-control {
+		width: 100%;
+	}
+}

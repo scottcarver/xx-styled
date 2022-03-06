@@ -1,0 +1,26 @@
+.px-tabrow {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 2px;
+
+	// When --wideselects
+	&.px-tabrow--wideselects {
+		padding: 0;
+		.components-base-control {
+			width: 100%;
+		}
+		label {
+			font-weight: bold;
+		}
+		select {
+			width: 100%;
+		}
+	}
+
+	h2 {
+		margin: 0;
+	}
+	select {
+		width: 120px;
+	}
+}

@@ -1,0 +1,58 @@
+// Sometimes you need a row, with columns. This is a lightway flexbox way of doing that. Just add child elements!
+.px-columnrow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	// background:red;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	position: relative;
+
+	&.px-columnrow--smallspaceabove {
+		margin-top: 10px;
+	}
+
+	&.px-columnrow--spaceabove {
+		margin-top: 20px;
+	}
+
+	// Hide label
+	&.px-columnrow--nolabel {
+		label {
+			display: none;
+		}
+	}
+
+	/*
+	&.px-columnrow--percentage{
+		&:after{
+			content: "%";
+	    position: absolute;
+	    right: 0;
+	    top: 0;
+	    z-index: 1;
+	    line-height: 2em;
+		}
+	}*/
+
+	.px-columnrow__splitcol {
+		width: 50%;
+		padding-right: 5px;
+	}
+
+	// Make the row full width
+	.components-base-control {
+		width: 100%;
+	}
+	// The labels are wide for some reason
+	.components-range-control .components-base-control__label {
+		width: auto;
+		padding-right: 10px;
+	}
+
+	label {
+		// color:red;
+		font-size: 12px;
+		margin-bottom: 0.25em;
+	}
+}

@@ -1,0 +1,73 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+@import "wp-block-typography.scss";
+
+.wp-block-jsforwpblocks-custom-toolbar {
+	background: $red;
+	border: 0.2rem solid $black;
+	color: $black;
+	margin: 0 auto;
+	// max-width: 740px;
+	padding: 2rem;
+}
+
+.wp-block--section {
+	padding: 1px;
+	padding: 0.1px;
+
+	@supports (-webkit-margin-collapse: separate) {
+		padding: 0;
+		-webkit-margin-collapse: separate;
+	}
+
+	> .block-editor-inner-blocks {
+		width: 100%;
+	}
+}
+
+.wp-block-px-section {
+	/*
+	border: solid 4px black;
+	padding: 20px;
+	background: yellow;
+	*/
+
+	&:before {
+		content: "";
+		width: 20px;
+		height: 20px;
+		background: red;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	/*
+	p {
+		max-width: 700px;
+	}
+	*/
+}
+
+// When --heightenabled
+.wp-block--heightenabled {
+	min-height: 100vh;
+	padding: 20px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	@media (min-width: 600px) {
+		padding: 2vw 0;
+	}
+}
+
+.wp-block-image {
+	img {
+		height: 100%;
+	}
+}
