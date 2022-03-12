@@ -1,17 +1,30 @@
-
+// Node modules
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
-import './editor.scss';
-// Node modules
 import classnames from "classnames";
-// const { InnerBlocks  } = '@wp/blockEditor';
+// Custom CSS
+import './editor.scss';
+// Custom Components
 import StyleControls from "../assets/styleControls";
 import OnPageStyle from "../assets/OnPageStyle";
 import AdminStyle from "../assets/AdminStyle";
+import InlineStyleVars from "../assets/InlineStyleVars";
+// Custom Funtions
+import calculatedBgImage from "../assets/lib/js/calculatedBgImage";
+import calculatedBgColor from "../assets/lib/js/calculatedBgColor";
+import calculatedBGIMGSize from "../assets/lib/js/calculatedBGIMGSize";
+import calculatedBgPos from "../assets/lib/js/calculatedBgPos";
+import calculatedBGIMGAtt from "../assets/lib/js/calculatedBGIMGAtt";
+import calculatedBGIMGRepeat from "../assets/lib/js/calculatedBGIMGRepeat";
+import calculatedInlineVars from "../assets/lib/js/calculatedInlineVars";
+import calculatedPadding from "../assets/lib/js/calculatedPadding";
 
 export default function Edit(props) {
+
+	const inlineVarCSS =  calculatedInlineVars(props.attributes);
+
 //	const props = useBlockProps();
-	console.log("edit props", props);
+	console.log("edit INLINE props", inlineVarCSS);
 	const {
 		attributes: {
 			styleEnabled,
@@ -23,6 +36,11 @@ export default function Edit(props) {
 			foregroundHeadlineFont,
 			foregroundCopyFont,
 			foregroundCaptionFont,
+			headlineColor,
+			selectionFGColor,
+			selectionBGColor,
+			linkColor,
+			dropcapColor,
 			spacingMobile,
 			spacingTablet,
 			spacingDesktop
@@ -30,6 +48,8 @@ export default function Edit(props) {
 		className,
 		clientId
 	} = props;
+
+
 
 	const { setAttributes } = props;
 
@@ -39,37 +59,73 @@ export default function Edit(props) {
 
 	const classes = classnames(
 		className,
-		"wp-block--section",
-		`wp-block-section--${blockID}`,
-		{ "wp-block--heightenabled": heightEnabled },
-		`wp-block--headline-${foregroundHeadlineFont}`,
-		`wp-block--copy-${foregroundCopyFont}`,
-		`wp-block--caption-${foregroundCaptionFont}`
+		"xx-styled",
+		`wp-block-styled--${blockID}`,
+		// { "wp-block--heightenabled": heightEnabled },
+		// `wp-block--headline-${foregroundHeadlineFont}`,
+		// `wp-block--copy-${foregroundCopyFont}`,
+		// `wp-block--caption-${foregroundCaptionFont}`
 	);
 
-	const styleObj = { 
-		'--foregroundColor': foregroundColor
-	};
+	
+		// boop
+		const bgImageStack = calculatedBgImage(props.attributes);
+		const bgColorStack = calculatedBgColor(props.attributes);
+		const bgSize = calculatedBGIMGSize(props.attributes);
+		const bgPosition = calculatedBgPos(props.attributes);
+		const bgAttachment = calculatedBGIMGAtt(props.attributes);
+		const bgRepeat = calculatedBGIMGRepeat(props.attributes);
+		const spacingMobileStack = calculatedPadding(props.attributes.spacingMobile);
+		const spacingTabletStack = calculatedPadding(props.attributes.spacingTablet);
+		const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
+		
+
+		// body[data-color='custom'] 
+		// body[data-color='custom'] 
+        const styleObj = { 
+			// Background
+            '--backgroundImage': bgImageStack,
+			'--backgroundColor': bgColorStack,
+			'--backgroundSize': bgSize,
+			'--backgroundPosition': bgPosition,
+			'--backgroundAttachment': bgAttachment,
+			'--backgroundRepeat': bgRepeat,
+			// Foreground
+            '--foregroundColor': foregroundColor, 
+            '--headlineColor': headlineColor,
+            '--linkColor': linkColor,
+			'--dropcapColor': dropcapColor,
+			'--selectionFGColor': selectionFGColor,
+			'--selectionBGColor': selectionBGColor,
+			// Typography
+			'--foregroundHeadlineFont': foregroundHeadlineFont,
+			'--foregroundCopyFont': foregroundCopyFont,
+			'--foregroundCaptionFont':foregroundCaptionFont,
+			// Spacing
+			'--spacingMobile': spacingMobileStack,
+			'--spacingTablet': spacingTabletStack,
+			'--spacingDesktop': spacingDesktopStack,
+        };
+
 
 	const blockProps = useBlockProps( {
 		className: classes,
 		style: styleEnabled ? styleObj : {},
 		id: blockID,
-		'data-test': 'data attributes'
+		'data-theme': styleEnabled ? "none" : "undefined"
 	});
 
 	return (
 		<div {...blockProps}>
-			
+		
 			{/* Admin Padding Preview */}
 			{styleEnabled && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
 
 			{/* Sidebar */}
 			<InspectorControls><StyleControls {...{ setAttributes, ...props }} /></InspectorControls>
 			
-			{/* Inline CSS */}
-			{styleEnabled && ( <OnPageStyle {...{ setAttributes, ...props }} /> )}
-
+			{/* Inline CSS {styleEnabled && ( <OnPageStyle {...{ setAttributes, ...props }} /> )} */}
+				
 			{/* Inner Blocks */}
 			<InnerBlocks />
 		</div>

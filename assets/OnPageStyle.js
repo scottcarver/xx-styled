@@ -3,6 +3,8 @@ const { __ } = wp.i18n;
 import { FormToggle } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 
+
+// Custom Fucntions
 import calculatedBgImage from "./lib/js/calculatedBgImage";
 import calculatedBgColor from "./lib/js/calculatedBgColor";
 import calculatedBGIMGSize from "./lib/js/calculatedBGIMGSize";
@@ -29,6 +31,7 @@ export default class OnPageStyle extends Component {
 				styleEnabled,
 				babygradient,
 				dropcapColor,
+				backgroundColor0,
 				bgColorEnabled,
 				blockID,
 				bgImage,
@@ -53,6 +56,29 @@ export default class OnPageStyle extends Component {
 		const bgPosition = calculatedBgPos(this.props.attributes);
 		const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
 		const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);
+
+
+		// body[data-color='custom'] 
+		// body[data-color='custom'] 
+        const styleObj = { 
+            '--backgroundImage': bgImageStack,
+			'--backgroundColor': bgColorStack,
+			'--backgroundSize': bgSize,
+			'--backgroundPosition': bgPosition,
+			'--backgroundAttachment': bgAttachment,
+			'--backgroundRepeat': bgRepeat,
+            '--foregroundColor': foregroundColor, 
+            '--headlineColor': headlineColor,
+            '--linkColor': linkColor,
+			'--selectionColor': linkColor,
+			'--selectionBGColor': linkColor,
+        };
+
+
+		const styleInline = `
+			--backgroundImage: ${bgImageStack};
+		`;
+
 		// body[data-color='custom'] 
 		// body[data-color='custom'] 
 		var combinedCss = ` 
@@ -102,9 +128,20 @@ export default class OnPageStyle extends Component {
 		// Remove extraneous spaces
 		compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
 
-		return (
-				<style type="text/css" dangerouslySetInnerHTML={{ __html: compressedCSS }} />
+
+		/*
+		const stringRendered = <div style={styleObj}></div>;
+		const words = stringRendered.split('"');
+		console.log(words);	*/
+
+		// Vars
+		if(this.props.mode == "vars"){
+			return( styleObj )
+		}
 	
+
+		return (
+			<style type="text/css" dangerouslySetInnerHTML={{ __html: compressedCSS }} />
 		);
 	}
 }

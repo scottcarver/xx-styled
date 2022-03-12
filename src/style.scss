@@ -3,37 +3,65 @@ body.wp-admin .xx-styled{ max-width:100% !important; }
 
 // Styled Area
 .xx-styled{
+	position:relative;
 	padding: 5vw 0;
 	font-size:1.25em;
 	max-width:none;
+	// Foreground, Background, Padding
+	font-family:var(--foregroundCopyFont);
+	color: var(--foregroundColor);
+	background-image: var(--backgroundImage);
+	background-color: var(--backgroundColor);
+	background-size: var(--backgroundSize);
+	background-position: var(--backgroundPosition);
+	background-attachment: var(--backgroundAttachment);
+	background-repeat: var(--backgroundRepeat);
+	padding: var(--spacingMobile);
+	@media(min-width: 992px){ padding: var(--spacingTablet); }
+	@media(min-width:1200px){ padding: var(--spacingDesktop); }
 
+	// Selection
+	*::selection {
+		color: var(--selectionFGColor);
+		background-color: var(--selectionBGColor);
+	}
+
+	// Heading
+	h1, h2, h3, h4, h5, h6{
+		color: var(--headlineColor) !important; // This is to override WP
+		font-family:var(--foregroundHeadlineFont);
+	}
+	
 	p, h1, h2, h3, h4, h5, h6{
 		max-width:800px;
-		margin:0px auto;
+		margin:1em auto;
 	}
 
+	// Dropcap
 	p{
-		&:first-line{
-			padding-left:10px;
-			background:red;
-		}
-		&::before{
-			content:"";
-			width:2em;
-			height:1em;
-			// background:pink;
-			display: block;
+		&.has-drop-cap:not(:focus)::first-letter{
+			color: var(--dropcapColor);
 		}
 	}
 
+	// Link
 	a{
 		font-weight:bold;
+		color: var(--linkColor);
+	}
+
+	// Caption	
+	figure{
+		figcaption{
+			font-family:var(--foregroundCaptionFont);
+		}
 	}
 
 }
 
 
 // Using Any Generic Theme
+/*
 html {
 	[data-theme], [data-theme="none"]{
 		background-color: var(--backgroundColor0);
@@ -60,7 +88,8 @@ html {
 		--white:oldlace;
 	}
 }
-
+*/
+/*
 // Standard
 [data-theme="blue"]{
 	--backgroundColor0: var(--blueDark);
@@ -179,7 +208,7 @@ html {
 	--headlineColor: var(--redDark);
 }
 
-
+*/
 
 
 /**
@@ -192,13 +221,15 @@ html {
 //  @import "editor.scss";
 /*
 */
-@import "../assets/lib/_common.scss";
 @import "../assets/lib/common/_px-variables.scss"; 
 
 
 .wp-block--section{
 	max-width: none !important;
 	padding:20px;
+
+	background: var(--backgroundImage);
+
 	
 	@media($sm-up){
 		padding:5vw;

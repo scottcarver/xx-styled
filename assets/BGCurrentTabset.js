@@ -35,7 +35,7 @@ export default class BGCurrentTabset extends Component {
 				});
 			}
 
-			console.log("stack order " + backgroundStackFirst);
+			// console.log("stack order " + backgroundStackFirst);
 
 			// Stack Order 1
 			if (backgroundStackFirst == "gradient") {
@@ -70,8 +70,8 @@ export default class BGCurrentTabset extends Component {
 					});
 				}
 			}
-			console.log("borp");
-			console.log(tabOrder);
+			// console.log("borp");
+			// console.log(tabOrder);
 			return tabOrder;
 		};
 
