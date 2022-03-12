@@ -1,0 +1,76 @@
+.px-buttongroup {
+	display: flex;
+
+	// Define isToggled, which is not styled by default.
+	.components-button{
+		// font-size: 11px;
+		// background: #ccc;
+
+		&:first-child {
+			border-radius: 3px 0 0 3px;
+		}
+		&:last-child {
+			border-radius: 0 3px 3px 0;
+		}
+
+		// &:active:enabled {
+		// 	background-color: green;
+		// }
+		/*
+		&:focus:enabled {
+			background-color: #ccc;
+		}
+		
+		background: #bbb;
+		// border-color: #ccc;
+		color: white;
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+		&:hover,
+		&:focus,
+		&:active:enabled {
+			background: #ccc !important;
+			// border-color: #ccc;
+		}
+		*/
+	}
+
+	// When --small the text and padding reduce
+	&.px-buttongroup--small {
+		.components-button{
+			font-size:.8em;
+		}
+		/*
+		.components-button.is-button {
+			padding: 0 7px 1px;
+			font-size: 11px;
+		}
+		*/
+	}
+
+	// When --split there are only 2 buttons, do a hard 50/50 split
+	&.px-buttongroup--split {
+		.components-button {
+			width: 50%;
+		}
+	}
+
+	// When --centered
+	&.px-buttongroup--centered {
+		.components-button-group {
+			justify-content: center;
+		}
+		.components-button-group .components-button {
+			flex-grow: initial;
+		}
+	}
+
+	.components-button-group {
+		display: flex;
+		width: 100%;
+		.components-button {
+			flex-grow: 1;
+			justify-content: center;
+		}
+	}
+}

@@ -1,12 +1,25 @@
 import { registerBlockType } from '@wordpress/blocks';
+import domReady from '@wordpress/dom-ready';
+import './editor.scss';
 import './style.scss';
-import edit from './edit';
+import Edit from './edit';
 import save from './save';
-import metadata from './../block.json';
 
-/* Register Block Type with JS using shorthand. 
-With block.json, you only need a handle and options object */
 registerBlockType('xx/styled', {
-	edit,
+	edit: Edit,
 	save,
+	//category: 'wholesome-blocks',
+	getEditWrapperProps(attributes) { const { blockAlignment } = attributes;},
+	getSelectedBlockClientId(attributes) { const { blockID } = attributes;}
 });
+
+
+domReady( function() {
+	wp.blocks.registerBlockVariation( 'xx/styled', {
+		name: 'blue-light',
+		label: 'Itza Light Blu',
+		title: 'BG Light Blue',
+		category: 'wholesome-blocks',
+		attributes: { backgroundColor0: '#FF0000' }
+	} );
+} );

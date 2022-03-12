@@ -1,43 +1,44 @@
+// Node modules
 import { __ } from '@wordpress/i18n';
-import {  InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import undoHex from './library/undoHex';
+import { useBlockProps } from '@wordpress/block-editor';
+import classnames from "classnames";
+import { InnerBlocks  } from '@wordpress/block-editor';
+// Custom Components
+import OnPageStyle from "../assets/OnPageStyle";
+import InlineStyleVars from "../assets/InlineStyleVars";
+// Custom Functions
+import calculatedInlineVars from "../assets/lib/js/calculatedInlineVars";
 
-export default function save({
-	attributes: {
-        blockID,
-		styleEnabled,
-		foregroundColor,
-		backgroundColor0,
-		headlineColor,
-        linkColor,
-		namedStyle
-    }, 
-}){
+
+export default function save(props) {
+	// const props = useBlockProps.save();
+
+	const inlineVarCSS =  calculatedInlineVars(props.attributes);
 	
-	const styleObj = { 
-		'--foregroundColor': foregroundColor, 
-		'--backgroundColor0': backgroundColor0,
-		'--headlineColor': headlineColor,
-        '--linkColor': linkColor
-	};
+	console.log("INLINER", inlineVarCSS);
+
+	console.log("save props!", props);
 	
-	
+	const {
+		attributes: {
+			styleEnabled
+		},
+		setAttributes,
+		clientId
+	} = props;
+
+
+
 	// Return the shtuff
 	const blockPropsSavedOb = {
 		className: 'xx-styled',
-		attributes: {
-			styleEnabled,
-			foregroundColor,
-			backgroundColor0,
-			headlineColor,
-        	linkColor,
-			namedStyle
-		},
-		style: styleEnabled ? styleObj : {},
+		style: inlineVarCSS,
+		'data-theme': styleEnabled ? "none" : "undefined"
 	}
-
+	
 	return (
-		<div {...useBlockProps.save(blockPropsSavedOb)} data-theme={styleEnabled ? "none" : undoHex(namedStyle) }>
+		<div {...useBlockProps.save(blockPropsSavedOb)}>
+			{/* {styleEnabled && <OnPageStyle mode="css" {...{ setAttributes, ...props, blockID }} /> } */}
 			<InnerBlocks.Content />
 		</div>
 	);

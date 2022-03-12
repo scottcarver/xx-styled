@@ -1,4 +1,12 @@
-@import "style.scss";
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ @import "../assets/lib/_common.scss";
+ // @import "../assets/lib/scss/styled-preview.scss";
+ @import "style.scss";
 
 /*
 // Editor Style
@@ -12,3 +20,6 @@ button{
 	display:editor;
 }*/
 
+.wp-block-create-block-xx-deluxestyled {
+	border: 1px dotted #f00;
+}

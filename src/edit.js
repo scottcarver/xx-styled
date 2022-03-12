@@ -1,161 +1,132 @@
+// Node modules
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, InspectorControls, useBlockProps, useSetting } from '@wordpress/block-editor';
-import { Fragment } from '@wordpress/element';
-import { FormToggle, ColorIndicator, ColorPicker, ColorPalette } from '@wordpress/components';
-import { Panel, PanelBody, PanelRow } from '@wordpress/components';
-import { more } from '@wordpress/icons';
-// Mine
-import ColorObgtoRgbaString from "./library/ColorObgtoRgbaString";
+import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import classnames from "classnames";
+// Custom CSS
 import './editor.scss';
-import { select } from '@wordpress/data';
-import myPalette from './library/myPalette';
-import undoHex from './library/undoHex';
+// Custom Components
+import StyleControls from "../assets/styleControls";
+import OnPageStyle from "../assets/OnPageStyle";
+import AdminStyle from "../assets/AdminStyle";
+import InlineStyleVars from "../assets/InlineStyleVars";
+// Custom Funtions
+import calculatedBgImage from "../assets/lib/js/calculatedBgImage";
+import calculatedBgColor from "../assets/lib/js/calculatedBgColor";
+import calculatedBGIMGSize from "../assets/lib/js/calculatedBGIMGSize";
+import calculatedBgPos from "../assets/lib/js/calculatedBgPos";
+import calculatedBGIMGAtt from "../assets/lib/js/calculatedBGIMGAtt";
+import calculatedBGIMGRepeat from "../assets/lib/js/calculatedBGIMGRepeat";
+import calculatedInlineVars from "../assets/lib/js/calculatedInlineVars";
+import calculatedPadding from "../assets/lib/js/calculatedPadding";
+
+export default function Edit(props) {
+
+	const inlineVarCSS =  calculatedInlineVars(props.attributes);
+
+//	const props = useBlockProps();
+	console.log("edit INLINE props", inlineVarCSS);
+	const {
+		attributes: {
+			styleEnabled,
+			blockID,
+			heightEnabled,
+			foregroundColor,
+			blockAlignment,
+			highContrast,
+			foregroundHeadlineFont,
+			foregroundCopyFont,
+			foregroundCaptionFont,
+			headlineColor,
+			selectionFGColor,
+			selectionBGColor,
+			linkColor,
+			dropcapColor,
+			spacingMobile,
+			spacingTablet,
+			spacingDesktop
+		},
+		className,
+		clientId
+	} = props;
 
 
-// const mycolors = useSetting( 'color.palette' ); Doesn't Work
-console.log(myPalette);
 
-export default function Edit({
-    attributes: {
-        blockID,
-        styleEnabled,
-		foregroundColor,
-        backgroundColor0,
-        headlineColor,
-        linkColor,
-        namedStyle
-	},  
-    className, 
-    isSelected, 
-    setAttributes, 
-    focus, 
-    id
-}) {
+	const { setAttributes } = props;
 
-	const styleObj = { 
-		'--foregroundColor': foregroundColor, 
-		'--backgroundColor0': backgroundColor0 ,
-        '--headlineColor': headlineColor,
-        '--linkColor': linkColor
-	};
+	if (blockID == "") {
+		setAttributes({ blockID: clientId });
+	}
+
+	const classes = classnames(
+		className,
+		"xx-styled",
+		`wp-block-styled--${blockID}`,
+		// { "wp-block--heightenabled": heightEnabled },
+		// `wp-block--headline-${foregroundHeadlineFont}`,
+		// `wp-block--copy-${foregroundCopyFont}`,
+		// `wp-block--caption-${foregroundCaptionFont}`
+	);
+
+	
+		// boop
+		const bgImageStack = calculatedBgImage(props.attributes);
+		const bgColorStack = calculatedBgColor(props.attributes);
+		const bgSize = calculatedBGIMGSize(props.attributes);
+		const bgPosition = calculatedBgPos(props.attributes);
+		const bgAttachment = calculatedBGIMGAtt(props.attributes);
+		const bgRepeat = calculatedBGIMGRepeat(props.attributes);
+		const spacingMobileStack = calculatedPadding(props.attributes.spacingMobile);
+		const spacingTabletStack = calculatedPadding(props.attributes.spacingTablet);
+		const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
+		
+
+		// body[data-color='custom'] 
+		// body[data-color='custom'] 
+        const styleObj = { 
+			// Background
+            '--backgroundImage': bgImageStack,
+			'--backgroundColor': bgColorStack,
+			'--backgroundSize': bgSize,
+			'--backgroundPosition': bgPosition,
+			'--backgroundAttachment': bgAttachment,
+			'--backgroundRepeat': bgRepeat,
+			// Foreground
+            '--foregroundColor': foregroundColor, 
+            '--headlineColor': headlineColor,
+            '--linkColor': linkColor,
+			'--dropcapColor': dropcapColor,
+			'--selectionFGColor': selectionFGColor,
+			'--selectionBGColor': selectionBGColor,
+			// Typography
+			'--foregroundHeadlineFont': foregroundHeadlineFont,
+			'--foregroundCopyFont': foregroundCopyFont,
+			'--foregroundCaptionFont':foregroundCaptionFont,
+			// Spacing
+			'--spacingMobile': spacingMobileStack,
+			'--spacingTablet': spacingTabletStack,
+			'--spacingDesktop': spacingDesktopStack,
+        };
+
 
 	const blockProps = useBlockProps( {
-		className: 'xx-styled',
-		style: styleEnabled ? styleObj : {}
+		className: classes,
+		style: styleEnabled ? styleObj : {},
+		id: blockID,
+		'data-theme': styleEnabled ? "none" : "undefined"
 	});
 
-   // const [ namedStyle, setColor ] = useState ( '#f00' )
-   {/* const colors = [
-        { name: 'red', color: '#f00' },
-        { name: 'white', color: '#fff' },
-        { name: 'blue', color: '#00f' },
-    ];
-    */}
-
-    const colors = myPalette;
-
-    
 	return (
-		<div {...blockProps} data-theme={styleEnabled ? "none" : undoHex(namedStyle) }>
-			<InspectorControls>
-{/* 
-                <div style={{padding:'10px'}}>
-                            <ColorPalette
-                                colors={ colors }
-                                value={ namedStyle }
-                                onChange={ ( namedStyle ) => setAttributes({namedStyle}) }
-                                disableCustomColors
-                            />
-                </div>
-                     */}
+		<div {...blockProps}>
+		
+			{/* Admin Padding Preview */}
+			{styleEnabled && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
 
-                <h2 style={{margin:'5px'}}>Enable Named Styles {styleEnabled}?</h2>
-                <FormToggle
-                    id="postdateenabled-form-toggle"
-                    label={__("Display Post Date?", "pxblocks")}
-                    checked={styleEnabled}
-                    onChange={value => setAttributes({ styleEnabled: !styleEnabled })}
-                /> 
-                <br />
-                {!styleEnabled &&
-                    <Fragment>
-                    <Panel>
-                        <PanelBody title="Named Styles" icon={ more } initialOpen={ false }>
-                            <PanelRow>
-                            <ColorPalette
-                                colors={ colors }
-                                value={ namedStyle }
-                                onChange={ ( namedStyle ) => setAttributes({namedStyle}) }
-                                disableCustomColors
-                            />
-                            </PanelRow>
-                        </PanelBody>
-                    </Panel>
-                    </Fragment>
-                }
-                
-                {/* Custom Style */}
-                {styleEnabled &&    
-                <Fragment>
-
-                    <Panel>
-                        <PanelBody title="Foreground" icon={ more } initialOpen={ false }>
-                            <PanelRow>
-                                <div style={{width: '100%'}}>
-                                    <h2>Color</h2>
-                                    {/* <ColorIndicator colorValue={foregroundColor} /> */}
-                                    <ColorPicker
-                                        color={foregroundColor}
-                                        onChangeComplete={value =>
-                                            setAttributes({ foregroundColor: ColorObgtoRgbaString(value) })
-                                        }
-                                        enableAlpha
-                                    />
-                                    {/* Background Color */}
-                                    <h2>Headline</h2>
-                                    <ColorPicker
-                                        color={headlineColor}
-                                        onChangeComplete={value =>
-                                            setAttributes({ headlineColor: ColorObgtoRgbaString(value) })
-                                        }
-                                        enableAlpha
-                                    />
-
-                                    {/* Link Color */}
-                                    <h2>Link</h2>
-                                    <ColorPicker
-                                        color={linkColor}
-                                        onChangeComplete={value =>
-                                            setAttributes({ linkColor: ColorObgtoRgbaString(value) })
-                                        }
-                                        enableAlpha
-                                    />
-                                </div>
-                            </PanelRow>
-                        </PanelBody>
-                    </Panel>
-
-                    <Panel>
-                        <PanelBody title="Background" icon={ more } initialOpen={ false }>
-                            <PanelRow>
-                                <div style={{width: '100%'}}>
-                                    {/* Background Color */}
-                                    <h2>Background</h2>
-                                    <ColorPicker
-                                        color={backgroundColor0}
-                                        onChangeComplete={value =>
-                                            setAttributes({ backgroundColor0: ColorObgtoRgbaString(value) })
-                                        }
-                                        enableAlpha
-                                    />
-                                </div>
-                            </PanelRow>
-                        </PanelBody>
-                    </Panel>
-
-                </Fragment>
-            }
-             </InspectorControls>
+			{/* Sidebar */}
+			<InspectorControls><StyleControls {...{ setAttributes, ...props }} /></InspectorControls>
+			
+			{/* Inline CSS {styleEnabled && ( <OnPageStyle {...{ setAttributes, ...props }} /> )} */}
+				
+			{/* Inner Blocks */}
 			<InnerBlocks />
 		</div>
 	);

@@ -6,182 +6,226 @@ body.wp-admin .xx-styled {
 }
 
 .xx-styled {
+  position: relative;
   padding: 5vw 0;
   font-size: 1.25em;
   max-width: none;
+  font-family: var(--foregroundCopyFont);
+  color: var(--foregroundColor);
+  background-image: var(--backgroundImage);
+  background-color: var(--backgroundColor);
+  background-size: var(--backgroundSize);
+  background-position: var(--backgroundPosition);
+  background-attachment: var(--backgroundAttachment);
+  background-repeat: var(--backgroundRepeat);
+  padding: var(--spacingMobile);
+}
+@media (min-width: 992px) {
+  .xx-styled {
+    padding: var(--spacingTablet);
+  }
+}
+@media (min-width: 1200px) {
+  .xx-styled {
+    padding: var(--spacingDesktop);
+  }
+}
+.xx-styled *::-moz-selection {
+  color: var(--selectionFGColor);
+  background-color: var(--selectionBGColor);
+}
+.xx-styled *::selection {
+  color: var(--selectionFGColor);
+  background-color: var(--selectionBGColor);
+}
+.xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
+  color: var(--headlineColor) !important;
+  font-family: var(--foregroundHeadlineFont);
 }
 .xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
   max-width: 800px;
-  margin: 0px auto;
+  margin: 1em auto;
 }
-.xx-styled p:first-line {
-  padding-left: 10px;
-  background: red;
-}
-.xx-styled p::before {
-  content: "";
-  width: 2em;
-  height: 1em;
-  display: block;
+.xx-styled p.has-drop-cap:not(:focus)::first-letter {
+  color: var(--dropcapColor);
 }
 .xx-styled a {
   font-weight: bold;
-}
-
-html [data-theme], html [data-theme=none] {
-  background-color: var(--backgroundColor0);
-  color: var(--foregroundColor);
-  --blueDark: #25476d;
-  --purpleDark: #353a71;
-  --greenDark: #0e4f5b;
-  --redDark: #b72c31;
-  --orangeDark: #e36942;
-  --yellowDark: #d48207;
-  --white:oldlace;
-}
-html [data-theme] h1, html [data-theme] h2, html [data-theme] h3, html [data-theme] h4, html [data-theme] h5, html [data-theme] h6, html [data-theme=none] h1, html [data-theme=none] h2, html [data-theme=none] h3, html [data-theme=none] h4, html [data-theme=none] h5, html [data-theme=none] h6 {
-  color: var(--headlineColor);
-}
-html [data-theme] a, html [data-theme=none] a {
   color: var(--linkColor);
 }
-html [data-theme] table th, html [data-theme=none] table th {
-  color: var(--headlineColor);
+.xx-styled figure figcaption {
+  font-family: var(--foregroundCaptionFont);
 }
 
-[data-theme=blue] {
-  --backgroundColor0: var(--blueDark);
-  --foregroundColor: white;
-  --headlineColor:black;
+/*
+html {
+	[data-theme], [data-theme="none"]{
+		background-color: var(--backgroundColor0);
+		color: var(--foregroundColor);
+
+		h1, h2, h3, h4, h5, h6{
+			color: var(--headlineColor);
+		}
+
+		a{
+			color: var(--linkColor);
+		}
+
+		table th{
+			color: var(--headlineColor);
+		}
+
+		--blueDark: #25476d;
+		--purpleDark: #353a71;
+		--greenDark: #0e4f5b;
+		--redDark: #b72c31;
+		--orangeDark: #e36942;
+		--yellowDark: #d48207;
+		--white:oldlace;
+	}
+}
+*/
+/*
+// Standard
+[data-theme="blue"]{
+	--backgroundColor0: var(--blueDark);
+	--foregroundColor: white;
+	--headlineColor:black;
+}
+[data-theme="purple"]{
+	--backgroundColor0: var(--purpleDark);
+	--foregroundColor: white;
+	--headlineColor:black;
+}
+[data-theme="green"]{
+	--backgroundColor0: var(--greenDark);
+	--foregroundColor: white;
+	--headlineColor:black;
+}
+[data-theme="red"]{
+	--backgroundColor0: var(--redDark);
+	--foregroundColor: white;
+	--headlineColor:black;
+}
+[data-theme="orange"]{
+	--backgroundColor0: var(--orangeDark);
+	--foregroundColor: black;
+}
+[data-theme="yellow"]{
+	--backgroundColor0: var(--yellowDark);
+	--foregroundColor: black;
+}
+// Medium
+[data-theme="blue-medium"]{
+	--backgroundColor0: #a8bed2;
+	--foregroundColor: black;
+}
+[data-theme="purple-medium"]{
+	--backgroundColor0: #abacca;
+	--foregroundColor: black;
+}
+[data-theme="green-medium"]{
+	--backgroundColor0: #9bb8aa;
+	--foregroundColor: black;
+}
+[data-theme="red-medium"]{
+	--backgroundColor0: #eeb8b0;
+	--foregroundColor: black;
+}
+[data-theme="orange-medium"]{
+	--backgroundColor0: #e9aa95;
+	--foregroundColor: black;
+}
+[data-theme="yellow-medium"]{
+	--backgroundColor0: #eaca96;
+	--foregroundColor: black;
 }
 
-[data-theme=purple] {
-  --backgroundColor0: var(--purpleDark);
-  --foregroundColor: white;
-  --headlineColor:black;
+// Light
+[data-theme="blue-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--blueDark);
+}
+[data-theme="purple-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--purpleDark);
+}
+[data-theme="green-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--greenDark);
+}
+[data-theme="red-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: black;
+	--headlineColor: var(--redDark);
+}
+[data-theme="orange-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--orangeDark);
+}
+[data-theme="yellow-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--yellowDark);
 }
 
-[data-theme=green] {
-  --backgroundColor0: var(--greenDark);
-  --foregroundColor: white;
-  --headlineColor:black;
+
+// Custom
+[data-theme="style-black"]{
+	--backgroundColor0: #0f0f0f;
+	--foregroundColor: #9cacb4;
+	--headlineColor: #FFFFFF;
+	--linkColor: #007afc;
+}
+[data-theme="style-white"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--greenDark);
+}
+[data-theme="style-grey"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--purpleDark);
+}
+[data-theme="style-newsprint"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: var(--blueDark);
+}
+[data-theme="style-oregonststate"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: black;
+	--headlineColor: var(--redDark);
+}
+[data-theme="style-oregonststate-dark"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: black;
+	--headlineColor: var(--redDark);
+}
+[data-theme="style-oregonststate-light"]{
+	--backgroundColor0: var(--white);
+	--foregroundColor: black;
+	--headlineColor: var(--redDark);
 }
 
-[data-theme=red] {
-  --backgroundColor0: var(--redDark);
-  --foregroundColor: white;
-  --headlineColor:black;
+*/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+/*
+*/
+.wp-block--section {
+  max-width: none !important;
+  padding: 20px;
+  background: var(--backgroundImage);
 }
-
-[data-theme=orange] {
-  --backgroundColor0: var(--orangeDark);
-  --foregroundColor: black;
+@media (min-width: 768px) {
+  .wp-block--section {
+    padding: 5vw;
+  }
 }
-
-[data-theme=yellow] {
-  --backgroundColor0: var(--yellowDark);
-  --foregroundColor: black;
-}
-
-[data-theme=blue-medium] {
-  --backgroundColor0: #a8bed2;
-  --foregroundColor: black;
-}
-
-[data-theme=purple-medium] {
-  --backgroundColor0: #abacca;
-  --foregroundColor: black;
-}
-
-[data-theme=green-medium] {
-  --backgroundColor0: #9bb8aa;
-  --foregroundColor: black;
-}
-
-[data-theme=red-medium] {
-  --backgroundColor0: #eeb8b0;
-  --foregroundColor: black;
-}
-
-[data-theme=orange-medium] {
-  --backgroundColor0: #e9aa95;
-  --foregroundColor: black;
-}
-
-[data-theme=yellow-medium] {
-  --backgroundColor0: #eaca96;
-  --foregroundColor: black;
-}
-
-[data-theme=blue-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--blueDark);
-}
-
-[data-theme=purple-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--purpleDark);
-}
-
-[data-theme=green-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--greenDark);
-}
-
-[data-theme=red-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: black;
-  --headlineColor: var(--redDark);
-}
-
-[data-theme=orange-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--orangeDark);
-}
-
-[data-theme=yellow-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--yellowDark);
-}
-
-[data-theme=style-black] {
-  --backgroundColor0: #0f0f0f;
-  --foregroundColor: #9cacb4;
-  --headlineColor: #FFFFFF;
-  --linkColor: #007afc;
-}
-
-[data-theme=style-white] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--greenDark);
-}
-
-[data-theme=style-grey] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--purpleDark);
-}
-
-[data-theme=style-newsprint] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: var(--blueDark);
-}
-
-[data-theme=style-oregonststate] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: black;
-  --headlineColor: var(--redDark);
-}
-
-[data-theme=style-oregonststate-dark] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: black;
-  --headlineColor: var(--redDark);
-}
-
-[data-theme=style-oregonststate-light] {
-  --backgroundColor0: var(--white);
-  --foregroundColor: black;
-  --headlineColor: var(--redDark);
+.wp-block--section > * {
+  max-width: 800px;
+  margin: 0px auto;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

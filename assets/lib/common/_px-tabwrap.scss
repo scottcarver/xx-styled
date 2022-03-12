@@ -1,0 +1,71 @@
+.px-tabwrap {
+	width: calc(100% + 16px);
+	margin-left: -8px;
+
+	.components-tab-panel__tab-content {
+		padding: 15px;
+		border: solid 1px #ccc;
+		border-radius: 3px;
+		background: #eee;
+	}
+	// When --spacedout
+	&.px-tabwrap--spacedout {
+		.components-tab-panel__tabs {
+			padding: 0;
+			display: flex;
+			justify-content: space-between;
+			button {
+				margin-right: 0;
+			}
+		}
+		.components-tab-panel__tab-content {
+			// box-shadow: 1px 10px 20px -3px rgba(0, 0, 0, 0.15);
+		}
+	}
+	// When --centered
+	&.px-tabwrap--centered {
+		// Override this Default Style
+		.components-tab-panel__tabs {
+			display: flex;
+			justify-content: center;
+			margin-bottom:-1px;
+
+			button {
+				padding: 3px 6px 3px 6px;
+    			border: solid 1px #fff;
+				border-bottom: 0;
+				border-right: 0px;
+				height: 2.5em;
+				background:#ccc;
+				
+
+				&:first-of-type{
+					border-radius:3px 0 0 0;
+					padding-left:8px
+				}
+				&:last-of-type{
+					border-radius:0 3px 0 0;
+					border-right:solid 1px #ccc;
+					padding-right:8px
+				}
+				
+				&.active-tab{
+					background:#eee;
+					box-shadow: inset 0 var(--wp-admin-border-width-focus) var(--wp-admin-theme-color);
+				}
+			}
+		}
+	}
+
+	// When --margintop
+	&.px-tabwrap--margintop{
+		margin-top:20px;
+	}
+
+	// Hide Spinners
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
