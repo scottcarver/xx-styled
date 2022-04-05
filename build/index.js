@@ -1658,9 +1658,16 @@ const calculatedBGIMGSize = (attributes, key) => {
     backgroundImageSizeCustom,
     bgGradientEnabled
   } = attributes;
-  let activeData = backgroundImageSize; // if(key == 'sm'){ activeData = backgroundImageSizeSm;}
-  // if(key == 'sm'){ activeData = backgroundImageSizeSm;}
-  // Store each layer in an array
+  let activeData = backgroundImageSizeCustom;
+
+  if (key == 'sm') {
+    activeData = backgroundImageSizeCustomSm;
+  }
+
+  if (key == 'md') {
+    activeData = backgroundImageSizeCustomMd;
+  } // Store each layer in an array
+
 
   const bgLayers = []; // Capture output in a string
 
@@ -1670,7 +1677,7 @@ const calculatedBGIMGSize = (attributes, key) => {
     bgLayers.push("cover");
   }
 
-  console.log('backgroundImageSizeCustom', backgroundImageSizeCustom); // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  console.log('backgroundImageSizeCustom', activeData); // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
   // Gradient Stacks First
 
   if (backgroundStackFirst == "gradient") {
@@ -1679,12 +1686,12 @@ const calculatedBGIMGSize = (attributes, key) => {
     }
 
     if (bgImageEnabled && backgroundImage) {
-      backgroundImageSize == "custom" ? bgLayers.push(backgroundImageSizeCustom) : bgLayers.push(backgroundImageSize);
+      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
     } // Image stacks first
 
   } else {
     if (bgImageEnabled && backgroundImage) {
-      backgroundImageSize == "custom" ? bgLayers.push(backgroundImageSizeCustom) : bgLayers.push(backgroundImageSize);
+      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
     }
 
     if (bgGradientEnabled) {
@@ -1710,8 +1717,9 @@ const calculatedBGIMGSize = (attributes, key) => {
     'sm': bgLayersString,
     'md': bgLayersString,
     'lg': bgLayersString
-  };
-  return bgLayerObject; // return bgLayersString;
+  }; // return bgLayerObject;
+
+  return bgLayersString;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGSize);
@@ -3006,8 +3014,11 @@ function Edit(props) {
   ); // boop
 
   const bgImageStack = (0,_assets_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_10__["default"])(props.attributes);
-  const bgColorStack = (0,_assets_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_11__["default"])(props.attributes);
-  const bgSize = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes);
+  const bgColorStack = (0,_assets_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_11__["default"])(props.attributes); // const bgSize = calculatedBGIMGSize(props.attributes);
+
+  const bgSizeSm = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes, 'sm');
+  const bgSizeMd = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes, 'md');
+  const bgSize = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes, 'lg');
   const bgPosition = (0,_assets_lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_13__["default"])(props.attributes);
   const bgAttachment = (0,_assets_lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_14__["default"])(props.attributes);
   const bgRepeat = (0,_assets_lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_15__["default"])(props.attributes);
@@ -3020,9 +3031,9 @@ function Edit(props) {
     // Background
     '--backgroundImage': bgImageStack,
     '--backgroundColor': bgColorStack,
-    '--backgroundSizeSm': bgSize['sm'],
-    '--backgroundSizeMd': bgSize['md'],
-    '--backgroundSize': bgSize['lg'],
+    '--backgroundSizeSm': bgSizeSm,
+    '--backgroundSizeMd': bgSizeMd,
+    '--backgroundSize': bgSize,
     '--backgroundPosition': bgPosition,
     '--backgroundAttachment': bgAttachment,
     '--backgroundRepeat': bgRepeat,

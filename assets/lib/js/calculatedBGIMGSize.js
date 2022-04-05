@@ -16,9 +16,9 @@ const calculatedBGIMGSize = (attributes, key) => {
 		bgGradientEnabled
 	} = attributes;
 
-	let activeData = backgroundImageSize;
-	// if(key == 'sm'){ activeData = backgroundImageSizeSm;}
-	// if(key == 'sm'){ activeData = backgroundImageSizeSm;}
+	let activeData = backgroundImageSizeCustom;
+	if(key == 'sm'){ activeData = backgroundImageSizeCustomSm;}
+	if(key == 'md'){ activeData = backgroundImageSizeCustomMd;}
 
 
 	// Store each layer in an array
@@ -32,19 +32,19 @@ const calculatedBGIMGSize = (attributes, key) => {
 		bgLayers.push("cover");
 	}
 
-	console.log('backgroundImageSizeCustom', backgroundImageSizeCustom);
+	console.log('backgroundImageSizeCustom', activeData);
 
 	// Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
 	// Gradient Stacks First
 	if (backgroundStackFirst == "gradient") {
 		if (bgGradientEnabled) { bgLayers.push("cover"); }
 		if (bgImageEnabled && backgroundImage) {
-			backgroundImageSize == "custom" ? bgLayers.push(backgroundImageSizeCustom) : bgLayers.push(backgroundImageSize);
+			backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
 		}
 		// Image stacks first
 	} else {
 		if (bgImageEnabled && backgroundImage) {
-			backgroundImageSize == "custom" ? bgLayers.push(backgroundImageSizeCustom) : bgLayers.push(backgroundImageSize);
+			backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
 		}
 		if (bgGradientEnabled) { bgLayers.push("cover"); }
 	}
@@ -71,7 +71,7 @@ const calculatedBGIMGSize = (attributes, key) => {
 	}
 	
 
-	return bgLayerObject;
-	// return bgLayersString;
+	// return bgLayerObject;
+	return bgLayersString;
 };
 export default calculatedBGIMGSize;

@@ -73,7 +73,10 @@ export default function Edit(props) {
 		// boop
 		const bgImageStack = calculatedBgImage(props.attributes);
 		const bgColorStack = calculatedBgColor(props.attributes);
-		const bgSize = calculatedBGIMGSize(props.attributes);
+		// const bgSize = calculatedBGIMGSize(props.attributes);
+		const bgSizeSm = calculatedBGIMGSize(props.attributes, 'sm');
+		const bgSizeMd = calculatedBGIMGSize(props.attributes, 'md');
+		const bgSize = calculatedBGIMGSize(props.attributes, 'lg');
 		const bgPosition = calculatedBgPos(props.attributes);
 		const bgAttachment = calculatedBGIMGAtt(props.attributes);
 		const bgRepeat = calculatedBGIMGRepeat(props.attributes);
@@ -89,9 +92,9 @@ export default function Edit(props) {
 			// Background
             '--backgroundImage': bgImageStack,
 			'--backgroundColor': bgColorStack,
-			'--backgroundSizeSm': bgSize['sm'],
-			'--backgroundSizeMd': bgSize['md'],
-			'--backgroundSize': bgSize['lg'],
+			'--backgroundSizeSm': bgSizeSm,
+			'--backgroundSizeMd': bgSizeMd,
+			'--backgroundSize': bgSize,
 			'--backgroundPosition': bgPosition,
 			'--backgroundAttachment': bgAttachment,
 			'--backgroundRepeat': bgRepeat,

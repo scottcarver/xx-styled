@@ -13,14 +13,25 @@ body.wp-admin .xx-styled{ max-width:100% !important; }
 	color: var(--foregroundColor);
 	background-image: var(--backgroundImage);
 	background-color: var(--backgroundColor);
-	background-size: var(--backgroundSize);
 	background-position: var(--backgroundPosition);
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
 	padding: var(--spacingMobile);
-	@media(min-width: 992px){ padding: var(--spacingTablet); }
-	@media(min-width:1200px){ padding: var(--spacingDesktop); }
+	background-size: var(--backgroundSizeSm);
+	@media(min-width: 992px){ 
+		background-size: var(--backgroundSizeMd);
+		padding: var(--spacingTablet); 
+	}
+	@media(min-width:1200px){ 
+		background-size: var(--backgroundSize);
+		padding: var(--spacingDesktop); 
+	}
 
+
+
+
+
+	
 	// Selection
 	*::selection {
 		color: var(--selectionFGColor);

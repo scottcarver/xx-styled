@@ -12,19 +12,21 @@ body.wp-admin .xx-styled {
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);
   background-color: var(--backgroundColor);
-  background-size: var(--backgroundSize);
   background-position: var(--backgroundPosition);
   background-attachment: var(--backgroundAttachment);
   background-repeat: var(--backgroundRepeat);
   padding: var(--spacingMobile);
+  background-size: var(--backgroundSizeSm);
 }
 @media (min-width: 992px) {
   .xx-styled {
+    background-size: var(--backgroundSizeMd);
     padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
   .xx-styled {
+    background-size: var(--backgroundSize);
     padding: var(--spacingDesktop);
   }
 }
