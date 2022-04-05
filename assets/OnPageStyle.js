@@ -31,6 +31,7 @@ export default class OnPageStyle extends Component {
 				styleEnabled,
 				babygradient,
 				dropcapColor,
+				blockquoteColor,
 				backgroundColor0,
 				bgColorEnabled,
 				blockID,
@@ -52,7 +53,7 @@ export default class OnPageStyle extends Component {
 		// boop
 		const bgImageStack = calculatedBgImage(this.props.attributes);
 		const bgColorStack = calculatedBgColor(this.props.attributes);
-		const bgSize = calculatedBGIMGSize(this.props.attributes);
+		const bgSize = calculatedBGIMGSize(this.props.attributes, 'sm'); // sm, md, lg
 		const bgPosition = calculatedBgPos(this.props.attributes);
 		const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
 		const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);
@@ -63,7 +64,9 @@ export default class OnPageStyle extends Component {
         const styleObj = { 
             '--backgroundImage': bgImageStack,
 			'--backgroundColor': bgColorStack,
-			'--backgroundSize': bgSize,
+			'--backgroundSizeSm': bgSize['sm'],
+			'--backgroundSizeMd': bgSize['md'],
+			'--backgroundSize': bgSize['lg'],
 			'--backgroundPosition': bgPosition,
 			'--backgroundAttachment': bgAttachment,
 			'--backgroundRepeat': bgRepeat,
@@ -86,7 +89,7 @@ export default class OnPageStyle extends Component {
 				background-image: ${bgImageStack};
 				background-color: ${bgColorStack};
 				color: ${foregroundColor};
-				background-size: ${bgSize};
+				background-size: ${bgSize.lg};
 				background-position: ${bgPosition};
 				background-attachment: ${bgAttachment};
 				background-repeat: ${bgRepeat};
@@ -107,6 +110,9 @@ export default class OnPageStyle extends Component {
 				color: ${linkColor};
 			}
 
+			blockquote{
+				color:${blockquoteColor};
+			}
 			.wp-block-section--${blockID} p.has-drop-cap:first-child:first-letter{color: ${dropcapColor};}
 
 			p.has-drop-cap:not(:focus)::first-letter{color: ${dropcapColor};}

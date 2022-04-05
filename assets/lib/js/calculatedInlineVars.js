@@ -1,8 +1,4 @@
-// We need to reuese this other function, calculatedGradient
-// import calculatedGradient from "./calculatedGradient";
-// import calculatedGel from "./calculatedGel";
-// import calculatedImg from "./calculatedImg";
-
+// Custom Functions
 import calculatedBgImage from "./calculatedBgImage";
 import calculatedBgColor from "./calculatedBgColor";
 import calculatedBGIMGSize from "./calculatedBGIMGSize";
@@ -20,6 +16,8 @@ const calculatedInlineVars = attributes => {
 		headlineColor,
 		linkColor,
 		dropcapColor,
+		blockquoteColor,
+		lineartColor,
 		selectionFGColor,
 		selectionBGColor,
 		foregroundHeadlineFont,
@@ -30,7 +28,9 @@ const calculatedInlineVars = attributes => {
 
 	const bgImageStack = calculatedBgImage(attributes);
 	const bgColorStack = calculatedBgColor(attributes);
-	const bgSize = calculatedBGIMGSize(attributes);
+	const bgSizeSm = calculatedBGIMGSize(attributes, 'sm');
+	const bgSizeMd = calculatedBGIMGSize(attributes, 'md');
+	const bgSize = calculatedBGIMGSize(attributes, 'lg');
 	const bgPosition = calculatedBgPos(attributes);
 	const bgAttachment = calculatedBGIMGAtt(attributes);
 	const bgRepeat = calculatedBGIMGRepeat(attributes);
@@ -39,10 +39,13 @@ const calculatedInlineVars = attributes => {
 	const spacingDesktopStack = calculatedPadding(attributes.spacingDesktop);
 	const replaceAll = function (string, search, replace){ return string.split(search).join(replace); } 
 	
+	console.log("CURIOUS", bgSize);
 
 	var combinedCss = `
 		--backgroundImage: ${bgImageStack};
 		--backgroundColor: ${bgColorStack};
+		--backgroundSizeSm: ${bgSizeSm};
+		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
 		--backgroundPosition: ${bgPosition};
 		--backgroundAttachment: ${bgAttachment};
@@ -51,6 +54,8 @@ const calculatedInlineVars = attributes => {
 		--headlineColor: ${headlineColor};
 		--linkColor: ${linkColor};
 		--dropcapColor: ${dropcapColor};
+		--blockquoteColor: ${blockquoteColor};
+		--lineartColor: ${lineartColor};
 		--selectionFGColor: ${selectionFGColor};
 		--selectionBGColor: ${selectionBGColor};
 		--foregroundHeadlineFont: ${foregroundHeadlineFont};

@@ -11,7 +11,7 @@ import calculatedTabset from "./lib/js/calculatedTabset";
 const { __ } = wp.i18n;
 import { Component, Fragment, useState } from '@wordpress/element';
 import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { __experimentalBoxControl as BoxControl } from '@wordpress/components';
+import { __experimentalBoxControl as BoxControl, Popover } from '@wordpress/components';
 // This uses the old syntax and maybe needs updated to @wordpress
 const {
 	PanelBody, // this is new in this demo
@@ -91,6 +91,8 @@ export default class StyleControls extends Component {
 				foregroundColor,
 				linkColor,
 				dropcapColor,
+				blockquoteColor,
+				lineartColor,
 				selectionFGColor,
 				selectionBGColor,
 				foregroundHeadlineFont,
@@ -162,31 +164,54 @@ export default class StyleControls extends Component {
 			gradientBg: [{ name: "red", color: "#f00" }, { name: "blue", color: "#00f" }]
 		};
 		
+		var isOpen = false;
 
 		const getForegroundTab = name => {
 			
 			if (name == "fgcolor") {
 				return (
 					<Fragment>
-						<div class="px-colorbox px-colorbox-negmarginabove">
+						<div class="px-colorbox">
 							<h2>Headline</h2>
-							<ColorIndicator colorValue={headlineColor} />
+							{/* <ColorIndicator colorValue={headlineColor} /> */}
+							<input type="checkbox" id="headlineSwatch" name="headlineSwatch"></input>
+							<label for="headlineSwatch">Palette</label>
 							<ColorPalette value={headlineColor} onChange={headlineColor => setAttributes({ headlineColor })} />
 						</div>
-						<div class="px-colorbox px-colorbox-negmarginabove">
+						<div class="px-colorbox">
 							<h2>Text</h2>
-							<ColorIndicator colorValue={foregroundColor} />
+							{/* <ColorIndicator colorValue={foregroundColor} /> */}
+							<input type="checkbox" id="textSwatch" name="textSwatch"></input>
+							<label for="textSwatch">Palette</label>
 							<ColorPalette value={foregroundColor} onChange={foregroundColor => setAttributes({ foregroundColor })} />
 						</div>
-						<div class="px-colorbox px-colorbox-negmarginabove">
+						<div class="px-colorbox">
 							<h2>Link</h2>
-							<ColorIndicator colorValue={linkColor} />
+							{/* <ColorIndicator colorValue={linkColor} /> */}
+							<input type="checkbox" id="linkSwatch" name="linkSwatch"></input>
+							<label for="linkSwatch">Palette</label>
 							<ColorPalette value={linkColor} onChange={linkColor => setAttributes({ linkColor })} />
 						</div>
-						<div class="px-colorbox px-colorbox-negmarginabove">
+						<div class="px-colorbox">
+							<h2>Block Quote</h2>
+							{/* <ColorIndicator colorValue={dropcapColor} /> */}
+							<input type="checkbox" id="blockquoteSwatch" name="blockquoteSwatch"></input>
+							<label for="blockquoteSwatch">Palette</label>
+							<ColorPalette value={blockquoteColor} onChange={blockquoteColor => setAttributes({ blockquoteColor })} />
+						</div>
+						<div class="px-colorbox">
 							<h2>Dropcap</h2>
-							<ColorIndicator colorValue={dropcapColor} />
+							{/* <ColorIndicator colorValue={dropcapColor} /> */}
+							<input type="checkbox" id="dropcapSwatch" name="dropcapSwatch"></input>
+							<label for="dropcapSwatch">Palette</label>
 							<ColorPalette value={dropcapColor} onChange={dropcapColor => setAttributes({ dropcapColor })} />
+						</div>
+						<div class="px-colorbox">
+							<h2>Lineart</h2>
+							{/* <ColorIndicator colorValue={lineartColor} /> */}
+							<input type="checkbox" id="lineartSwatch" name="lineartSwatch"></input>
+							<label for="lineartSwatch">Palette</label>
+							<ColorPalette value={lineartColor} onChange={lineartColor => setAttributes({ lineartColor })} />
 						</div>
 					</Fragment>
 				);
@@ -196,7 +221,9 @@ export default class StyleControls extends Component {
 					<Fragment>
 						<div class="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
 							<h2>Selected Text</h2>
-							<ColorIndicator colorValue={selectionFGColor} />
+							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
+							<input type="checkbox" id="selectionfgSwatch" name="selectionfgSwatch"></input>
+							<label for="selectionfgSwatch">Palette</label>
 							<ColorPalette
 								value={selectionFGColor}
 								onChange={selectionFGColor => setAttributes({ selectionFGColor })}
@@ -204,7 +231,9 @@ export default class StyleControls extends Component {
 						</div>
 						<div class="px-colorbox px-colorbox--marginabove">
 							<h2>Selected Text BG</h2>
-							<ColorIndicator colorValue={selectionBGColor} />
+							{/* <ColorIndicator colorValue={selectionBGColor} /> */}
+							<input type="checkbox" id="selectionbgSwatch" name="selectionbgSwatch"></input>
+							<label for="selectionbgSwatch">Palette</label>
 							<ColorPalette
 								value={selectionBGColor}
 								onChange={selectionBGColor => setAttributes({ selectionBGColor })}
@@ -237,7 +266,7 @@ export default class StyleControls extends Component {
 										setAttributes({ foregroundHeadlineFont: "sans-serif" });
 									}}
 								>
-									Sans-Serif
+									Sans
 								</Button>
 								<Button
 									isDefault
@@ -246,7 +275,16 @@ export default class StyleControls extends Component {
 										setAttributes({ foregroundHeadlineFont: "monospace" });
 									}}
 								>
-									Monospace
+									Mono
+								</Button>
+								<Button
+									isDefault
+									isPrimary={foregroundHeadlineFont === "custom"}
+									onClick={() => {
+										setAttributes({ foregroundHeadlineFont: "custom" });
+									}}
+								>
+									Custom
 								</Button>
 							</ButtonGroup>
 						</div>
@@ -271,7 +309,7 @@ export default class StyleControls extends Component {
 										setAttributes({ foregroundCopyFont: "sans-serif" });
 									}}
 								>
-									Sans-Serif
+									Sans
 								</Button>
 								<Button
 									isDefault
@@ -280,7 +318,16 @@ export default class StyleControls extends Component {
 										setAttributes({ foregroundCopyFont: "monospace" });
 									}}
 								>
-									Monospace
+									Mono
+								</Button>
+								<Button
+									isDefault
+									isPrimary={foregroundCopyFont === "custom"}
+									onClick={() => {
+										setAttributes({ foregroundCopyFont: "custom" });
+									}}
+								>
+									Custom
 								</Button>
 							</ButtonGroup>
 						</div>
@@ -303,7 +350,7 @@ export default class StyleControls extends Component {
 									onClick={() => {
 										setAttributes({ foregroundCaptionFont: "sans-serif" });
 									}}>
-									Sans-Serif
+									Sans
 								</Button>
 								<Button
 									isDefault
@@ -311,7 +358,15 @@ export default class StyleControls extends Component {
 									onClick={() => {
 										setAttributes({ foregroundCaptionFont: "monospace" });
 									}}>
-									Monospace
+									Mono
+								</Button>
+								<Button
+									isDefault
+									isPrimary={foregroundCaptionFont === "custom"}
+									onClick={() => {
+										setAttributes({ foregroundCaptionFont: "custom" });
+									}}>
+									 Custom
 								</Button>
 							</ButtonGroup>
 						</div>
@@ -420,8 +475,9 @@ export default class StyleControls extends Component {
 				<PanelBody title={__("Foreground", "pxblocks")} initialOpen={false} icon="welcome-widgets-menus">
 					<PanelRow>
 						{/* Tab that includes Foreground Settings */}
+						<div class="px-sidepanel">
 						<TabPanel
-							className="px-tabwrap px-tabwrap--centered px-tabwrap--margin-top"
+							className="px-tabwrap px-tabwrap--centered px-tabwrap--margintop"
 							activeClass="active-tab"
 							onSelect={onSelect}
 							tabs={[
@@ -444,6 +500,7 @@ export default class StyleControls extends Component {
 						>
 							{tab => getForegroundTab(tab.name)}
 						</TabPanel>
+						</div>
 					</PanelRow>
 				</PanelBody>
 				<PanelBody title={__("Background", "pxblocks")} initialOpen={false} icon="format-image">

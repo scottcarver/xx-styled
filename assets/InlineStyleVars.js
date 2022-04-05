@@ -50,7 +50,7 @@ export default class InlineStyleVars extends Component {
 		// boop
 		const bgImageStack = calculatedBgImage(this.props.attributes);
 		const bgColorStack = calculatedBgColor(this.props.attributes);
-		const bgSize = calculatedBGIMGSize(this.props.attributes);
+		const bgSize = calculatedBGIMGSize(this.props.attributes, 'lg');
 		const bgPosition = calculatedBgPos(this.props.attributes);
 		const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
 		const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);

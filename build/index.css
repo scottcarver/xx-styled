@@ -34,6 +34,17 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  /*
+  &.px-simplerow--nounitsplit{
+  	.component-box-control__header-control-wrapper{
+  		// outline:solid 1px blue;
+  		div:last-of-type button{
+  			background:red;
+  			display:none;
+  		}
+  	}
+  }
+  */
 }
 .px-simplerow.px-simplerow--first {
   padding: 20px 10px;
@@ -180,6 +191,8 @@
 
 .px-colorbox {
   position: relative;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 .px-colorbox.px-colorbox-negmarginabove {
   margin-top: -10px;
@@ -196,8 +209,46 @@
 .px-colorbox.px-colorbox--linebelow {
   border-bottom: solid 1px #eee;
 }
+.px-colorbox.px-colorbox--nopicker {
+  margin-top: -20px;
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+}
+.px-colorbox.px-colorbox--nopicker .components-color-palette__custom-color {
+  display: none;
+}
+.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__swatches {
+  margin-top: 40px;
+}
+.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__custom-clear-wrapper {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.px-colorbox.px-colorbox--nopicker label {
+  right: 18px;
+}
+.px-colorbox.px-colorbox--nopicker input[type=checkbox] {
+  right: 5px;
+}
 .px-colorbox h2 {
-  margin-bottom: 25px;
+  margin: 5px 0;
+}
+.px-colorbox input[type=checkbox]:checked ~ div .components-circular-option-picker__swatches {
+  display: flex;
+}
+.px-colorbox input[type=checkbox] {
+  position: absolute;
+  top: 15px;
+  right: -5px;
+}
+.px-colorbox label {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  font-size: 10px;
 }
 .px-colorbox .component-color-indicator {
   position: absolute;
@@ -221,6 +272,17 @@
 }
 .px-colorbox .components-color-picker__body {
   padding: 10px 6px 0 6px;
+}
+.px-colorbox .components-circular-option-picker__swatches {
+  display: none;
+  width: calc(100% + 4px);
+}
+.px-colorbox .components-circular-option-picker {
+  margin-top: 5px;
+  padding-bottom: 10px;
+}
+.px-colorbox .components-circular-option-picker__custom-clear-wrapper {
+  margin-top: 5px;
 }
 .px-colorbox .components-color-picker__inputs-wrapper {
   align-items: initial;
@@ -250,6 +312,16 @@
 }
 .edit-post-settings-sidebar__panel-block .components-color-picker__inputs-fields {
   justify-content: space-between;
+}
+
+.px-triptych {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.px-triptych > div {
+  width: 33%;
+  padding: 3px;
 }
 
 .px-columnrow {
@@ -394,8 +466,6 @@ body.wp-admin .xx-styled {
 
 .xx-styled {
   position: relative;
-  padding: 5vw 0;
-  font-size: 1.25em;
   max-width: none;
   font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
@@ -429,19 +499,48 @@ body.wp-admin .xx-styled {
   color: var(--headlineColor) !important;
   font-family: var(--foregroundHeadlineFont);
 }
-.xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
+.xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6, .xx-styled blockquote, .xx-styled cite {
   max-width: 800px;
   margin: 1em auto;
+  display: block;
 }
 .xx-styled p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
+  /* cool effect, but for a theme
+  margin-left: -1.5em;
+  width: 110px;
+  height: 110px;
+  border: solid 1px red;
+  padding: 20px;
+  border-radius: 100%;
+  */
 }
 .xx-styled a {
   font-weight: bold;
   color: var(--linkColor);
 }
+.xx-styled blockquote {
+  color: var(--blockquoteColor);
+  border-left: solid 2px var(--blockquoteColor);
+  padding-left: 20px;
+}
+.xx-styled blockquote p {
+  font-size: 2em;
+}
+.xx-styled blockquote p:before {
+  content: '"';
+}
+.xx-styled blockquote p:after {
+  content: '"';
+}
+.xx-styled blockquote cite {
+  padding-bottom: 20px;
+}
 .xx-styled figure figcaption {
   font-family: var(--foregroundCaptionFont);
+}
+.xx-styled svg path {
+  fill: red;
 }
 
 /*
@@ -600,21 +699,24 @@ html {
  */
 /*
 */
-.wp-block--section {
-  max-width: none !important;
-  padding: 20px;
-  background: var(--backgroundImage);
-}
-@media (min-width: 768px) {
-  .wp-block--section {
-    padding: 5vw;
-  }
-}
-.wp-block--section > * {
-  max-width: 800px;
-  margin: 0px auto;
-}
+/*
+.wp-block--section{
+	max-width: none !important;
+	padding:20px;
 
+	background: var(--backgroundImage);
+
+
+	@media($sm-up){
+		padding:5vw;
+	}
+
+	> * {
+		max-width:800px;
+		margin:0px auto;
+	}
+}
+*/
 /*
 // Editor Style
 .xx-styled{

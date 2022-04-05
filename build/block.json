@@ -73,6 +73,14 @@
 			"type": "string",
 			"default": "#000000"
 		},
+		"blockquoteColor": {
+			"type": "string",
+			"default": "#000000"
+		},
+		"lineartColor": {
+			"type": "string",
+			"default": "#000000"
+		},
 		"foregroundHeadlineFont": {
 			"type": "string",
 			"default": "sans-serif"
@@ -153,13 +161,25 @@
 			"type": "string",
 			"default": null
 		},
+		"focalPoint": {
+			"type": "object",
+			"default": { "x": 0.5, "y": 0.1 }
+		},
 		"backgroundImageSize": {
 			"type": "string",
 			"default": "cover"
 		},
+		"backgroundImageSizeCustomSm": {
+			"type": "string",
+			"default": "100%"
+		},
+		"backgroundImageSizeCustomMd": {
+			"type": "string",
+			"default": "100%"
+		},
 		"backgroundImageSizeCustom": {
-			"type": "number",
-			"default": 100
+			"type": "string",
+			"default": "100%"
 		},
 		"backgroundImageRepeat": {
 			"type": "string",
@@ -226,28 +246,28 @@
 		"spacingMobile": {
 			"type": "object",
 			"default": {
-				"top" : "10px",
-				"right" : "10px",
-				"bottom" : "10px",
-				"left" : "10px"
+				"top" : "20px",
+				"right" : "20px",
+				"bottom" : "20px",
+				"left" : "20px"
 			}
 		},
 		"spacingTablet": {
 			"type": "object",
 			"default": {
-				"top" : "10px",
-				"right" : "10px",
-				"bottom" : "10px",
-				"left" : "10px"
+				"top" : "30px",
+				"right" : "30px",
+				"bottom" : "30px",
+				"left" : "30px"
 			}
 		},
 		"spacingDesktop": {
 			"type": "object",
 			"default": {
-				"top" : "10px",
-				"right" : "10px",
-				"bottom" : "10px",
-				"left" : "10px"
+				"top" : "5vw",
+				"right" : "5vw",
+				"bottom" : "5vw",
+				"left" : "5vw"
 			}
 		}
 	},

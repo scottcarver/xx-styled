@@ -1,18 +1,30 @@
 // Returns a computed value for background-size
-const calculatedBGIMGSize = attributes => {
+const calculatedBGIMGSize = (attributes, key) => {
+
+	console.log("key is", key);
+
+
 	const {
 		bgGelEnabled,
 		backgroundStackFirst,
 		bgImageEnabled,
 		backgroundImage,
 		backgroundImageSize,
+		backgroundImageSizeCustomSm,
+		backgroundImageSizeCustomMd,
 		backgroundImageSizeCustom,
 		bgGradientEnabled
 	} = attributes;
 
+	let activeData = backgroundImageSize;
+	// if(key == 'sm'){ activeData = backgroundImageSizeSm;}
+	// if(key == 'sm'){ activeData = backgroundImageSizeSm;}
+
+
 	// Store each layer in an array
 	const bgLayers = [];
 	// Capture output in a string
+	
 	let bgLayersString = "";
 
 	// if background enabled
@@ -20,27 +32,21 @@ const calculatedBGIMGSize = attributes => {
 		bgLayers.push("cover");
 	}
 
+	console.log('backgroundImageSizeCustom', backgroundImageSizeCustom);
+
 	// Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
 	// Gradient Stacks First
 	if (backgroundStackFirst == "gradient") {
-		if (bgGradientEnabled) {
-			bgLayers.push("cover");
-		}
+		if (bgGradientEnabled) { bgLayers.push("cover"); }
 		if (bgImageEnabled && backgroundImage) {
-			backgroundImageSize == "custom"
-				? bgLayers.push(backgroundImageSizeCustom + "%")
-				: bgLayers.push(backgroundImageSize);
+			backgroundImageSize == "custom" ? bgLayers.push(backgroundImageSizeCustom) : bgLayers.push(backgroundImageSize);
 		}
 		// Image stacks first
 	} else {
 		if (bgImageEnabled && backgroundImage) {
-			backgroundImageSize == "custom"
-				? bgLayers.push(backgroundImageSizeCustom + "%")
-				: bgLayers.push(backgroundImageSize);
+			backgroundImageSize == "custom" ? bgLayers.push(backgroundImageSizeCustom) : bgLayers.push(backgroundImageSize);
 		}
-		if (bgGradientEnabled) {
-			bgLayers.push("cover");
-		}
+		if (bgGradientEnabled) { bgLayers.push("cover"); }
 	}
 
 	// Concatenate a style string
@@ -57,6 +63,15 @@ const calculatedBGIMGSize = attributes => {
 		bgLayersString += "auto";
 	}
 
-	return bgLayersString;
+
+	let bgLayerObject =  {
+		'sm' : bgLayersString,
+		'md' : bgLayersString,
+		'lg' : bgLayersString,
+	}
+	
+
+	return bgLayerObject;
+	// return bgLayersString;
 };
 export default calculatedBGIMGSize;

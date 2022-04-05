@@ -50,6 +50,17 @@
 			width: 100%;
 		}
 	}
+	/*
+	&.px-simplerow--nounitsplit{
+		.component-box-control__header-control-wrapper{
+			// outline:solid 1px blue;
+			div:last-of-type button{
+				background:red;
+				display:none;
+			}
+		}
+	}
+	*/
 
 	.px-simplerow h2 {
 		margin: 25px 0 10px 0;

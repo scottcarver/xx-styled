@@ -7,6 +7,8 @@ import classnames from "classnames";
 const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
 import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
+import { FocalPointPicker } from '@wordpress/components';
+
 
 const {
 	TabPanel,
@@ -63,7 +65,8 @@ export default class BGTabs extends Component {
 				selectionBGColor,
 				foregroundHeadlineFont,
 				foregroundCopyFont,
-				foregroundCaptionFont
+				foregroundCaptionFont,
+				focalPoint
 			},
 			setAttributes
 		} = this.props;
@@ -101,18 +104,26 @@ export default class BGTabs extends Component {
 			if (name == "bgcolortab") {
 				return (
 					<Fragment>
-						<div className={bgcolor1classes}>
+						<div class="px-colorbox">
 							<h2>Color</h2>
+							{/* <ColorIndicator colorValue={foregroundColor} /> */}
+							<input type="checkbox" id="bgcolorSwatch" name="bgcolorSwatch"></input>
+							<label for="bgcolorSwatch">Palette</label>
+							<ColorPalette value={backgroundColor0} onChange={backgroundColor0 => setAttributes({ backgroundColor0 })} />
+						</div>
+
+						<div className={bgcolor1classes}>
+							{/* <h2>Color</h2>
 							<ColorIndicator colorValue={backgroundColor0} />
 							<ColorPalette
 								enableAlpha
 								value={backgroundColor0}
 								onChange={backgroundColor0 => setAttributes({ backgroundColor0 })}
-							/>
+							/> */}
 							<ColorPicker
 								color={backgroundColor0}
 								onChangeComplete={value => setAttributes({ backgroundColor0: value.hex })}
-								disableAlpha
+								
 							/>
 						</div>
 					</Fragment>
@@ -185,6 +196,13 @@ export default class BGTabs extends Component {
 				);
 			}
 
+			const dimensions = {
+				width: 400,
+				height: 100,
+			};
+
+			
+
 			// Image Tab
 			if (name == "bgimagetab") {
 				return (
@@ -194,6 +212,19 @@ export default class BGTabs extends Component {
 						<div class="px-simplerow px-simplerow--shortheadline">
 							<h2>Background Image</h2>
 						</div>
+
+						<FocalPointPicker
+							url={ backgroundImage }
+							// dimensions={ dimensions }
+							value={ focalPoint }
+							onChange={focalPoint =>
+								setAttributes({
+									focalPoint: focalPoint
+								})
+							}
+							// onChange={ ( focalPoint ) => setFocalPoint( { focalPoint } ) }
+						/>
+
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={onImageSelect}
@@ -201,6 +232,7 @@ export default class BGTabs extends Component {
 								render={({ open }) => <Button onClick={open}>Open Media Library</Button>}
 							/>
 						</MediaUploadCheck>
+						
 						{backgroundImage && (
 							<Fragment>
 								<BGImgControl {...{ setAttributes, ...this.props }} />
@@ -219,6 +251,17 @@ export default class BGTabs extends Component {
 			if (name == "bggeltab") {
 				return (
 					<Fragment>
+						<div class="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
+							<h2>Selected Text</h2>
+							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
+							<input type="checkbox" id="bg3Swatch" name="bg3Swatch"></input>
+							<label for="bg3Swatch">Palette</label>
+							<ColorPalette
+								value={backgroundColor3}
+								onChange={backgroundColor3 => setAttributes({ backgroundColor3 })}
+							/>
+						</div>
+						<div class="px-simplerow px-simplerow--padleft">
 						{/* Background Image Enabled Toggle */}
 						<div className={mycurrentproblem}>
 							<ColorPicker
@@ -230,6 +273,8 @@ export default class BGTabs extends Component {
 								}
 							/>
 						</div>
+						</div>
+					
 						{/* END BACKGROUND IMAGE TAB */}
 					</Fragment>
 				);
@@ -241,6 +286,7 @@ export default class BGTabs extends Component {
 			if (name == "gradcolortab") {
 				return (
 					<Fragment>
+				
 						<div class="px-colorbox">
 							<h2>Gradient Color 1</h2>
 							<ColorPicker
@@ -252,6 +298,15 @@ export default class BGTabs extends Component {
 								}
 							/>
 						</div>
+						<div class="px-colorbox px-colorbox--nopicker">
+							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
+							<input type="checkbox" id="bg1Swatch" name="bg1Swatch"></input>
+							<label for="bg1Swatch">Palette</label>
+							<ColorPalette
+								value={backgroundColor1}
+								onChange={backgroundColor1 => setAttributes({ backgroundColor1 })}
+							/>
+						</div>
 						<div class="px-colorbox">
 							<h2>Gradient Color 2</h2>
 							<ColorPicker
@@ -261,6 +316,14 @@ export default class BGTabs extends Component {
 										backgroundColor2: ColorObgtoRgbaString(value)
 									})
 								}
+							/>
+						</div>
+						<div class="px-colorbox px-colorbox--nopicker">
+							<input type="checkbox" id="bg2Swatch" name="bg2Swatch"></input>
+							<label for="bg2Swatch">Palette</label>
+							<ColorPalette
+								value={backgroundColor2}
+								onChange={backgroundColor2 => setAttributes({ backgroundColor2 })}
 							/>
 						</div>
 					</Fragment>

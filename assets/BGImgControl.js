@@ -3,8 +3,8 @@
 /*  Internal block libraries */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { Button, ButtonGroup, RangeControl } = wp.components;
-
+// const { Button, ButtonGroup, RangeControl } = wp.components;
+import { __experimentalUnitControl as UnitControl,  Button, ButtonGroup, RangeControl } from '@wordpress/components';
 /* Create a Block Controls wrapper Component */
 export default class BGImgControl extends Component {
 	constructor() {
@@ -16,6 +16,8 @@ export default class BGImgControl extends Component {
 			attributes: {
 				backgroundImageSize,
 				backgroundImageSizeCustom,
+				backgroundImageSizeCustomSm,
+				backgroundImageSizeCustomMd,
 				backgroundImageRepeat,
 				backgroundImageAttachment,
 				backgroundImageAlignVert,
@@ -25,6 +27,29 @@ export default class BGImgControl extends Component {
 			},
 			setAttributes
 		} = this.props;
+
+		let defaultUnits = [
+			{
+			default: 33,
+			label: '%',
+			value: '%'
+			},
+			{
+			default: 33,
+			label: 'vw',
+			value: 'vw'
+			},
+			{
+			default: 20,
+			label: 'vh',
+			value: 'vh'
+			},
+			{
+			default: 500,
+			label: 'px',
+			value: 'px'
+			}
+		];
 
 		return (
 			<Fragment>
@@ -71,19 +96,53 @@ export default class BGImgControl extends Component {
 
 				{/* Only show custom size conditionally */}
 				{backgroundImageSize === "custom" && (
-					<div class="px-columnrow px-columnrow--nolabel px-columnrow--spaceabove">
-						<RangeControl
-							label={__("Custom")}
-							value={backgroundImageSizeCustom}
-							onChange={backgroundImageSizeCustom => {
-								setAttributes({
-									backgroundImageSizeCustom
-								});
-							}}
-							min={0}
-							max={200}
-						/>
-					</div>
+					<Fragment>
+
+
+
+						<div className="px-triptych">
+							<div>
+								<UnitControl
+									label="Small"
+									onChange={(newdata) => { setAttributes({ backgroundImageSizeCustomSm: newdata }); }} 
+									value={backgroundImageSizeCustomSm}
+									units={defaultUnits}
+								/>
+							</div>
+							<div>
+								<UnitControl
+									label="Medium"
+									onChange={(newdata) => { setAttributes({ backgroundImageSizeCustomMd: newdata }); }} 
+									value={backgroundImageSizeCustomMd}
+									units={defaultUnits}
+								/>
+							</div>
+							<div>
+								<UnitControl
+									label="Large"
+									onChange={(newdata) => { setAttributes({ backgroundImageSizeCustom: newdata }); }} 
+									value={backgroundImageSizeCustom}
+									units={defaultUnits}
+								/>
+							</div>
+						</div>
+{/* 						
+						Two
+						<div class="px-columnrow px-columnrow--nolabel px-columnrow--spaceabove">
+							<RangeControl
+								label={__("Custom")}
+								value={backgroundImageSizeCustom}
+								onChange={backgroundImageSizeCustom => {
+									setAttributes({
+										backgroundImageSizeCustom
+									});
+								}}
+								min={0}
+								max={200}
+							/>
+						</div>
+						Three */}
+					</Fragment>
 				)}
 
 				{/* BACKGROUND REPEAT */}

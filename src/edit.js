@@ -41,6 +41,8 @@ export default function Edit(props) {
 			selectionBGColor,
 			linkColor,
 			dropcapColor,
+			blockquoteColor,
+			lineartColor,
 			spacingMobile,
 			spacingTablet,
 			spacingDesktop
@@ -80,13 +82,16 @@ export default function Edit(props) {
 		const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
 		
 
+
 		// body[data-color='custom'] 
 		// body[data-color='custom'] 
         const styleObj = { 
 			// Background
             '--backgroundImage': bgImageStack,
 			'--backgroundColor': bgColorStack,
-			'--backgroundSize': bgSize,
+			'--backgroundSizeSm': bgSize['sm'],
+			'--backgroundSizeMd': bgSize['md'],
+			'--backgroundSize': bgSize['lg'],
 			'--backgroundPosition': bgPosition,
 			'--backgroundAttachment': bgAttachment,
 			'--backgroundRepeat': bgRepeat,
@@ -95,8 +100,10 @@ export default function Edit(props) {
             '--headlineColor': headlineColor,
             '--linkColor': linkColor,
 			'--dropcapColor': dropcapColor,
+			'--blockquoteColor': blockquoteColor,
 			'--selectionFGColor': selectionFGColor,
 			'--selectionBGColor': selectionBGColor,
+			'--lineartColor':lineartColor,
 			// Typography
 			'--foregroundHeadlineFont': foregroundHeadlineFont,
 			'--foregroundCopyFont': foregroundCopyFont,

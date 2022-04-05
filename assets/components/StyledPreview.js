@@ -72,20 +72,28 @@ export default class StyledPreview extends Component {
         return (
             <Fragment>
 				<div className="px-sidepanel">
-				<div className="px-simplerow px-simplerow--padleft px-simplerow--padbottom"><strong>Preview:</strong></div>
+					<div className="px-simplerow px-simplerow--padleft px-simplerow--padbottom">
+						<strong>Preview:</strong>
+					</div>
 				</div>
-                <div className="styled-preview" data-viewtype="stack">
-                    <div className="cube">
-                        <div className="layer layer-1 fgtext textual">
-							<h1>Foreground Text</h1>
-							<p>Lorem Ipsum Preview <a href="#">Stuffs</a> halibut <button>Yoink!</button></p>
-                        </div>
-                        <div className="layer layer-2 fgcolor" style={{"color":"red"}}></div>
-                        <div className="layer layer-3 bgimage"></div>
-                        <div className="layer layer-4 bgcolor"></div>
-						<div className="layer layer-5 bgcolor2"></div>
-                    </div>
-                </div>
+				<div className="px-sidepanel">
+					<div className="px-simplerow px-simplerow--padbottom">
+						{/* Styled Preview */}
+						<div className="styled-preview" data-viewtype="stack">
+							<div className="cube">
+								<div className="layer layer-1 fgtext textual">
+									<h1>Foreground Text</h1>
+									<p>Lorem Ipsum Preview <a href="#">Stuffs</a> halibut <button>Yoink!</button></p>
+								</div>
+								<div className="layer layer-2 fgcolor" style={{"color":"red"}}></div>
+								<div className="layer layer-3 bgimage"></div>
+								<div className="layer layer-4 bgcolor"></div>
+								<div className="layer layer-5 bgcolor2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+              
             </Fragment>
         );
     

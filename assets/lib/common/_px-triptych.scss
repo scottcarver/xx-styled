@@ -1,0 +1,11 @@
+// Simple Rows are the simplest way to add a row to the sidebar
+.px-triptych {
+	display: flex;
+    padding-top:20px;
+    padding-bottom:20px;
+	
+    > div{
+        width:33%;
+        padding:3px;
+    }
+}

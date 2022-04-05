@@ -1,5 +1,8 @@
 .px-colorbox {
 	position: relative;
+	// border:solid 1px black;
+	padding-top:5px;
+	padding-bottom:10px;
 
 	// Modifiers
 	&.px-colorbox-negmarginabove {
@@ -19,10 +22,47 @@
 	&.px-colorbox--linebelow {
 		border-bottom: solid 1px #eee;
 	}
+	&.px-colorbox--nopicker{
+		margin-top: -20px;
+		border-radius: 10px;
+		padding: 10px;
+		background: rgba(0,0,0,.05);
+		margin-bottom: 15px;
+		.components-color-palette__custom-color{display:none;}
+		// .components-circular-option-picker{margin-left:20px;}
+		.components-circular-option-picker__swatches{margin-top: 40px;}
+		.components-circular-option-picker__custom-clear-wrapper{
+			position: absolute;
+			top: 0;
+			left: 10px;
+		}
+		label{right: 18px;}
+		input[type=checkbox] { right: 5px; }
+	}
 
 	// Header label
 	h2 {
-		margin-bottom: 25px;
+		margin: 5px 0;
+	}
+
+	input[type="checkbox"]:checked ~ div{
+		.components-circular-option-picker__swatches{
+			// box-shadow: 0 0 0 3px hotpink;
+			// background: radial-gradient(rgba(0,0,0,.1), transparent);
+			display: flex;
+		}
+	}
+
+	input[type="checkbox"]{
+		position:absolute;
+		top: 15px;
+		right: -5px;
+	}
+	label{
+		position:absolute;
+		top: 10px;
+		right: 8px;
+		font-size: 10px;
 	}
 
 	// Adjust standard color indicator
@@ -55,6 +95,20 @@
 		padding: 10px 6px 0 6px;
 	}
 
+	// Hide Swatches by default
+	.components-circular-option-picker__swatches{
+		display:none;
+		width: calc(100% + 4px);
+		// padding-bottom: 10px;
+	}
+	.components-circular-option-picker{
+		margin-top:5px;
+		padding-bottom:10px;
+	}
+
+	.components-circular-option-picker__custom-clear-wrapper{
+		margin-top:5px;
+	}
 	// Give more spacing to inputs
 	.components-color-picker__inputs-wrapper {
 		// background: yellow;
