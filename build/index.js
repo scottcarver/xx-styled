@@ -763,13 +763,13 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 
       if (name == "bgcolortab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Color"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "bgcolorSwatch",
           name: "bgcolorSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "bgcolorSwatch"
+          htmlFor: "bgcolorSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
           value: backgroundColor0,
           onChange: backgroundColor0 => setAttributes({
@@ -788,13 +788,13 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 
       if (name == "bggradienttab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--shortheadline"
+          className: "px-simplerow px-simplerow--shortheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
           style: {
             textAlign: "center"
           }
         }, "Gradient Type")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-buttongroup px-buttongroup--split"
+          className: "px-buttongroup px-buttongroup--split"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
           "aria-label": __("Column Layout")
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -814,7 +814,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
             });
           }
         }, "Radial"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow"
+          className: "px-simplerow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", {
           style: {
             textAlign: "center"
@@ -848,7 +848,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 
       if (name == "bgimagetab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--shortheadline"
+          className: "px-simplerow px-simplerow--shortheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Background Image")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FocalPointPicker, {
           url: backgroundImage // dimensions={ dimensions }
           ,
@@ -879,20 +879,20 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 
       if (name == "bggeltab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow"
+          className: "px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Selected Text"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "bg3Swatch",
           name: "bg3Swatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "bg3Swatch"
+          htmlFor: "bg3Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
           value: backgroundColor3,
           onChange: backgroundColor3 => setAttributes({
             backgroundColor3
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--padleft"
+          className: "px-simplerow px-simplerow--padleft"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: mycurrentproblem
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
@@ -908,40 +908,40 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
       // Color Tab
       if (name == "gradcolortab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
           color: backgroundColor1,
           onChangeComplete: value => setAttributes({
             backgroundColor1: (0,_lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox px-colorbox--nopicker"
+          className: "px-colorbox px-colorbox--nopicker"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "bg1Swatch",
           name: "bg1Swatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "bg1Swatch"
+          htmlFor: "bg1Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
           value: backgroundColor1,
           onChange: backgroundColor1 => setAttributes({
             backgroundColor1
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
           color: backgroundColor2,
           onChangeComplete: value => setAttributes({
             backgroundColor2: (0,_lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox px-colorbox--nopicker"
+          className: "px-colorbox px-colorbox--nopicker"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "bg2Swatch",
           name: "bg2Swatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "bg2Swatch"
+          htmlFor: "bg2Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
           value: backgroundColor2,
           onChange: backgroundColor2 => setAttributes({
@@ -953,9 +953,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 
       if (name == "gradsettingstab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow"
+          className: "px-simplerow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Start Position")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-columnrow"
+          className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
           label: __("Color 1"),
           value: backgroundColor1Start,
@@ -967,7 +967,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           min: -50,
           max: 200
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-columnrow"
+          className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
           label: __("Color 2"),
           value: backgroundColor2Start,
@@ -979,7 +979,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           min: -50,
           max: 200
         })), gradientType === "linear" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-columnrow"
+          className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
           label: __("Angle"),
           value: gradientLinearAngle,
@@ -991,9 +991,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           min: 0,
           max: 365
         })), gradientType === "radial" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow"
+          className: "px-simplerow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Alignment")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-columnrow"
+          className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
           label: __("From Top"),
           value: gradientAlignRadialVert,
@@ -1005,7 +1005,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           min: -50,
           max: 200
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-columnrow"
+          className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
           label: __("From Left"),
           value: gradientAlignRadialHori,
@@ -1017,9 +1017,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           min: -50,
           max: 200
         }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--shortheadline"
+          className: "px-simplerow px-simplerow--shortheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Background Attachment")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-buttongroup"
+          className: "px-buttongroup"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
           "aria-label": __("Column Layout")
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2460,78 +2460,78 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
     const getForegroundTab = name => {
       if (name == "fgcolor") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Headline"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "headlineSwatch",
           name: "headlineSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "headlineSwatch"
+          htmlFor: "headlineSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: headlineColor,
           onChange: headlineColor => setAttributes({
             headlineColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Text"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "textSwatch",
           name: "textSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "textSwatch"
+          htmlFor: "textSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: foregroundColor,
           onChange: foregroundColor => setAttributes({
             foregroundColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Link"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "linkSwatch",
           name: "linkSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "linkSwatch"
+          htmlFor: "linkSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: linkColor,
           onChange: linkColor => setAttributes({
             linkColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Block Quote"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "blockquoteSwatch",
           name: "blockquoteSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "blockquoteSwatch"
+          htmlFor: "blockquoteSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: blockquoteColor,
           onChange: blockquoteColor => setAttributes({
             blockquoteColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Dropcap"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "dropcapSwatch",
           name: "dropcapSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "dropcapSwatch"
+          htmlFor: "dropcapSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: dropcapColor,
           onChange: dropcapColor => setAttributes({
             dropcapColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox"
+          className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Lineart"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "lineartSwatch",
           name: "lineartSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "lineartSwatch"
+          htmlFor: "lineartSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: lineartColor,
           onChange: lineartColor => setAttributes({
@@ -2542,26 +2542,26 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
 
       if (name == "fgselection") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow"
+          className: "px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Selected Text"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "selectionfgSwatch",
           name: "selectionfgSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "selectionfgSwatch"
+          htmlFor: "selectionfgSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: selectionFGColor,
           onChange: selectionFGColor => setAttributes({
             selectionFGColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-colorbox px-colorbox--marginabove"
+          className: "px-colorbox px-colorbox--marginabove"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Selected Text BG"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("input", {
           type: "checkbox",
           id: "selectionbgSwatch",
           name: "selectionbgSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
-          for: "selectionbgSwatch"
+          htmlFor: "selectionbgSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: selectionBGColor,
           onChange: selectionBGColor => setAttributes({
@@ -2572,9 +2572,9 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
 
       if (name == "fgfont") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline"
+          className: "px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Headline Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-buttongroup px-buttongroup--small"
+          className: "px-buttongroup px-buttongroup--small"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
           "aria-label": __("Headline Font")
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2610,9 +2610,9 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
             });
           }
         }, "Custom"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--flatbottom"
+          className: "px-simplerow px-simplerow--flatbottom"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Copy Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-buttongroup px-buttongroup--small"
+          className: "px-buttongroup px-buttongroup--small"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
           "aria-label": __("Copy Font")
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2648,9 +2648,9 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
             });
           }
         }, "Custom"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-simplerow px-simplerow--flatbottom"
+          className: "px-simplerow px-simplerow--flatbottom"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Caption Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-          class: "px-buttongroup px-buttongroup--small"
+          className: "px-buttongroup px-buttongroup--small"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
           "aria-label": __("Caption Font")
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2738,10 +2738,10 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       initialOpen: false,
       icon: "welcome-widgets-menus"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-sidepanel"
+      className: "px-sidepanel"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TabPanel, {
       className: "px-tabwrap px-tabwrap--centered px-tabwrap--margintop",
-      activeClass: "active-tab",
+      activeclassName: "active-tab",
       onSelect: onSelect,
       tabs: [{
         name: "fgcolor",
@@ -2761,9 +2761,9 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       initialOpen: false,
       icon: "format-image"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-sidepanel"
+      className: "px-sidepanel"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "bggel-styleenabled-form-toggle"
     }, __("Gel", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {
@@ -2772,7 +2772,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       checked: bgGelEnabled,
       onChange: toggleGelEnabled
     })), backgroundStackFirst === "gradient" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "gradient-styleenabled-form-toggle"
     }, __("Gradient", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {
@@ -2781,7 +2781,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       checked: bgGradientEnabled,
       onChange: toggleGradientEnabled
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "bgimage-styleenabled-form-toggle"
     }, __("Image", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {
@@ -2790,7 +2790,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       checked: bgImageEnabled,
       onChange: toggleImageEnabled
     }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "bgimage-styleenabled-form-toggle"
     }, __("Image", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {
@@ -2799,7 +2799,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       checked: bgImageEnabled,
       onChange: toggleImageEnabled
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "gradient-styleenabled-form-toggle"
     }, __("Gradient", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {
@@ -2808,7 +2808,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       checked: bgGradientEnabled,
       onChange: toggleGradientEnabled
     }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "bg-styleenabled-form-toggle"
     }, __("Base Color", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {
@@ -2817,7 +2817,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       checked: bgColorEnabled,
       onChange: toggleBgColorEnabled
     })), bgGradientEnabled && bgImageEnabled && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
       htmlFor: "bgimage-stackfirst-form-toggle"
     }, __("Re-Order Gradient & Image", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(FormToggle, {

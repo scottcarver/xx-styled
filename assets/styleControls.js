@@ -171,46 +171,46 @@ export default class StyleControls extends Component {
 			if (name == "fgcolor") {
 				return (
 					<Fragment>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Headline</h2>
 							{/* <ColorIndicator colorValue={headlineColor} /> */}
 							<input type="checkbox" id="headlineSwatch" name="headlineSwatch"></input>
-							<label for="headlineSwatch">Palette</label>
+							<label htmlFor="headlineSwatch">Palette</label>
 							<ColorPalette value={headlineColor} onChange={headlineColor => setAttributes({ headlineColor })} />
 						</div>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Text</h2>
 							{/* <ColorIndicator colorValue={foregroundColor} /> */}
 							<input type="checkbox" id="textSwatch" name="textSwatch"></input>
-							<label for="textSwatch">Palette</label>
+							<label htmlFor="textSwatch">Palette</label>
 							<ColorPalette value={foregroundColor} onChange={foregroundColor => setAttributes({ foregroundColor })} />
 						</div>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Link</h2>
 							{/* <ColorIndicator colorValue={linkColor} /> */}
 							<input type="checkbox" id="linkSwatch" name="linkSwatch"></input>
-							<label for="linkSwatch">Palette</label>
+							<label htmlFor="linkSwatch">Palette</label>
 							<ColorPalette value={linkColor} onChange={linkColor => setAttributes({ linkColor })} />
 						</div>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Block Quote</h2>
 							{/* <ColorIndicator colorValue={dropcapColor} /> */}
 							<input type="checkbox" id="blockquoteSwatch" name="blockquoteSwatch"></input>
-							<label for="blockquoteSwatch">Palette</label>
+							<label htmlFor="blockquoteSwatch">Palette</label>
 							<ColorPalette value={blockquoteColor} onChange={blockquoteColor => setAttributes({ blockquoteColor })} />
 						</div>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Dropcap</h2>
 							{/* <ColorIndicator colorValue={dropcapColor} /> */}
 							<input type="checkbox" id="dropcapSwatch" name="dropcapSwatch"></input>
-							<label for="dropcapSwatch">Palette</label>
+							<label htmlFor="dropcapSwatch">Palette</label>
 							<ColorPalette value={dropcapColor} onChange={dropcapColor => setAttributes({ dropcapColor })} />
 						</div>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Lineart</h2>
 							{/* <ColorIndicator colorValue={lineartColor} /> */}
 							<input type="checkbox" id="lineartSwatch" name="lineartSwatch"></input>
-							<label for="lineartSwatch">Palette</label>
+							<label htmlFor="lineartSwatch">Palette</label>
 							<ColorPalette value={lineartColor} onChange={lineartColor => setAttributes({ lineartColor })} />
 						</div>
 					</Fragment>
@@ -219,21 +219,21 @@ export default class StyleControls extends Component {
 			if (name == "fgselection") {
 				return (
 					<Fragment>
-						<div class="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
+						<div className="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
 							<h2>Selected Text</h2>
 							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
 							<input type="checkbox" id="selectionfgSwatch" name="selectionfgSwatch"></input>
-							<label for="selectionfgSwatch">Palette</label>
+							<label htmlFor="selectionfgSwatch">Palette</label>
 							<ColorPalette
 								value={selectionFGColor}
 								onChange={selectionFGColor => setAttributes({ selectionFGColor })}
 							/>
 						</div>
-						<div class="px-colorbox px-colorbox--marginabove">
+						<div className="px-colorbox px-colorbox--marginabove">
 							<h2>Selected Text BG</h2>
 							{/* <ColorIndicator colorValue={selectionBGColor} /> */}
 							<input type="checkbox" id="selectionbgSwatch" name="selectionbgSwatch"></input>
-							<label for="selectionbgSwatch">Palette</label>
+							<label htmlFor="selectionbgSwatch">Palette</label>
 							<ColorPalette
 								value={selectionBGColor}
 								onChange={selectionBGColor => setAttributes({ selectionBGColor })}
@@ -245,10 +245,10 @@ export default class StyleControls extends Component {
 			if (name == "fgfont") {
 				return (
 					<Fragment>
-						<div class="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
+						<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
 							<h2>Headline Font</h2>
 						</div>
-						<div class="px-buttongroup px-buttongroup--small">
+						<div className="px-buttongroup px-buttongroup--small">
 							<ButtonGroup aria-label={__("Headline Font")}>
 								<Button
 									isDefault
@@ -288,10 +288,10 @@ export default class StyleControls extends Component {
 								</Button>
 							</ButtonGroup>
 						</div>
-						<div class="px-simplerow px-simplerow--flatbottom">
+						<div className="px-simplerow px-simplerow--flatbottom">
 							<h2>Copy Font</h2>
 						</div>
-						<div class="px-buttongroup px-buttongroup--small">
+						<div className="px-buttongroup px-buttongroup--small">
 							<ButtonGroup aria-label={__("Copy Font")}>
 								<Button
 									isDefault
@@ -331,10 +331,10 @@ export default class StyleControls extends Component {
 								</Button>
 							</ButtonGroup>
 						</div>
-						<div class="px-simplerow px-simplerow--flatbottom">
+						<div className="px-simplerow px-simplerow--flatbottom">
 							<h2>Caption Font</h2>
 						</div>
-						<div class="px-buttongroup px-buttongroup--small">
+						<div className="px-buttongroup px-buttongroup--small">
 							<ButtonGroup aria-label={__("Caption Font")}>
 								<Button
 									isDefault
@@ -475,10 +475,10 @@ export default class StyleControls extends Component {
 				<PanelBody title={__("Foreground", "pxblocks")} initialOpen={false} icon="welcome-widgets-menus">
 					<PanelRow>
 						{/* Tab that includes Foreground Settings */}
-						<div class="px-sidepanel">
+						<div className="px-sidepanel">
 						<TabPanel
 							className="px-tabwrap px-tabwrap--centered px-tabwrap--margintop"
-							activeClass="active-tab"
+							activeclassName="active-tab"
 							onSelect={onSelect}
 							tabs={[
 								{
@@ -505,8 +505,8 @@ export default class StyleControls extends Component {
 				</PanelBody>
 				<PanelBody title={__("Background", "pxblocks")} initialOpen={false} icon="format-image">
 					<PanelRow>
-						<div class="px-sidepanel">
-							<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+						<div className="px-sidepanel">
+							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 								<label htmlFor="bggel-styleenabled-form-toggle">{__("Gel", "pxblocks")}</label>
 								<FormToggle
 									id="bggel-styleenabled-form-toggle"
@@ -518,7 +518,7 @@ export default class StyleControls extends Component {
 							{/* When Gradient is first, order them that way */}
 							{backgroundStackFirst === "gradient" ? (
 								<Fragment>
-									<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 										<label htmlFor="gradient-styleenabled-form-toggle">{__("Gradient", "pxblocks")}</label>
 										<FormToggle
 											id="gradient-styleenabled-form-toggle"
@@ -527,7 +527,7 @@ export default class StyleControls extends Component {
 											onChange={toggleGradientEnabled}
 										/>
 									</div>
-									<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 										<label htmlFor="bgimage-styleenabled-form-toggle">{__("Image", "pxblocks")}</label>
 										<FormToggle
 											id="bgimage-styleenabled-form-toggle"
@@ -539,7 +539,7 @@ export default class StyleControls extends Component {
 								</Fragment>
 							) : (
 								<Fragment>
-									<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 										<label htmlFor="bgimage-styleenabled-form-toggle">{__("Image", "pxblocks")}</label>
 										<FormToggle
 											id="bgimage-styleenabled-form-toggle"
@@ -549,7 +549,7 @@ export default class StyleControls extends Component {
 										/>
 									</div>
 
-									<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 										<label htmlFor="gradient-styleenabled-form-toggle">{__("Gradient", "pxblocks")}</label>
 										<FormToggle
 											id="gradient-styleenabled-form-toggle"
@@ -560,7 +560,7 @@ export default class StyleControls extends Component {
 									</div>
 								</Fragment>
 							)}
-							<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 								<label htmlFor="bg-styleenabled-form-toggle">{__("Base Color", "pxblocks")}</label>
 								<FormToggle
 									id="bg-styleenabled-form-toggle"
@@ -570,7 +570,7 @@ export default class StyleControls extends Component {
 								/>
 							</div>
 							{bgGradientEnabled && bgImageEnabled && (
-								<div class="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 									<label htmlFor="bgimage-stackfirst-form-toggle">{__("Re-Order Gradient & Image", "pxblocks")}</label>
 									<FormToggle
 										id="bgimage-stackfirst-form-toggle"
@@ -581,12 +581,13 @@ export default class StyleControls extends Component {
 								</div>
 							)}
 
+	
 							<BGTabs {...{ setAttributes, ...this.props }} />
 
 							{/*
 								<TabPanel
 								className="px-tabwrap px-tabwrap--centered"
-								activeClass="active-tab"
+								activeclassName="active-tab"
 								initialTabName="gradcolortab"
 								onSelect={onSelect}
 									tabs={[
@@ -615,7 +616,7 @@ export default class StyleControls extends Component {
 							{backgroundStackFirst == "gradient" && (
 								<TabPanel
 									className="px-tabwrap px-tabwrap--centered"
-									activeClass="active-tab"
+									activeclassName="active-tab"
 									tabs={fixedTabsetReversed}
 								>
 									{tab => getBackgroundTab(tab.name)}

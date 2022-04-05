@@ -104,11 +104,11 @@ export default class BGTabs extends Component {
 			if (name == "bgcolortab") {
 				return (
 					<Fragment>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Color</h2>
 							{/* <ColorIndicator colorValue={foregroundColor} /> */}
 							<input type="checkbox" id="bgcolorSwatch" name="bgcolorSwatch"></input>
-							<label for="bgcolorSwatch">Palette</label>
+							<label htmlFor="bgcolorSwatch">Palette</label>
 							<ColorPalette value={backgroundColor0} onChange={backgroundColor0 => setAttributes({ backgroundColor0 })} />
 						</div>
 
@@ -135,11 +135,11 @@ export default class BGTabs extends Component {
 				return (
 					<Fragment>
 						{/* Gradient Enabled Toggle */}
-						<div class="px-simplerow px-simplerow--shortheadline">
+						<div className="px-simplerow px-simplerow--shortheadline">
 							<h2 style={{ textAlign: "center" }}>Gradient Type</h2>
 						</div>
 
-						<div class="px-buttongroup px-buttongroup--split">
+						<div className="px-buttongroup px-buttongroup--split">
 							<ButtonGroup aria-label={__("Column Layout")}>
 								<Button
 									isDefault
@@ -162,7 +162,7 @@ export default class BGTabs extends Component {
 							</ButtonGroup>
 						</div>
 
-						<div class="px-simplerow">
+						<div className="px-simplerow">
 							<h2 style={{ textAlign: "center" }}>Gradient Settings</h2>
 						</div>
 
@@ -209,7 +209,7 @@ export default class BGTabs extends Component {
 					<Fragment>
 						{/* Background Image Enabled Toggle */}
 
-						<div class="px-simplerow px-simplerow--shortheadline">
+						<div className="px-simplerow px-simplerow--shortheadline">
 							<h2>Background Image</h2>
 						</div>
 
@@ -251,17 +251,17 @@ export default class BGTabs extends Component {
 			if (name == "bggeltab") {
 				return (
 					<Fragment>
-						<div class="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
+						<div className="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
 							<h2>Selected Text</h2>
 							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
 							<input type="checkbox" id="bg3Swatch" name="bg3Swatch"></input>
-							<label for="bg3Swatch">Palette</label>
+							<label htmlFor="bg3Swatch">Palette</label>
 							<ColorPalette
 								value={backgroundColor3}
 								onChange={backgroundColor3 => setAttributes({ backgroundColor3 })}
 							/>
 						</div>
-						<div class="px-simplerow px-simplerow--padleft">
+						<div className="px-simplerow px-simplerow--padleft">
 						{/* Background Image Enabled Toggle */}
 						<div className={mycurrentproblem}>
 							<ColorPicker
@@ -287,7 +287,7 @@ export default class BGTabs extends Component {
 				return (
 					<Fragment>
 				
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Gradient Color 1</h2>
 							<ColorPicker
 								color={backgroundColor1}
@@ -298,16 +298,16 @@ export default class BGTabs extends Component {
 								}
 							/>
 						</div>
-						<div class="px-colorbox px-colorbox--nopicker">
+						<div className="px-colorbox px-colorbox--nopicker">
 							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
 							<input type="checkbox" id="bg1Swatch" name="bg1Swatch"></input>
-							<label for="bg1Swatch">Palette</label>
+							<label htmlFor="bg1Swatch">Palette</label>
 							<ColorPalette
 								value={backgroundColor1}
 								onChange={backgroundColor1 => setAttributes({ backgroundColor1 })}
 							/>
 						</div>
-						<div class="px-colorbox">
+						<div className="px-colorbox">
 							<h2>Gradient Color 2</h2>
 							<ColorPicker
 								color={backgroundColor2}
@@ -318,9 +318,9 @@ export default class BGTabs extends Component {
 								}
 							/>
 						</div>
-						<div class="px-colorbox px-colorbox--nopicker">
+						<div className="px-colorbox px-colorbox--nopicker">
 							<input type="checkbox" id="bg2Swatch" name="bg2Swatch"></input>
-							<label for="bg2Swatch">Palette</label>
+							<label htmlFor="bg2Swatch">Palette</label>
 							<ColorPalette
 								value={backgroundColor2}
 								onChange={backgroundColor2 => setAttributes({ backgroundColor2 })}
@@ -334,10 +334,10 @@ export default class BGTabs extends Component {
 			if (name == "gradsettingstab") {
 				return (
 					<Fragment>
-						<div class="px-simplerow">
+						<div className="px-simplerow">
 							<h2>Start Position</h2>
 						</div>
-						<div class="px-columnrow">
+						<div className="px-columnrow">
 							<RangeControl
 								label={__("Color 1")}
 								value={backgroundColor1Start}
@@ -350,7 +350,7 @@ export default class BGTabs extends Component {
 								max={200}
 							/>
 						</div>
-						<div class="px-columnrow">
+						<div className="px-columnrow">
 							<RangeControl
 								label={__("Color 2")}
 								value={backgroundColor2Start}
@@ -365,7 +365,7 @@ export default class BGTabs extends Component {
 						</div>
 
 						{gradientType === "linear" && (
-							<div class="px-columnrow">
+							<div className="px-columnrow">
 								<RangeControl
 									label={__("Angle")}
 									value={gradientLinearAngle}
@@ -383,11 +383,11 @@ export default class BGTabs extends Component {
 						{/* Radial Gradient Controls*/}
 						{gradientType === "radial" && (
 							<Fragment>
-								<div class="px-simplerow">
+								<div className="px-simplerow">
 									<h2>Alignment</h2>
 								</div>
 
-								<div class="px-columnrow">
+								<div className="px-columnrow">
 									<RangeControl
 										label={__("From Top")}
 										value={gradientAlignRadialVert}
@@ -401,7 +401,7 @@ export default class BGTabs extends Component {
 									/>
 								</div>
 
-								<div class="px-columnrow">
+								<div className="px-columnrow">
 									<RangeControl
 										label={__("From Left")}
 										value={gradientAlignRadialHori}
@@ -418,10 +418,10 @@ export default class BGTabs extends Component {
 						)}
 
 						{/* BACKGROUND ATTACHMENT */}
-						<div class="px-simplerow px-simplerow--shortheadline">
+						<div className="px-simplerow px-simplerow--shortheadline">
 							<h2>Background Attachment</h2>
 						</div>
-						<div class="px-buttongroup">
+						<div className="px-buttongroup">
 							<ButtonGroup aria-label={__("Column Layout")}>
 								<Button
 									isDefault
@@ -467,7 +467,7 @@ export default class BGTabs extends Component {
 		return (
 			<Fragment>
 				{/* BACKGROUND Tabs
-				<div class="px-simplerow px-simplerow--shortheadline">
+				<div className="px-simplerow px-simplerow--shortheadline">
 					<h2>Background Tabs!</h2>
 				</div>
                  */}
