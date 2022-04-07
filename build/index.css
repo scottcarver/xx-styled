@@ -82,6 +82,9 @@
 .px-simplerow.px-simplerow--centered h2 {
   width: 100%;
 }
+.px-simplerow.px-simplerow--hascomboboxcontrol > div {
+  width: 100%;
+}
 .px-simplerow .px-simplerow h2 {
   margin: 25px 0 10px 0;
 }

@@ -3086,11 +3086,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _sidebar_poststyles_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sidebar-poststyles.js */ "./src/sidebar-poststyles.js");
 
 
 
 
 
+
+const {
+  PluginDocumentSettingPanel
+} = wp.editPost;
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('xx/styled', {
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
@@ -3177,6 +3182,408 @@ function save(props) {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(blockPropsSavedOb), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, null));
 }
+
+/***/ }),
+
+/***/ "./src/sidebar-poststyles.js":
+/*!***********************************!*\
+  !*** ./src/sidebar-poststyles.js ***!
+  \***********************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+
+
+/*
+poststylemeta_type : postStyleType
+poststylemeta_headline : postStyleHeadline
+poststylemeta_copy : postStyleCopy
+poststylemeta_captions : postStyleCaptions
+*/
+
+/* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
+const {
+  Fragment
+} = wp.element;
+const {
+  registerPlugin
+} = wp.plugins;
+const {
+  PluginSidebar,
+  PluginSidebarMoreMenuItem
+} = wp.editPost;
+const {
+  Button,
+  ButtonGroup,
+  PanelRow,
+  PanelBody,
+  ToggleControl,
+  SelectControl,
+  ComboboxControl
+} = wp.components;
+const {
+  withSelect,
+  withDispatch,
+  useSelect
+} = wp.data;
+const {
+  compose
+} = wp.compose;
+const {
+  __
+} = wp.i18n;
+ // import "./lib/scss/style.scss";
+
+
+
+function PoststylePlugin(props) {
+  const {
+    myPostMetaKey,
+    updateMyPostMetaKey,
+    updateMyPostMetaType,
+    updateMyPostMetaHeadline,
+    updateMyPostMetaCopy,
+    updateMyPostMetaCaptions,
+    postStyleType,
+    postStyleHeadline,
+    postStyleCopy,
+    postStyleCaptions
+  } = props;
+  let comboOptions = [{
+    value: "small",
+    label: "Small"
+  }, {
+    value: "normal",
+    label: "Normal"
+  }, {
+    value: "large",
+    label: "Large"
+  }, {
+    value: "huge",
+    label: "Huge"
+  }, {
+    value: "billy",
+    label: "Billy"
+  }];
+
+  const Example = () => {
+    // Make the data request.
+    const data = useSelect(select => {
+      return select('core').getEntityRecords('postType', 'post');
+    }); // Display our list of post titles.
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, data && data.map(_ref => {
+      let {
+        title: {
+          rendered: postTitle
+        }
+      } = _ref;
+      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, postTitle);
+    }));
+  };
+
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
+    var fontClass = "wp-headlinefont--" + postStyleHeadline;
+    var editorClass = ".edit-post-visual-editor";
+
+    if (myPostMetaKey) {
+      jQuery("body").addClass("wp-admin--gutenbergdebug");
+      jQuery(editorClass).attr("data-headline", postStyleHeadline);
+      jQuery(editorClass).attr("data-copy", postStyleCopy);
+      jQuery(editorClass).attr("data-captions", postStyleCaptions);
+    } else {
+      jQuery("body").removeClass("wp-admin--gutenbergdebug");
+    }
+  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginSidebarMoreMenuItem, {
+    target: "post-style-sidebar-plugin",
+    icon: "admin-customizer"
+  }, "Post Styles"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginSidebar, {
+    name: "post-style-sidebar-plugin",
+    icon: "admin-customizer",
+    title: "Post Styles"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-simplerow px-simplerow--first"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+    label: "Override Default Styles?",
+    checked: myPostMetaKey,
+    onChange: updateMyPostMetaKey
+  })), myPostMetaKey ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    style: {
+      padding: '20px'
+    }
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-simplerow px-simplerow--hascomboboxcontrol"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Example, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ComboboxControl, {
+    label: "Font Size",
+    value: postStyleType,
+    allowReset: true,
+    options: comboOptions,
+    onChange: value => {
+      updateMyPostMetaType(value);
+    },
+    onInputChange: inputValue => setFilteredOptions(comboOptions.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase())))
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Headline Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-buttongroup px-buttongroup--small"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+    "aria-label": __("Headline Font")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleHeadline === "serif",
+    onClick: () => {
+      updateMyPostMetaHeadline("serif");
+    }
+  }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleHeadline === "sans-serif",
+    onClick: () => {
+      updateMyPostMetaHeadline("sans-serif");
+    }
+  }, "Sans-Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleHeadline === "monospace",
+    onClick: () => {
+      updateMyPostMetaHeadline("monospace");
+    }
+  }, "Monospace"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-simplerow px-simplerow--flatbottom"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Copy Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-buttongroup px-buttongroup--small"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+    "aria-label": __("Copy Font")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleCopy === "serif",
+    onClick: () => {
+      updateMyPostMetaCopy("serif");
+    }
+  }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleCopy === "sans-serif",
+    onClick: () => {
+      updateMyPostMetaCopy("sans-serif");
+    }
+  }, "Sans-Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleCopy === "monospace",
+    onClick: () => {
+      updateMyPostMetaCopy("monospace");
+    }
+  }, "Monospace"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-simplerow px-simplerow--flatbottom"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Caption Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-buttongroup px-buttongroup--small"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+    "aria-label": __("Caption Font")
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleCaptions === "serif",
+    onClick: () => {
+      updateMyPostMetaCaptions("serif");
+    }
+  }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleCaptions === "sans-serif",
+    onClick: () => {
+      updateMyPostMetaCaptions("sans-serif");
+    }
+  }, "Sans-Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+    isDefault: true,
+    isPrimary: postStyleCaptions === "monospace",
+    onClick: () => {
+      updateMyPostMetaCaptions("monospace");
+    }
+  }, "Monospace")))))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Global Styles, and Block Styles are Active")));
+}
+
+const applyWithSelect = withSelect(select => {
+  const {
+    getEditedPostAttribute
+  } = select("core/editor");
+  const {
+    my_post_meta_key: myPostMetaKey
+  } = getEditedPostAttribute("meta");
+  const {
+    my_post_meta_string: myPostMetaString
+  } = getEditedPostAttribute("meta"); // new
+
+  const {
+    poststylemeta_type: postStyleType
+  } = getEditedPostAttribute("meta");
+  const {
+    poststylemeta_headline: postStyleHeadline
+  } = getEditedPostAttribute("meta");
+  const {
+    poststylemeta_copy: postStyleCopy
+  } = getEditedPostAttribute("meta");
+  const {
+    poststylemeta_captions: postStyleCaptions
+  } = getEditedPostAttribute("meta");
+  return {
+    myPostMetaKey,
+    myPostMetaString,
+    postStyleType,
+    postStyleHeadline,
+    postStyleCopy,
+    postStyleCaptions
+  };
+});
+const applyWithDispatch = withDispatch(dispatch => {
+  const {
+    editPost
+  } = dispatch("core/editor");
+  return {
+    updateMyPostMetaKey(value) {
+      editPost({
+        meta: {
+          my_post_meta_key: value
+        }
+      });
+    },
+
+    updateMyPostMetaString(value) {
+      editPost({
+        meta: {
+          my_post_meta_string: value
+        }
+      });
+    },
+
+    // new
+    updateMyPostMetaType(value) {
+      // alert("boop " + value);
+      // Set Type
+      editPost({
+        meta: {
+          poststylemeta_type: value
+        }
+      });
+
+      switch (value) {
+        case "default":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "sans-serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "monospace"
+            }
+          }); // code block
+
+          break;
+
+        case "modern":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "serif"
+            }
+          }); // code block
+
+          break;
+
+        case "classical":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "sans-serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "sans-serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "sans-serif"
+            }
+          }); // code block
+
+          break;
+
+        case "technical":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "monospace"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "monospace"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "monospace"
+            }
+          }); // code block
+
+          break;
+
+        default: // code block
+
+      } // alert("boop " + value);
+      // editPost({ meta: { poststylemeta_type: value } });
+
+    },
+
+    updateMyPostMetaHeadline(value) {
+      editPost({
+        meta: {
+          poststylemeta_headline: value
+        }
+      });
+    },
+
+    updateMyPostMetaCopy(value) {
+      editPost({
+        meta: {
+          poststylemeta_copy: value
+        }
+      });
+    },
+
+    updateMyPostMetaCaptions(value) {
+      editPost({
+        meta: {
+          poststylemeta_captions: value
+        }
+      });
+    }
+
+  };
+});
+registerPlugin("sidebar-poststyle-plugin", {
+  render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
+});
 
 /***/ }),
 

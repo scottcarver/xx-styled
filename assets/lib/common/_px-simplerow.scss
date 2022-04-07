@@ -50,6 +50,10 @@
 			width: 100%;
 		}
 	}
+
+	&.px-simplerow--hascomboboxcontrol{
+		> div{ width:100%; }
+	}
 	/*
 	&.px-simplerow--nounitsplit{
 		.component-box-control__header-control-wrapper{

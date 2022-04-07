@@ -21,5 +21,26 @@ function create_block_xx_deluxestyled_block_init() {
 }
 add_action( 'init', 'create_block_xx_deluxestyled_block_init' );
 
-// Named Styles Posttype
+// Define Styled Posttype
 require( __DIR__ . '/xx-styled-posttype.php');
+
+// Define Meta Fields
+require( __DIR__ . '/xx-styled-meta.php');
+
+
+
+
+
+
+
+/* Not Clear if this is needed */
+/*
+function myprefix_enqueue_assets() {
+    wp_enqueue_script(
+        'myprefix-gutenberg-sidebar',
+        plugins_url( 'build/index.js', __FILE__ ),
+        array( 'wp-plugins', 'wp-edit-post', 'wp-element', 'wp-components', 'wp-data' )
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'myprefix_enqueue_assets' );
+*/
