@@ -1,9 +1,9 @@
-# Styled Area, Gutenberg Block
-A "styled area" is a set of foreground/background styles which allows InnerBlocks. 
+# Styled Area Block
+A "styled area" is a set of foreground/background styles which allows InnerBlocks. This is an alternative approach to using the core styling tools in WordPress.
 
 ## Description
 
-This block generates 1) inline CSS and 2) CSS Custom Variables onto a container element in your theme. 
+This block generates both 1) inline styles 2) external styles. Each use CSS Variables.
 
 The inline styles will not be visible by default, you must add this data-attribute to your HTML
 `<body data-theme="custom">`
@@ -21,6 +21,18 @@ Generating styles on container *makes color themes much more consistent*, withou
 Though it is easy to create styles inline, you can also build up a library of styles and reuse them.
 
 3) **Alternative to Global Styles -**
+
+## Routes
+In addition to the 'single' view created by the 'styled' posttype, additional helper urls are added.
+
+### CSS
+- Individual Styles - WPBASE/style/taffy.css (slug is used)
+- All Styles - WPBASE/style/compiled.css (slug is used)
+- Entry Styles - WPBASE/style/entry-[ID].json (ID is used, all posttypes allowed)
+
+### JSON
+- Individual JSON - WPBASE/style/taffy.json (returns object)
+- Compiled JSON - WPBASE/style/compiled.json (returns arrray of objects). This is used in creating variations.
 
 
 ## Installation

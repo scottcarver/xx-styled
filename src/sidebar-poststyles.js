@@ -5,8 +5,9 @@ poststylemeta_copy : postStyleCopy
 poststylemeta_captions : postStyleCaptions
 */
 
+/* Tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
 /* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
-const { Fragment } = wp.element;
+const { createElement, Fragment } = wp.element;
 const { registerPlugin } = wp.plugins;
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { Button, ButtonGroup, PanelRow, PanelBody, ToggleControl, SelectControl, ComboboxControl } = wp.components;
@@ -30,7 +31,8 @@ function PoststylePlugin(props) {
 		postStyleType,
 		postStyleHeadline,
 		postStyleCopy,
-		postStyleCaptions
+		postStyleCaptions,
+		setAttributes
 	} = props;
 
 	let comboOptions = [
@@ -56,27 +58,116 @@ function PoststylePlugin(props) {
 		}
 	];
 
-	const Example = () => {
 
-		// Make the data request.
-		const data = useSelect((select) => {
-			return select('core').getEntityRecords('postType', 'post');
-		});
-	
-		// Display our list of post titles.
-		return (
-			<ul>
-				{data &&
-					data.map(({ title: { rendered: postTitle } }) => {
-						return <li>{postTitle}</li>;
-					})
+	const PostsDropdownControl = compose(
+		// withDispatch allows to save the selected post ID into post meta
+		/*
+		withDispatch( function( dispatch, props ) {
+			return {
+				setMetaValue: function( metaValue ) {
+					dispatch( 'core/editor' ).editPost(
+						{ meta: { [ props.metaKey ]: metaValue } }
+					);
 				}
-			</ul>
-		);
-	};
+			}
+		} ),
+		*/
+		// withSelect allows to get posts for our SelectControl and also to get the post meta value
+		withSelect( function( select, props ) {
+			return {
+				posts: select( 'core' ).getEntityRecords( 'postType', 'style' ),
+				// metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
+			}
+		} ) )( function( props ) {
+			
+			// options for SelectControl
+			var options = [];
+			
+			// if posts found
+			if( props.posts ) {
+				options.push( { value: '', label: 'Default' } );
+				props.posts.forEach((post) => { // simple foreach loop
+					options.push({value:post.generated_slug, label:post.title.rendered});
+				});
+			} else {
+				options.push( { value: postStyleType, label: 'Loading...' } )
+			}
+	
+			/*
+			return createElement( SelectControl,
+				{
+					label: 'Select a post',
+					options : options,
+					
+					onChange: function( content ) {
+						alert('saved ' + content);
+						updateMyPostMetaType(content);
+						// props.setMetaValue( content );
+					},
+					// value: props.metaValue,
+					value : postStyleType,
+				}
+			);
+			*/
+
+			return createElement( ComboboxControl,
+				{
+					label:"Post Style",
+					placeholder: 'Default',
+					value:postStyleType,
+					allowReset:true,
+					options:options,
+					onChange: function( content ) {
+						updateMyPostMetaType(content);
+					},
+					onInputChange: function( inputValue ) {
+						setFilteredOptions(options.filter(option =>
+							option.label.toLowerCase().startsWith(inputValue.toLowerCase())
+						))
+					},
+				
+				}
+			);
+	
+		}
+	
+	);
+
+	let dynamicOptions = function(){
+		return [
+			{
+				value: "short",
+				label: "Short"
+			}
+		];
+
+	}
+		// // Make the data request.
+		// const data = useSelect((select) => {
+		// 	return select('core').getEntityRecords('postType', 'style');
+		// });
+	
+		// return shortOptions;
+		// // Display our list of post titles.
+		// return (
+		// 	data.map(({ title: { rendered: postTitle } }) => {
+		// 		return <li key="{title}">{postTitle}</li>;
+		// 	})
+		// );
 
 
 	domReady(function() {
+		if(postStyleType){
+			/*	*/
+			jQuery("body").removeClass (function (index, className) {
+				return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
+			});
+		
+			// Moved off of
+			// alert('someone like u ' + postStyleType);
+			jQuery("body").addClass('xx-styled--admin').attr('data-theme',postStyleType);
+		}
+
 		var fontClass = "wp-headlinefont--" + postStyleHeadline;
 		var editorClass = ".edit-post-visual-editor";
 		if (myPostMetaKey) {
@@ -97,30 +188,34 @@ function PoststylePlugin(props) {
 				<div className="px-simplerow px-simplerow--first">
 					<ToggleControl label="Override Default Styles?" checked={myPostMetaKey} onChange={updateMyPostMetaKey} />
 				</div>
-				{myPostMetaKey ? (
+				{/* {myPostMetaKey ? ( */}
 					<Fragment>
 
-<Fragment>
+					<Fragment>
 									<div style={{padding :'20px'}}>
 										<div className="px-simplerow px-simplerow--hascomboboxcontrol">
-<Example />
-					<ComboboxControl
-					label="Font Size"
-					value={postStyleType}
-					allowReset={true}
-					options={comboOptions}
-					onChange={value => {
-						updateMyPostMetaType(value);
-					}}
-					onInputChange={(inputValue) =>
-						setFilteredOptions(comboOptions.filter(option =>
-								option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-							)
-						)
-					}
-				/> 
+{/* <Example /> */}
+						
+							<PostsDropdownControl /> 
 
-{/* 
+							{/* 
+							<ComboboxControl
+								label="Post Style"
+								value={postStyleType}
+								allowReset={true}
+								options={comboOptions}
+								onChange={value => {
+									updateMyPostMetaType(value);
+								}}
+								onInputChange={(inputValue) =>
+									setFilteredOptions(comboOptions.filter(option =>
+											option.label.toLowerCase().startsWith(inputValue.toLowerCase())
+										)
+									)
+								}
+							/> 
+
+
 											<SelectControl
 												label="Type Styles:"
 												value={postStyleType}
@@ -252,9 +347,9 @@ function PoststylePlugin(props) {
 							<PanelRow>Create Background Settings for this entire post</PanelRow>
 						</PanelBody> */}
 					</Fragment>
-				) : (
-					<p>Global Styles, and Block Styles are Active</p>
-				)}
+				{/* // ) : (
+				// 	<p>Global Styles, and Block Styles are Active</p>
+				// )} */}
 			</PluginSidebar>
 		</Fragment>
 	);

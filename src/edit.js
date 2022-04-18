@@ -62,7 +62,7 @@ export default function Edit(props) {
 	const classes = classnames(
 		className,
 		"xx-styled",
-		`wp-block-styled--${blockID}`,
+		`wp-block-xx-styled--${blockID}`,
 		// { "wp-block--heightenabled": heightEnabled },
 		// `wp-block--headline-${foregroundHeadlineFont}`,
 		// `wp-block--copy-${foregroundCopyFont}`,

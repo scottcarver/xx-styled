@@ -27,10 +27,16 @@ require( __DIR__ . '/xx-styled-posttype.php');
 // Define Meta Fields
 require( __DIR__ . '/xx-styled-meta.php');
 
+// Define Meta Fields
+//require( __DIR__ . '/xx-styled-meta.php');
 
 
 
+// CSS Routes 
+require( __DIR__ . '/xx-styled-routes.php');
 
+// PHP Callback (used in certain routes)
+// require( __DIR__ . '/xx-styled-callback.php');
 
 
 /* Not Clear if this is needed */
@@ -43,4 +49,18 @@ function myprefix_enqueue_assets() {
     );
 }
 add_action( 'enqueue_block_editor_assets', 'myprefix_enqueue_assets' );
-*/
+
+
+add_filter( 'page_template', 'wpa3396_page_template' );
+function wpa3396_page_template( $page_template )
+{
+    // if ( is_page( 'my-custom-page-slug' ) ) {
+    //     $page_template = dirname( __FILE__ ) . '/custom-page-template.php';
+    // }
+    $page_template = dirname( __FILE__ ) . '/route_template.php';
+    return $page_template;
+}*/
+
+
+
+

@@ -20,22 +20,22 @@ export default class AdminStyle extends Component {
 
 		var combinedCss = ` 
 			/* For Admin */
-			.wp-block-section--${blockID} .badoop{
+			.wp-block-xx-styled--${blockID} .badoop{
 				padding: ${spacingMobile.top} ${spacingMobile.right} ${spacingMobile.bottom} ${spacingMobile.left};
 			}
 			@media(min-width: 992px){
-				.wp-block-section--${blockID} .badoop{ 
+				.wp-block-xx-styled--${blockID} .badoop{ 
 					padding: ${spacingTablet.top} ${spacingTablet.right} ${spacingTablet.bottom} ${spacingTablet.left};
 				}
-				.wp-block-section--${blockID} .subbadoop{
+				.wp-block-xx-styled--${blockID} .subbadoop{
 					border-color:pink;
 				}
 			}
 			@media(min-width:1200px){
-				.wp-block-section--${blockID} .badoop{ 
+				.wp-block-xx-styled--${blockID} .badoop{ 
 					padding: ${spacingDesktop.top} ${spacingDesktop.right} ${spacingDesktop.bottom} ${spacingDesktop.left};
 				}
-				.wp-block-section--${blockID} .subbadoop{
+				.wp-block-xx-styled--${blockID} .subbadoop{
 					border-color:yellow;
 				}
 			}	

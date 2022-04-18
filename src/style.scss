@@ -2,7 +2,8 @@
 body.wp-admin .xx-styled{ max-width:100% !important; }
 
 // Styled Area
-.xx-styled{
+.xx-styled, 
+.xx-styled--admin .editor-styles-wrapper{
 	position:relative;
 	// padding: 5vw 0;
 	// font-size:1.25em;
@@ -28,10 +29,6 @@ body.wp-admin .xx-styled{ max-width:100% !important; }
 	}
 
 
-
-
-
-	
 	// Selection
 	*::selection {
 		color: var(--selectionFGColor);
@@ -105,6 +102,16 @@ body.wp-admin .xx-styled{ max-width:100% !important; }
 	}
 }
 
+// outer Element should have no padding
+/*
+html.xx-styled,
+.xx-styled--admin .editor-styles-wrapper{
+	@media(min-width:768px){
+		padding:0 !important;
+	
+	}
+}
+*/
 
 // Using Any Generic Theme
 /*

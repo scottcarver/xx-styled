@@ -5,7 +5,8 @@ body.wp-admin .xx-styled {
   max-width: 100% !important;
 }
 
-.xx-styled {
+.xx-styled,
+.xx-styled--admin .editor-styles-wrapper {
   position: relative;
   max-width: none;
   font-family: var(--foregroundCopyFont);
@@ -19,35 +20,54 @@ body.wp-admin .xx-styled {
   background-size: var(--backgroundSizeSm);
 }
 @media (min-width: 992px) {
-  .xx-styled {
+  .xx-styled,
+.xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSizeMd);
     padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
-  .xx-styled {
+  .xx-styled,
+.xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSize);
     padding: var(--spacingDesktop);
   }
 }
-.xx-styled *::-moz-selection {
+.xx-styled *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled *::selection {
+.xx-styled *::selection,
+.xx-styled--admin .editor-styles-wrapper *::selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
+.xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6,
+.xx-styled--admin .editor-styles-wrapper h1,
+.xx-styled--admin .editor-styles-wrapper h2,
+.xx-styled--admin .editor-styles-wrapper h3,
+.xx-styled--admin .editor-styles-wrapper h4,
+.xx-styled--admin .editor-styles-wrapper h5,
+.xx-styled--admin .editor-styles-wrapper h6 {
   color: var(--headlineColor) !important;
   font-family: var(--foregroundHeadlineFont);
 }
-.xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6, .xx-styled blockquote, .xx-styled cite {
+.xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6, .xx-styled blockquote, .xx-styled cite,
+.xx-styled--admin .editor-styles-wrapper p,
+.xx-styled--admin .editor-styles-wrapper h1,
+.xx-styled--admin .editor-styles-wrapper h2,
+.xx-styled--admin .editor-styles-wrapper h3,
+.xx-styled--admin .editor-styles-wrapper h4,
+.xx-styled--admin .editor-styles-wrapper h5,
+.xx-styled--admin .editor-styles-wrapper h6,
+.xx-styled--admin .editor-styles-wrapper blockquote,
+.xx-styled--admin .editor-styles-wrapper cite {
   max-width: 800px;
   margin: 1em auto;
   display: block;
 }
-.xx-styled p.has-drop-cap:not(:focus)::first-letter {
+.xx-styled p.has-drop-cap:not(:focus)::first-letter,
+.xx-styled--admin .editor-styles-wrapper p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
   /* cool effect, but for a theme
   margin-left: -1.5em;
@@ -58,34 +78,51 @@ body.wp-admin .xx-styled {
   border-radius: 100%;
   */
 }
-.xx-styled a {
+.xx-styled a,
+.xx-styled--admin .editor-styles-wrapper a {
   font-weight: bold;
   color: var(--linkColor);
 }
-.xx-styled blockquote {
+.xx-styled blockquote,
+.xx-styled--admin .editor-styles-wrapper blockquote {
   color: var(--blockquoteColor);
   border-left: solid 2px var(--blockquoteColor);
   padding-left: 20px;
 }
-.xx-styled blockquote p {
+.xx-styled blockquote p,
+.xx-styled--admin .editor-styles-wrapper blockquote p {
   font-size: 2em;
 }
-.xx-styled blockquote p:before {
+.xx-styled blockquote p:before,
+.xx-styled--admin .editor-styles-wrapper blockquote p:before {
   content: '"';
 }
-.xx-styled blockquote p:after {
+.xx-styled blockquote p:after,
+.xx-styled--admin .editor-styles-wrapper blockquote p:after {
   content: '"';
 }
-.xx-styled blockquote cite {
+.xx-styled blockquote cite,
+.xx-styled--admin .editor-styles-wrapper blockquote cite {
   padding-bottom: 20px;
 }
-.xx-styled figure figcaption {
+.xx-styled figure figcaption,
+.xx-styled--admin .editor-styles-wrapper figure figcaption {
   font-family: var(--foregroundCaptionFont);
 }
-.xx-styled svg path {
+.xx-styled svg path,
+.xx-styled--admin .editor-styles-wrapper svg path {
   fill: red;
 }
 
+/*
+html.xx-styled,
+.xx-styled--admin .editor-styles-wrapper{
+	@media(min-width:768px){
+		padding:0 !important;
+
+	}
+}
+*/
 /*
 html {
 	[data-theme], [data-theme="none"]{

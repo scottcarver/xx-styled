@@ -1,40 +1,41 @@
-import { registerPlugin } from '@wordpress/plugins';
-import { PluginSidebar } from '@wordpress/edit-post';
-import { PanelBody, TextControl } from '@wordpress/components';
-import { useSelect, useDispatch } from '@wordpress/data';
-import { __ } from '@wordpress/i18n';
+const { __ } = wp.i18n;
+const { registerPlugin } = wp.plugins;
+const { PluginDocumentSettingPanel } = wp.editPost;
+const { Fragment } = wp.element;
+import { PanelBody, TextControl } from "@wordpress/components";
+import { withSelect, withDispatch } from "@wordpress/data";
 
-const MetaFieldsInputs = () => {
-	const subtitleValue = useSelect((select) => {
-		return select('core/editor').getEditedPostAttribute('meta')
-			._blocks_course_post_subtitle;
-	});
-	const { editPost } = useDispatch('core/editor');
-	return (
-		<PanelBody title={__('Subtitle Options', 'blocks-course')}>
-			<TextControl
-				label={__('Subtitle', 'blocks-course')}
-				value={subtitleValue}
-				onChange={(value) => {
-					editPost({
-						meta: { _blocks_course_post_subtitle: value },
-					});
-				}}
-			/>
-		</PanelBody>
-	);
-};
-
-registerPlugin('blocks-course-plugin', {
+registerPlugin("landing-page-gutenberg-template", {
+	icon: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			height="24"
+			viewBox="0 0 24 24"
+			width="24"
+		>
+			<path d="M0 0h24v24H0z" fill="none" />
+			<path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+		</svg>
+	),
 	render: () => {
 		return (
-			<PluginSidebar
-				name="meta-fields-sidebar"
-				icon="admin-settings"
-				title={__('Post Options', 'blocks-course')}
-			>
-				<MetaFieldsInputs />
-			</PluginSidebar>
+			<Fragment>
+				<PluginDocumentSettingPanel
+					title={__('Landing Page', 'landing-page-gutenberg-template')}
+				>
+					Hello World
+
+                    <TextControl 
+                        // Last Update
+                        //value={wp.data.select('core/editor').getEditedPostAttribute('meta')['post_preferredstyle']}
+                        label={__("Preferred Style", "textdomain")}
+                        onChange={(value) => wp.data.dispatch('core/editor').editPost({meta: {'post_preferredstyle': value}}) }
+                    />
+                    
+				</PluginDocumentSettingPanel>
+			</Fragment>
 		);
 	},
 });
+
+

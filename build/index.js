@@ -39,22 +39,22 @@ class AdminStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compone
     } = this.props;
     var combinedCss = ` 
 			/* For Admin */
-			.wp-block-section--${blockID} .badoop{
+			.wp-block-xx-styled--${blockID} .badoop{
 				padding: ${spacingMobile.top} ${spacingMobile.right} ${spacingMobile.bottom} ${spacingMobile.left};
 			}
 			@media(min-width: 992px){
-				.wp-block-section--${blockID} .badoop{ 
+				.wp-block-xx-styled--${blockID} .badoop{ 
 					padding: ${spacingTablet.top} ${spacingTablet.right} ${spacingTablet.bottom} ${spacingTablet.left};
 				}
-				.wp-block-section--${blockID} .subbadoop{
+				.wp-block-xx-styled--${blockID} .subbadoop{
 					border-color:pink;
 				}
 			}
 			@media(min-width:1200px){
-				.wp-block-section--${blockID} .badoop{ 
+				.wp-block-xx-styled--${blockID} .badoop{ 
 					padding: ${spacingDesktop.top} ${spacingDesktop.right} ${spacingDesktop.bottom} ${spacingDesktop.left};
 				}
-				.wp-block-section--${blockID} .subbadoop{
+				.wp-block-xx-styled--${blockID} .subbadoop{
 					border-color:yellow;
 				}
 			}	
@@ -3007,7 +3007,7 @@ function Edit(props) {
     });
   }
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "xx-styled", `wp-block-styled--${blockID}` // { "wp-block--heightenabled": heightEnabled },
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "xx-styled", `wp-block-xx-styled--${blockID}` // { "wp-block--heightenabled": heightEnabled },
   // `wp-block--headline-${foregroundHeadlineFont}`,
   // `wp-block--copy-${foregroundCopyFont}`,
   // `wp-block--caption-${foregroundCaptionFont}`
@@ -3193,13 +3193,9 @@ function save(props) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-
-
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /*
 poststylemeta_type : postStyleType
 poststylemeta_headline : postStyleHeadline
@@ -3207,8 +3203,11 @@ poststylemeta_copy : postStyleCopy
 poststylemeta_captions : postStyleCaptions
 */
 
+/* Tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
+
 /* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
 const {
+  createElement,
   Fragment
 } = wp.element;
 const {
@@ -3253,7 +3252,8 @@ function PoststylePlugin(props) {
     postStyleType,
     postStyleHeadline,
     postStyleCopy,
-    postStyleCaptions
+    postStyleCaptions,
+    setAttributes
   } = props;
   let comboOptions = [{
     value: "small",
@@ -3271,24 +3271,109 @@ function PoststylePlugin(props) {
     value: "billy",
     label: "Billy"
   }];
+  const PostsDropdownControl = compose( // withDispatch allows to save the selected post ID into post meta
 
-  const Example = () => {
-    // Make the data request.
-    const data = useSelect(select => {
-      return select('core').getEntityRecords('postType', 'post');
-    }); // Display our list of post titles.
+  /*
+  withDispatch( function( dispatch, props ) {
+  	return {
+  		setMetaValue: function( metaValue ) {
+  			dispatch( 'core/editor' ).editPost(
+  				{ meta: { [ props.metaKey ]: metaValue } }
+  			);
+  		}
+  	}
+  } ),
+  */
+  // withSelect allows to get posts for our SelectControl and also to get the post meta value
+  withSelect(function (select, props) {
+    return {
+      posts: select('core').getEntityRecords('postType', 'style') // metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
 
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("ul", null, data && data.map(_ref => {
-      let {
-        title: {
-          rendered: postTitle
-        }
-      } = _ref;
-      return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("li", null, postTitle);
-    }));
-  };
+    };
+  }))(function (props) {
+    // options for SelectControl
+    var options = []; // if posts found
 
-  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
+    if (props.posts) {
+      options.push({
+        value: '',
+        label: 'Default'
+      });
+      props.posts.forEach(post => {
+        // simple foreach loop
+        options.push({
+          value: post.generated_slug,
+          label: post.title.rendered
+        });
+      });
+    } else {
+      options.push({
+        value: postStyleType,
+        label: 'Loading...'
+      });
+    }
+    /*
+    return createElement( SelectControl,
+    	{
+    		label: 'Select a post',
+    		options : options,
+    		
+    		onChange: function( content ) {
+    			alert('saved ' + content);
+    			updateMyPostMetaType(content);
+    			// props.setMetaValue( content );
+    		},
+    		// value: props.metaValue,
+    		value : postStyleType,
+    	}
+    );
+    */
+
+
+    return createElement(ComboboxControl, {
+      label: "Post Style",
+      placeholder: 'Default',
+      value: postStyleType,
+      allowReset: true,
+      options: options,
+      onChange: function (content) {
+        updateMyPostMetaType(content);
+      },
+      onInputChange: function (inputValue) {
+        setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase())));
+      }
+    });
+  });
+
+  let dynamicOptions = function () {
+    return [{
+      value: "short",
+      label: "Short"
+    }];
+  }; // // Make the data request.
+  // const data = useSelect((select) => {
+  // 	return select('core').getEntityRecords('postType', 'style');
+  // });
+  // return shortOptions;
+  // // Display our list of post titles.
+  // return (
+  // 	data.map(({ title: { rendered: postTitle } }) => {
+  // 		return <li key="{title}">{postTitle}</li>;
+  // 	})
+  // );
+
+
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_0___default()(function () {
+    if (postStyleType) {
+      /*	*/
+      jQuery("body").removeClass(function (index, className) {
+        return (className.match(/(^|\s)xx-styled\S+/g) || []).join(' ');
+      }); // Moved off of
+      // alert('someone like u ' + postStyleType);
+
+      jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType);
+    }
+
     var fontClass = "wp-headlinefont--" + postStyleHeadline;
     var editorClass = ".edit-post-visual-editor";
 
@@ -3301,107 +3386,98 @@ function PoststylePlugin(props) {
       jQuery("body").removeClass("wp-admin--gutenbergdebug");
     }
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginSidebarMoreMenuItem, {
+  return createElement(Fragment, null, createElement(PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
     icon: "admin-customizer"
-  }, "Post Styles"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(PluginSidebar, {
+  }, "Post Styles"), createElement(PluginSidebar, {
     name: "post-style-sidebar-plugin",
     icon: "admin-customizer",
     title: "Post Styles"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, createElement("div", {
     className: "px-simplerow px-simplerow--first"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ToggleControl, {
+  }, createElement(ToggleControl, {
     label: "Override Default Styles?",
     checked: myPostMetaKey,
     onChange: updateMyPostMetaKey
-  })), myPostMetaKey ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  })), createElement(Fragment, null, createElement(Fragment, null, createElement("div", {
     style: {
       padding: '20px'
     }
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, createElement("div", {
     className: "px-simplerow px-simplerow--hascomboboxcontrol"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Example, null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ComboboxControl, {
-    label: "Font Size",
-    value: postStyleType,
-    allowReset: true,
-    options: comboOptions,
-    onChange: value => {
-      updateMyPostMetaType(value);
-    },
-    onInputChange: inputValue => setFilteredOptions(comboOptions.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase())))
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, createElement(PostsDropdownControl, null)), createElement("div", {
     className: "px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Headline Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, createElement("h2", null, "Headline Font")), createElement("div", {
     className: "px-buttongroup px-buttongroup--small"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+  }, createElement(ButtonGroup, {
     "aria-label": __("Headline Font")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, createElement(Button, {
     isDefault: true,
     isPrimary: postStyleHeadline === "serif",
     onClick: () => {
       updateMyPostMetaHeadline("serif");
     }
-  }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, "Serif"), createElement(Button, {
     isDefault: true,
     isPrimary: postStyleHeadline === "sans-serif",
     onClick: () => {
       updateMyPostMetaHeadline("sans-serif");
     }
-  }, "Sans-Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, "Sans-Serif"), createElement(Button, {
     isDefault: true,
     isPrimary: postStyleHeadline === "monospace",
     onClick: () => {
       updateMyPostMetaHeadline("monospace");
     }
-  }, "Monospace"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Monospace"))), createElement("div", {
     className: "px-simplerow px-simplerow--flatbottom"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Copy Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, createElement("h2", null, "Copy Font")), createElement("div", {
     className: "px-buttongroup px-buttongroup--small"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+  }, createElement(ButtonGroup, {
     "aria-label": __("Copy Font")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, createElement(Button, {
     isDefault: true,
     isPrimary: postStyleCopy === "serif",
     onClick: () => {
       updateMyPostMetaCopy("serif");
     }
-  }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, "Serif"), createElement(Button, {
     isDefault: true,
     isPrimary: postStyleCopy === "sans-serif",
     onClick: () => {
       updateMyPostMetaCopy("sans-serif");
     }
-  }, "Sans-Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, "Sans-Serif"), createElement(Button, {
     isDefault: true,
     isPrimary: postStyleCopy === "monospace",
     onClick: () => {
       updateMyPostMetaCopy("monospace");
     }
-  }, "Monospace"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, "Monospace"))), createElement("div", {
     className: "px-simplerow px-simplerow--flatbottom"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Caption Font")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, createElement("h2", null, "Caption Font")), createElement("div", {
     className: "px-buttongroup px-buttongroup--small"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
+  }, createElement(ButtonGroup, {
     "aria-label": __("Caption Font")
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, createElement(Button, {
     isDefault: true,
     isPrimary: postStyleCaptions === "serif",
     onClick: () => {
       updateMyPostMetaCaptions("serif");
     }
-  }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, "Serif"), createElement(Button, {
     isDefault: true,
     isPrimary: postStyleCaptions === "sans-serif",
     onClick: () => {
       updateMyPostMetaCaptions("sans-serif");
     }
-  }, "Sans-Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
+  }, "Sans-Serif"), createElement(Button, {
     isDefault: true,
     isPrimary: postStyleCaptions === "monospace",
     onClick: () => {
       updateMyPostMetaCaptions("monospace");
     }
-  }, "Monospace")))))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Global Styles, and Block Styles are Active")));
+  }, "Monospace"))))))));
 }
 
 const applyWithSelect = withSelect(select => {
