@@ -73,7 +73,9 @@ export default class BGTabs extends Component {
 
 		const rendermyComponent = true;
 		const themTabs = calculatedTabset(this.props);
-		const backgroundTabClasses = classnames("px-tabwrap px-tabwrap--margintop", { "px-tabwrap--centered": themTabs.length > 0 });
+		const backgroundTabClasses = classnames("px-tabwrap px-tabwrap--margintop", { 
+			"px-tabwrap--centered": themTabs.length > 0
+		});
 
 		const onImageSelect = imageObject => setAttributes({ backgroundImage: imageObject.sizes.full.url });
 
@@ -252,7 +254,7 @@ export default class BGTabs extends Component {
 				return (
 					<Fragment>
 						<div className="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
-							<h2>Selected Text</h2>
+							<h2>Background Gel</h2>
 							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
 							<input type="checkbox" id="bg3Swatch" name="bg3Swatch"></input>
 							<label htmlFor="bg3Swatch">Palette</label>

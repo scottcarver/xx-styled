@@ -35,43 +35,10 @@ function PoststylePlugin(props) {
 		setAttributes
 	} = props;
 
-	let comboOptions = [
-		{
-			value: "small",
-			label: "Small"
-		},
-		{
-			value: "normal",
-			label: "Normal"
-		},
-		{
-			value: "large",
-			label: "Large"
-		},
-		{
-			value: "huge",
-			label: "Huge"
-		},
-		{
-			value: "billy",
-			label: "Billy"
-		}
-	];
+
 
 
 	const PostsDropdownControl = compose(
-		// withDispatch allows to save the selected post ID into post meta
-		/*
-		withDispatch( function( dispatch, props ) {
-			return {
-				setMetaValue: function( metaValue ) {
-					dispatch( 'core/editor' ).editPost(
-						{ meta: { [ props.metaKey ]: metaValue } }
-					);
-				}
-			}
-		} ),
-		*/
 		// withSelect allows to get posts for our SelectControl and also to get the post meta value
 		withSelect( function( select, props ) {
 			return {
@@ -93,23 +60,6 @@ function PoststylePlugin(props) {
 				options.push( { value: postStyleType, label: 'Loading...' } )
 			}
 	
-			/*
-			return createElement( SelectControl,
-				{
-					label: 'Select a post',
-					options : options,
-					
-					onChange: function( content ) {
-						alert('saved ' + content);
-						updateMyPostMetaType(content);
-						// props.setMetaValue( content );
-					},
-					// value: props.metaValue,
-					value : postStyleType,
-				}
-			);
-			*/
-
 			return createElement( ComboboxControl,
 				{
 					label:"Post Style",
@@ -132,6 +82,7 @@ function PoststylePlugin(props) {
 		}
 	
 	);
+	
 
 	let dynamicOptions = function(){
 		return [
@@ -142,26 +93,15 @@ function PoststylePlugin(props) {
 		];
 
 	}
-		// // Make the data request.
-		// const data = useSelect((select) => {
-		// 	return select('core').getEntityRecords('postType', 'style');
-		// });
-	
-		// return shortOptions;
-		// // Display our list of post titles.
-		// return (
-		// 	data.map(({ title: { rendered: postTitle } }) => {
-		// 		return <li key="{title}">{postTitle}</li>;
-		// 	})
-		// );
+		
 
 
 	domReady(function() {
 		if(postStyleType){
-			/*	*/
+			/*
 			jQuery("body").removeClass (function (index, className) {
 				return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
-			});
+			}); */
 		
 			// Moved off of
 			// alert('someone like u ' + postStyleType);
@@ -191,45 +131,11 @@ function PoststylePlugin(props) {
 				{/* {myPostMetaKey ? ( */}
 					<Fragment>
 
-					<Fragment>
 									<div style={{padding :'20px'}}>
 										<div className="px-simplerow px-simplerow--hascomboboxcontrol">
-{/* <Example /> */}
 						
 							<PostsDropdownControl /> 
 
-							{/* 
-							<ComboboxControl
-								label="Post Style"
-								value={postStyleType}
-								allowReset={true}
-								options={comboOptions}
-								onChange={value => {
-									updateMyPostMetaType(value);
-								}}
-								onInputChange={(inputValue) =>
-									setFilteredOptions(comboOptions.filter(option =>
-											option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-										)
-									)
-								}
-							/> 
-
-
-											<SelectControl
-												label="Type Styles:"
-												value={postStyleType}
-												options={[
-													{ label: "Default", value: "default" },
-													{ label: "Modern", value: "modern" },
-													{ label: "Classic", value: "classical" },
-													{ label: "Technical", value: "technical" },
-													{ label: "Custom", value: "custom" }
-												]}
-												onChange={value => {
-													updateMyPostMetaType(value);
-												}}
-											/> */}
 										</div>
 										<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
 											<h2>Headline Font</h2>
@@ -334,22 +240,9 @@ function PoststylePlugin(props) {
 											</ButtonGroup>
 										</div>
 									</div>
-								</Fragment>
 
 
-						{/* <PanelBody title={__("Foreground", "pxblocks")} icon="welcome-widgets-menus">
-							<PanelRow>
-								
-							</PanelRow>
-						</PanelBody>
-
-						<PanelBody title={__("Background", "pxblocks")} initialOpen={false} icon="welcome-widgets-menus">
-							<PanelRow>Create Background Settings for this entire post</PanelRow>
-						</PanelBody> */}
 					</Fragment>
-				{/* // ) : (
-				// 	<p>Global Styles, and Block Styles are Active</p>
-				// )} */}
 			</PluginSidebar>
 		</Fragment>
 	);

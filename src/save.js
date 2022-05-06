@@ -21,19 +21,30 @@ export default function save(props) {
 	
 	const {
 		attributes: {
-			styleEnabled
+			blockID,
+			namedstyle,
+			styleEnabled,
+			styleMode,
+			heightEnabled,
 		},
 		setAttributes,
 		clientId
 	} = props;
 
-
+	const classes = classnames(
+		"xx-styled",
+		`wp-block-xx-styled--${blockID}`,
+		{ "wp-block--heightenabled": heightEnabled },
+		// `wp-block--headline-${foregroundHeadlineFont}`,
+		// `wp-block--copy-${foregroundCopyFont}`,
+		// `wp-block--caption-${foregroundCaptionFont}`
+	);
 
 	// Return the shtuff
 	const blockPropsSavedOb = {
-		className: 'xx-styled',
+		className: classes,
 		style: inlineVarCSS,
-		'data-theme': styleEnabled ? "none" : "undefined"
+		'data-theme': styleMode == 'named' ? namedstyle : ''
 	}
 	
 	return (

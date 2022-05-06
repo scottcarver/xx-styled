@@ -6,12 +6,11 @@ import classnames from "classnames";
 
 import BGTabs from "./BGTabs";
 import StyledPreview from "./components/StyledPreview";
-import calculatedTabset from "./lib/js/calculatedTabset";
 
 const { __ } = wp.i18n;
-import { Component, Fragment, useState } from '@wordpress/element';
-import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { __experimentalBoxControl as BoxControl, Popover } from '@wordpress/components';
+import { Component, Fragment} from '@wordpress/element';
+import { ColorPalette} from '@wordpress/block-editor';
+import { __experimentalBoxControl as BoxControl} from '@wordpress/components';
 // This uses the old syntax and maybe needs updated to @wordpress
 const {
 	PanelBody, // this is new in this demo
@@ -20,14 +19,6 @@ const {
 	Button,
 	ButtonGroup,
 	FormToggle,
-	IconButton,
-	Placeholder,
-	ColorIndicator,
-	BaseControl,
-	RangeControl,
-	ColorPicker,
-	SelectControl,
-	CustomGradientPicker,
 	ComboboxControl
 } = wp.components;
 
@@ -68,6 +59,7 @@ export default class StyleControls extends Component {
 				namedstyle,
 				babygradient,
 				styleEnabled,
+				styleMode,
 				heightEnabled,
 				bgColorEnabled,
 				bgGradientEnabled,
@@ -375,104 +367,84 @@ export default class StyleControls extends Component {
 			}
 		};
 
-		/*
-		const doshit = function() {
-			themTabs = calculatedTabset(this.props);
-		};
-		
-		let choices = [];
-		var posts = select( 'core' ).getEntityRecords( 'postType', 'post' );
-		console.log("No Joke! ", posts);
-		*/
-
 		return (
 			<Fragment>
 
-				<div className="px-simplerow px-simplerow--padtop px-simplerow--padleft px-simplerow--padright">
-
-{/* 						
-				<ComboboxControl
-					label="Font Size"
-					value="small"
-					options={[
-						{
-							value: "small",
-							label: "Small"
-						},
-						{
-							value: "normal",
-							label: "Normal"
-						},
-						{
-							value: "large",
-							label: "Large"
-						},
-						{
-							value: "huge",
-							label: "Huge"
-						}
-					]}
-					onInputChange={(inputValue) =>
-						setFilteredOptions(
-							[
-								{
-									value: "small",
-									label: "Small"
-								},
-								{
-									value: "normal",
-									label: "Normal"
-								},
-								{
-									value: "large",
-									label: "Large"
-								},
-								{
-									value: "huge",
-									label: "Huge"
-								}
-							].filter(option =>
-								option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-							)
-						)
-					}
-				/> */}
-					
-					<SelectControl
-						label={__('Named Styles', 'awhitepixel')}
-						options={ [
-							{ value: null, label: 'Select a User', disabled: true },
-							{ value: 'black-bg', label: 'Black BG'},
-							{ value: 'red-bg', label: 'Red BG'},
-							{ value: 'white-bg', label: 'White BG'},
-						] }
-						disabled={styleEnabled}
-						// value={'c'}
-						onChange={doStyleChange}
-						// onChange= { ( selection ) => { doStyleChange } }
-						// onChange={(newval) => setAttributes({ 'backgroundColor0': '#cccccc' })}
-					/> 
-					
-				</div>
-
-
-			
-				<div className="px-simplerow px-simplerow--first">
-					<label htmlFor="styleenabled-form-toggle">{__("Custom Styles Enabled", "pxblocks")}</label>
+				{/* <div className="px-simplerow px-simplerow--first">
+					<label htmlFor="styleenabled-form-toggle">{__("Enable Styles?", "pxblocks")}</label>
 					<FormToggle
 						id="styleenabled-form-toggle"
-						label={__("Custom Styles Enabled?", "pxblocks")}
-						checked={styleEnabled}
+						label={__("Enable Style?", "pxblocks")}
+						checked={!styleEnabled}
 						onChange={toggleStyleEnabled}
 					/>
-				</div>
+				</div> */}
 
-				{styleEnabled && (
-					<StyledPreview {...{ setAttributes, ...this.props }} />
+				<div className="px-buttongroup px-buttongroup--centered px-buttongroup--padbottom">
+					<ButtonGroup aria-label={__("Style Mode")}>
+						<Button
+							isDefault
+							isPrimary={styleMode === "disabled"}
+							onClick={() => {
+								setAttributes({ styleMode: "disabled" });
+								setAttributes({ styleEnabled: false });
+							}}>
+							Disabled
+						</Button>
+						<Button
+							isDefault
+							isPrimary={styleMode === "named"}
+							onClick={() => {
+								setAttributes({ styleMode: "named" });
+								setAttributes({ styleEnabled: true });
+							}}>
+							Named
+						</Button>
+						<Button
+							isDefault
+							isPrimary={styleMode === "custom"}
+							onClick={() => {
+								setAttributes({ styleMode: "custom" });
+								setAttributes({ styleEnabled: true });
+							}}>
+							Custom
+						</Button>
+					</ButtonGroup>
+				</div>
+			
+
+				{styleMode=='named' && (
+					<Fragment>
+						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol">
+							<ComboboxControl
+								label="Select a Style"
+								placeholder= 'Default'
+								value={namedstyle}
+								allowReset={true}
+								options={global_named_styles}
+								onChange={(newval) => setAttributes({ namedstyle: newval })}
+								onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+									option.label.toLowerCase().startsWith(newval.toLowerCase())
+								))}
+							/>
+
+							
+						</div>
+						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
+							<a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
+						</div>
+					</Fragment>
 				)}
 			
+				{styleMode=='custom' && (
+					
+
+					<Fragment>
 			
-				<PanelBody title={__("Foreground", "pxblocks")} initialOpen={false} icon="welcome-widgets-menus">
+			<StyledPreview {...{ setAttributes, ...this.props }} />
+
+				<PanelBody title={__("Foreground", "pxblocks")} initialOpen={false}>
+					{/*  icon="welcome-widgets-menus" */}
 					<PanelRow>
 						{/* Tab that includes Foreground Settings */}
 						<div className="px-sidepanel">
@@ -503,7 +475,8 @@ export default class StyleControls extends Component {
 						</div>
 					</PanelRow>
 				</PanelBody>
-				<PanelBody title={__("Background", "pxblocks")} initialOpen={false} icon="format-image">
+				<PanelBody title={__("Background", "pxblocks")} initialOpen={false}>
+					{/*  icon="format-image" */}
 					<PanelRow>
 						<div className="px-sidepanel">
 							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
@@ -584,49 +557,11 @@ export default class StyleControls extends Component {
 	
 							<BGTabs {...{ setAttributes, ...this.props }} />
 
-							{/*
-								<TabPanel
-								className="px-tabwrap px-tabwrap--centered"
-								activeclassName="active-tab"
-								initialTabName="gradcolortab"
-								onSelect={onSelect}
-									tabs={[
-										{
-											name: "gradcolortab",
-											title: "Colors",
-											className: "tab-gradcolor"
-										},
-										{
-											name: "gradsettingstab",
-											title: "Settings",
-											className: "tab-gradsettings"
-										}
-										// ,
-										// {
-										// 	name: "gradbgtab",
-										// 	title: "Background",
-										// 	className: "tab-gradbg"
-										// }
-									]}
-								>
-									{tab => getGradientTab(tab.name)}
-								</TabPanel>
-								 */}
-							{/*
-							{backgroundStackFirst == "gradient" && (
-								<TabPanel
-									className="px-tabwrap px-tabwrap--centered"
-									activeclassName="active-tab"
-									tabs={fixedTabsetReversed}
-								>
-									{tab => getBackgroundTab(tab.name)}
-								</TabPanel>
-							)}
-							*/}
 						</div>
 					</PanelRow>
 				</PanelBody>
-				<PanelBody title={__("Responsive", "pxblocks")} initialOpen={false} icon="image-flip-horizontal">
+				<PanelBody title={__("Dimensions", "pxblocks")} initialOpen={false}>
+					{/*  icon="image-flip-horizontal" */}
 					<PanelRow>
 					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 							<label htmlFor="heightenabled-form-toggle">{__("Height Enabled", "pxblocks")}</label>
@@ -642,24 +577,6 @@ export default class StyleControls extends Component {
 					
 
 					<div className="px-sidepanel px-sidepanel--grey">
-						{/* <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom" style={{'border':'dashed 1px grey'}}>
-							<BoxControl 
-								label="Desktop Spacing"
-								sides={ [ 'top', 'left', 'right', 'bottom' ] } 
-								values={spacingDesktop}
-								defaultValues={ {
-									top: '50px',
-									left: '10%',
-									right: '10%',
-									bottom: '50px',
-								}} 
-								onChange={(newdata) => {
-									console.log('currentvar', spacingDesktop);
-									console.log('newdata', newdata);
-									setAttributes({ spacingDesktop: newdata });
-								}} 
-							/>
-						</div> */}
 						<div className="px-simplerow px-simplerow--padtop">
 							<BoxControl 
 								label="Mobile Spacing"
@@ -671,7 +588,7 @@ export default class StyleControls extends Component {
 						</div>
 						<div className="px-simplerow">
 							<BoxControl 
-								label="Desktop Tablet"
+								label="Tablet Spacing"
 								values={spacingTablet}
 								sides={ [ 'top', 'left', 'right', 'bottom' ] } 
 								defaultValues={ { top: '50px',left: '10%',right: '10%', bottom: '50px' }} 
@@ -690,13 +607,11 @@ export default class StyleControls extends Component {
 					</div>
 					</PanelRow>
 				</PanelBody>
+			
+				
+	</Fragment>
+)}
 			</Fragment>
 		);
 	}
-}
-
-{
-	/* 
-backgroundImageSize, backgroundImageSizeCustom, backgroundImageRepeat, backgroundImageAttachment, backgroundImageAlignVert, backgroundImageAlignHori, backgroundImageAlignVertCustom, backgroundImageAlignHoriCustom, 
-*/
 }

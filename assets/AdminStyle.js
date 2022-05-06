@@ -49,7 +49,7 @@ export default class AdminStyle extends Component {
 		return (
              <Fragment>
 			    <div className='badoop' style={{position:'absolute',width:'100%',height:'100%', top:0, left:0, maxWidth:"none"}}>
-                    <div className='subbadoop' style={{border:"dashed 1px black",height:"100%"}}></div>
+                    <div className='subbadoop' style={{border:"dashed 1px currentColor",height:"100%",opacity:.2}}></div>
                 </div>
 				<style type="text/css" dangerouslySetInnerHTML={{ __html: compressedCSS }} />
             </Fragment>

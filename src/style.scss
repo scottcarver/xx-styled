@@ -102,6 +102,19 @@ body.wp-admin .xx-styled{ max-width:100% !important; }
 	}
 }
 
+.xx-styled, .xx-styled *{box-sizing: border-box;}
+
+.wp-block--heightenabled {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	.wp-block-image{margin:0px auto;}
+}
+
+
 // outer Element should have no padding
 /*
 html.xx-styled,

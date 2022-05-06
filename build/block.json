@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "common",
 	"icon": "fullscreen-exit-alt",
-	"description": "A Styled Area with InnerBlocks",
+	"description": "A complete portable thematic set of FG/BG styles",
 	"supports": {
 		"html": false,
 		"anchor": true,
@@ -22,12 +22,15 @@
 			"default": ""
 		},
 		"namedstyle": {
-			"type": "string",
-			"default": "AL"
+			"type": "string"
 		},
 		"styleEnabled": {
 			"type": "boolean",
 			"default": true
+		},
+		"styleMode": {
+			"type": "string",
+			"default": "custom"
 		},
 		"bgColorEnabled": {
 			"type": "boolean",

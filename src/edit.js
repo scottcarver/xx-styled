@@ -28,7 +28,9 @@ export default function Edit(props) {
 	const {
 		attributes: {
 			styleEnabled,
+			styleMode,
 			blockID,
+			namedstyle,
 			heightEnabled,
 			foregroundColor,
 			blockAlignment,
@@ -63,7 +65,7 @@ export default function Edit(props) {
 		className,
 		"xx-styled",
 		`wp-block-xx-styled--${blockID}`,
-		// { "wp-block--heightenabled": heightEnabled },
+		{ "wp-block--heightenabled": heightEnabled },
 		// `wp-block--headline-${foregroundHeadlineFont}`,
 		// `wp-block--copy-${foregroundCopyFont}`,
 		// `wp-block--caption-${foregroundCaptionFont}`
@@ -117,19 +119,19 @@ export default function Edit(props) {
 			'--spacingDesktop': spacingDesktopStack,
         };
 
-
+		console.log("inlineVarCSS", inlineVarCSS);
 	const blockProps = useBlockProps( {
 		className: classes,
-		style: styleEnabled ? styleObj : {},
 		id: blockID,
-		'data-theme': styleEnabled ? "none" : "undefined"
+		style: (styleMode == 'custom') ? styleObj : undefined,
+		'data-theme': (styleMode == 'named') ? namedstyle : ''
 	});
 
 	return (
 		<div {...blockProps}>
 		
 			{/* Admin Padding Preview */}
-			{styleEnabled && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
+			{styleMode=="custom" && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
 
 			{/* Sidebar */}
 			<InspectorControls><StyleControls {...{ setAttributes, ...props }} /></InspectorControls>

@@ -2,7 +2,6 @@
 header("Content-type: application/json"); 
 $stylename = get_query_var('namedstyle');
 $iscompiled = $stylename  == 'compiled';
-// $stylecontent = get_the_content();
 ?>
 <?php
 $the_slug = $stylename;
@@ -12,21 +11,18 @@ $args = array(
   'post_status' => 'publish',
   'numberposts' => $iscompiled ? -1 : 1
 );
-$styled_areas = get_posts($args);
+
+$styled_areas = new WP_Query($args);
 $styled_array = array();
-if( $styled_areas ) :
-  /*
-
-    */
-    foreach($styled_areas as $area){
-
-      $post_content = $area->post_content;
-      $pieces = explode(' ', $post_content);
-      $cleanjson = JSON_DECODE($pieces[2]);
-      $cleanjson->slug = get_post_field( 'post_name',$area->ID);
-      array_push($styled_array, $cleanjson);
-    }
-endif;
+if($styled_areas){
+  foreach($styled_areas->posts as $area){
+    $post_content = $area->post_content;
+    $pieces = explode(' ', $post_content);
+    $cleanjson = JSON_DECODE($pieces[2]);
+    $cleanjson->slug = get_post_field( 'post_name',$area->ID);
+    array_push($styled_array, $cleanjson);
+  }
+};
 
 /*
 $styled_areas = get_posts($args);

@@ -57,6 +57,17 @@
 		}
 	}
 
+	// Single Tab
+	&.px-tabwrap--singletab{
+		.components-tab-panel__tabs {
+			button {
+				&:first-of-type{
+					border-radius:3px 0 0 0;
+				}
+			}
+		}
+	}
+
 	// When --margintop
 	&.px-tabwrap--margintop{
 		margin-top:20px;

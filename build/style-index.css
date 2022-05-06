@@ -114,6 +114,21 @@ body.wp-admin .xx-styled {
   fill: red;
 }
 
+.xx-styled, .xx-styled * {
+  box-sizing: border-box;
+}
+
+.wp-block--heightenabled {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.wp-block--heightenabled .wp-block-image {
+  margin: 0px auto;
+}
+
 /*
 html.xx-styled,
 .xx-styled--admin .editor-styles-wrapper{

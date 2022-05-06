@@ -72,7 +72,7 @@ export default class StyledPreview extends Component {
         return (
             <Fragment>
 				<div className="px-sidepanel">
-					<div className="px-simplerow px-simplerow--padleft px-simplerow--padbottom">
+					<div className="px-simplerow px-simplerow--padleft px-simplerow--padtop px-simplerow--padbottom">
 						<strong>Preview:</strong>
 					</div>
 				</div>
