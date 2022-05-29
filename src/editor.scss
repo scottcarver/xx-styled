@@ -8,6 +8,11 @@
  // @import "../assets/lib/scss/styled-preview.scss";
  @import "style.scss";
 
+body.post-type-style #styledarea-toggle{
+	background:yellow;
+	outline:4px solid orange;
+	display:none;
+}
 /*
 // Editor Style
 .xx-styled{

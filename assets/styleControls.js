@@ -380,7 +380,7 @@ export default class StyleControls extends Component {
 					/>
 				</div> */}
 
-				<div className="px-buttongroup px-buttongroup--centered px-buttongroup--padbottom">
+				<div id="styledarea-toggle" className="px-buttongroup px-buttongroup--centered px-buttongroup--padbottom">
 					<ButtonGroup aria-label={__("Style Mode")}>
 						<Button
 							isDefault

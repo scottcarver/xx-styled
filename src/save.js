@@ -33,7 +33,7 @@ export default function save(props) {
 
 	const classes = classnames(
 		"xx-styled",
-		`wp-block-xx-styled--${blockID}`,
+		// `wp-block-xx-styled--${blockID}`,
 		{ "wp-block--heightenabled": heightEnabled },
 		// `wp-block--headline-${foregroundHeadlineFont}`,
 		// `wp-block--copy-${foregroundCopyFont}`,
@@ -43,7 +43,7 @@ export default function save(props) {
 	// Return the shtuff
 	const blockPropsSavedOb = {
 		className: classes,
-		style: inlineVarCSS,
+		style: styleMode == 'custom' ? inlineVarCSS : {},
 		'data-theme': styleMode == 'named' ? namedstyle : ''
 	}
 	

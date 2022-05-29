@@ -85,6 +85,18 @@
 .px-simplerow.px-simplerow--hascomboboxcontrol > div {
   width: 100%;
 }
+.px-simplerow.px-simplerow--mediaupload .components-button {
+  width: 100%;
+  display: block;
+  border: solid 1px grey;
+  text-align: center;
+  border-radius: 3px 0 0 3px;
+}
+.px-simplerow.px-simplerow--mediaupload .clear-button {
+  border: solid 1px grey;
+  text-align: center;
+  border-radius: 0 3px 3px 0;
+}
 .px-simplerow .px-simplerow h2 {
   margin: 25px 0 10px 0;
 }
@@ -780,6 +792,12 @@ html {
 	}
 }
 */
+body.post-type-style #styledarea-toggle {
+  background: yellow;
+  outline: 4px solid orange;
+  display: none;
+}
+
 /*
 // Editor Style
 .xx-styled{
@@ -819,6 +837,12 @@ button{
   -webkit-animation-play-state: running;
           animation-play-state: running;
 }
+.styled-preview.styled-preview--gradientfirst .layer-3 {
+  transform: translateZ(-50px);
+}
+.styled-preview.styled-preview--gradientfirst .layer-4 {
+  transform: translateZ(-15px);
+}
 
 .styled-preview[data-viewtype=stack] {
   border-color: transparent;
@@ -851,6 +875,7 @@ button{
   height: 100px;
   border: 1px dashed #646464;
   line-height: 2em;
+  transition: 0.25s ease transform;
 }
 
 .layer-1 {
@@ -898,7 +923,6 @@ button{
 }
 
 .bgimage {
-  background-image: url(https://assets.codepen.io/81793/rabbit.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: scroll;

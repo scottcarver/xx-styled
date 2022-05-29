@@ -208,9 +208,11 @@ export default class BGTabs extends Component {
 			// Image Tab
 			if (name == "bgimagetab") {
 				return (
+					
 					<Fragment>
 						{/* Background Image Enabled Toggle */}
-
+						{backgroundImage && (
+						<Fragment>
 						<div className="px-simplerow px-simplerow--shortheadline">
 							<h2>Background Image</h2>
 						</div>
@@ -226,20 +228,30 @@ export default class BGTabs extends Component {
 							}
 							// onChange={ ( focalPoint ) => setFocalPoint( { focalPoint } ) }
 						/>
-
+						</Fragment>
+						)}
+						<div className="px-simplerow px-simplerow--mediaupload">
 						<MediaUploadCheck>
 							<MediaUpload
+								allowedTypes={ [ 'image' ] }
 								onSelect={onImageSelect}
 								value={backgroundImage}
-								render={({ open }) => <Button onClick={open}>Open Media Library</Button>}
+								render={({ open }) => <Button onClick={open}>Select Image</Button>}
 							/>
 						</MediaUploadCheck>
-						
 						{backgroundImage && (
-							<Fragment>
-								<BGImgControl {...{ setAttributes, ...this.props }} />
-							</Fragment>
+						<button className="clear-button" onClick={event =>
+								setAttributes({
+									backgroundImage: null
+								})
+							}>Clear</button>
+							)}
+						</div>
+
+						{backgroundImage && (
+							<BGImgControl {...{ setAttributes, ...this.props }} />
 						)}
+					
 
 						{/* END BACKGROUND IMAGE TAB */}
 					</Fragment>

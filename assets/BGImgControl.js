@@ -223,13 +223,16 @@ export default class BGImgControl extends Component {
 					</ButtonGroup>
 				</div>
 
-				{/* BACKGROUND POSITION */}
+				{/* BACKGROUND POSITION 
+				backgroundImageAlignVert
+				backgroundImageAlignHori
+				backgroundImageAlignHoriCustom
+				backgroundImageAlignVertCustom
 				<div class="px-simplerow px-simplerow--shortheadline">
 					<h2>Background Position</h2>
 					{this.props.position}
 				</div>
 				<div class="px-sidepanel">
-					{/* Vertical Toggle */}
 					<div class="px-simplerow">
 						<label>Vertical</label>
 					</div>
@@ -269,8 +272,6 @@ export default class BGImgControl extends Component {
 							</Button>
 						</ButtonGroup>
 					</div>
-
-					{/* Show Custom Vertical Control */}
 					{backgroundImageAlignVert == "custom" && (
 						<div class="px-columnrow px-columnrow--smallspaceabove">
 							<RangeControl
@@ -286,8 +287,6 @@ export default class BGImgControl extends Component {
 							/>
 						</div>
 					)}
-
-					{/* Horizontal Toggle */}
 					<div class="px-simplerow px-simplerow--padtop">
 						<label>Horizontal</label>
 						<br />
@@ -328,8 +327,6 @@ export default class BGImgControl extends Component {
 							</Button>
 						</ButtonGroup>
 					</div>
-
-					{/* Show Custom Horizontal Control */}
 					{backgroundImageAlignHori == "custom" && (
 						<div class="px-columnrow px-columnrow--smallspaceabove">
 							<RangeControl
@@ -346,6 +343,7 @@ export default class BGImgControl extends Component {
 						</div>
 					)}
 				</div>
+				*/ }
 			</Fragment>
 		);
 	}

@@ -24,7 +24,16 @@
       }
   }
 
+  &.styled-preview--gradientfirst{
+    // *{
+    //   outline:solid 1px red;
+    // }
+    .layer-3{transform: translateZ(-50px);}
+    .layer-4{transform: translateZ(-15px);}
+  }
 }
+
+
 
 // Stack
 .styled-preview[data-viewtype="stack"]{
@@ -56,6 +65,7 @@
   height: 100px;
   border: 1px dashed rgba(100,100,100,1);
   line-height: 2em;
+  transition: .25s ease transform;
 }
 
 .layer-1{transform: translateZ(50px);}
@@ -94,7 +104,7 @@
 }
 
 .bgimage{
-  background-image: url(https://assets.codepen.io/81793/rabbit.jpg);
+ // background-image: url(https://assets.codepen.io/81793/rabbit.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
