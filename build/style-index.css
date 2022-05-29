@@ -1,11 +1,7 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-body.wp-admin .xx-styled {
-  max-width: 100% !important;
-}
-
-.xx-styled,
+.xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
   position: relative;
   max-width: none;
@@ -18,31 +14,33 @@ body.wp-admin .xx-styled {
   background-repeat: var(--backgroundRepeat);
   padding: var(--spacingMobile);
   background-size: var(--backgroundSizeSm);
+  max-width: 800px;
+  margin: 0px auto;
 }
 @media (min-width: 992px) {
-  .xx-styled,
+  .xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSizeMd);
     padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
-  .xx-styled,
+  .xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSize);
     padding: var(--spacingDesktop);
   }
 }
-.xx-styled *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {
+.xx-styled:not(html) *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled *::selection,
+.xx-styled:not(html) *::selection,
 .xx-styled--admin .editor-styles-wrapper *::selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6,
+.xx-styled:not(html) h1, .xx-styled:not(html) h2, .xx-styled:not(html) h3, .xx-styled:not(html) h4, .xx-styled:not(html) h5, .xx-styled:not(html) h6,
 .xx-styled--admin .editor-styles-wrapper h1,
 .xx-styled--admin .editor-styles-wrapper h2,
 .xx-styled--admin .editor-styles-wrapper h3,
@@ -52,7 +50,7 @@ body.wp-admin .xx-styled {
   color: var(--headlineColor) !important;
   font-family: var(--foregroundHeadlineFont);
 }
-.xx-styled p, .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6, .xx-styled blockquote, .xx-styled cite,
+.xx-styled:not(html) p, .xx-styled:not(html) h1, .xx-styled:not(html) h2, .xx-styled:not(html) h3, .xx-styled:not(html) h4, .xx-styled:not(html) h5, .xx-styled:not(html) h6, .xx-styled:not(html) blockquote, .xx-styled:not(html) cite,
 .xx-styled--admin .editor-styles-wrapper p,
 .xx-styled--admin .editor-styles-wrapper h1,
 .xx-styled--admin .editor-styles-wrapper h2,
@@ -66,7 +64,7 @@ body.wp-admin .xx-styled {
   margin: 1em auto;
   display: block;
 }
-.xx-styled p.has-drop-cap:not(:focus)::first-letter,
+.xx-styled:not(html) p.has-drop-cap:not(:focus)::first-letter,
 .xx-styled--admin .editor-styles-wrapper p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
   /* cool effect, but for a theme
@@ -78,40 +76,48 @@ body.wp-admin .xx-styled {
   border-radius: 100%;
   */
 }
-.xx-styled a,
+.xx-styled:not(html) a,
 .xx-styled--admin .editor-styles-wrapper a {
   font-weight: bold;
   color: var(--linkColor);
 }
-.xx-styled blockquote,
+.xx-styled:not(html) blockquote,
 .xx-styled--admin .editor-styles-wrapper blockquote {
   color: var(--blockquoteColor);
   border-left: solid 2px var(--blockquoteColor);
   padding-left: 20px;
 }
-.xx-styled blockquote p,
+.xx-styled:not(html) blockquote p,
 .xx-styled--admin .editor-styles-wrapper blockquote p {
   font-size: 2em;
 }
-.xx-styled blockquote p:before,
+.xx-styled:not(html) blockquote p:before,
 .xx-styled--admin .editor-styles-wrapper blockquote p:before {
   content: '"';
 }
-.xx-styled blockquote p:after,
+.xx-styled:not(html) blockquote p:after,
 .xx-styled--admin .editor-styles-wrapper blockquote p:after {
   content: '"';
 }
-.xx-styled blockquote cite,
+.xx-styled:not(html) blockquote cite,
 .xx-styled--admin .editor-styles-wrapper blockquote cite {
   padding-bottom: 20px;
 }
-.xx-styled figure figcaption,
+.xx-styled:not(html) figure figcaption,
 .xx-styled--admin .editor-styles-wrapper figure figcaption {
   font-family: var(--foregroundCaptionFont);
 }
-.xx-styled svg path,
+.xx-styled:not(html) svg path,
 .xx-styled--admin .editor-styles-wrapper svg path {
   fill: red;
+}
+.xx-styled:not(html).alignwide,
+.xx-styled--admin .editor-styles-wrapper.alignwide {
+  max-width: 1200px;
+}
+.xx-styled:not(html).alignfull,
+.xx-styled--admin .editor-styles-wrapper.alignfull {
+  max-width: 100%;
 }
 
 .xx-styled, .xx-styled * {

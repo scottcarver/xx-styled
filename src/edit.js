@@ -61,6 +61,10 @@ export default function Edit(props) {
 		setAttributes({ blockID: clientId });
 	}
 
+
+
+
+
 	const classes = classnames(
 		className,
 		"xx-styled",
@@ -71,6 +75,9 @@ export default function Edit(props) {
 		// `wp-block--caption-${foregroundCaptionFont}`
 	);
 
+
+
+	// alignfull
 	
 		// boop
 		const bgImageStack = calculatedBgImage(props.attributes);
@@ -126,6 +133,9 @@ export default function Edit(props) {
 		style: (styleMode == 'custom') ? styleObj : undefined,
 		'data-theme': (styleMode == 'named') ? namedstyle : ''
 	});
+
+	console.log("props", props);
+
 
 	return (
 		<div {...blockProps}>

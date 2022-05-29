@@ -1,8 +1,8 @@
 // Frontend Style
-body.wp-admin .xx-styled{ max-width:100% !important; }
+// body.wp-admin .xx-styled{ max-width:100% !important; }
 
 // Styled Area
-.xx-styled, 
+.xx-styled:not(html), 
 .xx-styled--admin .editor-styles-wrapper{
 	position:relative;
 	// padding: 5vw 0;
@@ -99,6 +99,16 @@ body.wp-admin .xx-styled{ max-width:100% !important; }
 		path{
 			fill:red;
 		}
+	}
+
+	max-width:800px;
+	margin:0px auto;
+
+	&.alignwide{
+		max-width:1200px;
+	}
+	&.alignfull{
+		max-width:100%;
 	}
 }
 

@@ -2981,7 +2981,8 @@ function Edit(props) {
   } // `wp-block--headline-${foregroundHeadlineFont}`,
   // `wp-block--copy-${foregroundCopyFont}`,
   // `wp-block--caption-${foregroundCaptionFont}`
-  ); // boop
+  ); // alignfull
+  // boop
 
   const bgImageStack = (0,_assets_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_10__["default"])(props.attributes);
   const bgColorStack = (0,_assets_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_11__["default"])(props.attributes); // const bgSize = calculatedBGIMGSize(props.attributes);
@@ -3032,6 +3033,7 @@ function Edit(props) {
     style: styleMode == 'custom' ? styleObj : undefined,
     'data-theme': styleMode == 'named' ? namedstyle : ''
   });
+  console.log("props", props);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_AdminStyle__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
   }, props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_styleControls__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
