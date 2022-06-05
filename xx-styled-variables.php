@@ -13,7 +13,7 @@ function get_style_array() {
         'name'        =>  null,
         'post_type'   => 'style',
         'post_status' => 'publish',
-        'numberposts' => -1
+        'posts_per_page' => -1
       );
       
       $styled_areas = new WP_Query($args);
@@ -24,7 +24,7 @@ function get_style_array() {
         foreach($styled_areas->posts as $area){
           $post_content = $area->post_content;
           $pieces = explode(' ', $post_content);
-          $parsedjson = JSON_DECODE($pieces[2]);
+          $parsedjson = isset($pieces[2]) ? JSON_DECODE($pieces[2]) : '';
           $cleanjson = (object)[];
           $cleanjson->label = get_the_title($area->ID) ?: 'Untitled Style ' . $area->ID ;
           $cleanjson->value = get_post_field( 'post_name',$area->ID);
@@ -56,11 +56,13 @@ add_action( 'admin_enqueue_scripts', 'theme_enqueue_scripts' ); // wp_enqueue_sc
 
 
 // inline script via wp_print_scripts
-function shapeSpace_print_scripts() {  ?>
-	
+function shapeSpace_print_scripts() { 
+	$style_array = get_style_array();
+    if($style_array){  ?>
 	<script>
 		var global_named_styles = <?php echo json_encode(get_style_array()); ?>;
 	</script>
+    <?php } ?>
 	
 	<?php
 	

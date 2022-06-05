@@ -75,8 +75,6 @@ export default function Edit(props) {
 		// `wp-block--caption-${foregroundCaptionFont}`
 	);
 
-
-
 	// alignfull
 	
 		// boop
@@ -133,9 +131,6 @@ export default function Edit(props) {
 		style: (styleMode == 'custom') ? styleObj : undefined,
 		'data-theme': (styleMode == 'named') ? namedstyle : ''
 	});
-
-	console.log("props", props);
-
 
 	return (
 		<div {...blockProps}>
