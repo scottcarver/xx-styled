@@ -63,9 +63,6 @@ function shapeSpace_print_scripts() {
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;
 	</script>
-   ?>
-	
 	<?php
-	
 }
 add_action('admin_print_scripts', 'shapeSpace_print_scripts');
