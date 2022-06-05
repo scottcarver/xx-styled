@@ -492,8 +492,22 @@
   background-repeat: var(--backgroundRepeat);
   padding: var(--spacingMobile);
   background-size: var(--backgroundSizeSm);
-  max-width: 800px;
   margin: 0px auto;
+  /*
+  &.alignwide{
+  	max-width:1200px;
+  }
+  &.alignfull{
+  	max-width:100%;
+  }
+  */
+  /*
+  p, h1, h2, h3, h4, h5, h6, blockquote, cite{
+  	max-width:800px;
+  	// margin:1em auto;
+  	display:block;
+  }
+  */
 }
 @media (min-width: 992px) {
   .xx-styled:not(html),
@@ -527,19 +541,6 @@
 .xx-styled--admin .editor-styles-wrapper h6 {
   color: var(--headlineColor) !important;
   font-family: var(--foregroundHeadlineFont);
-}
-.xx-styled:not(html) p, .xx-styled:not(html) h1, .xx-styled:not(html) h2, .xx-styled:not(html) h3, .xx-styled:not(html) h4, .xx-styled:not(html) h5, .xx-styled:not(html) h6, .xx-styled:not(html) blockquote, .xx-styled:not(html) cite,
-.xx-styled--admin .editor-styles-wrapper p,
-.xx-styled--admin .editor-styles-wrapper h1,
-.xx-styled--admin .editor-styles-wrapper h2,
-.xx-styled--admin .editor-styles-wrapper h3,
-.xx-styled--admin .editor-styles-wrapper h4,
-.xx-styled--admin .editor-styles-wrapper h5,
-.xx-styled--admin .editor-styles-wrapper h6,
-.xx-styled--admin .editor-styles-wrapper blockquote,
-.xx-styled--admin .editor-styles-wrapper cite {
-  max-width: 800px;
-  display: block;
 }
 .xx-styled:not(html) p.has-drop-cap:not(:focus)::first-letter,
 .xx-styled--admin .editor-styles-wrapper p.has-drop-cap:not(:focus)::first-letter {
@@ -587,14 +588,6 @@
 .xx-styled:not(html) svg path,
 .xx-styled--admin .editor-styles-wrapper svg path {
   fill: red;
-}
-.xx-styled:not(html).alignwide,
-.xx-styled--admin .editor-styles-wrapper.alignwide {
-  max-width: 1200px;
-}
-.xx-styled:not(html).alignfull,
-.xx-styled--admin .editor-styles-wrapper.alignfull {
-  max-width: 100%;
 }
 
 .xx-styled, .xx-styled * {
