@@ -1,4 +1,3 @@
-
 <?php
 
 // This outputs javascript on the page (a variable named "global_named_styles") which is read in the style switcher
