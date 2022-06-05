@@ -8,7 +8,7 @@ poststylemeta_captions : postStyleCaptions
 /* Tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
 /* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
 const { createElement, Fragment } = wp.element;
-const { registerPlugin } = wp.plugins;
+import { registerPlugin } from '@wordpress/plugins';
 const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { Button, ButtonGroup, PanelRow, PanelBody, ToggleControl, SelectControl, ComboboxControl } = wp.components;
 const { withSelect, withDispatch, useSelect } = wp.data;

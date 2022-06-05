@@ -10,10 +10,8 @@
   *zoom: 1;
 }
 .px-clearfix:before, .px-clearfix:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
+  content: " "; /* 1 */
+  display: table; /* 2 */
 }
 .px-clearfix:after {
   clear: both;
@@ -879,7 +877,7 @@ button{
   position: absolute;
   width: 100px;
   height: 100px;
-  border: 1px dashed #646464;
+  border: 1px dashed rgb(100, 100, 100);
   line-height: 2em;
   transition: 0.25s ease transform;
 }
@@ -921,7 +919,7 @@ button{
 }
 
 .fgcolor {
-  background-image: linear-gradient(92deg, rgba(142, 37, 37, 0.43) -1%, #861111 100%);
+  background-image: linear-gradient(92deg, rgba(142, 37, 37, 0.43) -1%, rgb(134, 17, 17) 100%);
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
@@ -942,7 +940,7 @@ button{
 .flattened {
   width: 100px;
   height: 100px;
-  background-image: linear-gradient(92deg, rgba(142, 37, 37, 0.43) -1%, #861111 100%), url(https://assets.codepen.io/81793/rabbit.jpg);
+  background-image: linear-gradient(92deg, rgba(142, 37, 37, 0.43) -1%, rgb(134, 17, 17) 100%), url(https://assets.codepen.io/81793/rabbit.jpg);
   background-color: #946746;
   background-size: cover, cover;
   background-position: center center;
