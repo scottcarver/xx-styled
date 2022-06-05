@@ -9,7 +9,8 @@ poststylemeta_captions : postStyleCaptions
 /* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
 const { createElement, Fragment } = wp.element;
 import { registerPlugin } from '@wordpress/plugins';
-const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+// const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
 const { Button, ButtonGroup, PanelRow, PanelBody, ToggleControl, SelectControl, ComboboxControl } = wp.components;
 const { withSelect, withDispatch, useSelect } = wp.data;
 const { compose } = wp.compose;

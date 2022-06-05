@@ -3178,9 +3178,11 @@ function save(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
 /* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /*
 poststylemeta_type : postStyleType
 poststylemeta_headline : postStyleHeadline
@@ -3196,10 +3198,8 @@ const {
   Fragment
 } = wp.element;
 
-const {
-  PluginSidebar,
-  PluginSidebarMoreMenuItem
-} = wp.editPost;
+ // const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
+
 const {
   Button,
   ButtonGroup,
@@ -3289,7 +3289,7 @@ function PoststylePlugin(props) {
     }];
   };
 
-  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
     if (postStyleType) {
       /*
       jQuery("body").removeClass (function (index, className) {
@@ -3312,10 +3312,10 @@ function PoststylePlugin(props) {
       jQuery("body").removeClass("wp-admin--gutenbergdebug");
     }
   });
-  return createElement(Fragment, null, createElement(PluginSidebarMoreMenuItem, {
+  return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
     icon: "admin-customizer"
-  }, "Post Styles"), createElement(PluginSidebar, {
+  }, "Post Styles"), createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
     name: "post-style-sidebar-plugin",
     icon: "admin-customizer",
     title: "Post Styles"
@@ -3736,6 +3736,17 @@ module.exports = window["wp"]["components"];
 
 "use strict";
 module.exports = window["wp"]["domReady"];
+
+/***/ }),
+
+/***/ "@wordpress/edit-post":
+/*!**********************************!*\
+  !*** external ["wp","editPost"] ***!
+  \**********************************/
+/***/ (function(module) {
+
+"use strict";
+module.exports = window["wp"]["editPost"];
 
 /***/ }),
 
