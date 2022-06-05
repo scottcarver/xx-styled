@@ -57,11 +57,13 @@ add_action( 'admin_enqueue_scripts', 'theme_enqueue_scripts' ); // wp_enqueue_sc
 // inline script via wp_print_scripts
 function shapeSpace_print_scripts() { 
 	$style_array = get_style_array();
-    if($style_array){  ?>
+    $has_styles = sizeof($style_array) > 0;
+    // var_dump($style_array);
+    ?>
 	<script>
-		var global_named_styles = <?php echo json_encode(get_style_array()); ?>;
+		var global_named_styles = <?php echo json_encode($style_array); ?>;
 	</script>
-    <?php } ?>
+   ?>
 	
 	<?php
 	

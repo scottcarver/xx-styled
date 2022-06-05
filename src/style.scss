@@ -19,6 +19,17 @@
 	background-repeat: var(--backgroundRepeat);
 	padding: var(--spacingMobile);
 	background-size: var(--backgroundSizeSm);
+	// max-width:800px;
+	margin:0px auto;
+
+	/*
+	&.alignwide{
+		max-width:1200px;
+	}
+	&.alignfull{
+		max-width:100%;
+	}
+	*/
 	@media(min-width: 992px){ 
 		background-size: var(--backgroundSizeMd);
 		padding: var(--spacingTablet); 
@@ -41,11 +52,13 @@
 		font-family:var(--foregroundHeadlineFont);
 	}
 	
+	/*
 	p, h1, h2, h3, h4, h5, h6, blockquote, cite{
 		max-width:800px;
-		margin:1em auto;
+		// margin:1em auto;
 		display:block;
 	}
+	*/
 
 	// Dropcap
 	p{
@@ -101,15 +114,6 @@
 		}
 	}
 
-	max-width:800px;
-	margin:0px auto;
-
-	&.alignwide{
-		max-width:1200px;
-	}
-	&.alignfull{
-		max-width:100%;
-	}
 }
 
 .xx-styled, .xx-styled *{box-sizing: border-box;}

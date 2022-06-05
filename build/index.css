@@ -539,7 +539,6 @@
 .xx-styled--admin .editor-styles-wrapper blockquote,
 .xx-styled--admin .editor-styles-wrapper cite {
   max-width: 800px;
-  margin: 1em auto;
   display: block;
 }
 .xx-styled:not(html) p.has-drop-cap:not(:focus)::first-letter,
