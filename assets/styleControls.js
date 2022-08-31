@@ -436,10 +436,10 @@ export default class StyleControls extends Component {
 					</Fragment>
 				)}
 			
-				{styleMode=='custom' && (
+			{styleMode=='custom' && (
 					
 
-					<Fragment>
+			<Fragment>
 			
 			<StyledPreview {...{ setAttributes, ...this.props }} />
 
@@ -560,6 +560,8 @@ export default class StyleControls extends Component {
 						</div>
 					</PanelRow>
 				</PanelBody>
+
+				
 				<PanelBody title={__("Dimensions", "pxblocks")} initialOpen={false}>
 					{/*  icon="image-flip-horizontal" */}
 					<PanelRow>

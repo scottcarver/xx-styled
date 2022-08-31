@@ -4,7 +4,7 @@
 .xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
   position: relative;
-  max-width: none;
+  max-width: none !important;
   font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);

@@ -286,6 +286,9 @@
   margin-right: 8px;
   margin-bottom: 8px;
 }
+.px-colorbox .components-color-palette__custom-color {
+  height: auto;
+}
 .px-colorbox .components-color-picker__body {
   padding: 10px 6px 0 6px;
 }
@@ -482,7 +485,7 @@
 .xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
   position: relative;
-  max-width: none;
+  max-width: none !important;
   font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);

@@ -7,7 +7,9 @@
 	position:relative;
 	// padding: 5vw 0;
 	// font-size:1.25em;
-	max-width:none;
+	// max-width:none;
+	// Only needed in the admin
+	max-width: none !important;
 
 	// Foreground, Background, Padding
 	font-family:var(--foregroundCopyFont);

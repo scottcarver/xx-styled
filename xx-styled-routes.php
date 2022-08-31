@@ -16,7 +16,7 @@
   $theme_routes = new CustomRoutes();
 
 
-  //style/unique-name.css
+  //style/unique-name.css or style/unique-name.css
   // Create Route with two Regex capture groups
   $theme_routes->addRoute(
     //"^changes-since-([^/]*)/?.json",
