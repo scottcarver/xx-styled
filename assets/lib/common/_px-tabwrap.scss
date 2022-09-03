@@ -58,7 +58,7 @@
 	}
 
 	// Single Tab
-	&.px-tabwrap--singletab{
+	&.px-tabwrap--singletab, &.px-tabwrap--single{
 		.components-tab-panel__tabs {
 			button {
 				&:first-of-type{
@@ -67,6 +67,7 @@
 			}
 		}
 	}
+
 
 	// When --margintop
 	&.px-tabwrap--margintop{

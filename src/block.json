@@ -5,7 +5,7 @@
 	"version": "0.1.0",
 	"title": "Styled Area",
 	"category": "common",
-	"icon": "fullscreen-exit-alt",
+	"icon": "art",
 	"description": "A complete portable thematic set of FG/BG styles",
 	"supports": {
 		"html": false,
@@ -250,31 +250,25 @@
 			"type": "object",
 			"default": {
 				"top" : "20px",
-				"right" : "20px",
-				"bottom" : "20px",
-				"left" : "20px"
+				"bottom" : "20px"
 			}
 		},
 		"spacingTablet": {
 			"type": "object",
 			"default": {
 				"top" : "30px",
-				"right" : "30px",
-				"bottom" : "30px",
-				"left" : "30px"
+				"bottom" : "30px"
 			}
 		},
 		"spacingDesktop": {
 			"type": "object",
 			"default": {
 				"top" : "5vw",
-				"right" : "5vw",
-				"bottom" : "5vw",
-				"left" : "5vw"
+				"bottom" : "5vw"
 			}
 		}
 	},
-	"textdomain": "xx-deluxestyled",
+	"textdomain": "xx-styled",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css"

@@ -39,7 +39,7 @@ const calculatedInlineVars = attributes => {
 	const spacingDesktopStack = calculatedPadding(attributes.spacingDesktop);
 	const replaceAll = function (string, search, replace){ return string.split(search).join(replace); } 
 	
-	console.log("CURIOUS", bgSize);
+	// console.log("CURIOUS", bgSize);
 
 	var combinedCss = `
 		--backgroundImage: ${bgImageStack};

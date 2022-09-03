@@ -1,8 +1,8 @@
 <?php
 function my_custom_post_styles() {
   $labels = array(
-    'name'               => _x( 'Styles', 'post type general name' ),
-    'singular_name'      => _x( 'Style', 'post type singular name' ),
+    'name'               => _x( 'Styled Areas', 'post type general name' ),
+    'singular_name'      => _x( 'Style Area', 'post type singular name' ),
     'add_new'            => _x( 'Add New', 'book' ),
     'add_new_item'       => __( 'Add New Style' ),
     'edit_item'          => __( 'Edit Style' ),
@@ -13,12 +13,15 @@ function my_custom_post_styles() {
     'not_found'          => __( 'No Styles found' ),
     'not_found_in_trash' => __( 'No Styles found in the Trash' ), 
    // 'parent_item_colon'  => ’,
-    'menu_name'          => 'Styles'
+    'menu_name'          => 'Styled Areas',
+    
+    
   );
   $args = array(
     'labels'        => $labels,
     'description'   => 'Holds our Styles and Style specific data',
     'public'        => true,
+    'menu_icon' => 'dashicons-art',
     'menu_position' => 5,
     'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'editor', 'custom-fields'),
     'has_archive'   => true,

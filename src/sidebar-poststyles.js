@@ -63,7 +63,7 @@ function PoststylePlugin(props) {
 	
 			return createElement( ComboboxControl,
 				{
-					label:"Post Style",
+					label:"Choose a Styled Area",
 					placeholder: 'Default',
 					value:postStyleType,
 					allowReset:true,
@@ -126,122 +126,122 @@ function PoststylePlugin(props) {
 				Post Styles
 			</PluginSidebarMoreMenuItem>
 			<PluginSidebar name="post-style-sidebar-plugin" icon="admin-customizer" title="Post Styles">
+				{/*
 				<div className="px-simplerow px-simplerow--first">
 					<ToggleControl label="Override Default Styles?" checked={myPostMetaKey} onChange={updateMyPostMetaKey} />
 				</div>
-				{/* {myPostMetaKey ? ( */}
+				 {myPostMetaKey ? ( */}
 					<Fragment>
 
-									<div style={{padding :'20px'}}>
-										<div className="px-simplerow px-simplerow--hascomboboxcontrol">
-						
+					<div style={{padding :'20px'}}>
+						<div className="px-simplerow px-simplerow--hascomboboxcontrol">
 							<PostsDropdownControl /> 
+						</div>
+						{/* 		
+						<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
+							<h2>Headline Font</h2>
+						</div>
+						<div className="px-buttongroup px-buttongroup--small">
+							<ButtonGroup aria-label={__("Headline Font")}>
+								<Button
+									isDefault
+									isPrimary={postStyleHeadline === "serif"}
+									onClick={() => {
+										updateMyPostMetaHeadline("serif");
+									}}
+								>
+									Serif
+								</Button>
+								<Button
+									isDefault
+									isPrimary={postStyleHeadline === "sans-serif"}
+									onClick={() => {
+										updateMyPostMetaHeadline("sans-serif");
+									}}
+								>
+									Sans-Serif
+								</Button>
+								<Button
+									isDefault
+									isPrimary={postStyleHeadline === "monospace"}
+									onClick={() => {
+										updateMyPostMetaHeadline("monospace");
+									}}
+								>
+									Monospace
+								</Button>
+							</ButtonGroup>
+						</div>
+						<div className="px-simplerow px-simplerow--flatbottom">
+							<h2>Copy Font</h2>
+						</div>
+						<div className="px-buttongroup px-buttongroup--small">
+							<ButtonGroup aria-label={__("Copy Font")}>
+								<Button
+									isDefault
+									isPrimary={postStyleCopy === "serif"}
+									onClick={() => {
+										updateMyPostMetaCopy("serif");
+									}}
+								>
+									Serif
+								</Button>
+								<Button
+									isDefault
+									isPrimary={postStyleCopy === "sans-serif"}
+									onClick={() => {
+										updateMyPostMetaCopy("sans-serif");
+									}}
+								>
+									Sans-Serif
+								</Button>
+								<Button
+									isDefault
+									isPrimary={postStyleCopy === "monospace"}
+									onClick={() => {
+										updateMyPostMetaCopy("monospace");
+									}}
+								>
+									Monospace
+								</Button>
+							</ButtonGroup>
+						</div>
+						<div className="px-simplerow px-simplerow--flatbottom">
+							<h2>Caption Font</h2>
+						</div>
+						<div className="px-buttongroup px-buttongroup--small">
+							<ButtonGroup aria-label={__("Caption Font")}>
+								<Button
+									isDefault
+									isPrimary={postStyleCaptions === "serif"}
+									onClick={() => {
+										updateMyPostMetaCaptions("serif");
+									}}
+								>
+									Serif
+								</Button>
+								<Button
+									isDefault
+									isPrimary={postStyleCaptions === "sans-serif"}
+									onClick={() => {
+										updateMyPostMetaCaptions("sans-serif");
+									}}
+								>
+									Sans-Serif
+								</Button>
+								<Button
+									isDefault
+									isPrimary={postStyleCaptions === "monospace"}
+									onClick={() => {
+										updateMyPostMetaCaptions("monospace");
+									}}
+								>
+									Monospace
+								</Button>
+							</ButtonGroup>
+						</div> */}
 
-										</div>
-										<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
-											<h2>Headline Font</h2>
-										</div>
-										<div className="px-buttongroup px-buttongroup--small">
-											<ButtonGroup aria-label={__("Headline Font")}>
-												<Button
-													isDefault
-													isPrimary={postStyleHeadline === "serif"}
-													onClick={() => {
-														updateMyPostMetaHeadline("serif");
-													}}
-												>
-													Serif
-												</Button>
-												<Button
-													isDefault
-													isPrimary={postStyleHeadline === "sans-serif"}
-													onClick={() => {
-														updateMyPostMetaHeadline("sans-serif");
-													}}
-												>
-													Sans-Serif
-												</Button>
-												<Button
-													isDefault
-													isPrimary={postStyleHeadline === "monospace"}
-													onClick={() => {
-														updateMyPostMetaHeadline("monospace");
-													}}
-												>
-													Monospace
-												</Button>
-											</ButtonGroup>
-										</div>
-										<div className="px-simplerow px-simplerow--flatbottom">
-											<h2>Copy Font</h2>
-										</div>
-										<div className="px-buttongroup px-buttongroup--small">
-											<ButtonGroup aria-label={__("Copy Font")}>
-												<Button
-													isDefault
-													isPrimary={postStyleCopy === "serif"}
-													onClick={() => {
-														updateMyPostMetaCopy("serif");
-													}}
-												>
-													Serif
-												</Button>
-												<Button
-													isDefault
-													isPrimary={postStyleCopy === "sans-serif"}
-													onClick={() => {
-														updateMyPostMetaCopy("sans-serif");
-													}}
-												>
-													Sans-Serif
-												</Button>
-												<Button
-													isDefault
-													isPrimary={postStyleCopy === "monospace"}
-													onClick={() => {
-														updateMyPostMetaCopy("monospace");
-													}}
-												>
-													Monospace
-												</Button>
-											</ButtonGroup>
-										</div>
-										<div className="px-simplerow px-simplerow--flatbottom">
-											<h2>Caption Font</h2>
-										</div>
-										<div className="px-buttongroup px-buttongroup--small">
-											<ButtonGroup aria-label={__("Caption Font")}>
-												<Button
-													isDefault
-													isPrimary={postStyleCaptions === "serif"}
-													onClick={() => {
-														updateMyPostMetaCaptions("serif");
-													}}
-												>
-													Serif
-												</Button>
-												<Button
-													isDefault
-													isPrimary={postStyleCaptions === "sans-serif"}
-													onClick={() => {
-														updateMyPostMetaCaptions("sans-serif");
-													}}
-												>
-													Sans-Serif
-												</Button>
-												<Button
-													isDefault
-													isPrimary={postStyleCaptions === "monospace"}
-													onClick={() => {
-														updateMyPostMetaCaptions("monospace");
-													}}
-												>
-													Monospace
-												</Button>
-											</ButtonGroup>
-										</div>
-									</div>
-
+					</div>
 
 					</Fragment>
 			</PluginSidebar>
@@ -335,10 +335,11 @@ const applyWithDispatch = withDispatch(dispatch => {
 });
 
 
-
-registerPlugin("sidebar-poststyle-plugin", {
-	render: compose(
-		applyWithSelect,
-		applyWithDispatch
-	)(PoststylePlugin)
-});
+if(true){
+	registerPlugin("sidebar-poststyle-plugin", {
+		render: compose(
+			applyWithSelect,
+			applyWithDispatch
+		)(PoststylePlugin)
+	});
+}

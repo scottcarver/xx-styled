@@ -17,6 +17,9 @@
 	&.px-simplerow--margintop {
 		margin-top: 10px;
 	}
+	&.px-simplerow--marginbottom {
+		margin-bottom: 10px;
+	}
 	&.px-simplerow--padtop {
 		padding-top: 10px;
 	}
@@ -50,7 +53,9 @@
 			width: 100%;
 		}
 	}
-
+	&.px-simplerow--borderbottom{
+		border-bottom:solid 1px #ccc;
+	}
 	&.px-simplerow--hascomboboxcontrol{
 		> div{ width:100%; }
 	}
@@ -62,12 +67,47 @@
 			border:solid 1px grey;
 			text-align: center;
 			border-radius:3px 0 0 3px ;
+			background-image:url('../assets/img/ui/image-frame.svg');
+			background-size:100%;
+			background-position:center;
+			min-height:115px;
+			span{
+				background: #eee;
+				padding: 5px 0px;
+				
+			}
+
+			&:hover, &:focus{
+				span{
+					text-decoration: underline;
+					color:black;
+				}
+			}
 		}
 		.clear-button{
 			border:solid 1px grey;
 			text-align: center;
-			border-radius:0 3px 3px 0;
-			
+			border-radius:3px;
+			padding:10px 20px;
+			// background:red;
+			margin-bottom:20px;
+			width: 100%;
+			margin-top: -20px;
+			background-image:url('../assets/img/ui/image-frame.svg');
+			background-size:20px 20px;
+			background-repeat:no-repeat;
+			background-position:5px center;
+
+		}
+	}
+
+	// Padding Control
+	&.px-simplerow--paddingcontrol{
+		.component-box-control__input-controls-wrapper{
+			left:40px;
+			position:relative;
+			margin-top:-38px;
+			// outline:solid 10px red;
 		}
 	}
 	/*

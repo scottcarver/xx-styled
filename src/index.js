@@ -4,7 +4,7 @@ import './editor.scss';
 import './style.scss';
 import Edit from './edit';
 import save from './save';
-const { PluginDocumentSettingPanel } = wp.editPost;
+// const { PluginDocumentSettingPanel } = wp.editPost;
 import './sidebar-poststyles.js';
 
 registerBlockType('xx/styled', {

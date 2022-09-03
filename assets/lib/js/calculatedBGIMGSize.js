@@ -1,7 +1,7 @@
 // Returns a computed value for background-size
 const calculatedBGIMGSize = (attributes, key) => {
 
-	console.log("key is", key);
+	// console.log("key is", key);
 
 
 	const {
@@ -32,7 +32,7 @@ const calculatedBGIMGSize = (attributes, key) => {
 		bgLayers.push("cover");
 	}
 
-	console.log('backgroundImageSizeCustom', activeData);
+	// console.log('backgroundImageSizeCustom', activeData);
 
 	// Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
 	// Gradient Stacks First

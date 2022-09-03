@@ -12,17 +12,9 @@
   background-position: var(--backgroundPosition);
   background-attachment: var(--backgroundAttachment);
   background-repeat: var(--backgroundRepeat);
-  padding: var(--spacingMobile);
   background-size: var(--backgroundSizeSm);
   margin: 0px auto;
-  /*
-  &.alignwide{
-  	max-width:1200px;
-  }
-  &.alignfull{
-  	max-width:100%;
-  }
-  */
+  padding: 0.01px;
   /*
   p, h1, h2, h3, h4, h5, h6, blockquote, cite{
   	max-width:800px;
@@ -35,14 +27,12 @@
   .xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSizeMd);
-    padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
   .xx-styled:not(html),
 .xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSize);
-    padding: var(--spacingDesktop);
   }
 }
 .xx-styled:not(html) *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {

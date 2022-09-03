@@ -19,26 +19,19 @@
 	background-position: var(--backgroundPosition);
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
-	padding: var(--spacingMobile);
 	background-size: var(--backgroundSizeSm);
 	// max-width:800px;
 	margin:0px auto;
+	padding:.01px;
+	// padding: var(--spacingMobile);
 
-	/*
-	&.alignwide{
-		max-width:1200px;
-	}
-	&.alignfull{
-		max-width:100%;
-	}
-	*/
 	@media(min-width: 992px){ 
 		background-size: var(--backgroundSizeMd);
-		padding: var(--spacingTablet); 
+		// padding: var(--spacingTablet); 
 	}
 	@media(min-width:1200px){ 
 		background-size: var(--backgroundSize);
-		padding: var(--spacingDesktop); 
+		// padding: var(--spacingDesktop); 
 	}
 
 

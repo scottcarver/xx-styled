@@ -86,6 +86,8 @@ registerBlockType("px/section", {
 			`wp-block--caption-${foregroundCaptionFont}`
 		);
 
+		const enabledBlocks =  [ 'core/image', 'core/paragraph' ];
+
 		if (styleEnabled) {
 			return (
 				<Fragment>
@@ -94,7 +96,7 @@ registerBlockType("px/section", {
 							<StyleControls {...{ setAttributes, ...props }} />
 						</InspectorControls>
 						<OnPageStyle {...{ setAttributes, ...props }} />
-						<InnerBlocks />
+						<InnerBlocks allowedBlocks={ enabledBlocks } />
 					</div>
 				</Fragment>
 			);
@@ -105,7 +107,7 @@ registerBlockType("px/section", {
 						<InspectorControls>
 							<StyleControls {...{ setAttributes, ...props }} />
 						</InspectorControls>
-						<InnerBlocks />
+						<InnerBlocks allowedBlocks={ enabledBlocks } />
 					</Fragment>
 				</div>
 			);

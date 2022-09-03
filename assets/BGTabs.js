@@ -74,7 +74,8 @@ export default class BGTabs extends Component {
 		const rendermyComponent = true;
 		const themTabs = calculatedTabset(this.props);
 		const backgroundTabClasses = classnames("px-tabwrap px-tabwrap--margintop", { 
-			"px-tabwrap--centered": themTabs.length > 0
+			"px-tabwrap--centered": themTabs.length > 0,
+			"px-tabwrap--single": themTabs.length === 1,
 		});
 
 		const onImageSelect = imageObject => setAttributes({ backgroundImage: imageObject.sizes.full.url });
@@ -231,20 +232,24 @@ export default class BGTabs extends Component {
 						</Fragment>
 						)}
 						<div className="px-simplerow px-simplerow--mediaupload">
+						{!backgroundImage && (
 						<MediaUploadCheck>
 							<MediaUpload
 								allowedTypes={ [ 'image' ] }
 								onSelect={onImageSelect}
 								value={backgroundImage}
-								render={({ open }) => <Button onClick={open}>Select Image</Button>}
+								render={({ open }) => <Button onClick={open}>
+									<span>Select Image</span>
+								</Button>}
 							/>
 						</MediaUploadCheck>
+						)}
 						{backgroundImage && (
 						<button className="clear-button" onClick={event =>
 								setAttributes({
 									backgroundImage: null
 								})
-							}>Clear</button>
+							}>Remove Image</button>
 							)}
 						</div>
 

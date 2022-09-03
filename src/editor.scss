@@ -8,9 +8,10 @@
  // @import "../assets/lib/scss/styled-preview.scss";
  @import "style.scss";
 
+
+// When editing Styled Areas posttypes, hide the mode which allows disable/reuse
+// In this context only Original/Inline styles are relevant
 body.post-type-style #styledarea-toggle{
-	background:yellow;
-	outline:4px solid orange;
 	display:none;
 }
 /*
@@ -25,6 +26,6 @@ button{
 	display:editor;
 }*/
 
-.wp-block-create-block-xx-deluxestyled {
+.wp-block-create-block-xx-styled {
 	border: 1px dotted #f00;
 }

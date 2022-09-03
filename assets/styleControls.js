@@ -463,11 +463,11 @@ export default class StyleControls extends Component {
 									title: "Selection",
 									className: "tab-two"
 								},
-								{
-									name: "fgfont",
-									title: "Typography",
-									className: "tab-three"
-								}
+								// {
+								// 	name: "fgfont",
+								// 	title: "Typography",
+								// 	className: "tab-three"
+								// }
 							]}
 						>
 							{tab => getForegroundTab(tab.name)}
@@ -561,9 +561,9 @@ export default class StyleControls extends Component {
 					</PanelRow>
 				</PanelBody>
 
-				
+				{/*
 				<PanelBody title={__("Dimensions", "pxblocks")} initialOpen={false}>
-					{/*  icon="image-flip-horizontal" */}
+					  
 					<PanelRow>
 					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
 							<label htmlFor="heightenabled-form-toggle">{__("Height Enabled", "pxblocks")}</label>
@@ -579,38 +579,38 @@ export default class StyleControls extends Component {
 					
 
 					<div className="px-sidepanel px-sidepanel--grey">
-						<div className="px-simplerow px-simplerow--padtop">
+						<div className="px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol">
 							<BoxControl 
 								label="Mobile Spacing"
 								values={spacingMobile}
-								sides={ [ 'top', 'left', 'right', 'bottom' ] } 
-								defaultValues={ { top: '50px',left: '10%',right: '10%', bottom: '50px' }} 
+								sides={ [ 'top', 'bottom' ] } 
+								defaultValues={ { top: '50px',bottom: '50px' }} 
 								onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
 							/>
 						</div>
-						<div className="px-simplerow">
+						<div className="px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
 							<BoxControl 
-								label="Tablet Spacing"
+								label="Tablet Spacing (992+)"
 								values={spacingTablet}
-								sides={ [ 'top', 'left', 'right', 'bottom' ] } 
-								defaultValues={ { top: '50px',left: '10%',right: '10%', bottom: '50px' }} 
+								sides={ [ 'top', 'bottom' ] } 
+								defaultValues={ { top: '50px',bottom: '50px' }} 
 								onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
 							/>
 						</div>
-						<div className="px-simplerow">
+						<div className="px-simplerow  px-simplerow--paddingcontrol">
 							<BoxControl 
-								label="Desktop Spacing"
+								label="Desktop Spacing (1200+)"
 								values={spacingDesktop}
-								sides={ [ 'top', 'left', 'right', 'bottom' ] } 
-								defaultValues={ { top: '50px',left: '10%',right: '10%', bottom: '50px' }} 
+								sides={ [ 'top',  'bottom' ] } 
+								defaultValues={ { top: '50px', bottom: '50px' }} 
 								onChange={(newdata) => { setAttributes({ spacingDesktop: newdata }); }} 
 							/>
 						</div>
 					</div>
 					</PanelRow>
 				</PanelBody>
-			
 				
+				 */}
 	</Fragment>
 )}
 			</Fragment>

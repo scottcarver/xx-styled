@@ -9,7 +9,7 @@ import StyleControls from "../assets/styleControls";
 import OnPageStyle from "../assets/OnPageStyle";
 import AdminStyle from "../assets/AdminStyle";
 import InlineStyleVars from "../assets/InlineStyleVars";
-// Custom Funtions
+// Custom Functions
 import calculatedBgImage from "../assets/lib/js/calculatedBgImage";
 import calculatedBgColor from "../assets/lib/js/calculatedBgColor";
 import calculatedBGIMGSize from "../assets/lib/js/calculatedBGIMGSize";
@@ -77,54 +77,64 @@ export default function Edit(props) {
 
 	// alignfull
 	
-		// boop
-		const bgImageStack = calculatedBgImage(props.attributes);
-		const bgColorStack = calculatedBgColor(props.attributes);
-		// const bgSize = calculatedBGIMGSize(props.attributes);
-		const bgSizeSm = calculatedBGIMGSize(props.attributes, 'sm');
-		const bgSizeMd = calculatedBGIMGSize(props.attributes, 'md');
-		const bgSize = calculatedBGIMGSize(props.attributes, 'lg');
-		const bgPosition = calculatedBgPos(props.attributes);
-		const bgAttachment = calculatedBGIMGAtt(props.attributes);
-		const bgRepeat = calculatedBGIMGRepeat(props.attributes);
-		const spacingMobileStack = calculatedPadding(props.attributes.spacingMobile);
-		const spacingTabletStack = calculatedPadding(props.attributes.spacingTablet);
-		const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
-		
+	// boop
+	const bgImageStack = calculatedBgImage(props.attributes);
+	const bgColorStack = calculatedBgColor(props.attributes);
+	// const bgSize = calculatedBGIMGSize(props.attributes);
+	const bgSizeSm = calculatedBGIMGSize(props.attributes, 'sm');
+	const bgSizeMd = calculatedBGIMGSize(props.attributes, 'md');
+	const bgSize = calculatedBGIMGSize(props.attributes, 'lg');
+	const bgPosition = calculatedBgPos(props.attributes);
+	const bgAttachment = calculatedBGIMGAtt(props.attributes);
+	const bgRepeat = calculatedBGIMGRepeat(props.attributes);
+	const spacingMobileStack = calculatedPadding(props.attributes.spacingMobile);
+	const spacingTabletStack = calculatedPadding(props.attributes.spacingTablet);
+	const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
+	
 
+	// body[data-color='custom'] 
+	// body[data-color='custom'] 
+	const styleObj = { 
+		// Background
+		'--backgroundImage': bgImageStack,
+		'--backgroundColor': bgColorStack,
+		'--backgroundSizeSm': bgSizeSm,
+		'--backgroundSizeMd': bgSizeMd,
+		'--backgroundSize': bgSize,
+		'--backgroundPosition': bgPosition,
+		'--backgroundAttachment': bgAttachment,
+		'--backgroundRepeat': bgRepeat,
+		// Foreground
+		'--foregroundColor': foregroundColor, 
+		'--headlineColor': headlineColor,
+		'--linkColor': linkColor,
+		'--dropcapColor': dropcapColor,
+		'--blockquoteColor': blockquoteColor,
+		'--selectionFGColor': selectionFGColor,
+		'--selectionBGColor': selectionBGColor,
+		'--lineartColor':lineartColor,
+		// Typography
+		'--foregroundHeadlineFont': foregroundHeadlineFont,
+		'--foregroundCopyFont': foregroundCopyFont,
+		'--foregroundCaptionFont':foregroundCaptionFont,
+		// Spacing
+		'--spacingMobile': spacingMobileStack,
+		'--spacingTablet': spacingTabletStack,
+		'--spacingDesktop': spacingDesktopStack,
+	};
 
-		// body[data-color='custom'] 
-		// body[data-color='custom'] 
-        const styleObj = { 
-			// Background
-            '--backgroundImage': bgImageStack,
-			'--backgroundColor': bgColorStack,
-			'--backgroundSizeSm': bgSizeSm,
-			'--backgroundSizeMd': bgSizeMd,
-			'--backgroundSize': bgSize,
-			'--backgroundPosition': bgPosition,
-			'--backgroundAttachment': bgAttachment,
-			'--backgroundRepeat': bgRepeat,
-			// Foreground
-            '--foregroundColor': foregroundColor, 
-            '--headlineColor': headlineColor,
-            '--linkColor': linkColor,
-			'--dropcapColor': dropcapColor,
-			'--blockquoteColor': blockquoteColor,
-			'--selectionFGColor': selectionFGColor,
-			'--selectionBGColor': selectionBGColor,
-			'--lineartColor':lineartColor,
-			// Typography
-			'--foregroundHeadlineFont': foregroundHeadlineFont,
-			'--foregroundCopyFont': foregroundCopyFont,
-			'--foregroundCaptionFont':foregroundCaptionFont,
-			// Spacing
-			'--spacingMobile': spacingMobileStack,
-			'--spacingTablet': spacingTabletStack,
-			'--spacingDesktop': spacingDesktopStack,
-        };
+	// console.log("inlineVarCSS", inlineVarCSS);
 
-		console.log("inlineVarCSS", inlineVarCSS);
+	// Allow all Types except self-nesting
+	const allBlocks = wp.blocks.getBlockTypes();
+	const bannedBlocks =  ['xx/styled'];
+	let enabledBlocks = [];
+	for (let i = 0; i < allBlocks.length; i++) {
+		let currentBlock = allBlocks[i].name;
+		 if(!bannedBlocks.includes(currentBlock)){enabledBlocks.push(currentBlock); }
+	} 
+	
+	
 	const blockProps = useBlockProps( {
 		className: classes,
 		id: blockID,
@@ -132,6 +142,7 @@ export default function Edit(props) {
 		'data-theme': (styleMode == 'named') ? namedstyle : ''
 	});
 
+	
 	return (
 		<div {...blockProps}>
 		
@@ -144,7 +155,7 @@ export default function Edit(props) {
 			{/* Inline CSS {styleEnabled && ( <OnPageStyle {...{ setAttributes, ...props }} /> )} */}
 				
 			{/* Inner Blocks */}
-			<InnerBlocks />
+			<InnerBlocks allowedBlocks={ enabledBlocks } />
 		</div>
 	);
 }

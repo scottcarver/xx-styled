@@ -1,6 +1,6 @@
 <?php  header("Content-type: text/css"); 
 $stylename = get_query_var('namedstyle');
-$iscompiled = $stylename  == 'compiled';
+$iscompiled = $stylename === 'compiled';
 $the_slug = $stylename;
 $args = array(
   'name'        =>  $iscompiled  ? null : $the_slug,

@@ -28,8 +28,12 @@
 		padding: 10px;
 		background: rgba(0,0,0,.05);
 		margin-bottom: 15px;
+		margin-left:-10px;
+		margin-right:-10px;
+		
 		.components-color-palette__custom-color{display:none;}
 		// .components-circular-option-picker{margin-left:20px;}
+		.components-circular-option-picker__option-wrapper{width:26px;height:26px;}
 		.components-circular-option-picker__swatches{margin-top: 40px;}
 		.components-circular-option-picker__custom-clear-wrapper{
 			position: absolute;
@@ -107,12 +111,13 @@
 		// padding-bottom: 10px;
 	}
 	.components-circular-option-picker{
-		margin-top:5px;
+		margin-top:15px;
 		padding-bottom:10px;
 	}
 
 	.components-circular-option-picker__custom-clear-wrapper{
-		margin-top:5px;
+		// margin-top:5px;
+		margin-top: 10px;
 	}
 	// Give more spacing to inputs
 	.components-color-picker__inputs-wrapper {
