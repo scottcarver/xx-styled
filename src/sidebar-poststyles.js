@@ -55,7 +55,9 @@ function PoststylePlugin(props) {
 			if( props.posts ) {
 				options.push( { value: '', label: 'Default' } );
 				props.posts.forEach((post) => { // simple foreach loop
-					options.push({value:post.generated_slug, label:post.title.rendered});
+					// console.log(post);
+					const dynamicLabel = (post.title.rendered !== '') ? post.title.rendered : 'Style ID ' + post.id;
+					options.push({value:post.generated_slug, label:dynamicLabel});
 				});
 			} else {
 				options.push( { value: postStyleType, label: 'Loading...' } )
@@ -70,11 +72,13 @@ function PoststylePlugin(props) {
 					options:options,
 					onChange: function( content ) {
 						updateMyPostMetaType(content);
+						// alert('onchange');
 					},
 					onInputChange: function( inputValue ) {
 						setFilteredOptions(options.filter(option =>
 							option.label.toLowerCase().startsWith(inputValue.toLowerCase())
 						))
+						// alert('oninput');
 					},
 				
 				}
@@ -97,6 +101,7 @@ function PoststylePlugin(props) {
 		
 
 
+
 	domReady(function() {
 		if(postStyleType){
 			/*
@@ -106,18 +111,22 @@ function PoststylePlugin(props) {
 		
 			// Moved off of
 			// alert('someone like u ' + postStyleType);
-			jQuery("body").addClass('xx-styled--admin').attr('data-theme',postStyleType);
+			var stylestring = '--foregroundHeadlineFont: '+postStyleHeadline+'; --foregroundCopyFont: '+postStyleCopy+'; --foregroundCaptionFont: '+postStyleCaptions+';'
+			jQuery("body").addClass('xx-styled--admin').attr('data-theme',postStyleType).attr('style',stylestring);
 		}
 
 		var fontClass = "wp-headlinefont--" + postStyleHeadline;
 		var editorClass = ".edit-post-visual-editor";
 		if (myPostMetaKey) {
+			// alert('someone like u ' + postStyleType);
 			jQuery("body").addClass("wp-admin--gutenbergdebug");
 			jQuery(editorClass).attr("data-headline", postStyleHeadline);
 			jQuery(editorClass).attr("data-copy", postStyleCopy);
 			jQuery(editorClass).attr("data-captions", postStyleCaptions);
 		} else {
+			// alert('nobody like u ' + postStyleType);
 			jQuery("body").removeClass("wp-admin--gutenbergdebug");
+			if(postStyleType === null){ jQuery("body").attr('data-theme','');}
 		}
 	});
 	return (
@@ -137,7 +146,12 @@ function PoststylePlugin(props) {
 						<div className="px-simplerow px-simplerow--hascomboboxcontrol">
 							<PostsDropdownControl /> 
 						</div>
-						{/* 		
+
+						
+						<div className="px-simplerow">
+						 Beeeep
+						</div>
+				
 						<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
 							<h2>Headline Font</h2>
 						</div>
@@ -239,7 +253,7 @@ function PoststylePlugin(props) {
 									Monospace
 								</Button>
 							</ButtonGroup>
-						</div> */}
+						</div>
 
 					</div>
 
@@ -281,8 +295,9 @@ const applyWithDispatch = withDispatch(dispatch => {
 		},
 		// new
 		updateMyPostMetaType(value) {
-			// alert("boop " + value);
 
+			//  if(value === null){ jQuery("body").attr('data-theme','');}
+			//  alert("boop " + value);
 			// Set Type
 			editPost({ meta: { poststylemeta_type: value } });
 
@@ -316,6 +331,7 @@ const applyWithDispatch = withDispatch(dispatch => {
 					// code block
 					break;
 				default:
+
 				// code block
 			}
 

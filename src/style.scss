@@ -1,15 +1,24 @@
+@import "../assets/lib/common/_px-variables.scss"; 
+
 // Frontend Style
 // body.wp-admin .xx-styled{ max-width:100% !important; }
 
 // Styled Area
-.xx-styled:not(html), 
+
+// Frontend Fix
+html.xx-styled{
+	max-width: none;
+}
+
+// Shared Frontend/Admin
+.xx-styled, 
 .xx-styled--admin .editor-styles-wrapper{
 	position:relative;
 	// padding: 5vw 0;
 	// font-size:1.25em;
 	// max-width:none;
 	// Only needed in the admin
-	max-width: none !important;
+	// max-width: none !important;
 
 	// Foreground, Background, Padding
 	font-family:var(--foregroundCopyFont);
@@ -20,20 +29,31 @@
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
 	background-size: var(--backgroundSizeSm);
-	// max-width:800px;
+	max-width:var(--contentWidth);
 	margin:0px auto;
+	// margin:0;
 	padding:.01px;
-	// padding: var(--spacingMobile);
+	padding: var(--spacingMobile);
 
 	@media(min-width: 992px){ 
 		background-size: var(--backgroundSizeMd);
-		// padding: var(--spacingTablet); 
+		padding: var(--spacingTablet); 
 	}
 	@media(min-width:1200px){ 
 		background-size: var(--backgroundSize);
-		// padding: var(--spacingDesktop); 
+		padding: var(--spacingDesktop); 
 	}
 
+	&.alignfull{
+		// max-width:var(--wideWidth);
+		max-width:none;
+		// margin:0px
+	}
+
+	&.alignwide{
+		max-width:var(--wideWidth);
+		// margin:0px
+	}
 
 	// Selection
 	*::selection {
@@ -111,7 +131,18 @@
 
 }
 
+// The Gutenberg editor needs this reset
+.xx-styled--admin .editor-styles-wrapper{
+	width: 100%;
+    max-width: none;
+}
+
+
+
+
 .xx-styled, .xx-styled *{box-sizing: border-box;}
+
+
 
 .wp-block--heightenabled {
 	min-height: 100vh;
@@ -123,196 +154,3 @@
 	.wp-block-image{margin:0px auto;}
 }
 
-
-// outer Element should have no padding
-/*
-html.xx-styled,
-.xx-styled--admin .editor-styles-wrapper{
-	@media(min-width:768px){
-		padding:0 !important;
-	
-	}
-}
-*/
-
-// Using Any Generic Theme
-/*
-html {
-	[data-theme], [data-theme="none"]{
-		background-color: var(--backgroundColor0);
-		color: var(--foregroundColor);
-
-		h1, h2, h3, h4, h5, h6{
-			color: var(--headlineColor);
-		}
-
-		a{
-			color: var(--linkColor);
-		}
-
-		table th{
-			color: var(--headlineColor);
-		}
-
-		--blueDark: #25476d;
-		--purpleDark: #353a71;
-		--greenDark: #0e4f5b;
-		--redDark: #b72c31;
-		--orangeDark: #e36942;
-		--yellowDark: #d48207;
-		--white:oldlace;
-	}
-}
-*/
-/*
-// Standard
-[data-theme="blue"]{
-	--backgroundColor0: var(--blueDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="purple"]{
-	--backgroundColor0: var(--purpleDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="green"]{
-	--backgroundColor0: var(--greenDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="red"]{
-	--backgroundColor0: var(--redDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="orange"]{
-	--backgroundColor0: var(--orangeDark);
-	--foregroundColor: black;
-}
-[data-theme="yellow"]{
-	--backgroundColor0: var(--yellowDark);
-	--foregroundColor: black;
-}
-// Medium
-[data-theme="blue-medium"]{
-	--backgroundColor0: #a8bed2;
-	--foregroundColor: black;
-}
-[data-theme="purple-medium"]{
-	--backgroundColor0: #abacca;
-	--foregroundColor: black;
-}
-[data-theme="green-medium"]{
-	--backgroundColor0: #9bb8aa;
-	--foregroundColor: black;
-}
-[data-theme="red-medium"]{
-	--backgroundColor0: #eeb8b0;
-	--foregroundColor: black;
-}
-[data-theme="orange-medium"]{
-	--backgroundColor0: #e9aa95;
-	--foregroundColor: black;
-}
-[data-theme="yellow-medium"]{
-	--backgroundColor0: #eaca96;
-	--foregroundColor: black;
-}
-
-// Light
-[data-theme="blue-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--blueDark);
-}
-[data-theme="purple-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--purpleDark);
-}
-[data-theme="green-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--greenDark);
-}
-[data-theme="red-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-[data-theme="orange-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--orangeDark);
-}
-[data-theme="yellow-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--yellowDark);
-}
-
-
-// Custom
-[data-theme="style-black"]{
-	--backgroundColor0: #0f0f0f;
-	--foregroundColor: #9cacb4;
-	--headlineColor: #FFFFFF;
-	--linkColor: #007afc;
-}
-[data-theme="style-white"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--greenDark);
-}
-[data-theme="style-grey"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--purpleDark);
-}
-[data-theme="style-newsprint"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--blueDark);
-}
-[data-theme="style-oregonststate"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-[data-theme="style-oregonststate-dark"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-[data-theme="style-oregonststate-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-
-*/
-
-
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
-//  @import "editor.scss";
-/*
-*/
-@import "../assets/lib/common/_px-variables.scss"; 
-
-/*
-.wp-block--section{
-	max-width: none !important;
-	padding:20px;
-
-	background: var(--backgroundImage);
-
-	
-	@media($sm-up){
-		padding:5vw;
-	}
-
-	> * {
-		max-width:800px;
-		margin:0px auto;
-	}
-}
-*/

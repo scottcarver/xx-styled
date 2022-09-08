@@ -11,9 +11,15 @@
 
 // When editing Styled Areas posttypes, hide the mode which allows disable/reuse
 // In this context only Original/Inline styles are relevant
-body.post-type-style #styledarea-toggle{
-	display:none;
-}
+body.post-type-style{
+	#styledarea-toggle{
+		display:none;
+	}
+	.panel-dimensions, .panel-typography{
+		// display:none;
+	}
+
+} 
 /*
 // Editor Style
 .xx-styled{
@@ -28,4 +34,11 @@ button{
 
 .wp-block-create-block-xx-styled {
 	border: 1px dotted #f00;
+}
+
+.edit-post-visual-editor__post-title-wrapper{
+	background:white;
+	padding:20px;
+	margin:0;
+	h1.wp-block-post-title{color:black !important;}
 }

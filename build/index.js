@@ -43,18 +43,24 @@ class AdminStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compone
 			#block-${clientId} .paddingpreview{;
 				top: ${spacingMobile.top};
 				bottom: ${spacingMobile.bottom};
+				left: ${spacingMobile.left};
+				right: ${spacingMobile.right};
 			}
 
 			@media(min-width: 992px){
 				#block-${clientId} .paddingpreview{;
 					top: ${spacingTablet.top};
 					bottom: ${spacingTablet.bottom};
+					left: ${spacingTablet.left};
+					right: ${spacingTablet.right};
 				}
 			}
 			@media(min-width:1200px){
 				#block-${clientId} .paddingpreview{;
 					top: ${spacingDesktop.top};
 					bottom: ${spacingDesktop.bottom};
+					left: ${spacingDesktop.left};
+					right: ${spacingDesktop.right};
 				}
 		
 			}	
@@ -67,9 +73,7 @@ class AdminStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compone
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "paddingpreview",
       style: {
-        position: 'absolute',
-        left: 0,
-        right: 0
+        position: 'absolute'
       }
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       style: {
@@ -1956,6 +1960,7 @@ const calculatedInlineVars = attributes => {
     dropcapColor,
     blockquoteColor,
     lineartColor,
+    styleMode,
     selectionFGColor,
     selectionBGColor,
     foregroundHeadlineFont,
@@ -1980,7 +1985,8 @@ const calculatedInlineVars = attributes => {
   }; // console.log("CURIOUS", bgSize);
 
 
-  var combinedCss = `
+  var combinedCss = '';
+  var fgbgCss = `
 		--backgroundImage: ${bgImageStack};
 		--backgroundColor: ${bgColorStack};
 		--backgroundSizeSm: ${bgSizeSm};
@@ -1997,13 +2003,26 @@ const calculatedInlineVars = attributes => {
 		--lineartColor: ${lineartColor};
 		--selectionFGColor: ${selectionFGColor};
 		--selectionBGColor: ${selectionBGColor};
+	`;
+  var fontCss = `
 		--foregroundHeadlineFont: ${foregroundHeadlineFont};
 		--foregroundCopyFont: ${foregroundCopyFont};
 		--foregroundCaptionFont: ${foregroundCaptionFont};
+	`;
+  var sizingCss = `
 		--spacingMobile: ${spacingMobileStack};
 		--spacingTablet: ${spacingTabletStack};
 		--spacingDesktop: ${spacingDesktopStack};
-	`; // Remove Newlines, Tabs are spaces
+	`;
+
+  if (styleMode == 'custom') {
+    combinedCss += fgbgCss + fontCss + sizingCss;
+  }
+
+  if (styleMode == 'named') {
+    combinedCss += fontCss + sizingCss;
+  } // Remove Newlines, Tabs are spaces
+
 
   var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
 
@@ -2032,8 +2051,7 @@ __webpack_require__.r(__webpack_exports__);
 // Returns a computed value for gradient
 const calculatedPadding = spacingObject => {
   // Return a Linear Gradient
-  // return `${spacingObject.top} ${spacingObject.right} ${spacingObject.bottom} ${spacingObject.left}`;
-  return `${spacingObject.top} 0 ${spacingObject.bottom} 0`;
+  return `${spacingObject.top} ${spacingObject.right} ${spacingObject.bottom} ${spacingObject.left}`; // return `${spacingObject.top} 0 ${spacingObject.bottom} 0`;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculatedPadding);
@@ -2232,6 +2250,44 @@ const options = [{
 }, {
   value: 'huge',
   label: 'Huge'
+}];
+const fontOptions = [{
+  "label": "Inherit",
+  "value": "inherit"
+}, {
+  "label": "Serif",
+  "value": "serif"
+}, {
+  "label": "Sans-Serif",
+  "value": "sans-serif"
+}, {
+  "label": "Monospace",
+  "value": "monospace"
+}, {
+  "label": "Handwritten",
+  "value": "handwritten"
+}, {
+  "label": "Modern",
+  "value": "modern"
+}];
+const stylePresets = [{
+  "label": "None",
+  "value": "none"
+}, {
+  "label": "News",
+  "value": "news"
+}, {
+  "label": "Magazine",
+  "value": "magazine"
+}, {
+  "label": "Technical",
+  "value": "technical"
+}, {
+  "label": "Modern",
+  "value": "modern"
+}, {
+  "label": "Natural",
+  "value": "natural"
 }];
 const {
   withState
@@ -2706,17 +2762,11 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         namedstyle: newval
       }),
       onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
-      href: "post-new.php?post_type=style",
-      style: {
-        padding: "5px"
-      }
-    }, "+ Create New Style"))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    }))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
     }, this.props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
       title: __("Foreground", "pxblocks"),
+      className: "panel-foreground",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-sidepanel"
@@ -2740,6 +2790,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       ]
     }, tab => getForegroundTab(tab.name))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
       title: __("Background", "pxblocks"),
+      className: "panel-background",
       initialOpen: false
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-sidepanel"
@@ -2808,7 +2859,205 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       onChange: toggleBgStack(backgroundStackFirst)
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_BGTabs__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
-    }, this.props)))))));
+    }, this.props)))))), (styleMode == 'named' || styleMode == 'custom') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+      title: __("Dimensions", "pxblocks"),
+      className: "panel-dimensions",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-sidepanel px-sidepanel--grey"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalBoxControl, {
+      label: "Mobile Spacing",
+      values: spacingMobile,
+      sides: ['top', 'bottom', 'left', 'right'],
+      resetValues: {
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0'
+      },
+      defaultValues: {
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0'
+      },
+      onChange: newdata => {
+        setAttributes({
+          spacingMobile: newdata
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalBoxControl, {
+      label: "Tablet Spacing (992+)",
+      values: spacingTablet,
+      sides: ['top', 'bottom', 'left', 'right'],
+      resetValues: {
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0'
+      },
+      defaultValues: {
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0'
+      },
+      onChange: newdata => {
+        setAttributes({
+          spacingTablet: newdata
+        });
+      }
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow  px-simplerow--paddingcontrol"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalBoxControl, {
+      label: "Desktop Spacing (1200+)",
+      values: spacingDesktop,
+      sides: ['top', 'bottom', 'left', 'right'],
+      resetValues: {
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0'
+      },
+      defaultValues: {
+        top: '0',
+        bottom: '0',
+        left: '0',
+        right: '0'
+      },
+      onChange: newdata => {
+        setAttributes({
+          spacingDesktop: newdata
+        });
+      }
+    }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+      title: __("Typography", "pxblocks"),
+      className: "panel-typography",
+      initialOpen: false
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-sidepanel"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ComboboxControl, {
+      label: "Headline Font Family",
+      placeholder: "Initial",
+      value: foregroundHeadlineFont,
+      allowReset: true,
+      options: fontOptions,
+      onChange: newval => setAttributes({
+        foregroundHeadlineFont: newval
+      }),
+      onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ComboboxControl, {
+      label: "Copy Font Family",
+      placeholder: "Initial",
+      value: foregroundCopyFont,
+      allowReset: true,
+      options: fontOptions,
+      onChange: newval => setAttributes({
+        foregroundCopyFont: newval
+      }),
+      onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ComboboxControl, {
+      label: "Caption Font Family",
+      placeholder: "Initial",
+      value: foregroundCaptionFont,
+      allowReset: true,
+      options: fontOptions,
+      onChange: newval => setAttributes({
+        foregroundCaptionFont: newval
+      }),
+      onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ComboboxControl, {
+      label: "Typographic Themes",
+      placeholder: "Select a Preset",
+      allowReset: true,
+      options: stylePresets,
+      onChange: function (newval) {
+        if (newval === 'none') {
+          setAttributes({
+            foregroundHeadlineFont: "inherit"
+          });
+          setAttributes({
+            foregroundCopyFont: "inherit"
+          });
+          setAttributes({
+            foregroundCaptionFont: "inherit"
+          });
+        }
+
+        if (newval === 'news') {
+          setAttributes({
+            foregroundHeadlineFont: "serif"
+          });
+          setAttributes({
+            foregroundCopyFont: "sans-serif"
+          });
+          setAttributes({
+            foregroundCaptionFont: "sans-serif"
+          });
+        }
+
+        if (newval === 'magazine') {
+          setAttributes({
+            foregroundHeadlineFont: "sans-serif"
+          });
+          setAttributes({
+            foregroundCopyFont: "serif"
+          });
+          setAttributes({
+            foregroundCaptionFont: "sans-serif"
+          });
+        }
+
+        if (newval === 'technical') {
+          setAttributes({
+            foregroundHeadlineFont: "monospace"
+          });
+          setAttributes({
+            foregroundCopyFont: "monospace"
+          });
+          setAttributes({
+            foregroundCaptionFont: "sans-serif"
+          });
+        }
+
+        if (newval === 'modern') {
+          setAttributes({
+            foregroundHeadlineFont: "modern"
+          });
+          setAttributes({
+            foregroundCopyFont: "sans-serif"
+          });
+          setAttributes({
+            foregroundCaptionFont: "modern"
+          });
+        }
+
+        if (newval === 'natural') {
+          setAttributes({
+            foregroundHeadlineFont: "modern"
+          });
+          setAttributes({
+            foregroundCopyFont: "sans-serif"
+          });
+          setAttributes({
+            foregroundCaptionFont: "modern"
+          });
+        }
+      },
+      onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
+    })))))));
   }
 
 }
@@ -2911,6 +3160,7 @@ function Edit(props) {
     });
   }
 
+  console.log("styleMode", styleMode);
   const classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "xx-styled", // `wp-block-xx-styled--${blockID}`,
   {
     "wp-block--heightenabled": heightEnabled
@@ -2931,10 +3181,10 @@ function Edit(props) {
   const bgRepeat = (0,_assets_lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_15__["default"])(props.attributes);
   const spacingMobileStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingMobile);
   const spacingTabletStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingTablet);
-  const spacingDesktopStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingDesktop); // body[data-color='custom'] 
-  // body[data-color='custom'] 
+  const spacingDesktopStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingDesktop); // Default Obj
 
-  const styleObj = {
+  let styleObj = {};
+  const fgbgObj = {
     // Background
     '--backgroundImage': bgImageStack,
     '--backgroundColor': bgColorStack,
@@ -2952,16 +3202,38 @@ function Edit(props) {
     '--blockquoteColor': blockquoteColor,
     '--selectionFGColor': selectionFGColor,
     '--selectionBGColor': selectionBGColor,
-    '--lineartColor': lineartColor,
+    '--lineartColor': lineartColor
+  };
+  const typographyObj = {
     // Typography
     '--foregroundHeadlineFont': foregroundHeadlineFont,
     '--foregroundCopyFont': foregroundCopyFont,
-    '--foregroundCaptionFont': foregroundCaptionFont,
+    '--foregroundCaptionFont': foregroundCaptionFont
+  };
+  const sizingObj = {
     // Spacing
     '--spacingMobile': spacingMobileStack,
     '--spacingTablet': spacingTabletStack,
     '--spacingDesktop': spacingDesktopStack
-  }; // console.log("inlineVarCSS", inlineVarCSS);
+  };
+
+  if (styleMode === 'named') {
+    styleObj = { ...typographyObj,
+      ...sizingObj
+    };
+  }
+
+  if (styleMode === 'custom') {
+    styleObj = { ...fgbgObj,
+      ...typographyObj,
+      ...sizingObj
+    };
+  }
+
+  console.log('what is styleObj? ', styleObj); // if(styleMode === 'named')}{
+  // 	let styleObj = {}
+  // }
+  // console.log("inlineVarCSS", inlineVarCSS);
   // Allow all Types except self-nesting
 
   const allBlocks = wp.blocks.getBlockTypes();
@@ -2979,7 +3251,7 @@ function Edit(props) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classes,
     id: blockID,
-    style: styleMode == 'custom' ? styleObj : undefined,
+    style: styleMode == 'custom' || styleMode == 'named' ? styleObj : undefined,
     'data-theme': styleMode == 'named' ? namedstyle : ''
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_AdminStyle__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
@@ -3109,7 +3381,7 @@ function save(props) {
 
   const blockPropsSavedOb = {
     className: classes,
-    style: styleMode == 'custom' ? inlineVarCSS : {},
+    style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
     'data-theme': styleMode == 'named' ? namedstyle : ''
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(blockPropsSavedOb), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, null));
@@ -3204,9 +3476,11 @@ function PoststylePlugin(props) {
       });
       props.posts.forEach(post => {
         // simple foreach loop
+        // console.log(post);
+        const dynamicLabel = post.title.rendered !== '' ? post.title.rendered : 'Style ID ' + post.id;
         options.push({
           value: post.generated_slug,
-          label: post.title.rendered
+          label: dynamicLabel
         });
       });
     } else {
@@ -3223,10 +3497,10 @@ function PoststylePlugin(props) {
       allowReset: true,
       options: options,
       onChange: function (content) {
-        updateMyPostMetaType(content);
+        updateMyPostMetaType(content); // alert('onchange');
       },
       onInputChange: function (inputValue) {
-        setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase())));
+        setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase()))); // alert('oninput');
       }
     });
   });
@@ -3246,19 +3520,26 @@ function PoststylePlugin(props) {
       }); */
       // Moved off of
       // alert('someone like u ' + postStyleType);
-      jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType);
+      var stylestring = '--foregroundHeadlineFont: ' + postStyleHeadline + '; --foregroundCopyFont: ' + postStyleCopy + '; --foregroundCaptionFont: ' + postStyleCaptions + ';';
+      jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType).attr('style', stylestring);
     }
 
     var fontClass = "wp-headlinefont--" + postStyleHeadline;
     var editorClass = ".edit-post-visual-editor";
 
     if (myPostMetaKey) {
+      // alert('someone like u ' + postStyleType);
       jQuery("body").addClass("wp-admin--gutenbergdebug");
       jQuery(editorClass).attr("data-headline", postStyleHeadline);
       jQuery(editorClass).attr("data-copy", postStyleCopy);
       jQuery(editorClass).attr("data-captions", postStyleCaptions);
     } else {
+      // alert('nobody like u ' + postStyleType);
       jQuery("body").removeClass("wp-admin--gutenbergdebug");
+
+      if (postStyleType === null) {
+        jQuery("body").attr('data-theme', '');
+      }
     }
   });
   return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
@@ -3274,7 +3555,81 @@ function PoststylePlugin(props) {
     }
   }, createElement("div", {
     className: "px-simplerow px-simplerow--hascomboboxcontrol"
-  }, createElement(PostsDropdownControl, null))))));
+  }, createElement(PostsDropdownControl, null)), createElement("div", {
+    className: "px-simplerow"
+  }, "Beeeep"), createElement("div", {
+    className: "px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline"
+  }, createElement("h2", null, "Headline Font")), createElement("div", {
+    className: "px-buttongroup px-buttongroup--small"
+  }, createElement(ButtonGroup, {
+    "aria-label": __("Headline Font")
+  }, createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleHeadline === "serif",
+    onClick: () => {
+      updateMyPostMetaHeadline("serif");
+    }
+  }, "Serif"), createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleHeadline === "sans-serif",
+    onClick: () => {
+      updateMyPostMetaHeadline("sans-serif");
+    }
+  }, "Sans-Serif"), createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleHeadline === "monospace",
+    onClick: () => {
+      updateMyPostMetaHeadline("monospace");
+    }
+  }, "Monospace"))), createElement("div", {
+    className: "px-simplerow px-simplerow--flatbottom"
+  }, createElement("h2", null, "Copy Font")), createElement("div", {
+    className: "px-buttongroup px-buttongroup--small"
+  }, createElement(ButtonGroup, {
+    "aria-label": __("Copy Font")
+  }, createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleCopy === "serif",
+    onClick: () => {
+      updateMyPostMetaCopy("serif");
+    }
+  }, "Serif"), createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleCopy === "sans-serif",
+    onClick: () => {
+      updateMyPostMetaCopy("sans-serif");
+    }
+  }, "Sans-Serif"), createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleCopy === "monospace",
+    onClick: () => {
+      updateMyPostMetaCopy("monospace");
+    }
+  }, "Monospace"))), createElement("div", {
+    className: "px-simplerow px-simplerow--flatbottom"
+  }, createElement("h2", null, "Caption Font")), createElement("div", {
+    className: "px-buttongroup px-buttongroup--small"
+  }, createElement(ButtonGroup, {
+    "aria-label": __("Caption Font")
+  }, createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleCaptions === "serif",
+    onClick: () => {
+      updateMyPostMetaCaptions("serif");
+    }
+  }, "Serif"), createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleCaptions === "sans-serif",
+    onClick: () => {
+      updateMyPostMetaCaptions("sans-serif");
+    }
+  }, "Sans-Serif"), createElement(Button, {
+    isDefault: true,
+    isPrimary: postStyleCaptions === "monospace",
+    onClick: () => {
+      updateMyPostMetaCaptions("monospace");
+    }
+  }, "Monospace")))))));
 }
 
 const applyWithSelect = withSelect(select => {
@@ -3332,7 +3687,8 @@ const applyWithDispatch = withDispatch(dispatch => {
 
     // new
     updateMyPostMetaType(value) {
-      // alert("boop " + value);
+      //  if(value === null){ jQuery("body").attr('data-theme','');}
+      //  alert("boop " + value);
       // Set Type
       editPost({
         meta: {

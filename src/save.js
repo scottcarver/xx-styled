@@ -43,7 +43,7 @@ export default function save(props) {
 	// Return the shtuff
 	const blockPropsSavedOb = {
 		className: classes,
-		style: styleMode == 'custom' ? inlineVarCSS : {},
+		style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
 		'data-theme': styleMode == 'named' ? namedstyle : ''
 	}
 	

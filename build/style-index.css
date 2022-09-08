@@ -1,10 +1,18 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
-.xx-styled:not(html),
+:root {
+  --contentWidth: 800px;
+  --wideWidth: 1000px;
+}
+
+html.xx-styled {
+  max-width: none;
+}
+
+.xx-styled,
 .xx-styled--admin .editor-styles-wrapper {
   position: relative;
-  max-width: none !important;
   font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);
@@ -13,8 +21,10 @@
   background-attachment: var(--backgroundAttachment);
   background-repeat: var(--backgroundRepeat);
   background-size: var(--backgroundSizeSm);
+  max-width: var(--contentWidth);
   margin: 0px auto;
   padding: 0.01px;
+  padding: var(--spacingMobile);
   /*
   p, h1, h2, h3, h4, h5, h6, blockquote, cite{
   	max-width:800px;
@@ -24,27 +34,37 @@
   */
 }
 @media (min-width: 992px) {
-  .xx-styled:not(html),
+  .xx-styled,
 .xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSizeMd);
+    padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
-  .xx-styled:not(html),
+  .xx-styled,
 .xx-styled--admin .editor-styles-wrapper {
     background-size: var(--backgroundSize);
+    padding: var(--spacingDesktop);
   }
 }
-.xx-styled:not(html) *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {
+.xx-styled.alignfull,
+.xx-styled--admin .editor-styles-wrapper.alignfull {
+  max-width: none;
+}
+.xx-styled.alignwide,
+.xx-styled--admin .editor-styles-wrapper.alignwide {
+  max-width: var(--wideWidth);
+}
+.xx-styled *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled:not(html) *::selection,
+.xx-styled *::selection,
 .xx-styled--admin .editor-styles-wrapper *::selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled:not(html) h1, .xx-styled:not(html) h2, .xx-styled:not(html) h3, .xx-styled:not(html) h4, .xx-styled:not(html) h5, .xx-styled:not(html) h6,
+.xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6,
 .xx-styled--admin .editor-styles-wrapper h1,
 .xx-styled--admin .editor-styles-wrapper h2,
 .xx-styled--admin .editor-styles-wrapper h3,
@@ -54,7 +74,7 @@
   color: var(--headlineColor) !important;
   font-family: var(--foregroundHeadlineFont);
 }
-.xx-styled:not(html) p.has-drop-cap:not(:focus)::first-letter,
+.xx-styled p.has-drop-cap:not(:focus)::first-letter,
 .xx-styled--admin .editor-styles-wrapper p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
   /* cool effect, but for a theme
@@ -66,40 +86,45 @@
   border-radius: 100%;
   */
 }
-.xx-styled:not(html) a,
+.xx-styled a,
 .xx-styled--admin .editor-styles-wrapper a {
   font-weight: bold;
   color: var(--linkColor);
 }
-.xx-styled:not(html) blockquote,
+.xx-styled blockquote,
 .xx-styled--admin .editor-styles-wrapper blockquote {
   color: var(--blockquoteColor);
   border-left: solid 2px var(--blockquoteColor);
   padding-left: 20px;
 }
-.xx-styled:not(html) blockquote p,
+.xx-styled blockquote p,
 .xx-styled--admin .editor-styles-wrapper blockquote p {
   font-size: 2em;
 }
-.xx-styled:not(html) blockquote p:before,
+.xx-styled blockquote p:before,
 .xx-styled--admin .editor-styles-wrapper blockquote p:before {
   content: '"';
 }
-.xx-styled:not(html) blockquote p:after,
+.xx-styled blockquote p:after,
 .xx-styled--admin .editor-styles-wrapper blockquote p:after {
   content: '"';
 }
-.xx-styled:not(html) blockquote cite,
+.xx-styled blockquote cite,
 .xx-styled--admin .editor-styles-wrapper blockquote cite {
   padding-bottom: 20px;
 }
-.xx-styled:not(html) figure figcaption,
+.xx-styled figure figcaption,
 .xx-styled--admin .editor-styles-wrapper figure figcaption {
   font-family: var(--foregroundCaptionFont);
 }
-.xx-styled:not(html) svg path,
+.xx-styled svg path,
 .xx-styled--admin .editor-styles-wrapper svg path {
   fill: red;
+}
+
+.xx-styled--admin .editor-styles-wrapper {
+  width: 100%;
+  max-width: none;
 }
 
 .xx-styled, .xx-styled * {
@@ -116,189 +141,5 @@
 .wp-block--heightenabled .wp-block-image {
   margin: 0px auto;
 }
-
-/*
-html.xx-styled,
-.xx-styled--admin .editor-styles-wrapper{
-	@media(min-width:768px){
-		padding:0 !important;
-
-	}
-}
-*/
-/*
-html {
-	[data-theme], [data-theme="none"]{
-		background-color: var(--backgroundColor0);
-		color: var(--foregroundColor);
-
-		h1, h2, h3, h4, h5, h6{
-			color: var(--headlineColor);
-		}
-
-		a{
-			color: var(--linkColor);
-		}
-
-		table th{
-			color: var(--headlineColor);
-		}
-
-		--blueDark: #25476d;
-		--purpleDark: #353a71;
-		--greenDark: #0e4f5b;
-		--redDark: #b72c31;
-		--orangeDark: #e36942;
-		--yellowDark: #d48207;
-		--white:oldlace;
-	}
-}
-*/
-/*
-// Standard
-[data-theme="blue"]{
-	--backgroundColor0: var(--blueDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="purple"]{
-	--backgroundColor0: var(--purpleDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="green"]{
-	--backgroundColor0: var(--greenDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="red"]{
-	--backgroundColor0: var(--redDark);
-	--foregroundColor: white;
-	--headlineColor:black;
-}
-[data-theme="orange"]{
-	--backgroundColor0: var(--orangeDark);
-	--foregroundColor: black;
-}
-[data-theme="yellow"]{
-	--backgroundColor0: var(--yellowDark);
-	--foregroundColor: black;
-}
-// Medium
-[data-theme="blue-medium"]{
-	--backgroundColor0: #a8bed2;
-	--foregroundColor: black;
-}
-[data-theme="purple-medium"]{
-	--backgroundColor0: #abacca;
-	--foregroundColor: black;
-}
-[data-theme="green-medium"]{
-	--backgroundColor0: #9bb8aa;
-	--foregroundColor: black;
-}
-[data-theme="red-medium"]{
-	--backgroundColor0: #eeb8b0;
-	--foregroundColor: black;
-}
-[data-theme="orange-medium"]{
-	--backgroundColor0: #e9aa95;
-	--foregroundColor: black;
-}
-[data-theme="yellow-medium"]{
-	--backgroundColor0: #eaca96;
-	--foregroundColor: black;
-}
-
-// Light
-[data-theme="blue-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--blueDark);
-}
-[data-theme="purple-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--purpleDark);
-}
-[data-theme="green-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--greenDark);
-}
-[data-theme="red-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-[data-theme="orange-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--orangeDark);
-}
-[data-theme="yellow-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--yellowDark);
-}
-
-
-// Custom
-[data-theme="style-black"]{
-	--backgroundColor0: #0f0f0f;
-	--foregroundColor: #9cacb4;
-	--headlineColor: #FFFFFF;
-	--linkColor: #007afc;
-}
-[data-theme="style-white"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--greenDark);
-}
-[data-theme="style-grey"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--purpleDark);
-}
-[data-theme="style-newsprint"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: var(--blueDark);
-}
-[data-theme="style-oregonststate"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-[data-theme="style-oregonststate-dark"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-[data-theme="style-oregonststate-light"]{
-	--backgroundColor0: var(--white);
-	--foregroundColor: black;
-	--headlineColor: var(--redDark);
-}
-
-*/
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
-/*
-*/
-/*
-.wp-block--section{
-	max-width: none !important;
-	padding:20px;
-
-	background: var(--backgroundImage);
-
-
-	@media($sm-up){
-		padding:5vw;
-	}
-
-	> * {
-		max-width:800px;
-		margin:0px auto;
-	}
-}
-*/
 
 /*# sourceMappingURL=style-index.css.map*/

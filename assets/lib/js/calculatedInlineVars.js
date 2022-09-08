@@ -18,6 +18,7 @@ const calculatedInlineVars = attributes => {
 		dropcapColor,
 		blockquoteColor,
 		lineartColor,
+		styleMode,
 		selectionFGColor,
 		selectionBGColor,
 		foregroundHeadlineFont,
@@ -40,8 +41,9 @@ const calculatedInlineVars = attributes => {
 	const replaceAll = function (string, search, replace){ return string.split(search).join(replace); } 
 	
 	// console.log("CURIOUS", bgSize);
+	var combinedCss = '';
 
-	var combinedCss = `
+	var fgbgCss = `
 		--backgroundImage: ${bgImageStack};
 		--backgroundColor: ${bgColorStack};
 		--backgroundSizeSm: ${bgSizeSm};
@@ -58,13 +60,23 @@ const calculatedInlineVars = attributes => {
 		--lineartColor: ${lineartColor};
 		--selectionFGColor: ${selectionFGColor};
 		--selectionBGColor: ${selectionBGColor};
+	`;
+
+
+	var fontCss = `
 		--foregroundHeadlineFont: ${foregroundHeadlineFont};
 		--foregroundCopyFont: ${foregroundCopyFont};
 		--foregroundCaptionFont: ${foregroundCaptionFont};
+	`;
+
+	var sizingCss = `
 		--spacingMobile: ${spacingMobileStack};
 		--spacingTablet: ${spacingTabletStack};
 		--spacingDesktop: ${spacingDesktopStack};
 	`;
+
+	if(styleMode == 'custom') { combinedCss += fgbgCss + fontCss + sizingCss; }
+	if(styleMode == 'named') { combinedCss += fontCss + sizingCss; }
 
 	// Remove Newlines, Tabs are spaces
 	var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " ");

@@ -60,6 +60,13 @@
 		> div{ width:100%; }
 	}
 
+	&.px-simplerow--colorpicker{
+		*{outline:solid 1px red;}
+		.components-base-control{
+			background:yellow;
+		}
+	}
+
 	&.px-simplerow--mediaupload{
 		.components-button{
 			width:100%;
@@ -70,7 +77,8 @@
 			background-image:url('../assets/img/ui/image-frame.svg');
 			background-size:100%;
 			background-position:center;
-			min-height:115px;
+			background-repeat:no-repeat;
+			min-height:135px;
 			span{
 				background: #eee;
 				padding: 5px 0px;
@@ -103,12 +111,15 @@
 
 	// Padding Control
 	&.px-simplerow--paddingcontrol{
+		// background:red;
+		/*
 		.component-box-control__input-controls-wrapper{
 			left:40px;
 			position:relative;
 			margin-top:-38px;
 			// outline:solid 10px red;
 		}
+		*/
 	}
 	/*
 	&.px-simplerow--nounitsplit{

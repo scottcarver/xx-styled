@@ -41,6 +41,23 @@ const options = [
     },
 ];
  
+const fontOptions = [
+	{"label":"Inherit","value":"inherit"},
+	{"label":"Serif","value":"serif"},
+	{"label":"Sans-Serif","value":"sans-serif"},
+	{"label":"Monospace","value":"monospace"},
+	{"label":"Handwritten","value":"handwritten"},
+	{"label":"Modern","value":"modern"},
+];
+
+const stylePresets = [
+	{"label":"None","value":"none"},
+	{"label":"News","value":"news"},
+	{"label":"Magazine","value":"magazine"},
+	{"label":"Technical","value":"technical"},
+	{"label":"Modern","value":"modern"},
+	{"label":"Natural","value":"natural"},
+];
 
 
 const { withState } = wp.compose;
@@ -427,25 +444,27 @@ export default class StyleControls extends Component {
 									option.label.toLowerCase().startsWith(newval.toLowerCase())
 								))}
 							/>
-
 							
 						</div>
+{/* 						
 						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
 							<a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
-						</div>
+						</div> */}
 					</Fragment>
 				)}
 			
+				  
 			{styleMode=='custom' && (
 					
 
 			<Fragment>
 			
-			<StyledPreview {...{ setAttributes, ...this.props }} />
+				<StyledPreview {...{ setAttributes, ...this.props }} />
 
-				<PanelBody title={__("Foreground", "pxblocks")} initialOpen={false}>
+				<PanelBody title={__("Foreground", "pxblocks")}  className="panel-foreground" initialOpen={false}>
 					{/*  icon="welcome-widgets-menus" */}
 					<PanelRow>
+						
 						{/* Tab that includes Foreground Settings */}
 						<div className="px-sidepanel">
 						<TabPanel
@@ -475,7 +494,8 @@ export default class StyleControls extends Component {
 						</div>
 					</PanelRow>
 				</PanelBody>
-				<PanelBody title={__("Background", "pxblocks")} initialOpen={false}>
+				
+				<PanelBody title={__("Background", "pxblocks")} className="panel-background" initialOpen={false}>
 					{/*  icon="format-image" */}
 					<PanelRow>
 						<div className="px-sidepanel">
@@ -561,58 +581,151 @@ export default class StyleControls extends Component {
 					</PanelRow>
 				</PanelBody>
 
-				{/*
-				<PanelBody title={__("Dimensions", "pxblocks")} initialOpen={false}>
-					  
-					<PanelRow>
-					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
-							<label htmlFor="heightenabled-form-toggle">{__("Height Enabled", "pxblocks")}</label>
-							<FormToggle
-								id="heightenabled-form-toggle"
-								label={__("Styles Enabled", "pxblocks")}
-								checked={heightEnabled}
-								onChange={toggleHeightEnabled}
-							/>
-						</div>
-					</PanelRow>
-					<PanelRow>
-					
+ 			
+							
+				</Fragment>
+			)}
 
-					<div className="px-sidepanel px-sidepanel--grey">
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol">
-							<BoxControl 
-								label="Mobile Spacing"
-								values={spacingMobile}
-								sides={ [ 'top', 'bottom' ] } 
-								defaultValues={ { top: '50px',bottom: '50px' }} 
-								onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
-							/>
+			{(styleMode =='named' || styleMode =='custom') && (
+			<Fragment>
+				<PanelBody title={__("Dimensions", "pxblocks")} className="panel-dimensions" initialOpen={false}>
+					  {/* <PanelRow>
+					  <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
+							  <label htmlFor="heightenabled-form-toggle">{__("Height Enabled", "pxblocks")}</label>
+							  <FormToggle
+								  id="heightenabled-form-toggle"
+								  label={__("Styles Enabled", "pxblocks")}
+								  checked={heightEnabled}
+								  onChange={toggleHeightEnabled}
+							  />
+						  </div>
+					  </PanelRow> */}
+					  <PanelRow>
+					  <div className="px-sidepanel px-sidepanel--grey">
+						  <div className="px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol">
+							  <BoxControl 
+								  label="Mobile Spacing"
+								  values={spacingMobile}
+								  sides={ [ 'top', 'bottom', 'left', 'right'  ] } 
+								  resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								  defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								  onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
+							  />
+						  </div>
+						  <div className="px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
+							  <BoxControl 
+								  label="Tablet Spacing (992+)"
+								  values={spacingTablet}
+								  sides={ [ 'top', 'bottom', 'left', 'right'  ] } 
+								  resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								  defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								  onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
+							  />
+						  </div>
+						  <div className="px-simplerow  px-simplerow--paddingcontrol">
+							  <BoxControl 
+								  label="Desktop Spacing (1200+)"
+								  values={spacingDesktop}
+								  sides={ [ 'top',  'bottom', 'left', 'right' ] } 
+								  resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								  defaultValues={ { top: '0', bottom: '0', left:'0', right:'0' }} 
+								  onChange={(newdata) => { setAttributes({ spacingDesktop: newdata }); }} 
+							  />
+						  </div>
+					  </div>
+					  </PanelRow>
+				  	</PanelBody> 
+					<PanelBody title={__("Typography", "pxblocks")} className="panel-typography" initialOpen={false}>
+					<PanelRow>
+						<div className="px-sidepanel">
+							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+								<ComboboxControl
+									label="Headline Font Family"
+									placeholder= 'Initial'
+									value={foregroundHeadlineFont}
+									allowReset={true}
+									options={fontOptions}
+									onChange={(newval) => setAttributes({ foregroundHeadlineFont: newval })}
+									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+										option.label.toLowerCase().startsWith(newval.toLowerCase())
+									))}
+								/>
+							</div>
+							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+								<ComboboxControl
+									label="Copy Font Family"
+									placeholder= 'Initial'
+									value={foregroundCopyFont}
+									allowReset={true}
+									options={fontOptions}
+									onChange={(newval) => setAttributes({ foregroundCopyFont: newval })}
+									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+										option.label.toLowerCase().startsWith(newval.toLowerCase())
+									))}
+								/>
+							</div>
+							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+								<ComboboxControl
+									label="Caption Font Family"
+									placeholder= 'Initial'
+									value={foregroundCaptionFont}
+									allowReset={true}
+									options={fontOptions}
+									onChange={(newval) => setAttributes({ foregroundCaptionFont: newval })}
+									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+										option.label.toLowerCase().startsWith(newval.toLowerCase())
+									))}
+								/>
+							</div>
+							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom">
+								<ComboboxControl
+									label="Typographic Themes"
+									placeholder= 'Select a Preset'
+									allowReset={true}
+									options={stylePresets}
+									onChange={function(newval){
+										if(newval === 'none'){
+											setAttributes({ foregroundHeadlineFont: "inherit" });
+											setAttributes({ foregroundCopyFont: "inherit" });
+											setAttributes({ foregroundCaptionFont: "inherit" });
+										}
+										if(newval === 'news'){
+											setAttributes({ foregroundHeadlineFont: "serif" });
+											setAttributes({ foregroundCopyFont: "sans-serif" });
+											setAttributes({ foregroundCaptionFont: "sans-serif" });
+										}
+										if(newval === 'magazine'){
+											setAttributes({ foregroundHeadlineFont: "sans-serif" });
+											setAttributes({ foregroundCopyFont: "serif" });
+											setAttributes({ foregroundCaptionFont: "sans-serif" });
+										}
+										if(newval === 'technical'){
+											setAttributes({ foregroundHeadlineFont: "monospace" });
+											setAttributes({ foregroundCopyFont: "monospace" });
+											setAttributes({ foregroundCaptionFont: "sans-serif" });
+										}
+										if(newval === 'modern'){
+											setAttributes({ foregroundHeadlineFont: "modern" });
+											setAttributes({ foregroundCopyFont: "sans-serif" });
+											setAttributes({ foregroundCaptionFont: "modern" });
+										}
+										if(newval === 'natural'){
+											setAttributes({ foregroundHeadlineFont: "modern" });
+											setAttributes({ foregroundCopyFont: "sans-serif" });
+											setAttributes({ foregroundCaptionFont: "modern" });
+										}
+									
+									}}
+									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+										option.label.toLowerCase().startsWith(newval.toLowerCase())
+									))}
+								/>
+							</div>
 						</div>
-						<div className="px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
-							<BoxControl 
-								label="Tablet Spacing (992+)"
-								values={spacingTablet}
-								sides={ [ 'top', 'bottom' ] } 
-								defaultValues={ { top: '50px',bottom: '50px' }} 
-								onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
-							/>
-						</div>
-						<div className="px-simplerow  px-simplerow--paddingcontrol">
-							<BoxControl 
-								label="Desktop Spacing (1200+)"
-								values={spacingDesktop}
-								sides={ [ 'top',  'bottom' ] } 
-								defaultValues={ { top: '50px', bottom: '50px' }} 
-								onChange={(newdata) => { setAttributes({ spacingDesktop: newdata }); }} 
-							/>
-						</div>
-					</div>
 					</PanelRow>
 				</PanelBody>
-				
-				 */}
-	</Fragment>
-)}
+				</Fragment>
+			)}
 			</Fragment>
 		);
 	}

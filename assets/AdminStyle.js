@@ -26,18 +26,24 @@ export default class AdminStyle extends Component {
 			#block-${clientId} .paddingpreview{;
 				top: ${spacingMobile.top};
 				bottom: ${spacingMobile.bottom};
+				left: ${spacingMobile.left};
+				right: ${spacingMobile.right};
 			}
 
 			@media(min-width: 992px){
 				#block-${clientId} .paddingpreview{;
 					top: ${spacingTablet.top};
 					bottom: ${spacingTablet.bottom};
+					left: ${spacingTablet.left};
+					right: ${spacingTablet.right};
 				}
 			}
 			@media(min-width:1200px){
 				#block-${clientId} .paddingpreview{;
 					top: ${spacingDesktop.top};
 					bottom: ${spacingDesktop.bottom};
+					left: ${spacingDesktop.left};
+					right: ${spacingDesktop.right};
 				}
 		
 			}	
@@ -51,7 +57,7 @@ export default class AdminStyle extends Component {
 		//  style={{position:'absolute',width:'100%',height:'100%', top:0, left:0, maxWidth:"none"}}
 		return (
              <Fragment>
-			    <div className='paddingpreview' style={{position:'absolute', left:0, right:0}}>
+			    <div className='paddingpreview' style={{position:'absolute'}}>
                     <div style={{border:"dashed 1px currentColor",height:"100%",width:"100%",opacity:.2}}></div>
                 </div>
 				<style type="text/css" dangerouslySetInnerHTML={{ __html: compressedCSS }} />

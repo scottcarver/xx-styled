@@ -1,20 +1,28 @@
 $content-width: 800px;
-$hd-up: "min-width:1920px";
+
+
+$hd-up: "min-width:1920px"; // HD (v)
 $hd-down: "max-width:1919px";
-$mx-up: "min-width:1500px"; // Desktop
+$mx-up: "min-width:1500px"; // Desktop (i)
 $mx-down: "max-width:1499px";
-$lg-up: "min-width:1200px"; // Desktop
+$lg-up: "min-width:1200px"; // Desktop (b)
 $lg-down: "max-width:1199px";
-$md-up: "min-width: 992px"; // Tablet
+$md-up: "min-width: 992px"; // Tablet (g)
 $md-down: "max-width: 991px";
-$sm-up: "min-width: 768px"; // Phablet
+$sm-up: "min-width: 768px"; // Phablet (y)
 $sm-down: "max-width: 767px";
-$xs-up: "min-width: 480px"; // Phone
+$xs-up: "min-width: 480px"; // Phone (o)
 $xs-down: "max-width: 479px";
-$micro-up: "min-width: 320px"; // Micro
+$micro-up: "min-width: 320px"; // Micro (r)
 $micro-down: "max-width: 319px";
 
 $grid-size: 8px;
 $grid-size-large: 16px;
 $dark-gray-300: #6c7781;
 $default-font-size: 13px;
+
+:root{
+    --contentWidth: 800px;
+    --wideWidth: 1000px;
+}
+// roygbiv

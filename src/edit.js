@@ -61,7 +61,7 @@ export default function Edit(props) {
 		setAttributes({ blockID: clientId });
 	}
 
-
+	console.log("styleMode", styleMode);
 
 
 
@@ -92,9 +92,10 @@ export default function Edit(props) {
 	const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
 	
 
-	// body[data-color='custom'] 
-	// body[data-color='custom'] 
-	const styleObj = { 
+	// Default Obj
+	let styleObj = {}
+
+	const fgbgObj = { 
 		// Background
 		'--backgroundImage': bgImageStack,
 		'--backgroundColor': bgColorStack,
@@ -113,15 +114,41 @@ export default function Edit(props) {
 		'--selectionFGColor': selectionFGColor,
 		'--selectionBGColor': selectionBGColor,
 		'--lineartColor':lineartColor,
+	};
+
+	const typographyObj = { 
 		// Typography
 		'--foregroundHeadlineFont': foregroundHeadlineFont,
 		'--foregroundCopyFont': foregroundCopyFont,
 		'--foregroundCaptionFont':foregroundCaptionFont,
+	}
+
+	const sizingObj = { 
 		// Spacing
 		'--spacingMobile': spacingMobileStack,
 		'--spacingTablet': spacingTabletStack,
 		'--spacingDesktop': spacingDesktopStack,
-	};
+	}
+
+	if(styleMode === 'named'){
+		styleObj = {
+			...typographyObj,
+			...sizingObj,
+		}
+	}
+	if(styleMode === 'custom'){
+		styleObj = {
+			...fgbgObj,
+			...typographyObj,
+			...sizingObj,
+		}
+	}
+
+	console.log('what is styleObj? ', styleObj);
+
+	// if(styleMode === 'named')}{
+	// 	let styleObj = {}
+	// }
 
 	// console.log("inlineVarCSS", inlineVarCSS);
 
@@ -138,7 +165,7 @@ export default function Edit(props) {
 	const blockProps = useBlockProps( {
 		className: classes,
 		id: blockID,
-		style: (styleMode == 'custom') ? styleObj : undefined,
+		style: (styleMode == 'custom' || styleMode == 'named' ) ? styleObj : undefined,
 		'data-theme': (styleMode == 'named') ? namedstyle : ''
 	});
 

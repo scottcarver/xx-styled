@@ -10,7 +10,7 @@
 	"supports": {
 		"html": false,
 		"anchor": true,
-		"align": []
+		"align": ["wide", "full"]
 	},
 	"attributes" : {
 		"blockID": {
@@ -86,15 +86,15 @@
 		},
 		"foregroundHeadlineFont": {
 			"type": "string",
-			"default": "sans-serif"
+			"default": "inherit"
 		},
 		"foregroundCopyFont": {
 			"type": "string",
-			"default": "serif"
+			"default": "inherit"
 		},
 		"foregroundCaptionFont": {
 			"type": "string",
-			"default": "monospace"
+			"default": "inherit"
 		},
 		"selectionFGColor": {
 			"type": "string",
@@ -249,22 +249,28 @@
 		"spacingMobile": {
 			"type": "object",
 			"default": {
-				"top" : "20px",
-				"bottom" : "20px"
+				"top" : "0px",
+				"bottom" : "0px",
+				"left" : "0px",
+				"right" : "0px"
 			}
 		},
 		"spacingTablet": {
 			"type": "object",
 			"default": {
-				"top" : "30px",
-				"bottom" : "30px"
+				"top" : "0px",
+				"bottom" : "0px",
+				"left" : "0px",
+				"right" : "0px"
 			}
 		},
 		"spacingDesktop": {
 			"type": "object",
 			"default": {
-				"top" : "5vw",
-				"bottom" : "5vw"
+				"top" : "0px",
+				"bottom" : "0px",
+				"left" : "0px",
+				"right" : "0px"
 			}
 		}
 	},
