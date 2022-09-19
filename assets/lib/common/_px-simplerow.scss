@@ -133,6 +133,12 @@
 	}
 	*/
 
+	&.px-simplerow--hasstyletiles{
+		display:flex;
+		flex-wrap: wrap;
+		padding:10px;
+	}
+
 	.px-simplerow h2 {
 		margin: 25px 0 10px 0;
 	}

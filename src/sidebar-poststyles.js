@@ -37,7 +37,23 @@ function PoststylePlugin(props) {
 	} = props;
 
 
+	const fontOptions = [
+		{"label":"Inherit","value":"inherit"},
+		{"label":"Serif","value":"serif"},
+		{"label":"Sans-Serif","value":"sans-serif"},
+		{"label":"Monospace","value":"monospace"},
+		{"label":"Handwritten","value":"handwritten"},
+		{"label":"Modern","value":"modern"},
+	];
 
+	const stylePresets = [
+		{"label":"None","value":"none"},
+		{"label":"News","value":"news"},
+		{"label":"Magazine","value":"magazine"},
+		{"label":"Technical","value":"technical"},
+		{"label":"Modern","value":"modern"},
+		{"label":"Natural","value":"natural"},
+	];
 
 	const PostsDropdownControl = compose(
 		// withSelect allows to get posts for our SelectControl and also to get the post meta value
@@ -132,9 +148,9 @@ function PoststylePlugin(props) {
 	return (
 		<Fragment>
 			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon="admin-customizer">
-				Post Styles
+				Entry Style
 			</PluginSidebarMoreMenuItem>
-			<PluginSidebar name="post-style-sidebar-plugin" icon="admin-customizer" title="Post Styles">
+			<PluginSidebar name="post-style-sidebar-plugin" icon="admin-customizer" title="Entry Style">
 				{/*
 				<div className="px-simplerow px-simplerow--first">
 					<ToggleControl label="Override Default Styles?" checked={myPostMetaKey} onChange={updateMyPostMetaKey} />
@@ -142,16 +158,89 @@ function PoststylePlugin(props) {
 				 {myPostMetaKey ? ( */}
 					<Fragment>
 
-					<div style={{padding :'20px'}}>
-						<div className="px-simplerow px-simplerow--hascomboboxcontrol">
+						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol">
 							<PostsDropdownControl /> 
 						</div>
 
 						
-						<div className="px-simplerow">
-						 Beeeep
-						</div>
-				
+						<PanelBody title={__("Typography", "pxblocks")} initialOpen={false}>
+							<PanelRow>
+								<div className="px-sidepanel">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Headline Font Family"
+											placeholder= 'Initial'
+											value={postStyleHeadline}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaHeadline(newval)}
+										/>
+									</div>
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Copy Font Family"
+											placeholder= 'Initial'
+											value={postStyleCopy}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaCopy(newval)}
+										/>
+									</div>
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Caption Font Family"
+											placeholder= 'Initial'
+											value={postStyleCaptions}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaCaptions(newval)}
+										/>
+									</div>
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Typographic Themes"
+											placeholder= 'Select a Preset'
+											allowReset={true}
+											options={stylePresets}
+											onChange={function(newval){
+												if(newval === 'none'){
+													updateMyPostMetaHeadline("inherit");
+													updateMyPostMetaCopy("inherit");
+													updateMyPostMetaCaptions("inherit");
+												}
+												if(newval === 'news'){
+													updateMyPostMetaHeadline("serif");
+													updateMyPostMetaCopy("sans-serif");
+													updateMyPostMetaCaptions("sans-serif");
+												}
+												if(newval === 'magazine'){
+													updateMyPostMetaHeadline("sans-serif");
+													updateMyPostMetaCopy("serif");
+													updateMyPostMetaCaptions("sans-serif");
+												}
+												if(newval === 'technical'){
+													updateMyPostMetaHeadline("monospace");
+													updateMyPostMetaCopy("monospace");
+													updateMyPostMetaCaptions("sans-serif");
+												}
+												if(newval === 'modern'){
+													updateMyPostMetaHeadline("modern");
+													updateMyPostMetaCopy("sans-serif");
+													updateMyPostMetaCaptions("modern");
+												}
+												if(newval === 'natural'){
+													updateMyPostMetaHeadline("modern");
+													updateMyPostMetaCopy("sans-serif");
+													updateMyPostMetaCaptions("modern");
+												}
+											}}
+										/>
+									</div>
+									
+								</div>
+							</PanelRow>
+						</PanelBody>
+{/* 				
 						<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
 							<h2>Headline Font</h2>
 						</div>
@@ -253,9 +342,7 @@ function PoststylePlugin(props) {
 									Monospace
 								</Button>
 							</ButtonGroup>
-						</div>
-
-					</div>
+						</div> */}
 
 					</Fragment>
 			</PluginSidebar>

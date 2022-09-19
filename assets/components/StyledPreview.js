@@ -8,6 +8,7 @@ const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
 import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import "./styled-preview.scss";
+import "./styled-tile.scss";
 
 const {
 	TabPanel,

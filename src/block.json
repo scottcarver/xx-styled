@@ -8,7 +8,7 @@
 	"icon": "art",
 	"description": "A complete portable thematic set of FG/BG styles",
 	"supports": {
-		"html": false,
+		"html": true,
 		"anchor": true,
 		"align": ["wide", "full"]
 	},

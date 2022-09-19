@@ -1276,12 +1276,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _styled_preview_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styled-preview.scss */ "./assets/components/styled-preview.scss");
-/* harmony import */ var _BGImgControl__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../BGImgControl */ "./assets/BGImgControl.js");
-/* harmony import */ var _BGGradControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../BGGradControl */ "./assets/BGGradControl.js");
-/* harmony import */ var _lib_js_calculatedTabset__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../lib/js/calculatedTabset */ "./assets/lib/js/calculatedTabset.js");
-/* harmony import */ var _lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../lib/js/ColorObgtoRgbaString */ "./assets/lib/js/ColorObgtoRgbaString.js");
-/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../lib/js/calculatedGradient */ "./assets/lib/js/calculatedGradient.js");
+/* harmony import */ var _styled_tile_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styled-tile.scss */ "./assets/components/styled-tile.scss");
+/* harmony import */ var _BGImgControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../BGImgControl */ "./assets/BGImgControl.js");
+/* harmony import */ var _BGGradControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../BGGradControl */ "./assets/BGGradControl.js");
+/* harmony import */ var _lib_js_calculatedTabset__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../lib/js/calculatedTabset */ "./assets/lib/js/calculatedTabset.js");
+/* harmony import */ var _lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../lib/js/ColorObgtoRgbaString */ "./assets/lib/js/ColorObgtoRgbaString.js");
+/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
+/* harmony import */ var _lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../lib/js/calculatedGradient */ "./assets/lib/js/calculatedGradient.js");
 
 
 /* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
@@ -1292,6 +1293,7 @@ __webpack_require__.r(__webpack_exports__);
 const {
   __
 } = wp.i18n;
+
 
 
 
@@ -1369,7 +1371,7 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
       },
       setAttributes
     } = this.props;
-    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_8__["default"])(this.props.attributes);
+    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_9__["default"])(this.props.attributes);
     var combinedCss = ` 
 			.fgtext{
 				color: ${foregroundColor};
@@ -1394,7 +1396,7 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
 				background-image: url(${backgroundImage});
 			}
 			.gradient{
-				background: ${(0,_lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_9__["default"])(this.props.attributes)};
+				background: ${(0,_lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_10__["default"])(this.props.attributes)};
 			}
 			.base{
 				background: ${backgroundColor0};
@@ -2762,7 +2764,24 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         namedstyle: newval
       }),
       onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
-    }))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-simplerow px-simplerow--hasstyletiles"
+    }, global_named_styles.map(option => // className={"style-tile " + "style-tile--active"}
+    // className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`} 
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: `styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`,
+      key: option.value
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("button", {
+      className: "xx-styled",
+      "data-theme": option.value,
+      onClick: () => setAttributes({
+        namedstyle: option.value
+      }),
+      style: {
+        padding: "0px 20px 0px 10px"
+      },
+      "aria-label": "select style " + option.value
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null)), option.label)))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
     }, this.props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
       title: __("Foreground", "pxblocks"),
@@ -3459,6 +3478,44 @@ function PoststylePlugin(props) {
     postStyleCaptions,
     setAttributes
   } = props;
+  const fontOptions = [{
+    "label": "Inherit",
+    "value": "inherit"
+  }, {
+    "label": "Serif",
+    "value": "serif"
+  }, {
+    "label": "Sans-Serif",
+    "value": "sans-serif"
+  }, {
+    "label": "Monospace",
+    "value": "monospace"
+  }, {
+    "label": "Handwritten",
+    "value": "handwritten"
+  }, {
+    "label": "Modern",
+    "value": "modern"
+  }];
+  const stylePresets = [{
+    "label": "None",
+    "value": "none"
+  }, {
+    "label": "News",
+    "value": "news"
+  }, {
+    "label": "Magazine",
+    "value": "magazine"
+  }, {
+    "label": "Technical",
+    "value": "technical"
+  }, {
+    "label": "Modern",
+    "value": "modern"
+  }, {
+    "label": "Natural",
+    "value": "natural"
+  }];
   const PostsDropdownControl = compose( // withSelect allows to get posts for our SelectControl and also to get the post meta value
   withSelect(function (select, props) {
     return {
@@ -3545,91 +3602,89 @@ function PoststylePlugin(props) {
   return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
     icon: "admin-customizer"
-  }, "Post Styles"), createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
+  }, "Entry Style"), createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
     name: "post-style-sidebar-plugin",
     icon: "admin-customizer",
-    title: "Post Styles"
+    title: "Entry Style"
   }, createElement(Fragment, null, createElement("div", {
-    style: {
-      padding: '20px'
-    }
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol"
+  }, createElement(PostsDropdownControl, null)), createElement(PanelBody, {
+    title: __("Typography", "pxblocks"),
+    initialOpen: false
+  }, createElement(PanelRow, null, createElement("div", {
+    className: "px-sidepanel"
   }, createElement("div", {
-    className: "px-simplerow px-simplerow--hascomboboxcontrol"
-  }, createElement(PostsDropdownControl, null)), createElement("div", {
-    className: "px-simplerow"
-  }, "Beeeep"), createElement("div", {
-    className: "px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline"
-  }, createElement("h2", null, "Headline Font")), createElement("div", {
-    className: "px-buttongroup px-buttongroup--small"
-  }, createElement(ButtonGroup, {
-    "aria-label": __("Headline Font")
-  }, createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleHeadline === "serif",
-    onClick: () => {
-      updateMyPostMetaHeadline("serif");
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Headline Font Family",
+    placeholder: "Initial",
+    value: postStyleHeadline,
+    allowReset: true,
+    options: fontOptions,
+    onChange: newval => updateMyPostMetaHeadline(newval)
+  })), createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Copy Font Family",
+    placeholder: "Initial",
+    value: postStyleCopy,
+    allowReset: true,
+    options: fontOptions,
+    onChange: newval => updateMyPostMetaCopy(newval)
+  })), createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Caption Font Family",
+    placeholder: "Initial",
+    value: postStyleCaptions,
+    allowReset: true,
+    options: fontOptions,
+    onChange: newval => updateMyPostMetaCaptions(newval)
+  })), createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Typographic Themes",
+    placeholder: "Select a Preset",
+    allowReset: true,
+    options: stylePresets,
+    onChange: function (newval) {
+      if (newval === 'none') {
+        updateMyPostMetaHeadline("inherit");
+        updateMyPostMetaCopy("inherit");
+        updateMyPostMetaCaptions("inherit");
+      }
+
+      if (newval === 'news') {
+        updateMyPostMetaHeadline("serif");
+        updateMyPostMetaCopy("sans-serif");
+        updateMyPostMetaCaptions("sans-serif");
+      }
+
+      if (newval === 'magazine') {
+        updateMyPostMetaHeadline("sans-serif");
+        updateMyPostMetaCopy("serif");
+        updateMyPostMetaCaptions("sans-serif");
+      }
+
+      if (newval === 'technical') {
+        updateMyPostMetaHeadline("monospace");
+        updateMyPostMetaCopy("monospace");
+        updateMyPostMetaCaptions("sans-serif");
+      }
+
+      if (newval === 'modern') {
+        updateMyPostMetaHeadline("modern");
+        updateMyPostMetaCopy("sans-serif");
+        updateMyPostMetaCaptions("modern");
+      }
+
+      if (newval === 'natural') {
+        updateMyPostMetaHeadline("modern");
+        updateMyPostMetaCopy("sans-serif");
+        updateMyPostMetaCaptions("modern");
+      }
     }
-  }, "Serif"), createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleHeadline === "sans-serif",
-    onClick: () => {
-      updateMyPostMetaHeadline("sans-serif");
-    }
-  }, "Sans-Serif"), createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleHeadline === "monospace",
-    onClick: () => {
-      updateMyPostMetaHeadline("monospace");
-    }
-  }, "Monospace"))), createElement("div", {
-    className: "px-simplerow px-simplerow--flatbottom"
-  }, createElement("h2", null, "Copy Font")), createElement("div", {
-    className: "px-buttongroup px-buttongroup--small"
-  }, createElement(ButtonGroup, {
-    "aria-label": __("Copy Font")
-  }, createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleCopy === "serif",
-    onClick: () => {
-      updateMyPostMetaCopy("serif");
-    }
-  }, "Serif"), createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleCopy === "sans-serif",
-    onClick: () => {
-      updateMyPostMetaCopy("sans-serif");
-    }
-  }, "Sans-Serif"), createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleCopy === "monospace",
-    onClick: () => {
-      updateMyPostMetaCopy("monospace");
-    }
-  }, "Monospace"))), createElement("div", {
-    className: "px-simplerow px-simplerow--flatbottom"
-  }, createElement("h2", null, "Caption Font")), createElement("div", {
-    className: "px-buttongroup px-buttongroup--small"
-  }, createElement(ButtonGroup, {
-    "aria-label": __("Caption Font")
-  }, createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleCaptions === "serif",
-    onClick: () => {
-      updateMyPostMetaCaptions("serif");
-    }
-  }, "Serif"), createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleCaptions === "sans-serif",
-    onClick: () => {
-      updateMyPostMetaCaptions("sans-serif");
-    }
-  }, "Sans-Serif"), createElement(Button, {
-    isDefault: true,
-    isPrimary: postStyleCaptions === "monospace",
-    onClick: () => {
-      updateMyPostMetaCaptions("monospace");
-    }
-  }, "Monospace")))))));
+  }))))))));
 }
 
 const applyWithSelect = withSelect(select => {
@@ -3890,6 +3945,19 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /*!***********************************************!*\
   !*** ./assets/components/styled-preview.scss ***!
   \***********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./assets/components/styled-tile.scss":
+/*!********************************************!*\
+  !*** ./assets/components/styled-tile.scss ***!
+  \********************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

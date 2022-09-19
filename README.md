@@ -51,6 +51,9 @@ In addition to the 'single' view created by the 'styled' posttype, additional he
 
 
 
+### Removals
+- ro
+
 
 ## Styled Areas versus 
 is an alternative approach to using the core styling tools in WordPress.

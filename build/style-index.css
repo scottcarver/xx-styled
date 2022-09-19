@@ -2,8 +2,13 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
 :root {
-  --contentWidth: 800px;
+  --contentWidth: 900px;
   --wideWidth: 1000px;
+}
+@media (min-width:1200px) {
+  :root {
+    --wideWidth: 80%;
+  }
 }
 
 html.xx-styled {
@@ -30,6 +35,13 @@ html.xx-styled {
   	max-width:800px;
   	// margin:1em auto;
   	display:block;
+  }
+  */
+  /*
+  svg{
+  	path{
+  		fill:red;
+  	}
   }
   */
 }
@@ -116,10 +128,6 @@ html.xx-styled {
 .xx-styled figure figcaption,
 .xx-styled--admin .editor-styles-wrapper figure figcaption {
   font-family: var(--foregroundCaptionFont);
-}
-.xx-styled svg path,
-.xx-styled--admin .editor-styles-wrapper svg path {
-  fill: red;
 }
 
 .xx-styled--admin .editor-styles-wrapper {

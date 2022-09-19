@@ -22,7 +22,10 @@ $dark-gray-300: #6c7781;
 $default-font-size: 13px;
 
 :root{
-    --contentWidth: 800px;
+    --contentWidth: 900px;
     --wideWidth: 1000px;
+    @media($lg-up){
+        --wideWidth: 80%;
+    }
 }
 // roygbiv
