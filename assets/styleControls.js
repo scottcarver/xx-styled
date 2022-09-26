@@ -44,7 +44,7 @@ const options = [
 const fontOptions = [
 	{"label":"Inherit","value":"inherit"},
 	{"label":"Serif","value":"serif"},
-	{"label":"Sans-Serif","value":"sans-serif"},
+	{"label":"Sans-Serif","value":"sansserif"},
 	{"label":"Monospace","value":"monospace"},
 	{"label":"Handwritten","value":"handwritten"},
 	{"label":"Modern","value":"modern"},
@@ -270,9 +270,9 @@ export default class StyleControls extends Component {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={foregroundHeadlineFont === "sans-serif"}
+									isPrimary={foregroundHeadlineFont === "sansserif"}
 									onClick={() => {
-										setAttributes({ foregroundHeadlineFont: "sans-serif" });
+										setAttributes({ foregroundHeadlineFont: "sansserif" });
 									}}
 								>
 									Sans
@@ -313,9 +313,9 @@ export default class StyleControls extends Component {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={foregroundCopyFont === "sans-serif"}
+									isPrimary={foregroundCopyFont === "sansserif"}
 									onClick={() => {
-										setAttributes({ foregroundCopyFont: "sans-serif" });
+										setAttributes({ foregroundCopyFont: "sansserif" });
 									}}
 								>
 									Sans
@@ -355,9 +355,9 @@ export default class StyleControls extends Component {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={foregroundCaptionFont === "sans-serif"}
+									isPrimary={foregroundCaptionFont === "sansserif"}
 									onClick={() => {
-										setAttributes({ foregroundCaptionFont: "sans-serif" });
+										setAttributes({ foregroundCaptionFont: "sansserif" });
 									}}>
 									Sans
 								</Button>
@@ -432,6 +432,10 @@ export default class StyleControls extends Component {
 
 				{styleMode=='named' && (
 					<Fragment>
+						<PanelBody title={__("Saved Styles", "pxblocks")}  className="panel-savedstyles" initialOpen={true}>
+					{/*  icon="welcome-widgets-menus" */}
+					<PanelRow>
+					<div className="px-sidepanel">
 						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol">
 							<ComboboxControl
 								label="Select a Style"
@@ -466,6 +470,9 @@ export default class StyleControls extends Component {
 						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
 							<a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
 						</div> */}
+							</div>
+						</PanelRow>
+						</PanelBody>
 					</Fragment>
 				)}
 			
@@ -707,27 +714,27 @@ export default class StyleControls extends Component {
 										}
 										if(newval === 'news'){
 											setAttributes({ foregroundHeadlineFont: "serif" });
-											setAttributes({ foregroundCopyFont: "sans-serif" });
-											setAttributes({ foregroundCaptionFont: "sans-serif" });
+											setAttributes({ foregroundCopyFont: "sansserif" });
+											setAttributes({ foregroundCaptionFont: "sansserif" });
 										}
 										if(newval === 'magazine'){
-											setAttributes({ foregroundHeadlineFont: "sans-serif" });
+											setAttributes({ foregroundHeadlineFont: "sansserif" });
 											setAttributes({ foregroundCopyFont: "serif" });
-											setAttributes({ foregroundCaptionFont: "sans-serif" });
+											setAttributes({ foregroundCaptionFont: "sansserif" });
 										}
 										if(newval === 'technical'){
 											setAttributes({ foregroundHeadlineFont: "monospace" });
 											setAttributes({ foregroundCopyFont: "monospace" });
-											setAttributes({ foregroundCaptionFont: "sans-serif" });
+											setAttributes({ foregroundCaptionFont: "sansserif" });
 										}
 										if(newval === 'modern'){
 											setAttributes({ foregroundHeadlineFont: "modern" });
-											setAttributes({ foregroundCopyFont: "sans-serif" });
+											setAttributes({ foregroundCopyFont: "sansserif" });
 											setAttributes({ foregroundCaptionFont: "modern" });
 										}
 										if(newval === 'natural'){
 											setAttributes({ foregroundHeadlineFont: "modern" });
-											setAttributes({ foregroundCopyFont: "sans-serif" });
+											setAttributes({ foregroundCopyFont: "sansserif" });
 											setAttributes({ foregroundCaptionFont: "modern" });
 										}
 									

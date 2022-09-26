@@ -2007,14 +2007,14 @@ const calculatedInlineVars = attributes => {
 		--selectionBGColor: ${selectionBGColor};
 	`;
   var fontCss = `
-		--foregroundHeadlineFont: ${foregroundHeadlineFont};
-		--foregroundCopyFont: ${foregroundCopyFont};
-		--foregroundCaptionFont: ${foregroundCaptionFont};
+		--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
+		--foregroundCopyFont: var(--${foregroundCopyFont});
+		--foregroundCaptionFont: var(--${foregroundCaptionFont});
 	`;
   var sizingCss = `
-		--spacingMobile: ${spacingMobileStack};
-		--spacingTablet: ${spacingTabletStack};
-		--spacingDesktop: ${spacingDesktopStack};
+		--spacingMobile:  var(--${spacingMobileStack});
+		--spacingTablet: var(--${spacingTabletStack});
+		--spacingDesktop: var(--${spacingDesktopStack});
 	`;
 
   if (styleMode == 'custom') {
@@ -2261,7 +2261,7 @@ const fontOptions = [{
   "value": "serif"
 }, {
   "label": "Sans-Serif",
-  "value": "sans-serif"
+  "value": "sansserif"
 }, {
   "label": "Monospace",
   "value": "monospace"
@@ -2612,10 +2612,10 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           }
         }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
           isDefault: true,
-          isPrimary: foregroundHeadlineFont === "sans-serif",
+          isPrimary: foregroundHeadlineFont === "sansserif",
           onClick: () => {
             setAttributes({
-              foregroundHeadlineFont: "sans-serif"
+              foregroundHeadlineFont: "sansserif"
             });
           }
         }, "Sans"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2650,10 +2650,10 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           }
         }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
           isDefault: true,
-          isPrimary: foregroundCopyFont === "sans-serif",
+          isPrimary: foregroundCopyFont === "sansserif",
           onClick: () => {
             setAttributes({
-              foregroundCopyFont: "sans-serif"
+              foregroundCopyFont: "sansserif"
             });
           }
         }, "Sans"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2688,10 +2688,10 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           }
         }, "Serif"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
           isDefault: true,
-          isPrimary: foregroundCaptionFont === "sans-serif",
+          isPrimary: foregroundCaptionFont === "sansserif",
           onClick: () => {
             setAttributes({
-              foregroundCaptionFont: "sans-serif"
+              foregroundCaptionFont: "sansserif"
             });
           }
         }, "Sans"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
@@ -2752,7 +2752,13 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           styleEnabled: true
         });
       }
-    }, "Custom"))), styleMode == 'named' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, "Custom"))), styleMode == 'named' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+      title: __("Saved Styles", "pxblocks"),
+      className: "panel-savedstyles",
+      initialOpen: true
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+      className: "px-sidepanel"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ComboboxControl, {
       label: "Select a Style",
@@ -2781,7 +2787,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         padding: "0px 20px 0px 10px"
       },
       "aria-label": "select style " + option.value
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null)), option.label)))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null)), option.label))))))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
     }, this.props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
       title: __("Foreground", "pxblocks"),
@@ -3020,22 +3026,22 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
             foregroundHeadlineFont: "serif"
           });
           setAttributes({
-            foregroundCopyFont: "sans-serif"
+            foregroundCopyFont: "sansserif"
           });
           setAttributes({
-            foregroundCaptionFont: "sans-serif"
+            foregroundCaptionFont: "sansserif"
           });
         }
 
         if (newval === 'magazine') {
           setAttributes({
-            foregroundHeadlineFont: "sans-serif"
+            foregroundHeadlineFont: "sansserif"
           });
           setAttributes({
             foregroundCopyFont: "serif"
           });
           setAttributes({
-            foregroundCaptionFont: "sans-serif"
+            foregroundCaptionFont: "sansserif"
           });
         }
 
@@ -3047,7 +3053,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
             foregroundCopyFont: "monospace"
           });
           setAttributes({
-            foregroundCaptionFont: "sans-serif"
+            foregroundCaptionFont: "sansserif"
           });
         }
 
@@ -3056,7 +3062,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
             foregroundHeadlineFont: "modern"
           });
           setAttributes({
-            foregroundCopyFont: "sans-serif"
+            foregroundCopyFont: "sansserif"
           });
           setAttributes({
             foregroundCaptionFont: "modern"
@@ -3068,7 +3074,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
             foregroundHeadlineFont: "modern"
           });
           setAttributes({
-            foregroundCopyFont: "sans-serif"
+            foregroundCopyFont: "sansserif"
           });
           setAttributes({
             foregroundCaptionFont: "modern"
@@ -3225,9 +3231,9 @@ function Edit(props) {
   };
   const typographyObj = {
     // Typography
-    '--foregroundHeadlineFont': foregroundHeadlineFont,
-    '--foregroundCopyFont': foregroundCopyFont,
-    '--foregroundCaptionFont': foregroundCaptionFont
+    '--foregroundHeadlineFont': 'var(--' + foregroundHeadlineFont + ')',
+    '--foregroundCopyFont': 'var(--' + foregroundCopyFont + ')',
+    '--foregroundCaptionFont': 'var(--' + foregroundCaptionFont + ')'
   };
   const sizingObj = {
     // Spacing
@@ -3337,6 +3343,12 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
       backgroundColor0: '#FF0000'
     }
   });
+  /*
+  wp.blocks.registerBlockStyle( 'xx/styled', {
+  	name: 'rounded',
+  	label: 'Rounded Corners',
+  } );
+  */
 });
 
 /***/ }),
@@ -3486,16 +3498,16 @@ function PoststylePlugin(props) {
     "value": "serif"
   }, {
     "label": "Sans-Serif",
-    "value": "sans-serif"
+    "value": "sansserif"
   }, {
     "label": "Monospace",
     "value": "monospace"
   }, {
-    "label": "Handwritten",
-    "value": "handwritten"
+    "label": "Cursive",
+    "value": "cursive"
   }, {
-    "label": "Modern",
-    "value": "modern"
+    "label": "Fantasy",
+    "value": "fantasy"
   }];
   const stylePresets = [{
     "label": "None",
@@ -3601,10 +3613,10 @@ function PoststylePlugin(props) {
   });
   return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
-    icon: "admin-customizer"
+    icon: "art"
   }, "Entry Style"), createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
     name: "post-style-sidebar-plugin",
-    icon: "admin-customizer",
+    icon: "art",
     title: "Entry Style"
   }, createElement(Fragment, null, createElement("div", {
     className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol"
@@ -3656,31 +3668,31 @@ function PoststylePlugin(props) {
 
       if (newval === 'news') {
         updateMyPostMetaHeadline("serif");
-        updateMyPostMetaCopy("sans-serif");
-        updateMyPostMetaCaptions("sans-serif");
+        updateMyPostMetaCopy("sansserif");
+        updateMyPostMetaCaptions("sansserif");
       }
 
       if (newval === 'magazine') {
-        updateMyPostMetaHeadline("sans-serif");
+        updateMyPostMetaHeadline("sansserif");
         updateMyPostMetaCopy("serif");
-        updateMyPostMetaCaptions("sans-serif");
+        updateMyPostMetaCaptions("sansserif");
       }
 
       if (newval === 'technical') {
         updateMyPostMetaHeadline("monospace");
         updateMyPostMetaCopy("monospace");
-        updateMyPostMetaCaptions("sans-serif");
+        updateMyPostMetaCaptions("sansserif");
       }
 
       if (newval === 'modern') {
         updateMyPostMetaHeadline("modern");
-        updateMyPostMetaCopy("sans-serif");
+        updateMyPostMetaCopy("sansserif");
         updateMyPostMetaCaptions("modern");
       }
 
       if (newval === 'natural') {
         updateMyPostMetaHeadline("modern");
-        updateMyPostMetaCopy("sans-serif");
+        updateMyPostMetaCopy("sansserif");
         updateMyPostMetaCaptions("modern");
       }
     }
@@ -3756,7 +3768,7 @@ const applyWithDispatch = withDispatch(dispatch => {
           // Set Style
           editPost({
             meta: {
-              poststylemeta_headline: "sans-serif"
+              poststylemeta_headline: "sansserif"
             }
           });
           editPost({
@@ -3796,17 +3808,17 @@ const applyWithDispatch = withDispatch(dispatch => {
           // Set Style
           editPost({
             meta: {
-              poststylemeta_headline: "sans-serif"
+              poststylemeta_headline: "sansserif"
             }
           });
           editPost({
             meta: {
-              poststylemeta_copy: "sans-serif"
+              poststylemeta_copy: "sansserif"
             }
           });
           editPost({
             meta: {
-              poststylemeta_captions: "sans-serif"
+              poststylemeta_captions: "sansserif"
             }
           }); // code block
 

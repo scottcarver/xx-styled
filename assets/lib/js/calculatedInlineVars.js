@@ -64,15 +64,15 @@ const calculatedInlineVars = attributes => {
 
 
 	var fontCss = `
-		--foregroundHeadlineFont: ${foregroundHeadlineFont};
-		--foregroundCopyFont: ${foregroundCopyFont};
-		--foregroundCaptionFont: ${foregroundCaptionFont};
+		--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
+		--foregroundCopyFont: var(--${foregroundCopyFont});
+		--foregroundCaptionFont: var(--${foregroundCaptionFont});
 	`;
 
 	var sizingCss = `
-		--spacingMobile: ${spacingMobileStack};
-		--spacingTablet: ${spacingTabletStack};
-		--spacingDesktop: ${spacingDesktopStack};
+		--spacingMobile:  var(--${spacingMobileStack});
+		--spacingTablet: var(--${spacingTabletStack});
+		--spacingDesktop: var(--${spacingDesktopStack});
 	`;
 
 	if(styleMode == 'custom') { combinedCss += fgbgCss + fontCss + sizingCss; }

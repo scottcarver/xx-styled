@@ -118,9 +118,9 @@ export default function Edit(props) {
 
 	const typographyObj = { 
 		// Typography
-		'--foregroundHeadlineFont': foregroundHeadlineFont,
-		'--foregroundCopyFont': foregroundCopyFont,
-		'--foregroundCaptionFont':foregroundCaptionFont,
+		'--foregroundHeadlineFont': 'var(--'+foregroundHeadlineFont+')',
+		'--foregroundCopyFont': 'var(--'+foregroundCopyFont+')',
+		'--foregroundCaptionFont': 'var(--'+foregroundCaptionFont+')',
 	}
 
 	const sizingObj = { 
@@ -137,7 +137,7 @@ export default function Edit(props) {
 		}
 	}
 	if(styleMode === 'custom'){
-		styleObj = {
+	styleObj = {
 			...fgbgObj,
 			...typographyObj,
 			...sizingObj,

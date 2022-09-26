@@ -24,5 +24,11 @@ domReady( function() {
 		category: 'wholesome-blocks',
 		attributes: { backgroundColor0: '#FF0000' }
 	} );
+	/*
+	wp.blocks.registerBlockStyle( 'xx/styled', {
+		name: 'rounded',
+		label: 'Rounded Corners',
+	} );
+	*/
 } );
 

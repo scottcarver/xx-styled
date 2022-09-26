@@ -1,4 +1,5 @@
 <?php
+// Create Post Type
 function my_custom_post_styles() {
   $labels = array(
     'name'               => _x( 'Styled Areas', 'post type general name' ),
@@ -12,10 +13,8 @@ function my_custom_post_styles() {
     'search_items'       => __( 'Search Styles' ),
     'not_found'          => __( 'No Styles found' ),
     'not_found_in_trash' => __( 'No Styles found in the Trash' ), 
-   // 'parent_item_colon'  => ’,
+    // 'parent_item_colon'  => ’,
     'menu_name'          => 'Styled Areas',
-    
-    
   );
   $args = array(
     'labels'        => $labels,
@@ -31,7 +30,7 @@ function my_custom_post_styles() {
 }
 add_action( 'init', 'my_custom_post_styles' );
 
-// echo("beeb" . wp_get_attachment_url(2182));
+// Create Style Posttype Template
 function register_style_template() {
   $post_type_object = get_post_type_object( 'style' );
   $post_type_object->template = array(
@@ -48,3 +47,30 @@ function register_style_template() {
   $post_type_object->template_lock = 'all';
 }
 add_action( 'init', 'register_style_template' );
+
+
+
+
+// Add tags to <html> using the language_attributes hook
+function new_language_attributes($lang){
+  if (function_exists('get_field')) {
+      $namedstyle= get_field("poststylemeta_type");
+      $headlineTypography = get_field("poststylemeta_headline");
+      $copyTypography  = get_field("poststylemeta_copy");
+      $captionTypography = get_field("poststylemeta_captions");
+      $style = '--foregroundHeadlineFont: '.$headlineTypography.'; --foregroundCopyFont: '.$copyTypography.'; --foregroundCaptionFont: '.$captionTypography.';';
+  } else {
+      $namedstyle= "NONE";
+  }
+  // if(is_single()) {
+  //     $ar = get_the_category();
+  //     foreach($ar as $c) {
+  //         if($c->slug=='in-italiano') {
+  //             return "lang=\"it\"";
+  //         }
+  //     }
+  // }
+  // return $lang;
+  return $lang . 'class="xx-styled"' . 'data-theme="'.$namedstyle.'"';
+}
+add_filter('language_attributes', 'new_language_attributes');

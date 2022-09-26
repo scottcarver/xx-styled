@@ -40,10 +40,10 @@ function PoststylePlugin(props) {
 	const fontOptions = [
 		{"label":"Inherit","value":"inherit"},
 		{"label":"Serif","value":"serif"},
-		{"label":"Sans-Serif","value":"sans-serif"},
+		{"label":"Sans-Serif","value":"sansserif"},
 		{"label":"Monospace","value":"monospace"},
-		{"label":"Handwritten","value":"handwritten"},
-		{"label":"Modern","value":"modern"},
+		{"label":"Cursive","value":"cursive"},
+		{"label":"Fantasy","value":"fantasy"},
 	];
 
 	const stylePresets = [
@@ -99,6 +99,7 @@ function PoststylePlugin(props) {
 				
 				}
 			);
+			
 	
 		}
 	
@@ -147,10 +148,10 @@ function PoststylePlugin(props) {
 	});
 	return (
 		<Fragment>
-			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon="admin-customizer">
+			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon="art">
 				Entry Style
 			</PluginSidebarMoreMenuItem>
-			<PluginSidebar name="post-style-sidebar-plugin" icon="admin-customizer" title="Entry Style">
+			<PluginSidebar name="post-style-sidebar-plugin" icon="art" title="Entry Style">
 				{/*
 				<div className="px-simplerow px-simplerow--first">
 					<ToggleControl label="Override Default Styles?" checked={myPostMetaKey} onChange={updateMyPostMetaKey} />
@@ -210,27 +211,27 @@ function PoststylePlugin(props) {
 												}
 												if(newval === 'news'){
 													updateMyPostMetaHeadline("serif");
-													updateMyPostMetaCopy("sans-serif");
-													updateMyPostMetaCaptions("sans-serif");
+													updateMyPostMetaCopy("sansserif");
+													updateMyPostMetaCaptions("sansserif");
 												}
 												if(newval === 'magazine'){
-													updateMyPostMetaHeadline("sans-serif");
+													updateMyPostMetaHeadline("sansserif");
 													updateMyPostMetaCopy("serif");
-													updateMyPostMetaCaptions("sans-serif");
+													updateMyPostMetaCaptions("sansserif");
 												}
 												if(newval === 'technical'){
 													updateMyPostMetaHeadline("monospace");
 													updateMyPostMetaCopy("monospace");
-													updateMyPostMetaCaptions("sans-serif");
+													updateMyPostMetaCaptions("sansserif");
 												}
 												if(newval === 'modern'){
 													updateMyPostMetaHeadline("modern");
-													updateMyPostMetaCopy("sans-serif");
+													updateMyPostMetaCopy("sansserif");
 													updateMyPostMetaCaptions("modern");
 												}
 												if(newval === 'natural'){
 													updateMyPostMetaHeadline("modern");
-													updateMyPostMetaCopy("sans-serif");
+													updateMyPostMetaCopy("sansserif");
 													updateMyPostMetaCaptions("modern");
 												}
 											}}
@@ -257,9 +258,9 @@ function PoststylePlugin(props) {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={postStyleHeadline === "sans-serif"}
+									isPrimary={postStyleHeadline === "sansserif"}
 									onClick={() => {
-										updateMyPostMetaHeadline("sans-serif");
+										updateMyPostMetaHeadline("sansserif");
 									}}
 								>
 									Sans-Serif
@@ -291,9 +292,9 @@ function PoststylePlugin(props) {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={postStyleCopy === "sans-serif"}
+									isPrimary={postStyleCopy === "sansserif"}
 									onClick={() => {
-										updateMyPostMetaCopy("sans-serif");
+										updateMyPostMetaCopy("sansserif");
 									}}
 								>
 									Sans-Serif
@@ -325,9 +326,9 @@ function PoststylePlugin(props) {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={postStyleCaptions === "sans-serif"}
+									isPrimary={postStyleCaptions === "sansserif"}
 									onClick={() => {
-										updateMyPostMetaCaptions("sans-serif");
+										updateMyPostMetaCaptions("sansserif");
 									}}
 								>
 									Sans-Serif
@@ -391,7 +392,7 @@ const applyWithDispatch = withDispatch(dispatch => {
 			switch (value) {
 				case "default":
 					// Set Style
-					editPost({ meta: { poststylemeta_headline: "sans-serif" } });
+					editPost({ meta: { poststylemeta_headline: "sansserif" } });
 					editPost({ meta: { poststylemeta_copy: "serif" } });
 					editPost({ meta: { poststylemeta_captions: "monospace" } });
 					// code block
@@ -405,9 +406,9 @@ const applyWithDispatch = withDispatch(dispatch => {
 					break;
 				case "classical":
 					// Set Style
-					editPost({ meta: { poststylemeta_headline: "sans-serif" } });
-					editPost({ meta: { poststylemeta_copy: "sans-serif" } });
-					editPost({ meta: { poststylemeta_captions: "sans-serif" } });
+					editPost({ meta: { poststylemeta_headline: "sansserif" } });
+					editPost({ meta: { poststylemeta_copy: "sansserif" } });
+					editPost({ meta: { poststylemeta_captions: "sansserif" } });
 					// code block
 					break;
 				case "technical":

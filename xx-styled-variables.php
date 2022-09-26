@@ -12,7 +12,9 @@ function get_style_array() {
         'name'        =>  null,
         'post_type'   => 'style',
         'post_status' => 'publish',
-        'posts_per_page' => -1
+        'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'title',
       );
       
       $styled_areas = new WP_Query($args);

@@ -20,7 +20,6 @@ export default class AdminStyle extends Component {
 		} = this.props;
 
 		
-
 		var combinedCss = ` 
 			/* For Admin */
 			#block-${clientId} .paddingpreview{;

@@ -635,7 +635,6 @@ html.xx-styled {
 }
 .xx-styled a,
 .xx-styled--admin .editor-styles-wrapper a {
-  font-weight: bold;
   color: var(--linkColor);
 }
 .xx-styled blockquote,

@@ -62,7 +62,7 @@ const attributes = {
 	},
 	foregroundHeadlineFont: {
 		type: "string",
-		default: "sans-serif"
+		default: "sansserif"
 	},
 	foregroundCopyFont: {
 		type: "string",
