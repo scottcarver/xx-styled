@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "common",
 	"icon": "art",
-	"description": "A complete portable thematic set of FG/BG styles",
+	"description": "A complete portable thematic set of FG/BG styles.",
 	"supports": {
 		"html": true,
 		"anchor": true,

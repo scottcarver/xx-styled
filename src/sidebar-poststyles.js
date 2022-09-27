@@ -36,7 +36,7 @@ function PoststylePlugin(props) {
 		setAttributes
 	} = props;
 
-
+	/*
 	const fontOptions = [
 		{"label":"Inherit","value":"inherit"},
 		{"label":"Serif","value":"serif"},
@@ -45,6 +45,9 @@ function PoststylePlugin(props) {
 		{"label":"Cursive","value":"cursive"},
 		{"label":"Fantasy","value":"fantasy"},
 	];
+	*/
+
+	const fontOptions = global_named_fonts;
 
 	const stylePresets = [
 		{"label":"None","value":"none"},

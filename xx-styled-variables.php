@@ -37,6 +37,8 @@ function get_style_array() {
     if(isset($styled_array)){ 
        return $styled_array;
     } 
+
+
   
 
 }
@@ -58,12 +60,31 @@ add_action( 'admin_enqueue_scripts', 'theme_enqueue_scripts' ); // wp_enqueue_sc
 
 // inline script via wp_print_scripts
 function shapeSpace_print_scripts() { 
+
+  // Read the JSON file 
+  $themejson = file_get_contents(get_template_directory_uri().'/theme.json');
+
+  // Decode the JSON file
+  $themejson_data = json_decode($themejson,true);
+
+  $themejson_fontlabels = [];
+  foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
+    $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
+    // var_dump($font);
+    array_push($themejson_fontlabels, $selectDropData);
+  }
+    
+  // Display data
+  // print_r($json_data);
+
+
 	$style_array = get_style_array();
     $has_styles = sizeof($style_array) > 0;
     // var_dump($style_array);
     ?>
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;
+    var global_named_fonts = <?php echo json_encode($themejson_fontlabels); ?>;
 	</script>
 	<?php
 }

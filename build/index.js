@@ -2270,25 +2270,18 @@ const options = [{
   value: 'huge',
   label: 'Huge'
 }];
-const fontOptions = [{
-  "label": "Inherit",
-  "value": "inherit"
-}, {
-  "label": "Serif",
-  "value": "serif"
-}, {
-  "label": "Sans-Serif",
-  "value": "sansserif"
-}, {
-  "label": "Monospace",
-  "value": "monospace"
-}, {
-  "label": "Handwritten",
-  "value": "handwritten"
-}, {
-  "label": "Modern",
-  "value": "modern"
-}];
+/*
+const fontOptions = [
+	{"label":"Inherit","value":"inherit"},
+	{"label":"Serif","value":"serif"},
+	{"label":"Sans-Serif","value":"sansserif"},
+	{"label":"Monospace","value":"monospace"},
+	{"label":"Cursive","value":"cursive"},
+	{"label":"Fantasy","value":"fantasy"},
+];
+*/
+
+const fontOptions = global_named_fonts;
 const stylePresets = [{
   "label": "None",
   "value": "none"
@@ -3524,25 +3517,18 @@ function PoststylePlugin(props) {
     postStyleCaptions,
     setAttributes
   } = props;
-  const fontOptions = [{
-    "label": "Inherit",
-    "value": "inherit"
-  }, {
-    "label": "Serif",
-    "value": "serif"
-  }, {
-    "label": "Sans-Serif",
-    "value": "sansserif"
-  }, {
-    "label": "Monospace",
-    "value": "monospace"
-  }, {
-    "label": "Cursive",
-    "value": "cursive"
-  }, {
-    "label": "Fantasy",
-    "value": "fantasy"
-  }];
+  /*
+  const fontOptions = [
+  	{"label":"Inherit","value":"inherit"},
+  	{"label":"Serif","value":"serif"},
+  	{"label":"Sans-Serif","value":"sansserif"},
+  	{"label":"Monospace","value":"monospace"},
+  	{"label":"Cursive","value":"cursive"},
+  	{"label":"Fantasy","value":"fantasy"},
+  ];
+  */
+
+  const fontOptions = global_named_fonts;
   const stylePresets = [{
     "label": "None",
     "value": "none"

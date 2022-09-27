@@ -22,6 +22,7 @@ const {
 	ComboboxControl
 } = wp.components;
 
+
 const options = [
     {
         value: 'small',
@@ -41,14 +42,18 @@ const options = [
     },
 ];
  
+/*
 const fontOptions = [
 	{"label":"Inherit","value":"inherit"},
 	{"label":"Serif","value":"serif"},
 	{"label":"Sans-Serif","value":"sansserif"},
 	{"label":"Monospace","value":"monospace"},
-	{"label":"Handwritten","value":"handwritten"},
-	{"label":"Modern","value":"modern"},
+	{"label":"Cursive","value":"cursive"},
+	{"label":"Fantasy","value":"fantasy"},
 ];
+*/
+
+const fontOptions = global_named_fonts;
 
 const stylePresets = [
 	{"label":"None","value":"none"},
@@ -314,9 +319,7 @@ export default class StyleControls extends Component {
 								<Button
 									isDefault
 									isPrimary={foregroundCopyFont === "sansserif"}
-									onClick={() => {
-										setAttributes({ foregroundCopyFont: "sansserif" });
-									}}
+									onClick={() => { setAttributes({ foregroundCopyFont: "sansserif" }); }}
 								>
 									Sans
 								</Button>
@@ -433,45 +436,44 @@ export default class StyleControls extends Component {
 				{styleMode=='named' && (
 					<Fragment>
 						<PanelBody title={__("Saved Styles", "pxblocks")}  className="panel-savedstyles" initialOpen={true}>
-					{/*  icon="welcome-widgets-menus" */}
-					<PanelRow>
-					<div className="px-sidepanel">
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol">
-							<ComboboxControl
-								label="Select a Style"
-								placeholder= 'Default'
-								value={namedstyle}
-								allowReset={true}
-								options={global_named_styles}
-								onChange={(newval) => setAttributes({ namedstyle: newval })}
-								onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-									option.label.toLowerCase().startsWith(newval.toLowerCase())
-								))}
-							/>
-							
-						</div>
+							{/*  icon="welcome-widgets-menus" */}
+							<PanelRow>
+								<div className="px-sidepanel">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Select a Style"
+											placeholder= 'Default'
+											value={namedstyle}
+											allowReset={true}
+											options={global_named_styles}
+											onChange={(newval) => setAttributes({ namedstyle: newval })}
+											onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+												option.label.toLowerCase().startsWith(newval.toLowerCase())
+											))}
+										/>
+									</div>
 
-						<div className="px-simplerow px-simplerow--hasstyletiles">
-							{global_named_styles.map((option) => (
-								// className={"style-tile " + "style-tile--active"}
-								// className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`} 
-								<div className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`}
-								key={option.value}>
-									<button className={"xx-styled"} data-theme={option.value} onClick={() => setAttributes({ namedstyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
-										<h3>Aa</h3>
-										<p>Lorem Ipsum eget tortor risus.</p>
-										<span></span><span></span><span></span><span></span>
-									</button>
-									{option.label}
+									<div className="px-simplerow px-simplerow--hasstyletiles">
+										{global_named_styles.map((option) => (
+											// className={"style-tile " + "style-tile--active"}
+											// className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`} 
+											<div className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`}
+											key={option.value}>
+												<button className={"xx-styled"} data-theme={option.value} onClick={() => setAttributes({ namedstyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
+													<h3>Aa</h3>
+													<p>Lorem Ipsum eget tortor risus.</p>
+													<span></span><span></span><span></span><span></span>
+												</button>
+												{option.label}
+											</div>
+										))}
+									</div>
+									{/* 						
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
+										<a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
+									</div> */}
 								</div>
-							))}
-						</div>
-						{/* 						
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
-							<a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
-						</div> */}
-							</div>
-						</PanelRow>
+							</PanelRow>
 						</PanelBody>
 					</Fragment>
 				)}
@@ -604,9 +606,7 @@ export default class StyleControls extends Component {
 					</PanelRow>
 				</PanelBody>
 
- 			
-							
-				</Fragment>
+			</Fragment>
 			)}
 
 			{(styleMode =='named' || styleMode =='custom') && (
