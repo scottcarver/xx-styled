@@ -78,10 +78,10 @@ function shapeSpace_print_scripts() {
   // print_r($json_data);
 
 
-	$style_array = get_style_array();
+	  $style_array = get_style_array();
     $has_styles = sizeof($style_array) > 0;
     // var_dump($style_array);
-    ?>
+  ?>
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;
     var global_named_fonts = <?php echo json_encode($themejson_fontlabels); ?>;

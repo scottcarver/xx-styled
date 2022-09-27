@@ -53,6 +53,8 @@ add_action( 'init', 'register_style_template' );
 
 // Add tags to <html> using the language_attributes hook
 function new_language_attributes($lang){
+  $bodystyles = 'xx-styled';
+
   if (function_exists('get_field')) {
       $namedstyle= get_field("poststylemeta_type");
       $headlineTypography = get_field("poststylemeta_headline");
@@ -61,18 +63,25 @@ function new_language_attributes($lang){
       $style = '';
       if($headlineTypography !== null && $headlineTypography !== 'inherit'){
         $style .= '--foregroundHeadlineFont: var(--'.$headlineTypography.');';
+        $bodystyles .= ' xx-styled--headlinefont-'.$headlineTypography;
       }
       if($copyTypography !== null && $copyTypography !== 'inherit'){
         $style .= '--foregroundCopyFont: var(--'.$copyTypography.');';
+        $bodystyles .= ' xx-styled--foregroundfont-'.$copyTypography;
       }
       if($captionTypography !== null && $captionTypography !== 'inherit'){
         $style .= '--foregroundCaptionFont: var(--'.$captionTypography.');';
+        $bodystyles .= ' xx-styled--captionfont-'.$captionTypography;
       }
 
       // $style = '';
   } else {
       $namedstyle= "NONE";
   }
+
+
+  // if(is_admin()){$bodystyles="xx-styled";}
+
   // if(is_single()) {
   //     $ar = get_the_category();
   //     foreach($ar as $c) {
@@ -82,6 +91,8 @@ function new_language_attributes($lang){
   //     }
   // }
   // return $lang;
-  return $lang . 'class="xx-styled"' . 'data-theme="'.$namedstyle.'"' . 'style="'.$style.'"';
+  return $lang . 'class="'.$bodystyles.'"' . 'data-theme="'.$namedstyle.'"' . 'style="'.$style.'"';
 }
-add_filter('language_attributes', 'new_language_attributes');
+if(!is_admin()){
+  add_filter('language_attributes', 'new_language_attributes');
+}

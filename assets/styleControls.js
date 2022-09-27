@@ -660,94 +660,102 @@ export default class StyleControls extends Component {
 				  	</PanelBody> 
 					<PanelBody title={__("Typography", "pxblocks")} className="panel-typography" initialOpen={false}>
 					<PanelRow>
-						<div className="px-sidepanel">
-							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-								<ComboboxControl
-									label="Headline Font Family"
-									placeholder= 'Initial'
-									value={foregroundHeadlineFont}
-									allowReset={true}
-									options={fontOptions}
-									onChange={(newval) => setAttributes({ foregroundHeadlineFont: newval })}
-									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-										option.label.toLowerCase().startsWith(newval.toLowerCase())
-									))}
-								/>
+						{/* Dropdown */}
+						{fontOptions.length > 0 && (
+							<div className="px-sidepanel">
+								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+									<ComboboxControl
+										label="Headline Font Family"
+										placeholder= 'Initial'
+										value={foregroundHeadlineFont}
+										allowReset={true}
+										options={fontOptions}
+										onChange={(newval) => setAttributes({ foregroundHeadlineFont: newval })}
+										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+											option.label.toLowerCase().startsWith(newval.toLowerCase())
+										))}
+									/>
+								</div>
+								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+									<ComboboxControl
+										label="Copy Font Family"
+										placeholder= 'Initial'
+										value={foregroundCopyFont}
+										allowReset={true}
+										options={fontOptions}
+										onChange={(newval) => setAttributes({ foregroundCopyFont: newval })}
+										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+											option.label.toLowerCase().startsWith(newval.toLowerCase())
+										))}
+									/>
+								</div>
+								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+									<ComboboxControl
+										label="Caption Font Family"
+										placeholder= 'Initial'
+										value={foregroundCaptionFont}
+										allowReset={true}
+										options={fontOptions}
+										onChange={(newval) => setAttributes({ foregroundCaptionFont: newval })}
+										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+											option.label.toLowerCase().startsWith(newval.toLowerCase())
+										))}
+									/>
+								</div>
+								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom">
+									<ComboboxControl
+										label="Typographic Themes"
+										placeholder= 'Select a Preset'
+										allowReset={true}
+										options={stylePresets}
+										onChange={function(newval){
+											if(newval === 'none'){
+												setAttributes({ foregroundHeadlineFont: "inherit" });
+												setAttributes({ foregroundCopyFont: "inherit" });
+												setAttributes({ foregroundCaptionFont: "inherit" });
+												setAttributes({ foregroundHeadlineFont: null });
+												setAttributes({ foregroundCopyFont: null });
+												setAttributes({ foregroundCaptionFont: null });
+											}
+											if(newval === 'news'){
+												setAttributes({ foregroundHeadlineFont: "serif" });
+												setAttributes({ foregroundCopyFont: "sansserif" });
+												setAttributes({ foregroundCaptionFont: "sansserif" });
+											}
+											if(newval === 'magazine'){
+												setAttributes({ foregroundHeadlineFont: "sansserif" });
+												setAttributes({ foregroundCopyFont: "serif" });
+												setAttributes({ foregroundCaptionFont: "sansserif" });
+											}
+											if(newval === 'technical'){
+												setAttributes({ foregroundHeadlineFont: "monospace" });
+												setAttributes({ foregroundCopyFont: "monospace" });
+												setAttributes({ foregroundCaptionFont: "sansserif" });
+											}
+											if(newval === 'modern'){
+												setAttributes({ foregroundHeadlineFont: "monospace" });
+												setAttributes({ foregroundCopyFont: "sansserif" });
+												setAttributes({ foregroundCaptionFont: "sansserif" });
+											}
+											if(newval === 'natural'){
+												setAttributes({ foregroundHeadlineFont: "cursive" });
+												setAttributes({ foregroundCopyFont: "sansserif" });
+												setAttributes({ foregroundCaptionFont: "cursive" });
+											}
+										
+										}}
+										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+											option.label.toLowerCase().startsWith(newval.toLowerCase())
+										))}
+									/>
+								</div>
 							</div>
-							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-								<ComboboxControl
-									label="Copy Font Family"
-									placeholder= 'Initial'
-									value={foregroundCopyFont}
-									allowReset={true}
-									options={fontOptions}
-									onChange={(newval) => setAttributes({ foregroundCopyFont: newval })}
-									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-										option.label.toLowerCase().startsWith(newval.toLowerCase())
-									))}
-								/>
-							</div>
-							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-								<ComboboxControl
-									label="Caption Font Family"
-									placeholder= 'Initial'
-									value={foregroundCaptionFont}
-									allowReset={true}
-									options={fontOptions}
-									onChange={(newval) => setAttributes({ foregroundCaptionFont: newval })}
-									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-										option.label.toLowerCase().startsWith(newval.toLowerCase())
-									))}
-								/>
-							</div>
-							<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom">
-								<ComboboxControl
-									label="Typographic Themes"
-									placeholder= 'Select a Preset'
-									allowReset={true}
-									options={stylePresets}
-									onChange={function(newval){
-										if(newval === 'none'){
-											setAttributes({ foregroundHeadlineFont: "inherit" });
-											setAttributes({ foregroundCopyFont: "inherit" });
-											setAttributes({ foregroundCaptionFont: "inherit" });
-											setAttributes({ foregroundHeadlineFont: null });
-											setAttributes({ foregroundCopyFont: null });
-											setAttributes({ foregroundCaptionFont: null });
-										}
-										if(newval === 'news'){
-											setAttributes({ foregroundHeadlineFont: "serif" });
-											setAttributes({ foregroundCopyFont: "sansserif" });
-											setAttributes({ foregroundCaptionFont: "sansserif" });
-										}
-										if(newval === 'magazine'){
-											setAttributes({ foregroundHeadlineFont: "sansserif" });
-											setAttributes({ foregroundCopyFont: "serif" });
-											setAttributes({ foregroundCaptionFont: "sansserif" });
-										}
-										if(newval === 'technical'){
-											setAttributes({ foregroundHeadlineFont: "monospace" });
-											setAttributes({ foregroundCopyFont: "monospace" });
-											setAttributes({ foregroundCaptionFont: "sansserif" });
-										}
-										if(newval === 'modern'){
-											setAttributes({ foregroundHeadlineFont: "monospace" });
-											setAttributes({ foregroundCopyFont: "sansserif" });
-											setAttributes({ foregroundCaptionFont: "sansserif" });
-										}
-										if(newval === 'natural'){
-											setAttributes({ foregroundHeadlineFont: "cursive" });
-											setAttributes({ foregroundCopyFont: "sansserif" });
-											setAttributes({ foregroundCaptionFont: "cursive" });
-										}
-									
-									}}
-									onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-										option.label.toLowerCase().startsWith(newval.toLowerCase())
-									))}
-								/>
-							</div>
-						</div>
+						)}
+						{/* Fallback note */}
+						{fontOptions.length == 0 && (
+							<p> No Font Families defined in theme.json, <a href="https://fullsiteediting.com/lessons/theme-json-typography-options/" target="_blank">read more</a>.</p>
+						)}
+						
 					</PanelRow>
 				</PanelBody>
 				</Fragment>

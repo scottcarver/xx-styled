@@ -2973,7 +2973,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       title: __("Typography", "pxblocks"),
       className: "panel-typography",
       initialOpen: false
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelRow, null, fontOptions.length > 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-sidepanel"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
@@ -3101,7 +3101,10 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         }
       },
       onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
-    })))))));
+    }))), fontOptions.length == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, " No Font Families defined in theme.json, ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
+      href: "https://fullsiteediting.com/lessons/theme-json-typography-options/",
+      target: "_blank"
+    }, "read more"), ".")))));
   }
 
 }
@@ -3646,7 +3649,7 @@ function PoststylePlugin(props) {
   }, createElement(PostsDropdownControl, null)), createElement(PanelBody, {
     title: __("Typography", "pxblocks"),
     initialOpen: false
-  }, createElement(PanelRow, null, createElement("div", {
+  }, createElement(PanelRow, null, fontOptions.length > 0 && createElement("div", {
     className: "px-sidepanel"
   }, createElement("div", {
     className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
@@ -3719,7 +3722,10 @@ function PoststylePlugin(props) {
         updateMyPostMetaCaptions("fantasy");
       }
     }
-  }))))))));
+  }))), fontOptions.length == 0 && createElement("p", null, " No Font Families defined in theme.json, ", createElement("a", {
+    href: "https://fullsiteediting.com/lessons/theme-json-typography-options/",
+    target: "_blank"
+  }, "read more"), "."))))));
 }
 
 const applyWithSelect = withSelect(select => {

@@ -63,8 +63,9 @@ html.xx-styled{
 
 	// Heading
 	h1, h2, h3, h4, h5, h6{
-		color: var(--headlineColor) !important; // This is to override WP
+		color: var(--headlineColor); // This is to override WP //  !important
 		font-family:var(--foregroundHeadlineFont);
+		background-color: var(--backgroundColor);
 	}
 	
 	/*

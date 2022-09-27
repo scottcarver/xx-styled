@@ -169,79 +169,86 @@ function PoststylePlugin(props) {
 						
 						<PanelBody title={__("Typography", "pxblocks")} initialOpen={false}>
 							<PanelRow>
-								<div className="px-sidepanel">
-									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-										<ComboboxControl
-											label="Headline Font Family"
-											placeholder= 'Initial'
-											value={postStyleHeadline}
-											allowReset={true}
-											options={fontOptions}
-											onChange={(newval) => updateMyPostMetaHeadline(newval)}
-										/>
+								{/* Dropdown */}
+								{fontOptions.length > 0 && (
+									<div className="px-sidepanel">
+										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+											<ComboboxControl
+												label="Headline Font Family"
+												placeholder= 'Initial'
+												value={postStyleHeadline}
+												allowReset={true}
+												options={fontOptions}
+												onChange={(newval) => updateMyPostMetaHeadline(newval)}
+											/>
+										</div>
+										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+											<ComboboxControl
+												label="Copy Font Familyx"
+												placeholder= 'Initial'
+												value={postStyleCopy}
+												allowReset={true}
+												options={fontOptions}
+												onChange={(newval) => updateMyPostMetaCopy(newval)}
+											/>
+										</div>
+										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+											<ComboboxControl
+												label="Caption Font Family"
+												placeholder= 'Initial'
+												value={postStyleCaptions}
+												allowReset={true}
+												options={fontOptions}
+												onChange={(newval) => updateMyPostMetaCaptions(newval)}
+											/>
+										</div>
+										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+											<ComboboxControl
+												label="Typographic Themes"
+												placeholder= 'Select a Preset'
+												allowReset={true}
+												options={stylePresets}
+												onChange={function(newval){
+													if(newval === 'none'){
+														updateMyPostMetaHeadline("inherit");
+														updateMyPostMetaCopy("inherit");
+														updateMyPostMetaCaptions("inherit");
+													}
+													if(newval === 'news'){
+														updateMyPostMetaHeadline("serif");
+														updateMyPostMetaCopy("sansserif");
+														updateMyPostMetaCaptions("sansserif");
+													}
+													if(newval === 'magazine'){
+														updateMyPostMetaHeadline("sansserif");
+														updateMyPostMetaCopy("serif");
+														updateMyPostMetaCaptions("sansserif");
+													}
+													if(newval === 'technical'){
+														updateMyPostMetaHeadline("monospace");
+														updateMyPostMetaCopy("monospace");
+														updateMyPostMetaCaptions("sansserif");
+													}
+													if(newval === 'modern'){
+														updateMyPostMetaHeadline("sansserif");
+														updateMyPostMetaCopy("sansserif");
+														updateMyPostMetaCaptions("sansserif");
+													}
+													if(newval === 'natural'){
+														updateMyPostMetaHeadline("sansserif");
+														updateMyPostMetaCopy("sansserif");
+														updateMyPostMetaCaptions("fantasy");
+													}
+												}}
+											/>
+										</div>
+										
 									</div>
-									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-										<ComboboxControl
-											label="Copy Font Familyx"
-											placeholder= 'Initial'
-											value={postStyleCopy}
-											allowReset={true}
-											options={fontOptions}
-											onChange={(newval) => updateMyPostMetaCopy(newval)}
-										/>
-									</div>
-									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-										<ComboboxControl
-											label="Caption Font Family"
-											placeholder= 'Initial'
-											value={postStyleCaptions}
-											allowReset={true}
-											options={fontOptions}
-											onChange={(newval) => updateMyPostMetaCaptions(newval)}
-										/>
-									</div>
-									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-										<ComboboxControl
-											label="Typographic Themes"
-											placeholder= 'Select a Preset'
-											allowReset={true}
-											options={stylePresets}
-											onChange={function(newval){
-												if(newval === 'none'){
-													updateMyPostMetaHeadline("inherit");
-													updateMyPostMetaCopy("inherit");
-													updateMyPostMetaCaptions("inherit");
-												}
-												if(newval === 'news'){
-													updateMyPostMetaHeadline("serif");
-													updateMyPostMetaCopy("sansserif");
-													updateMyPostMetaCaptions("sansserif");
-												}
-												if(newval === 'magazine'){
-													updateMyPostMetaHeadline("sansserif");
-													updateMyPostMetaCopy("serif");
-													updateMyPostMetaCaptions("sansserif");
-												}
-												if(newval === 'technical'){
-													updateMyPostMetaHeadline("monospace");
-													updateMyPostMetaCopy("monospace");
-													updateMyPostMetaCaptions("sansserif");
-												}
-												if(newval === 'modern'){
-													updateMyPostMetaHeadline("sansserif");
-													updateMyPostMetaCopy("sansserif");
-													updateMyPostMetaCaptions("sansserif");
-												}
-												if(newval === 'natural'){
-													updateMyPostMetaHeadline("sansserif");
-													updateMyPostMetaCopy("sansserif");
-													updateMyPostMetaCaptions("fantasy");
-												}
-											}}
-										/>
-									</div>
-									
-								</div>
+								)}
+								{/* Fallback note */}
+								{fontOptions.length == 0 && (
+									<p> No Font Families defined in theme.json, <a href="https://fullsiteediting.com/lessons/theme-json-typography-options/" target="_blank">read more</a>.</p>
+								)}
 							</PanelRow>
 						</PanelBody>
 {/* 				
