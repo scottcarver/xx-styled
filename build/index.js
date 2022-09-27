@@ -2006,15 +2006,32 @@ const calculatedInlineVars = attributes => {
 		--selectionFGColor: ${selectionFGColor};
 		--selectionBGColor: ${selectionBGColor};
 	`;
+  /*
   var fontCss = `
-		--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
-		--foregroundCopyFont: var(--${foregroundCopyFont});
-		--foregroundCaptionFont: var(--${foregroundCaptionFont});
-	`;
+  	--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
+  	--foregroundCopyFont: var(--${foregroundCopyFont});
+  	--foregroundCaptionFont: var(--${foregroundCaptionFont});
+  `;
+  */
+
+  var fontCss = ``;
+
+  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
+    fontCss += `--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`;
+  }
+
+  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
+    fontCss += `--foregroundCopyFont: var(--${foregroundCopyFont});`;
+  }
+
+  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
+    fontCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
+  }
+
   var sizingCss = `
-		--spacingMobile:  var(--${spacingMobileStack});
-		--spacingTablet: var(--${spacingTabletStack});
-		--spacingDesktop: var(--${spacingDesktopStack});
+		--spacingMobile: ${spacingMobileStack};
+		--spacingTablet: ${spacingTabletStack};
+		--spacingDesktop: ${spacingDesktopStack};
 	`;
 
   if (styleMode == 'custom') {
@@ -3019,6 +3036,15 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           setAttributes({
             foregroundCaptionFont: "inherit"
           });
+          setAttributes({
+            foregroundHeadlineFont: null
+          });
+          setAttributes({
+            foregroundCopyFont: null
+          });
+          setAttributes({
+            foregroundCaptionFont: null
+          });
         }
 
         if (newval === 'news') {
@@ -3059,25 +3085,25 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
 
         if (newval === 'modern') {
           setAttributes({
-            foregroundHeadlineFont: "modern"
+            foregroundHeadlineFont: "monospace"
           });
           setAttributes({
             foregroundCopyFont: "sansserif"
           });
           setAttributes({
-            foregroundCaptionFont: "modern"
+            foregroundCaptionFont: "sansserif"
           });
         }
 
         if (newval === 'natural') {
           setAttributes({
-            foregroundHeadlineFont: "modern"
+            foregroundHeadlineFont: "cursive"
           });
           setAttributes({
             foregroundCopyFont: "sansserif"
           });
           setAttributes({
-            foregroundCaptionFont: "modern"
+            foregroundCaptionFont: "cursive"
           });
         }
       },
@@ -3229,12 +3255,20 @@ function Edit(props) {
     '--selectionBGColor': selectionBGColor,
     '--lineartColor': lineartColor
   };
-  const typographyObj = {
-    // Typography
-    '--foregroundHeadlineFont': 'var(--' + foregroundHeadlineFont + ')',
-    '--foregroundCopyFont': 'var(--' + foregroundCopyFont + ')',
-    '--foregroundCaptionFont': 'var(--' + foregroundCaptionFont + ')'
-  };
+  const typographyObj = {}; // Selectively add Font Objects
+
+  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
+    typographyObj['--foregroundHeadlineFont'] = 'var(--' + foregroundHeadlineFont + ')';
+  }
+
+  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
+    typographyObj['--foregroundCopyFont'] = 'var(--' + foregroundCopyFont + ')';
+  }
+
+  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
+    typographyObj['--foregroundCaptionFont'] = 'var(--' + foregroundCaptionFont + ')';
+  }
+
   const sizingObj = {
     // Spacing
     '--spacingMobile': spacingMobileStack,
@@ -3531,7 +3565,9 @@ function PoststylePlugin(props) {
   const PostsDropdownControl = compose( // withSelect allows to get posts for our SelectControl and also to get the post meta value
   withSelect(function (select, props) {
     return {
-      posts: select('core').getEntityRecords('postType', 'style') // metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
+      posts: select('core').getEntityRecords('postType', 'style', {
+        per_page: -1
+      }) // metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
 
     };
   }))(function (props) {
@@ -3587,9 +3623,10 @@ function PoststylePlugin(props) {
       jQuery("body").removeClass (function (index, className) {
       	return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
       }); */
+      // alert('wo');
       // Moved off of
       // alert('someone like u ' + postStyleType);
-      var stylestring = '--foregroundHeadlineFont: ' + postStyleHeadline + '; --foregroundCopyFont: ' + postStyleCopy + '; --foregroundCaptionFont: ' + postStyleCaptions + ';';
+      var stylestring = '--foregroundHeadlineFont: var(--' + postStyleHeadline + '); --foregroundCopyFont: var(--' + postStyleCopy + '); --foregroundCaptionFont: var(--' + postStyleCaptions + ');';
       jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType).attr('style', stylestring);
     }
 
@@ -3637,7 +3674,7 @@ function PoststylePlugin(props) {
   })), createElement("div", {
     className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
   }, createElement(ComboboxControl, {
-    label: "Copy Font Family",
+    label: "Copy Font Familyx",
     placeholder: "Initial",
     value: postStyleCopy,
     allowReset: true,
@@ -3685,15 +3722,15 @@ function PoststylePlugin(props) {
       }
 
       if (newval === 'modern') {
-        updateMyPostMetaHeadline("modern");
+        updateMyPostMetaHeadline("sansserif");
         updateMyPostMetaCopy("sansserif");
-        updateMyPostMetaCaptions("modern");
+        updateMyPostMetaCaptions("sansserif");
       }
 
       if (newval === 'natural') {
-        updateMyPostMetaHeadline("modern");
+        updateMyPostMetaHeadline("sansserif");
         updateMyPostMetaCopy("sansserif");
-        updateMyPostMetaCaptions("modern");
+        updateMyPostMetaCaptions("fantasy");
       }
     }
   }))))))));

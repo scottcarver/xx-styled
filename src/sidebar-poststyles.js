@@ -59,7 +59,7 @@ function PoststylePlugin(props) {
 		// withSelect allows to get posts for our SelectControl and also to get the post meta value
 		withSelect( function( select, props ) {
 			return {
-				posts: select( 'core' ).getEntityRecords( 'postType', 'style' ),
+				posts: select( 'core' ).getEntityRecords( 'postType', 'style', { per_page: -1 } ),
 				// metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
 			}
 		} ) )( function( props ) {
@@ -125,10 +125,10 @@ function PoststylePlugin(props) {
 			jQuery("body").removeClass (function (index, className) {
 				return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
 			}); */
-		
+			// alert('wo');
 			// Moved off of
 			// alert('someone like u ' + postStyleType);
-			var stylestring = '--foregroundHeadlineFont: '+postStyleHeadline+'; --foregroundCopyFont: '+postStyleCopy+'; --foregroundCaptionFont: '+postStyleCaptions+';'
+			var stylestring = '--foregroundHeadlineFont: var(--'+postStyleHeadline+'); --foregroundCopyFont: var(--'+postStyleCopy+'); --foregroundCaptionFont: var(--'+postStyleCaptions+');'
 			jQuery("body").addClass('xx-styled--admin').attr('data-theme',postStyleType).attr('style',stylestring);
 		}
 
@@ -179,7 +179,7 @@ function PoststylePlugin(props) {
 									</div>
 									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
 										<ComboboxControl
-											label="Copy Font Family"
+											label="Copy Font Familyx"
 											placeholder= 'Initial'
 											value={postStyleCopy}
 											allowReset={true}
@@ -225,14 +225,14 @@ function PoststylePlugin(props) {
 													updateMyPostMetaCaptions("sansserif");
 												}
 												if(newval === 'modern'){
-													updateMyPostMetaHeadline("modern");
+													updateMyPostMetaHeadline("sansserif");
 													updateMyPostMetaCopy("sansserif");
-													updateMyPostMetaCaptions("modern");
+													updateMyPostMetaCaptions("sansserif");
 												}
 												if(newval === 'natural'){
-													updateMyPostMetaHeadline("modern");
+													updateMyPostMetaHeadline("sansserif");
 													updateMyPostMetaCopy("sansserif");
-													updateMyPostMetaCaptions("modern");
+													updateMyPostMetaCaptions("fantasy");
 												}
 											}}
 										/>

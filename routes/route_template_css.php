@@ -18,8 +18,21 @@ if($styled_areas) :
       if(isset($pieces[1])){
         $styledbit = explode('" ', $pieces[1]);
         $styleclean = $styledbit[0];
-        $styleformatted = '[data-theme="' . $post_slug . '"]{' . $styleclean . '}'; 
-        array_push($styled_array, $styleformatted);
+        $rules = explode(';', $styleclean);
+        $nonulltext = '';
+
+        // Specifically block against null or incomplete data
+        foreach($rules as $rule){
+          $keyvalue =  explode(': ', $rule);
+          $key = trim($keyvalue[0]);
+          $value = isset($keyvalue[1]) ? trim($keyvalue[1]) : '';
+          if(!str_contains($value, 'null') && $value !== ''){
+            $nonulltext .= $key . ":" . $value . ";";
+          }
+        }
+        
+        $styleformatted = '[data-theme="' . $post_slug . '"]{' . $nonulltext . '}';  //$styleclean
+       array_push($styled_array, $styleformatted);
       }
     }
     /* Works!

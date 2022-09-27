@@ -62,17 +62,30 @@ const calculatedInlineVars = attributes => {
 		--selectionBGColor: ${selectionBGColor};
 	`;
 
-
+	/*
 	var fontCss = `
 		--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
 		--foregroundCopyFont: var(--${foregroundCopyFont});
 		--foregroundCaptionFont: var(--${foregroundCaptionFont});
 	`;
+	*/
+
+	var fontCss = ``;
+
+	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
+		fontCss+=`--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`
+	}
+	if(foregroundCopyFont !== null && foregroundCopyFont !== 'inherit'){
+		fontCss+=`--foregroundCopyFont: var(--${foregroundCopyFont});`
+	}
+	if(foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit'){
+		fontCss+=`--foregroundCaptionFont: var(--${foregroundCaptionFont});`
+	}
 
 	var sizingCss = `
-		--spacingMobile:  var(--${spacingMobileStack});
-		--spacingTablet: var(--${spacingTabletStack});
-		--spacingDesktop: var(--${spacingDesktopStack});
+		--spacingMobile: ${spacingMobileStack};
+		--spacingTablet: ${spacingTabletStack};
+		--spacingDesktop: ${spacingDesktopStack};
 	`;
 
 	if(styleMode == 'custom') { combinedCss += fgbgCss + fontCss + sizingCss; }

@@ -711,6 +711,9 @@ export default class StyleControls extends Component {
 											setAttributes({ foregroundHeadlineFont: "inherit" });
 											setAttributes({ foregroundCopyFont: "inherit" });
 											setAttributes({ foregroundCaptionFont: "inherit" });
+											setAttributes({ foregroundHeadlineFont: null });
+											setAttributes({ foregroundCopyFont: null });
+											setAttributes({ foregroundCaptionFont: null });
 										}
 										if(newval === 'news'){
 											setAttributes({ foregroundHeadlineFont: "serif" });
@@ -728,14 +731,14 @@ export default class StyleControls extends Component {
 											setAttributes({ foregroundCaptionFont: "sansserif" });
 										}
 										if(newval === 'modern'){
-											setAttributes({ foregroundHeadlineFont: "modern" });
+											setAttributes({ foregroundHeadlineFont: "monospace" });
 											setAttributes({ foregroundCopyFont: "sansserif" });
-											setAttributes({ foregroundCaptionFont: "modern" });
+											setAttributes({ foregroundCaptionFont: "sansserif" });
 										}
 										if(newval === 'natural'){
-											setAttributes({ foregroundHeadlineFont: "modern" });
+											setAttributes({ foregroundHeadlineFont: "cursive" });
 											setAttributes({ foregroundCopyFont: "sansserif" });
-											setAttributes({ foregroundCaptionFont: "modern" });
+											setAttributes({ foregroundCaptionFont: "cursive" });
 										}
 									
 									}}

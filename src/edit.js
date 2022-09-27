@@ -116,11 +116,16 @@ export default function Edit(props) {
 		'--lineartColor':lineartColor,
 	};
 
-	const typographyObj = { 
-		// Typography
-		'--foregroundHeadlineFont': 'var(--'+foregroundHeadlineFont+')',
-		'--foregroundCopyFont': 'var(--'+foregroundCopyFont+')',
-		'--foregroundCaptionFont': 'var(--'+foregroundCaptionFont+')',
+	const typographyObj = { }
+	// Selectively add Font Objects
+	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
+		typographyObj['--foregroundHeadlineFont'] = 'var(--'+foregroundHeadlineFont+')';
+	}
+	if(foregroundCopyFont !== null && foregroundCopyFont !== 'inherit'){
+		typographyObj['--foregroundCopyFont'] = 'var(--'+foregroundCopyFont+')';
+	}
+	if(foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit'){
+		typographyObj['--foregroundCaptionFont'] = 'var(--'+foregroundCaptionFont+')';
 	}
 
 	const sizingObj = { 

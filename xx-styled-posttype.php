@@ -58,7 +58,18 @@ function new_language_attributes($lang){
       $headlineTypography = get_field("poststylemeta_headline");
       $copyTypography  = get_field("poststylemeta_copy");
       $captionTypography = get_field("poststylemeta_captions");
-      $style = '--foregroundHeadlineFont: '.$headlineTypography.'; --foregroundCopyFont: '.$copyTypography.'; --foregroundCaptionFont: '.$captionTypography.';';
+      $style = '';
+      if($headlineTypography !== null && $headlineTypography !== 'inherit'){
+        $style .= '--foregroundHeadlineFont: var(--'.$headlineTypography.');';
+      }
+      if($copyTypography !== null && $copyTypography !== 'inherit'){
+        $style .= '--foregroundCopyFont: var(--'.$copyTypography.');';
+      }
+      if($captionTypography !== null && $captionTypography !== 'inherit'){
+        $style .= '--foregroundCaptionFont: var(--'.$captionTypography.');';
+      }
+
+      // $style = '';
   } else {
       $namedstyle= "NONE";
   }
@@ -71,6 +82,6 @@ function new_language_attributes($lang){
   //     }
   // }
   // return $lang;
-  return $lang . 'class="xx-styled"' . 'data-theme="'.$namedstyle.'"';
+  return $lang . 'class="xx-styled"' . 'data-theme="'.$namedstyle.'"' . 'style="'.$style.'"';
 }
 add_filter('language_attributes', 'new_language_attributes');
