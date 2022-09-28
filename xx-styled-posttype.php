@@ -91,7 +91,7 @@ function new_language_attributes($lang){
   //     }
   // }
   // return $lang;
-  return $lang . 'class="'.$bodystyles.'"' . 'data-theme="'.$namedstyle.'"' . 'style="'.$style.'"';
+  return $lang . ' class="'.$bodystyles.'"' . ' data-theme="'.$namedstyle.'"' . ' style="'.$style.'"';
 }
 if(!is_admin()){
   add_filter('language_attributes', 'new_language_attributes');
