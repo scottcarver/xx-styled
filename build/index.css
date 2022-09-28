@@ -619,7 +619,6 @@ html.xx-styled {
 .xx-styled--admin .editor-styles-wrapper h6 {
   color: var(--headlineColor);
   font-family: var(--foregroundHeadlineFont);
-  background-color: var(--backgroundColor);
 }
 .xx-styled p.has-drop-cap:not(:focus)::first-letter,
 .xx-styled--admin .editor-styles-wrapper p.has-drop-cap:not(:focus)::first-letter {

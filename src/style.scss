@@ -65,7 +65,7 @@ html.xx-styled{
 	h1, h2, h3, h4, h5, h6{
 		color: var(--headlineColor); // This is to override WP //  !important
 		font-family:var(--foregroundHeadlineFont);
-		background-color: var(--backgroundColor);
+		// background-color: var(--backgroundColor);
 	}
 	
 	/*
@@ -143,7 +143,9 @@ html.xx-styled{
 
 
 
-.xx-styled, .xx-styled *{box-sizing: border-box;}
+.xx-styled, .xx-styled *{
+	box-sizing: border-box;
+}
 
 
 
