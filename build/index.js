@@ -1043,6 +1043,7 @@ class InlineStyleVars extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Co
         headlineColor,
         foregroundColor,
         linkColor,
+        backgroundColor3,
         selectionFGColor,
         selectionBGColor,
         spacingMobile,
@@ -1068,7 +1069,7 @@ class InlineStyleVars extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Co
     const styleObj = {
       '--backgroundImage': bgImageStack,
       '--foregroundColor': foregroundColor,
-      '--backgroundColor0': backgroundColor0,
+      '--backgroundColor': backgroundColor3,
       '--headlineColor': headlineColor,
       '--linkColor': linkColor
     }; // console.log('meep' );
@@ -1170,7 +1171,8 @@ class OnPageStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compon
 
     const styleObj = {
       '--backgroundImage': bgImageStack,
-      '--backgroundColor': bgColorStack,
+      '--backgroundColor': backgroundColor3,
+      // bgColorStack
       '--backgroundSizeSm': bgSize['sm'],
       '--backgroundSizeMd': bgSize['md'],
       '--backgroundSize': bgSize['lg'],
@@ -1965,6 +1967,7 @@ const calculatedInlineVars = attributes => {
     styleMode,
     selectionFGColor,
     selectionBGColor,
+    backgroundColor3,
     foregroundHeadlineFont,
     foregroundCopyFont,
     foregroundCaptionFont,
@@ -1990,7 +1993,7 @@ const calculatedInlineVars = attributes => {
   var combinedCss = '';
   var fgbgCss = `
 		--backgroundImage: ${bgImageStack};
-		--backgroundColor: ${bgColorStack};
+		--backgroundColor: ${backgroundColor3};
 		--backgroundSizeSm: ${bgSizeSm};
 		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
@@ -2005,7 +2008,8 @@ const calculatedInlineVars = attributes => {
 		--lineartColor: ${lineartColor};
 		--selectionFGColor: ${selectionFGColor};
 		--selectionBGColor: ${selectionBGColor};
-	`;
+	`; //--backgroundColor: ${bgColorStack};
+
   /*
   var fontCss = `
   	--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
@@ -3427,7 +3431,10 @@ function save(props) {
       namedstyle,
       styleEnabled,
       styleMode,
-      heightEnabled
+      heightEnabled,
+      foregroundHeadlineFont,
+      foregroundCopyFont,
+      foregroundCaptionFont
     },
     setAttributes,
     clientId
@@ -3435,10 +3442,7 @@ function save(props) {
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()("xx-styled", // `wp-block-xx-styled--${blockID}`,
   {
     "wp-block--heightenabled": heightEnabled
-  } // `wp-block--headline-${foregroundHeadlineFont}`,
-  // `wp-block--copy-${foregroundCopyFont}`,
-  // `wp-block--caption-${foregroundCaptionFont}`
-  ); // Return the shtuff
+  }, `xx-styled--headlinefont-${foregroundHeadlineFont}`, `xx-styled--copyfont-${foregroundCopyFont}`, `xx-styled--captionfont-${foregroundCaptionFont}`); // Return the shtuff
 
   const blockPropsSavedOb = {
     className: classes,

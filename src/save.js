@@ -26,6 +26,9 @@ export default function save(props) {
 			styleEnabled,
 			styleMode,
 			heightEnabled,
+			foregroundHeadlineFont,
+			foregroundCopyFont,
+			foregroundCaptionFont
 		},
 		setAttributes,
 		clientId
@@ -35,9 +38,9 @@ export default function save(props) {
 		"xx-styled",
 		// `wp-block-xx-styled--${blockID}`,
 		{ "wp-block--heightenabled": heightEnabled },
-		// `wp-block--headline-${foregroundHeadlineFont}`,
-		// `wp-block--copy-${foregroundCopyFont}`,
-		// `wp-block--caption-${foregroundCaptionFont}`
+		`xx-styled--headlinefont-${foregroundHeadlineFont}`,
+		`xx-styled--copyfont-${foregroundCopyFont}`,
+		`xx-styled--captionfont-${foregroundCaptionFont}`
 	);
 
 	// Return the shtuff

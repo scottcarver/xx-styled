@@ -53,8 +53,10 @@ add_action( 'init', 'register_style_template' );
 
 // Add tags to <html> using the language_attributes hook
 function new_language_attributes($lang){
-  $bodystyles = 'xx-styled';
-
+  // Allow the user to add some additional classes (by adding this constant)
+  $customstyles = CUSTOM_CLASSES_HTML ? CUSTOM_CLASSES_HTML : '';
+  $bodystyles = 'xx-styled ' . $customstyles;
+  
   if (function_exists('get_field')) {
       $namedstyle= get_field("poststylemeta_type");
       $headlineTypography = get_field("poststylemeta_headline");

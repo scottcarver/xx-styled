@@ -36,6 +36,7 @@ export default class InlineStyleVars extends Component {
 				headlineColor,
 				foregroundColor,
 				linkColor,
+				backgroundColor3,
 				selectionFGColor,
 				selectionBGColor,
 				spacingMobile,
@@ -61,7 +62,7 @@ export default class InlineStyleVars extends Component {
         const styleObj = { 
             '--backgroundImage': bgImageStack,
             '--foregroundColor': foregroundColor, 
-            '--backgroundColor0': backgroundColor0,
+            '--backgroundColor': backgroundColor3,
             '--headlineColor': headlineColor,
             '--linkColor': linkColor
         };
