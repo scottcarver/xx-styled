@@ -10,6 +10,8 @@
 	"supports": {
 		"html": true,
 		"anchor": true,
+		"layout": true,
+		"__experimentalLayout": true,
 		"align": ["wide", "full"]
 	},
 	"attributes" : {
@@ -104,21 +106,25 @@
 			"type": "string",
 			"default": "#ffffff"
 		},
-		"backgroundColor0": {
+		"backgroundColor": {
 			"type": "string",
-			"default": "#ddd"
+			"default": "#ddd",
+			"comment":"used as the base color in the generated style"
 		},
 		"backgroundColor1": {
 			"type": "string",
-			"default": "#ffffff"
+			"default": "#ffffff",
+			"comment":"used as gradient color 1"
 		},
 		"backgroundColor2": {
 			"type": "string",
-			"default": "#ffffff"
+			"default": "#ffffff",
+			"comment":"used as gradient color 2"
 		},
 		"backgroundColor3": {
 			"type": "string",
-			"default": "transparent"
+			"default": "transparent",
+			"comment":"used as the gel color"
 		},
 		"gradientType": {
 			"type": "string",

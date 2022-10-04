@@ -593,10 +593,6 @@ html.xx-styled {
     padding: var(--spacingDesktop);
   }
 }
-.xx-styled.alignfull,
-.xx-styled--admin .editor-styles-wrapper.alignfull {
-  max-width: none;
-}
 .xx-styled.alignwide,
 .xx-styled--admin .editor-styles-wrapper.alignwide {
   max-width: var(--wideWidth);

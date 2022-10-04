@@ -62,7 +62,7 @@ export default class InlineStyleVars extends Component {
         const styleObj = { 
             '--backgroundImage': bgImageStack,
             '--foregroundColor': foregroundColor, 
-            '--backgroundColor': backgroundColor3,
+            '--backgroundColor': backgroundColor0,
             '--headlineColor': headlineColor,
             '--linkColor': linkColor
         };

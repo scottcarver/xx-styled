@@ -63,7 +63,7 @@ export default class OnPageStyle extends Component {
 		// body[data-color='custom'] 
         const styleObj = { 
             '--backgroundImage': bgImageStack,
-			'--backgroundColor': backgroundColor3, // bgColorStack
+			'--backgroundColor': backgroundColor0, // bgColorStack
 			'--backgroundSizeSm': bgSize['sm'],
 			'--backgroundSizeMd': bgSize['md'],
 			'--backgroundSize': bgSize['lg'],

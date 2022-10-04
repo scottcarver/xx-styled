@@ -1069,7 +1069,7 @@ class InlineStyleVars extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Co
     const styleObj = {
       '--backgroundImage': bgImageStack,
       '--foregroundColor': foregroundColor,
-      '--backgroundColor': backgroundColor3,
+      '--backgroundColor': backgroundColor0,
       '--headlineColor': headlineColor,
       '--linkColor': linkColor
     }; // console.log('meep' );
@@ -1171,7 +1171,7 @@ class OnPageStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compon
 
     const styleObj = {
       '--backgroundImage': bgImageStack,
-      '--backgroundColor': backgroundColor3,
+      '--backgroundColor': backgroundColor0,
       // bgColorStack
       '--backgroundSizeSm': bgSize['sm'],
       '--backgroundSizeMd': bgSize['md'],
@@ -1967,6 +1967,7 @@ const calculatedInlineVars = attributes => {
     styleMode,
     selectionFGColor,
     selectionBGColor,
+    backgroundColor0,
     backgroundColor3,
     foregroundHeadlineFont,
     foregroundCopyFont,
@@ -1993,7 +1994,7 @@ const calculatedInlineVars = attributes => {
   var combinedCss = '';
   var fgbgCss = `
 		--backgroundImage: ${bgImageStack};
-		--backgroundColor: ${backgroundColor3};
+		--backgroundColor: ${backgroundColor0};
 		--backgroundSizeSm: ${bgSizeSm};
 		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
