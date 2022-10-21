@@ -54,7 +54,11 @@ add_action( 'init', 'register_style_template' );
 // Add tags to <html> using the language_attributes hook
 function new_language_attributes($lang){
   // Allow the user to add some additional classes (by adding this constant)
-  $customstyles = CUSTOM_CLASSES_HTML ? CUSTOM_CLASSES_HTML : '';
+  $customstyles = '';
+  
+  // Allow the theme or plugin to add html classes
+  if(defined('CUSTOM_CLASSES_HTML')){ $customstyles .= CUSTOM_CLASSES_HTML; }
+
   $bodystyles = 'xx-styled ' . $customstyles;
   
   if (function_exists('get_field')) {
