@@ -18,7 +18,7 @@ export default class calculatedTabset2 extends Component {
 				bgGelEnabled,
 				backgroundColorCount,
 				foregroundColor,
-				backgroundColor0,
+				backgroundColor,
 				backgroundColor1,
 				backgroundColor2,
 				backgroundColor3,

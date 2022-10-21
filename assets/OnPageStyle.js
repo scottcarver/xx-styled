@@ -32,7 +32,7 @@ export default class OnPageStyle extends Component {
 				babygradient,
 				dropcapColor,
 				blockquoteColor,
-				backgroundColor0,
+				backgroundColor,
 				bgColorEnabled,
 				blockID,
 				bgImage,
@@ -63,7 +63,7 @@ export default class OnPageStyle extends Component {
 		// body[data-color='custom'] 
         const styleObj = { 
             '--backgroundImage': bgImageStack,
-			'--backgroundColor': backgroundColor0, // bgColorStack
+			'--backgroundColor': backgroundColor, // bgColorStack
 			'--backgroundSizeSm': bgSize['sm'],
 			'--backgroundSizeMd': bgSize['md'],
 			'--backgroundSize': bgSize['lg'],

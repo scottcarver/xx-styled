@@ -22,7 +22,7 @@ domReady( function() {
 		label: 'Itza Light Blu',
 		title: 'BG Light Blue',
 		category: 'wholesome-blocks',
-		attributes: { backgroundColor0: '#FF0000' }
+		attributes: { backgroundColor: '#FF0000' }
 	} );
 	/*
 	wp.blocks.registerBlockStyle( 'xx/styled', {

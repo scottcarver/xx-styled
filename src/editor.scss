@@ -23,7 +23,7 @@ body.post-type-style{
 /*
 // Editor Style
 .xx-styled{
-	background-color: var(--backgroundColor0);
+	background-color: var(--backgroundColor);
 	color: var(--foregroundColor);
 	padding: 2px;
 	max-width: none;
@@ -45,3 +45,28 @@ button{
 		font-family:sans-serif;
 	}
 }
+
+
+
+
+/* Typography for inside the editor */
+// block-editor-block-list__layout
+/*
+.xx-styled--headlinefont-fantasy .wp-block-xx-styled{
+	h1, h2, h3, h4, h5, h6{
+		font-family: var(--fantasy);
+	}
+}
+
+.xx-styled--headlinefont-monospace .wp-block-xx-styled{
+	h1, h2, h3, h4, h5, h6{
+		font-family: var(monospace);
+	}
+}
+
+.xx-styled--headlinefont-cursive .wp-block-xx-styled{
+	h1, h2, h3, h4, h5, h6{
+		font-family: var(cursive);
+	}
+}
+*/

@@ -6,43 +6,10 @@ import classnames from "classnames";
 /*  Internal block libraries */
 const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
-import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import "./styled-preview.scss";
 import "./styled-tile.scss";
-
-const {
-	TabPanel,
-	Button,
-	ButtonGroup,
-	RangeControl,
-	IconButton,
-	Placeholder,
-	ColorIndicator,
-	ColorPicker
-} = wp.components;
-
-// My helper code
-import BGImgControl from "./../BGImgControl";
-import BGGradControl from "./../BGGradControl";
-// import BGCurrentTabset from "./BGCurrentTabset"; // Component
-
-import calculatedTabset from "./../lib/js/calculatedTabset"; // Function Component
-import ColorObgtoRgbaString from "./../lib/js/ColorObgtoRgbaString";
-
-
 import calculatedBgImage from "./../lib/js/calculatedBgImage";
 import calculatedGradient from "./../lib/js/calculatedGradient";
-// import calculatedBgColor from "./../lib/js/calculatedBgColor";
-// import calculatedBGIMGSize from "./../lib/js/calculatedBGIMGSize";
-// import calculatedBgPos from "./../lib/js/calculatedBgPos";
-// import calculatedBGIMGAtt from "./../lib/js/calculatedBGIMGAtt";
-// import calculatedBGIMGRepeat from "./../lib/js/calculatedBGIMGRepeat";
-
-// const bgColorStack = calculatedBgColor(this.props.attributes);
-// const bgSize = calculatedBGIMGSize(this.props.attributes, 'sm'); // sm, md, lg
-// const bgPosition = calculatedBgPos(this.props.attributes);
-// const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
-// const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);
 
 /* Create a Block Controls wrapper Component */
 export default class StyledPreview extends Component {
@@ -54,32 +21,17 @@ export default class StyledPreview extends Component {
 		const {
 			positionVert,
 			attributes: {
-				blockID,
-				styleEnabled,
-				heightEnabled,
 				bgColorEnabled,
 				bgGradientEnabled,
 				bgImageEnabled,
 				bgGelEnabled,
-				backgroundColorCount,
 				foregroundColor,
 				headlineColor,
 				linkColor,
-				backgroundColor0,
-				backgroundColor1,
-				backgroundColor2,
+				backgroundColor,
 				backgroundColor3,
-				backgroundColor1Start,
-				backgroundColor2Start,
 				backgroundImage,
 				backgroundStackFirst,
-				backgroundGradientAttachment,
-				gradientType,
-				gradientLinearAngle,
-				gradientAlignRadialHori,
-				gradientAlignRadialVert,
-				selectionFGColor,
-				selectionBGColor,
 				foregroundHeadlineFont,
 				foregroundCopyFont,
 				foregroundCaptionFont
@@ -115,7 +67,7 @@ export default class StyledPreview extends Component {
 				background: ${calculatedGradient(this.props.attributes)};
 			}
 			.base{
-				background: ${backgroundColor0};
+				background: ${backgroundColor};
 			}
 		`;
 		var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " ");

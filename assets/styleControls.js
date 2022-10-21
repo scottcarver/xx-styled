@@ -89,7 +89,7 @@ export default class StyleControls extends Component {
 				bgGelEnabled,
 				backgroundStackFirst,
 				backgroundColorCount,
-				backgroundColor0,
+				backgroundColor,
 				backgroundColor1,
 				backgroundColor2,
 				backgroundColor3,
@@ -130,9 +130,9 @@ export default class StyleControls extends Component {
 
 		
 		const attributeLibrary = {
-			'black-bg' : { 'backgroundColor0': '#000000', 'foregroundColor': '#FFFFFF' },
-			'red-bg' : { 'backgroundColor0': '#FF0000', 'foregroundColor': '#0000FF' },
-			'white-bg' : { 'backgroundColor0': '#FFFFFF', 'foregroundColor': '#000000' }
+			'black-bg' : { 'backgroundColor': '#000000', 'foregroundColor': '#FFFFFF' },
+			'red-bg' : { 'backgroundColor': '#FF0000', 'foregroundColor': '#0000FF' },
+			'white-bg' : { 'backgroundColor': '#FFFFFF', 'foregroundColor': '#000000' }
 		}
 
 

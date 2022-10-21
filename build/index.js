@@ -616,7 +616,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         bgGelEnabled,
         backgroundColorCount,
         foregroundColor,
-        backgroundColor0,
+        backgroundColor,
         backgroundColor1,
         backgroundColor2,
         backgroundColor3,
@@ -679,16 +679,16 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bgcolorSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundColor0,
-          onChange: backgroundColor0 => setAttributes({
-            backgroundColor0
+          value: backgroundColor,
+          onChange: backgroundColor => setAttributes({
+            backgroundColor
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: bgcolor1classes
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
-          color: backgroundColor0,
+          color: backgroundColor,
           onChangeComplete: value => setAttributes({
-            backgroundColor0: value.hex
+            backgroundColor: value.hex
           })
         })));
       } // Gradient Tab
@@ -1069,7 +1069,7 @@ class InlineStyleVars extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Co
     const styleObj = {
       '--backgroundImage': bgImageStack,
       '--foregroundColor': foregroundColor,
-      '--backgroundColor': backgroundColor0,
+      '--backgroundColor': backgroundColor,
       '--headlineColor': headlineColor,
       '--linkColor': linkColor
     }; // console.log('meep' );
@@ -1139,7 +1139,7 @@ class OnPageStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compon
         babygradient,
         dropcapColor,
         blockquoteColor,
-        backgroundColor0,
+        backgroundColor,
         bgColorEnabled,
         blockID,
         bgImage,
@@ -1171,7 +1171,7 @@ class OnPageStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compon
 
     const styleObj = {
       '--backgroundImage': bgImageStack,
-      '--backgroundColor': backgroundColor0,
+      '--backgroundColor': backgroundColor,
       // bgColorStack
       '--backgroundSizeSm': bgSize['sm'],
       '--backgroundSizeMd': bgSize['md'],
@@ -1275,16 +1275,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _styled_preview_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styled-preview.scss */ "./assets/components/styled-preview.scss");
-/* harmony import */ var _styled_tile_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styled-tile.scss */ "./assets/components/styled-tile.scss");
-/* harmony import */ var _BGImgControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../BGImgControl */ "./assets/BGImgControl.js");
-/* harmony import */ var _BGGradControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./../BGGradControl */ "./assets/BGGradControl.js");
-/* harmony import */ var _lib_js_calculatedTabset__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./../lib/js/calculatedTabset */ "./assets/lib/js/calculatedTabset.js");
-/* harmony import */ var _lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./../lib/js/ColorObgtoRgbaString */ "./assets/lib/js/ColorObgtoRgbaString.js");
-/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./../lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./../lib/js/calculatedGradient */ "./assets/lib/js/calculatedGradient.js");
+/* harmony import */ var _styled_preview_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styled-preview.scss */ "./assets/components/styled-preview.scss");
+/* harmony import */ var _styled_tile_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styled-tile.scss */ "./assets/components/styled-tile.scss");
+/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
+/* harmony import */ var _lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../lib/js/calculatedGradient */ "./assets/lib/js/calculatedGradient.js");
 
 
 /* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
@@ -1299,34 +1293,6 @@ const {
 
 
 
-const {
-  TabPanel,
-  Button,
-  ButtonGroup,
-  RangeControl,
-  IconButton,
-  Placeholder,
-  ColorIndicator,
-  ColorPicker
-} = wp.components; // My helper code
-
-
- // import BGCurrentTabset from "./BGCurrentTabset"; // Component
-
- // Function Component
-
-
-
- // import calculatedBgColor from "./../lib/js/calculatedBgColor";
-// import calculatedBGIMGSize from "./../lib/js/calculatedBGIMGSize";
-// import calculatedBgPos from "./../lib/js/calculatedBgPos";
-// import calculatedBGIMGAtt from "./../lib/js/calculatedBGIMGAtt";
-// import calculatedBGIMGRepeat from "./../lib/js/calculatedBGIMGRepeat";
-// const bgColorStack = calculatedBgColor(this.props.attributes);
-// const bgSize = calculatedBGIMGSize(this.props.attributes, 'sm'); // sm, md, lg
-// const bgPosition = calculatedBgPos(this.props.attributes);
-// const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
-// const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);
 
 /* Create a Block Controls wrapper Component */
 
@@ -1341,39 +1307,24 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
     const {
       positionVert,
       attributes: {
-        blockID,
-        styleEnabled,
-        heightEnabled,
         bgColorEnabled,
         bgGradientEnabled,
         bgImageEnabled,
         bgGelEnabled,
-        backgroundColorCount,
         foregroundColor,
         headlineColor,
         linkColor,
-        backgroundColor0,
-        backgroundColor1,
-        backgroundColor2,
+        backgroundColor,
         backgroundColor3,
-        backgroundColor1Start,
-        backgroundColor2Start,
         backgroundImage,
         backgroundStackFirst,
-        backgroundGradientAttachment,
-        gradientType,
-        gradientLinearAngle,
-        gradientAlignRadialHori,
-        gradientAlignRadialVert,
-        selectionFGColor,
-        selectionBGColor,
         foregroundHeadlineFont,
         foregroundCopyFont,
         foregroundCaptionFont
       },
       setAttributes
     } = this.props;
-    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_9__["default"])(this.props.attributes);
+    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_4__["default"])(this.props.attributes);
     var combinedCss = ` 
 			.fgtext{
 				color: ${foregroundColor};
@@ -1398,10 +1349,10 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
 				background-image: url(${backgroundImage});
 			}
 			.gradient{
-				background: ${(0,_lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_10__["default"])(this.props.attributes)};
+				background: ${(0,_lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_5__["default"])(this.props.attributes)};
 			}
 			.base{
-				background: ${backgroundColor0};
+				background: ${backgroundColor};
 			}
 		`;
     var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
@@ -1711,11 +1662,11 @@ const calculatedBgColor = attributes => {
   // Get all of these variables
   const {
     bgColorEnabled,
-    backgroundColor0
+    backgroundColor
   } = attributes;
 
-  if (bgColorEnabled && backgroundColor0 != null) {
-    return backgroundColor0;
+  if (bgColorEnabled && backgroundColor != null) {
+    return backgroundColor;
   } else {
     return "transparent";
   }
@@ -1967,7 +1918,7 @@ const calculatedInlineVars = attributes => {
     styleMode,
     selectionFGColor,
     selectionBGColor,
-    backgroundColor0,
+    backgroundColor,
     backgroundColor3,
     foregroundHeadlineFont,
     foregroundCopyFont,
@@ -1994,7 +1945,7 @@ const calculatedInlineVars = attributes => {
   var combinedCss = '';
   var fgbgCss = `
 		--backgroundImage: ${bgImageStack};
-		--backgroundColor: ${backgroundColor0};
+		--backgroundColor: ${backgroundColor};
 		--backgroundSizeSm: ${bgSizeSm};
 		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
@@ -2333,7 +2284,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         bgGelEnabled,
         backgroundStackFirst,
         backgroundColorCount,
-        backgroundColor0,
+        backgroundColor,
         backgroundColor1,
         backgroundColor2,
         backgroundColor3,
@@ -2374,15 +2325,15 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
 
     const attributeLibrary = {
       'black-bg': {
-        'backgroundColor0': '#000000',
+        'backgroundColor': '#000000',
         'foregroundColor': '#FFFFFF'
       },
       'red-bg': {
-        'backgroundColor0': '#FF0000',
+        'backgroundColor': '#FF0000',
         'foregroundColor': '#0000FF'
       },
       'white-bg': {
-        'backgroundColor0': '#FFFFFF',
+        'backgroundColor': '#FFFFFF',
         'foregroundColor': '#000000'
       }
     }; // Toggles
@@ -3375,7 +3326,7 @@ _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
     title: 'BG Light Blue',
     category: 'wholesome-blocks',
     attributes: {
-      backgroundColor0: '#FF0000'
+      backgroundColor: '#FF0000'
     }
   });
   /*

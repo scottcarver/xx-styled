@@ -1,10 +1,10 @@
 // Returns the final "background-color"
 const calculatedBgColor = attributes => {
 	// Get all of these variables
-	const { bgColorEnabled, backgroundColor0 } = attributes;
+	const { bgColorEnabled, backgroundColor } = attributes;
 
-	if (bgColorEnabled && backgroundColor0 != null) {
-		return backgroundColor0;
+	if (bgColorEnabled && backgroundColor != null) {
+		return backgroundColor;
 	} else {
 		return "transparent";
 	}

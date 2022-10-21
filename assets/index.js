@@ -48,7 +48,12 @@ registerBlockType("px/section", {
 	getEditWrapperProps(attributes) {
 		const { blockAlignment } = attributes;
 		// return { 'data-align': 'full' };
+
+		// console.log('from this body', attributes);
+		
 	},
+
+
 
 	getSelectedBlockClientId(attributes) {
 		const { blockID } = attributes;

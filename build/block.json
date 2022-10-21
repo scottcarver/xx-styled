@@ -14,6 +14,10 @@
 		"align": ["wide", "full"]
 	},
 	"attributes" : {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
 		"blockID": {
 			"type": "string",
 			"default": ""

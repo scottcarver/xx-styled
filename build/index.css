@@ -265,6 +265,9 @@
 .px-colorbox.px-colorbox--paddingbelow {
   padding-bottom: 20px;
 }
+.px-colorbox.px-colorbox--paddingleft {
+  padding-left: 10px;
+}
 .px-colorbox.px-colorbox--lineabove {
   border-top: solid 1px #eee;
 }
@@ -685,7 +688,7 @@ body.post-type-style #styledarea-toggle {
 /*
 // Editor Style
 .xx-styled{
-	background-color: var(--backgroundColor0);
+	background-color: var(--backgroundColor);
 	color: var(--foregroundColor);
 	padding: 2px;
 	max-width: none;
@@ -706,6 +709,27 @@ button{
   color: black !important;
   font-family: sans-serif;
 }
+
+/* Typography for inside the editor */
+/*
+.xx-styled--headlinefont-fantasy .wp-block-xx-styled{
+	h1, h2, h3, h4, h5, h6{
+		font-family: var(--fantasy);
+	}
+}
+
+.xx-styled--headlinefont-monospace .wp-block-xx-styled{
+	h1, h2, h3, h4, h5, h6{
+		font-family: var(monospace);
+	}
+}
+
+.xx-styled--headlinefont-cursive .wp-block-xx-styled{
+	h1, h2, h3, h4, h5, h6{
+		font-family: var(cursive);
+	}
+}
+*/
 /*!**************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./assets/components/styled-preview.scss ***!
   \**************************************************************************************************************************************************************************************************************************************************************/

@@ -48,7 +48,7 @@ export default class BGTabs extends Component {
 				bgGelEnabled,
 				backgroundColorCount,
 				foregroundColor,
-				backgroundColor0,
+				backgroundColor,
 				backgroundColor1,
 				backgroundColor2,
 				backgroundColor3,
@@ -112,20 +112,20 @@ export default class BGTabs extends Component {
 							{/* <ColorIndicator colorValue={foregroundColor} /> */}
 							<input type="checkbox" id="bgcolorSwatch" name="bgcolorSwatch"></input>
 							<label htmlFor="bgcolorSwatch">Palette</label>
-							<ColorPalette value={backgroundColor0} onChange={backgroundColor0 => setAttributes({ backgroundColor0 })} />
+							<ColorPalette value={backgroundColor} onChange={backgroundColor => setAttributes({ backgroundColor })} />
 						</div>
 
 						<div className={bgcolor1classes}>
 							{/* <h2>Color</h2>
-							<ColorIndicator colorValue={backgroundColor0} />
+							<ColorIndicator colorValue={backgroundColor} />
 							<ColorPalette
 								enableAlpha
-								value={backgroundColor0}
-								onChange={backgroundColor0 => setAttributes({ backgroundColor0 })}
+								value={backgroundColor}
+								onChange={backgroundColor => setAttributes({ backgroundColor })}
 							/> */}
 							<ColorPicker
-								color={backgroundColor0}
-								onChangeComplete={value => setAttributes({ backgroundColor0: value.hex })}
+								color={backgroundColor}
+								onChangeComplete={value => setAttributes({ backgroundColor: value.hex })}
 								
 							/>
 						</div>

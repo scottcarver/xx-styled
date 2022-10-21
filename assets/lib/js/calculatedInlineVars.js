@@ -21,7 +21,7 @@ const calculatedInlineVars = attributes => {
 		styleMode,
 		selectionFGColor,
 		selectionBGColor,
-		backgroundColor0,
+		backgroundColor,
 		backgroundColor3,
 		foregroundHeadlineFont,
 		foregroundCopyFont,
@@ -47,7 +47,7 @@ const calculatedInlineVars = attributes => {
 
 	var fgbgCss = `
 		--backgroundImage: ${bgImageStack};
-		--backgroundColor: ${backgroundColor0};
+		--backgroundColor: ${backgroundColor};
 		--backgroundSizeSm: ${bgSizeSm};
 		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
