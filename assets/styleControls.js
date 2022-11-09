@@ -132,7 +132,7 @@ export default class StyleControls extends Component {
 		const attributeLibrary = {
 			'black-bg' : { 'backgroundColor': '#000000', 'foregroundColor': '#FFFFFF' },
 			'red-bg' : { 'backgroundColor': '#FF0000', 'foregroundColor': '#0000FF' },
-			'white-bg' : { 'backgroundColor': '#FFFFFF', 'foregroundColor': '#000000' }
+			'white-bg' : { 'backgroundColor0': '#FFFFFF', 'foregroundColor': '#000000' }
 		}
 
 
@@ -702,6 +702,7 @@ export default class StyleControls extends Component {
 										))}
 									/>
 								</div>
+											{/*
 								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom">
 									<ComboboxControl
 										label="Typographic Themes"
@@ -749,7 +750,9 @@ export default class StyleControls extends Component {
 										))}
 									/>
 								</div>
+								 */}
 							</div>
+							
 						)}
 						{/* Fallback note */}
 						{fontOptions.length == 0 && (

@@ -2333,7 +2333,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         'foregroundColor': '#0000FF'
       },
       'white-bg': {
-        'backgroundColor': '#FFFFFF',
+        'backgroundColor0': '#FFFFFF',
         'foregroundColor': '#000000'
       }
     }; // Toggles
@@ -2967,96 +2967,6 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         foregroundCaptionFont: newval
       }),
       onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-      className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ComboboxControl, {
-      label: "Typographic Themes",
-      placeholder: "Select a Preset",
-      allowReset: true,
-      options: stylePresets,
-      onChange: function (newval) {
-        if (newval === 'none') {
-          setAttributes({
-            foregroundHeadlineFont: "inherit"
-          });
-          setAttributes({
-            foregroundCopyFont: "inherit"
-          });
-          setAttributes({
-            foregroundCaptionFont: "inherit"
-          });
-          setAttributes({
-            foregroundHeadlineFont: null
-          });
-          setAttributes({
-            foregroundCopyFont: null
-          });
-          setAttributes({
-            foregroundCaptionFont: null
-          });
-        }
-
-        if (newval === 'news') {
-          setAttributes({
-            foregroundHeadlineFont: "serif"
-          });
-          setAttributes({
-            foregroundCopyFont: "sansserif"
-          });
-          setAttributes({
-            foregroundCaptionFont: "sansserif"
-          });
-        }
-
-        if (newval === 'magazine') {
-          setAttributes({
-            foregroundHeadlineFont: "sansserif"
-          });
-          setAttributes({
-            foregroundCopyFont: "serif"
-          });
-          setAttributes({
-            foregroundCaptionFont: "sansserif"
-          });
-        }
-
-        if (newval === 'technical') {
-          setAttributes({
-            foregroundHeadlineFont: "monospace"
-          });
-          setAttributes({
-            foregroundCopyFont: "monospace"
-          });
-          setAttributes({
-            foregroundCaptionFont: "sansserif"
-          });
-        }
-
-        if (newval === 'modern') {
-          setAttributes({
-            foregroundHeadlineFont: "monospace"
-          });
-          setAttributes({
-            foregroundCopyFont: "sansserif"
-          });
-          setAttributes({
-            foregroundCaptionFont: "sansserif"
-          });
-        }
-
-        if (newval === 'natural') {
-          setAttributes({
-            foregroundHeadlineFont: "cursive"
-          });
-          setAttributes({
-            foregroundCopyFont: "sansserif"
-          });
-          setAttributes({
-            foregroundCaptionFont: "cursive"
-          });
-        }
-      },
-      onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
     }))), fontOptions.length == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, " No Font Families defined in theme.json, ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("a", {
       href: "https://fullsiteediting.com/lessons/theme-json-typography-options/",
       target: "_blank"
@@ -3563,18 +3473,21 @@ function PoststylePlugin(props) {
   };
 
   _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
-    if (postStyleType) {
-      /*
-      jQuery("body").removeClass (function (index, className) {
-      	return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
-      }); */
-      // alert('wo');
-      // Moved off of
-      // alert('someone like u ' + postStyleType);
-      var stylestring = '--foregroundHeadlineFont: var(--' + postStyleHeadline + '); --foregroundCopyFont: var(--' + postStyleCopy + '); --foregroundCaptionFont: var(--' + postStyleCaptions + ');';
-      jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType).attr('style', stylestring);
+    /*
+    if(typeof(postStyleType) === undefined){
+    	var postStyleType = '';
     }
+    */
 
+    /*
+    jQuery("body").removeClass (function (index, className) {
+    	return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
+    }); */
+    // alert('wo');
+    // Moved off of
+    // alert('someone like u ' + postStyleType);
+    var stylestring = '--foregroundHeadlineFont: var(--' + postStyleHeadline + '); --foregroundCopyFont: var(--' + postStyleCopy + '); --foregroundCaptionFont: var(--' + postStyleCaptions + ');';
+    jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType).attr('style', stylestring);
     var fontClass = "wp-headlinefont--" + postStyleHeadline;
     var editorClass = ".edit-post-visual-editor";
 

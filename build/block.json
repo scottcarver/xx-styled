@@ -8,10 +8,13 @@
 	"icon": "art",
 	"description": "A complete portable thematic set of FG/BG styles.",
 	"supports": {
-		"html": true,
+		"align": ["wide", "full"],
 		"anchor": true,
-		"layout": true,
-		"align": ["wide", "full"]
+		"className": true,
+		"customClassName": true,
+		"html": true,
+		"layout": true
+		
 	},
 	"attributes" : {
 		"align": {
@@ -145,22 +148,6 @@
 			"type": "number",
 			"default": 45
 		},
-		"gradientAlignHori": {
-			"type": "string",
-			"default": "center"
-		},
-		"gradientAlignVert": {
-			"type": "string",
-			"default": "center"
-		},
-		"gradientAlignVertCustom": {
-			"type": "number",
-			"default": 100
-		},
-		"gradientAlignHoriCustom": {
-			"type": "number",
-			"default": 100
-		},
 		"gradientAlignRadialHori": {
 			"type": "number",
 			"default": 50
@@ -252,35 +239,17 @@
 		"blockAlignment": {
 			"type": "string"
 		},
-		"sectionWidth": {
-			"type": "string"
-		},
 		"spacingMobile": {
 			"type": "object",
-			"default": {
-				"top" : "0px",
-				"bottom" : "0px",
-				"left" : "0px",
-				"right" : "0px"
-			}
+			"default": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
 		},
 		"spacingTablet": {
 			"type": "object",
-			"default": {
-				"top" : "0px",
-				"bottom" : "0px",
-				"left" : "0px",
-				"right" : "0px"
-			}
+			"default": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
 		},
 		"spacingDesktop": {
 			"type": "object",
-			"default": {
-				"top" : "0px",
-				"bottom" : "0px",
-				"left" : "0px",
-				"right" : "0px"
-			}
+			"default": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
 		}
 	},
 	"textdomain": "xx-styled",

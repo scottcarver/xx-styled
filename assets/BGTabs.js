@@ -147,18 +147,14 @@ export default class BGTabs extends Component {
 								<Button
 									isDefault
 									isPrimary={gradientType === "linear"}
-									onClick={() => {
-										setAttributes({ gradientType: "linear" });
-									}}
+									onClick={() => {  setAttributes({ gradientType: "linear" }); }}
 								>
 									Linear
 								</Button>
 								<Button
 									isDefault
 									isPrimary={gradientType === "radial"}
-									onClick={() => {
-										setAttributes({ gradientType: "radial" });
-									}}
+									onClick={() => { setAttributes({ gradientType: "radial" }); }}
 								>
 									Radial
 								</Button>

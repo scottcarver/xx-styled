@@ -123,7 +123,11 @@ function PoststylePlugin(props) {
 
 
 	domReady(function() {
-		if(postStyleType){
+		/*
+		if(typeof(postStyleType) === undefined){
+			var postStyleType = '';
+		}
+		*/
 			/*
 			jQuery("body").removeClass (function (index, className) {
 				return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
@@ -133,7 +137,7 @@ function PoststylePlugin(props) {
 			// alert('someone like u ' + postStyleType);
 			var stylestring = '--foregroundHeadlineFont: var(--'+postStyleHeadline+'); --foregroundCopyFont: var(--'+postStyleCopy+'); --foregroundCaptionFont: var(--'+postStyleCaptions+');'
 			jQuery("body").addClass('xx-styled--admin').attr('data-theme',postStyleType).attr('style',stylestring);
-		}
+		
 
 		var fontClass = "wp-headlinefont--" + postStyleHeadline;
 		var editorClass = ".edit-post-visual-editor";
