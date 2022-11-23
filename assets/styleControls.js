@@ -10,7 +10,7 @@ import StyledPreview from "./components/StyledPreview";
 const { __ } = wp.i18n;
 import { Component, Fragment} from '@wordpress/element';
 import { ColorPalette} from '@wordpress/block-editor';
-import { __experimentalBoxControl as BoxControl} from '@wordpress/components';
+import { __experimentalBoxControl as BoxControl, GradientPicker} from '@wordpress/components';
 // This uses the old syntax and maybe needs updated to @wordpress
 const {
 	PanelBody, // this is new in this demo
@@ -52,6 +52,39 @@ const fontOptions = [
 	{"label":"Fantasy","value":"fantasy"},
 ];
 */
+
+const gradients=[
+    {
+      gradient: 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
+      name: 'Vivid cyan blue to vivid purple',
+      slug: 'vivid-cyan-blue-to-vivid-purple'
+    },
+    {
+      gradient: 'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)',
+      name: 'Light green cyan to vivid green cyan',
+      slug: 'light-green-cyan-to-vivid-green-cyan'
+    },
+    {
+      gradient: 'linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)',
+      name: 'Luminous vivid amber to luminous vivid orange',
+      slug: 'luminous-vivid-amber-to-luminous-vivid-orange'
+    },
+    {
+      gradient: 'linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%)',
+      name: 'Luminous vivid orange to vivid red',
+      slug: 'luminous-vivid-orange-to-vivid-red'
+    },
+    {
+      gradient: 'linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%)',
+      name: 'Very light gray to cyan bluish gray',
+      slug: 'very-light-gray-to-cyan-bluish-gray'
+    },
+    {
+      gradient: 'linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%)',
+      name: 'Cool to warm spectrum',
+      slug: 'cool-to-warm-spectrum'
+    }
+];
 
 const fontOptions = global_named_fonts;
 
@@ -226,6 +259,16 @@ export default class StyleControls extends Component {
 							<input type="checkbox" id="lineartSwatch" name="lineartSwatch"></input>
 							<label htmlFor="lineartSwatch">Palette</label>
 							<ColorPalette value={lineartColor} onChange={lineartColor => setAttributes({ lineartColor })} />
+						</div>
+						<div class="px-simplerow px-simplerow--simpleheadline">
+							<h2>Key Gradient</h2>
+						</div>
+						<div className="px-simplerow">
+							<GradientPicker
+								// gradients={gradients}
+								value={ babygradient }
+								onChange={babygradient => setAttributes({ babygradient })}
+							/>
 						</div>
 					</Fragment>
 				);

@@ -114,7 +114,7 @@
 		},
 		"backgroundColor": {
 			"type": "string",
-			"default": "#ddd",
+			"default": "",
 			"comment":"used as the base color in the generated style"
 		},
 		"backgroundColor1": {
@@ -158,7 +158,7 @@
 		},
 		"backgroundImage": {
 			"type": "string",
-			"default": null
+			"default": ""
 		},
 		"focalPoint": {
 			"type": "object",

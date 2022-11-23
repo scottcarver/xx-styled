@@ -45,10 +45,16 @@ const calculatedInlineVars = attributes => {
 	// console.log("CURIOUS", bgSize);
 	var combinedCss = '';
 
-	var fgbgCss = `
-		--backgroundImage: ${bgImageStack};
-		--backgroundColor: ${backgroundColor};
-		--backgroundSizeSm: ${bgSizeSm};
+	var fgbgCss = ``;
+		
+		// Include backgroundImage
+		if(bgImageStack){ fgbgCss += `--backgroundImage: ${bgImageStack};`; }
+		
+		// Include backgroundColor
+		if(backgroundColor != 'none'){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
+
+		fgbgCss +=
+		`--backgroundSizeSm: ${bgSizeSm};
 		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
 		--backgroundPosition: ${bgPosition};

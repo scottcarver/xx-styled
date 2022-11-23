@@ -75,6 +75,11 @@
 .px-simplerow.px-simplerow--shortheadline h2 {
   margin-top: 10px;
 }
+.px-simplerow.px-simplerow--simpleheadline h2 {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
 .px-simplerow.px-simplerow--flatbottom h2 {
   margin-bottom: 5px;
 }

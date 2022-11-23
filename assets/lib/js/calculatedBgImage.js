@@ -59,7 +59,8 @@ const calculatedBgImage = attributes => {
 
 	// When no styles are available, return 'none'
 	if (bgLayers.length == 0) {
-		bgLayersString += "none";
+		// bgLayersString += "none";
+		bgLayersString += "";
 	}
 
 	return bgLayersString;

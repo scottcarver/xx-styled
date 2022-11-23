@@ -682,7 +682,8 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           value: backgroundColor,
           onChange: backgroundColor => setAttributes({
             backgroundColor
-          })
+          }),
+          enableAlpha: true
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: bgcolor1classes
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
@@ -1746,7 +1747,8 @@ const calculatedBgImage = attributes => {
 
 
   if (bgLayers.length == 0) {
-    bgLayersString += "none";
+    // bgLayersString += "none";
+    bgLayersString += "";
   }
 
   return bgLayersString;
@@ -1943,10 +1945,18 @@ const calculatedInlineVars = attributes => {
 
 
   var combinedCss = '';
-  var fgbgCss = `
-		--backgroundImage: ${bgImageStack};
-		--backgroundColor: ${backgroundColor};
-		--backgroundSizeSm: ${bgSizeSm};
+  var fgbgCss = ``; // Include backgroundImage
+
+  if (bgImageStack) {
+    fgbgCss += `--backgroundImage: ${bgImageStack};`;
+  } // Include backgroundColor
+
+
+  if (backgroundColor != 'none') {
+    fgbgCss += `--backgroundColor: ${backgroundColor};`;
+  }
+
+  fgbgCss += `--backgroundSizeSm: ${bgSizeSm};
 		--backgroundSizeMd: ${bgSizeMd};
 		--backgroundSize: ${bgSize};
 		--backgroundPosition: ${bgPosition};
@@ -2237,6 +2247,31 @@ const fontOptions = [
 ];
 */
 
+const gradients = [{
+  gradient: 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
+  name: 'Vivid cyan blue to vivid purple',
+  slug: 'vivid-cyan-blue-to-vivid-purple'
+}, {
+  gradient: 'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)',
+  name: 'Light green cyan to vivid green cyan',
+  slug: 'light-green-cyan-to-vivid-green-cyan'
+}, {
+  gradient: 'linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)',
+  name: 'Luminous vivid amber to luminous vivid orange',
+  slug: 'luminous-vivid-amber-to-luminous-vivid-orange'
+}, {
+  gradient: 'linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%)',
+  name: 'Luminous vivid orange to vivid red',
+  slug: 'luminous-vivid-orange-to-vivid-red'
+}, {
+  gradient: 'linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%)',
+  name: 'Very light gray to cyan bluish gray',
+  slug: 'very-light-gray-to-cyan-bluish-gray'
+}, {
+  gradient: 'linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%)',
+  name: 'Cool to warm spectrum',
+  slug: 'cool-to-warm-spectrum'
+}];
 const fontOptions = global_named_fonts;
 const stylePresets = [{
   "label": "None",
@@ -2527,6 +2562,16 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           value: lineartColor,
           onChange: lineartColor => setAttributes({
             lineartColor
+          })
+        })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+          class: "px-simplerow px-simplerow--simpleheadline"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Key Gradient")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+          className: "px-simplerow"
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.GradientPicker // gradients={gradients}
+        , {
+          value: babygradient,
+          onChange: babygradient => setAttributes({
+            babygradient
           })
         })));
       }

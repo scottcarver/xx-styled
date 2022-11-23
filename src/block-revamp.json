@@ -16,7 +16,8 @@
 	"attributes" : {
 		"align": { 
 			"type": "string",
-			"default": "full" 
+			"default": "full",
+			"comment": "this data is needed/used by the core align feature affecting maxwidth controls"
 		},
 		"settings": {
             "type" : "object",
@@ -99,6 +100,15 @@
 				"backgroundSizes" { "small" : "100%", "medium" : "100%", "large" : "100%" },
 				"backgroundImageAlign": { "vertical":"center", "horizontal":"center" },
 				"backgroundImageAlignCustom": { "vertical":100, "horizontal":100}
+            }
+        },
+		"navigation": {
+            "type" : "object",
+            "default" : {
+				"navFGColor": "#000000",
+				"navBGColor": "#000000",
+				"buttonBGColor": "#000000",
+				"dropcapColor": "#000000"
             }
         },
 		"typography": {

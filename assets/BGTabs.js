@@ -112,7 +112,11 @@ export default class BGTabs extends Component {
 							{/* <ColorIndicator colorValue={foregroundColor} /> */}
 							<input type="checkbox" id="bgcolorSwatch" name="bgcolorSwatch"></input>
 							<label htmlFor="bgcolorSwatch">Palette</label>
-							<ColorPalette value={backgroundColor} onChange={backgroundColor => setAttributes({ backgroundColor })} />
+							<ColorPalette 
+								value={backgroundColor} 
+								onChange={backgroundColor => setAttributes({ backgroundColor })} 
+								enableAlpha={true}
+							/>
 						</div>
 
 						<div className={bgcolor1classes}>
