@@ -1669,7 +1669,7 @@ const calculatedBgColor = attributes => {
   if (bgColorEnabled && backgroundColor != null) {
     return backgroundColor;
   } else {
-    return "transparent";
+    return false; // return "transparent";
   }
 };
 
@@ -1952,7 +1952,7 @@ const calculatedInlineVars = attributes => {
   } // Include backgroundColor
 
 
-  if (backgroundColor != 'none') {
+  if (backgroundColor) {
     fgbgCss += `--backgroundColor: ${backgroundColor};`;
   }
 

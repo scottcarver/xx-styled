@@ -51,7 +51,7 @@ const calculatedInlineVars = attributes => {
 		if(bgImageStack){ fgbgCss += `--backgroundImage: ${bgImageStack};`; }
 		
 		// Include backgroundColor
-		if(backgroundColor != 'none'){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
+		if(backgroundColor){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
 
 		fgbgCss +=
 		`--backgroundSizeSm: ${bgSizeSm};

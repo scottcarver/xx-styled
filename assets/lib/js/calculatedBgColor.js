@@ -6,7 +6,8 @@ const calculatedBgColor = attributes => {
 	if (bgColorEnabled && backgroundColor != null) {
 		return backgroundColor;
 	} else {
-		return "transparent";
+		return false;
+		// return "transparent";
 	}
 };
 
