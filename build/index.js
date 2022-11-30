@@ -1948,7 +1948,15 @@ const calculatedInlineVars = attributes => {
   var fgbgCss = ``; // Include backgroundImage
 
   if (bgImageStack) {
-    fgbgCss += `--backgroundImage: ${bgImageStack};`;
+    fgbgCss += `
+			--backgroundImage: ${bgImageStack};
+			--backgroundSizeSm: ${bgSizeSm};
+			--backgroundSizeMd: ${bgSizeMd};
+			--backgroundSize: ${bgSize};
+			--backgroundPosition: ${bgPosition};
+			--backgroundAttachment: ${bgAttachment};
+			--backgroundRepeat: ${bgRepeat};
+			`;
   } // Include backgroundColor
 
 
@@ -1956,12 +1964,7 @@ const calculatedInlineVars = attributes => {
     fgbgCss += `--backgroundColor: ${backgroundColor};`;
   }
 
-  fgbgCss += `--backgroundSizeSm: ${bgSizeSm};
-		--backgroundSizeMd: ${bgSizeMd};
-		--backgroundSize: ${bgSize};
-		--backgroundPosition: ${bgPosition};
-		--backgroundAttachment: ${bgAttachment};
-		--backgroundRepeat: ${bgRepeat};
+  fgbgCss += `
 		--foregroundColor: ${foregroundColor};
 		--headlineColor: ${headlineColor};
 		--linkColor: ${linkColor};
@@ -3483,6 +3486,7 @@ function PoststylePlugin(props) {
         // simple foreach loop
         // console.log(post);
         const dynamicLabel = post.title.rendered !== '' ? post.title.rendered : 'Style ID ' + post.id;
+        console.log("slug, label:", post.generated_slug, dynamicLabel);
         options.push({
           value: post.generated_slug,
           label: dynamicLabel

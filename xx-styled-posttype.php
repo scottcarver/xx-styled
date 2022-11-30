@@ -22,7 +22,7 @@ function my_custom_post_styles() {
     'public'        => true,
     'menu_icon' => 'dashicons-art',
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'editor', 'custom-fields'),
+    'supports'      => array( 'title', 'editor'), //, 'thumbnail', 'excerpt', 'comments', 'custom-fields'
     'has_archive'   => true,
     'show_in_rest' => true
   );

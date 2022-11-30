@@ -114,7 +114,7 @@
 		},
 		"backgroundColor": {
 			"type": "string",
-			"default": "",
+			"default": "FFFFFF00",
 			"comment":"used as the base color in the generated style"
 		},
 		"backgroundColor1": {

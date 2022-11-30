@@ -76,6 +76,7 @@ function PoststylePlugin(props) {
 				props.posts.forEach((post) => { // simple foreach loop
 					// console.log(post);
 					const dynamicLabel = (post.title.rendered !== '') ? post.title.rendered : 'Style ID ' + post.id;
+					console.log("slug, label:", post.generated_slug, dynamicLabel);
 					options.push({value:post.generated_slug, label:dynamicLabel});
 				});
 			} else {

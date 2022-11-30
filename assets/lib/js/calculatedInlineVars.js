@@ -48,18 +48,23 @@ const calculatedInlineVars = attributes => {
 	var fgbgCss = ``;
 		
 		// Include backgroundImage
-		if(bgImageStack){ fgbgCss += `--backgroundImage: ${bgImageStack};`; }
+		if(bgImageStack){ 
+			fgbgCss += `
+			--backgroundImage: ${bgImageStack};
+			--backgroundSizeSm: ${bgSizeSm};
+			--backgroundSizeMd: ${bgSizeMd};
+			--backgroundSize: ${bgSize};
+			--backgroundPosition: ${bgPosition};
+			--backgroundAttachment: ${bgAttachment};
+			--backgroundRepeat: ${bgRepeat};
+			`; 
+		}
 		
 		// Include backgroundColor
 		if(backgroundColor){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
 
 		fgbgCss +=
-		`--backgroundSizeSm: ${bgSizeSm};
-		--backgroundSizeMd: ${bgSizeMd};
-		--backgroundSize: ${bgSize};
-		--backgroundPosition: ${bgPosition};
-		--backgroundAttachment: ${bgAttachment};
-		--backgroundRepeat: ${bgRepeat};
+		`
 		--foregroundColor: ${foregroundColor};
 		--headlineColor: ${headlineColor};
 		--linkColor: ${linkColor};
