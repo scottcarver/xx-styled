@@ -112,7 +112,7 @@ export default function Edit(props) {
 	// Background Color
 	// if(bgColorStack){ fgbgObj['--backgroundColor'] = bgColorStack; }
 
-	// Background Image
+	// Add Background Image properties as a group (depends on stack)
 	if(bgImageStack){
 		fgbgObj['--backgroundImage'] = bgImageStack;
 		fgbgObj['--backgroundSizeSm'] = bgSizeSm;
@@ -135,7 +135,7 @@ export default function Edit(props) {
 	*/
 
 	const typographyObj = { }
-	// Selectively add Font Objects
+	// Selectively add Font Objects to respect "inherit" option
 	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
 		typographyObj['--foregroundHeadlineFont'] = 'var(--'+foregroundHeadlineFont+')';
 	}

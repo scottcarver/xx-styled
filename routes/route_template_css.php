@@ -26,7 +26,9 @@ if($styled_areas) :
           $keyvalue =  explode(': ', $rule);
           $key = trim($keyvalue[0]);
           $value = isset($keyvalue[1]) ? trim($keyvalue[1]) : '';
-          if(!str_contains($value, 'null') && $value !== ''){
+          // Not Null, Undefined, Unset
+          if(!str_contains($value, 'null') && ($value != 'undefined') && $value !== ''){
+            // echo('key:' . $key . "|value:" . $value . "#");
             $nonulltext .= $key . ":" . $value . ";";
           }
         }

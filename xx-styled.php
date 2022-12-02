@@ -55,5 +55,11 @@ function wpa3396_page_template( $page_template )
 }*/
 
 
-
-
+/*
+function my_admin_scripts() {
+    // Remove Bad Admin Css
+	wp_dequeue_style('wp-reset-editor-styles');
+	wp_deregister_style('wp-reset-editor-styles');
+}
+add_action( 'admin_enqueue_scripts', 'my_admin_scripts' );
+*/

@@ -63,21 +63,21 @@ const calculatedInlineVars = attributes => {
 		// Include backgroundColor
 		if(backgroundColor){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
 		// Foreground Color
-		if(foregroundColor){ fgbgCss += `--foregroundColor: ${foregroundColor}`; }
+		if(foregroundColor){ fgbgCss += `--foregroundColor: ${foregroundColor};`; }
 		// Headline Color
-		if(headlineColor){ fgbgCss += `--headlineColor: ${headlineColor}`; }
+		if(headlineColor){ fgbgCss += `--headlineColor: ${headlineColor};`; }
 		// Link Color
-		if(linkColor){ fgbgCss += `--linkColor: ${linkColor}`; }
+		if(linkColor){ fgbgCss += `--linkColor: ${linkColor};`; }
 		// Dropcap Color
-		if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor}`; }
+		if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor};`; }
 		// Block Quote Color
-		if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor}`; }
+		if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor};`; }
 		// Lineart Color
-		if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor}`; }
+		if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor};`; }
 		// selectionFGr Color
-		if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor}`; }
+		if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor};`; }
 		// selectionBG Color
-		if(selectionBGColor){ fgbgCss += `--selectionBGColor: ${selectionBGColor}`; }
+		if(selectionBGColor){ fgbgCss += `--selectionBGColor: ${selectionBGColor};`; }
 
 		/*
 		fgbgCss +=

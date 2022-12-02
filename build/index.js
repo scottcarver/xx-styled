@@ -1974,42 +1974,42 @@ const calculatedInlineVars = attributes => {
 
 
   if (foregroundColor) {
-    fgbgCss += `--foregroundColor: ${foregroundColor}`;
+    fgbgCss += `--foregroundColor: ${foregroundColor};`;
   } // Headline Color
 
 
   if (headlineColor) {
-    fgbgCss += `--headlineColor: ${headlineColor}`;
+    fgbgCss += `--headlineColor: ${headlineColor};`;
   } // Link Color
 
 
   if (linkColor) {
-    fgbgCss += `--linkColor: ${linkColor}`;
+    fgbgCss += `--linkColor: ${linkColor};`;
   } // Dropcap Color
 
 
   if (dropcapColor) {
-    fgbgCss += `--dropcapColor: ${dropcapColor}`;
+    fgbgCss += `--dropcapColor: ${dropcapColor};`;
   } // Block Quote Color
 
 
   if (blockquoteColor) {
-    fgbgCss += `--blockquoteColor: ${blockquoteColor}`;
+    fgbgCss += `--blockquoteColor: ${blockquoteColor};`;
   } // Lineart Color
 
 
   if (lineartColor) {
-    fgbgCss += `--lineartColor: ${lineartColor}`;
+    fgbgCss += `--lineartColor: ${lineartColor};`;
   } // selectionFGr Color
 
 
   if (selectionFGColor) {
-    fgbgCss += `--selectionFGColor: ${selectionFGColor}`;
+    fgbgCss += `--selectionFGColor: ${selectionFGColor};`;
   } // selectionBG Color
 
 
   if (selectionBGColor) {
-    fgbgCss += `--selectionBGColor: ${selectionBGColor}`;
+    fgbgCss += `--selectionBGColor: ${selectionBGColor};`;
   }
   /*
   fgbgCss +=
@@ -3217,7 +3217,7 @@ function Edit(props) {
     '--lineartColor': lineartColor
   }; // Background Color
   // if(bgColorStack){ fgbgObj['--backgroundColor'] = bgColorStack; }
-  // Background Image
+  // Add Background Image properties as a group (depends on stack)
 
   if (bgImageStack) {
     fgbgObj['--backgroundImage'] = bgImageStack;
@@ -3240,7 +3240,7 @@ function Edit(props) {
   */
 
 
-  const typographyObj = {}; // Selectively add Font Objects
+  const typographyObj = {}; // Selectively add Font Objects to respect "inherit" option
 
   if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
     typographyObj['--foregroundHeadlineFont'] = 'var(--' + foregroundHeadlineFont + ')';
