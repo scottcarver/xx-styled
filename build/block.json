@@ -70,27 +70,27 @@
 		},
 		"foregroundColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"headlineColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"linkColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"dropcapColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"blockquoteColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"lineartColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"foregroundHeadlineFont": {
 			"type": "string",
@@ -106,30 +106,30 @@
 		},
 		"selectionFGColor": {
 			"type": "string",
-			"default": "#000000"
+			"default": ""
 		},
 		"selectionBGColor": {
 			"type": "string",
-			"default": "#ffffff"
+			"default": ""
 		},
 		"backgroundColor": {
 			"type": "string",
-			"default": "FFFFFF00",
+			"default": "",
 			"comment":"used as the base color in the generated style"
 		},
 		"backgroundColor1": {
 			"type": "string",
-			"default": "#ffffff",
+			"default": "",
 			"comment":"used as gradient color 1"
 		},
 		"backgroundColor2": {
 			"type": "string",
-			"default": "#ffffff",
+			"default": "",
 			"comment":"used as gradient color 2"
 		},
 		"backgroundColor3": {
 			"type": "string",
-			"default": "transparent",
+			"default": "",
 			"comment":"used as the gel color"
 		},
 		"gradientType": {
@@ -241,7 +241,7 @@
 		},
 		"spacingMobile": {
 			"type": "object",
-			"default": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
+			"default": ""
 		},
 		"spacingTablet": {
 			"type": "object",

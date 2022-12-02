@@ -97,14 +97,7 @@ export default function Edit(props) {
 
 	const fgbgObj = { 
 		// Background
-		'--backgroundImage': bgImageStack,
 		'--backgroundColor': bgColorStack,
-		'--backgroundSizeSm': bgSizeSm,
-		'--backgroundSizeMd': bgSizeMd,
-		'--backgroundSize': bgSize,
-		'--backgroundPosition': bgPosition,
-		'--backgroundAttachment': bgAttachment,
-		'--backgroundRepeat': bgRepeat,
 		// Foreground
 		'--foregroundColor': foregroundColor, 
 		'--headlineColor': headlineColor,
@@ -115,6 +108,31 @@ export default function Edit(props) {
 		'--selectionBGColor': selectionBGColor,
 		'--lineartColor':lineartColor,
 	};
+
+	// Background Color
+	// if(bgColorStack){ fgbgObj['--backgroundColor'] = bgColorStack; }
+
+	// Background Image
+	if(bgImageStack){
+		fgbgObj['--backgroundImage'] = bgImageStack;
+		fgbgObj['--backgroundSizeSm'] = bgSizeSm;
+		fgbgObj['--backgroundSizeMd'] = bgSizeMd;
+		fgbgObj['--backgroundSize'] = bgSize;
+		fgbgObj['--backgroundPosition'] = bgPosition;
+		fgbgObj['--backgroundAttachment'] = bgAttachment;
+		fgbgObj['--backgroundRepeat'] = bgRepeat;
+	}
+
+	/*
+	'--backgroundImage': bgImageStack,
+	
+	'--backgroundSizeSm': bgSizeSm,
+	'--backgroundSizeMd': bgSizeMd,
+	'--backgroundSize': bgSize,
+	'--backgroundPosition': bgPosition,
+	'--backgroundAttachment': bgAttachment,
+	'--backgroundRepeat': bgRepeat,
+	*/
 
 	const typographyObj = { }
 	// Selectively add Font Objects
@@ -128,13 +146,14 @@ export default function Edit(props) {
 		typographyObj['--foregroundCaptionFont'] = 'var(--'+foregroundCaptionFont+')';
 	}
 
-	const sizingObj = { 
-		// Spacing
-		'--spacingMobile': spacingMobileStack,
-		'--spacingTablet': spacingTabletStack,
-		'--spacingDesktop': spacingDesktopStack,
-	}
-
+	// Vessel for sizing 
+	const sizingObj = { }
+	// Mobile, Tablet, Desktop. This prevents empty vals from being saved
+	if(spacingMobileStack != 'undefined'){ sizingObj['--spacingMobile'] = spacingMobileStack; }
+	if(spacingTabletStack != 'undefined'){ sizingObj['--spacingTablet'] = spacingTabletStack; }
+	console.log("wassamatter with ", spacingDesktopStack);
+	if(spacingDesktopStack != 'undefined'){ sizingObj['--spacingDesktop'] = spacingDesktopStack; }
+	
 	if(styleMode === 'named'){
 		styleObj = {
 			...typographyObj,

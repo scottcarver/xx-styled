@@ -79,7 +79,10 @@ export default class BGTabs extends Component {
 		});
 
 		const onImageSelect = imageObject => setAttributes({ backgroundImage: imageObject.sizes.full.url });
-
+		const onColorChange = function(colorValue){
+			console.log( "changed to", colorValue);
+			setAttributes({ backgroundColor: colorValue });
+		}
 		/*
 		const onSelect = tabName => {
 			console.log("Selecting tab", tabName);
@@ -114,8 +117,10 @@ export default class BGTabs extends Component {
 							<label htmlFor="bgcolorSwatch">Palette</label>
 							<ColorPalette 
 								value={backgroundColor} 
-								onChange={backgroundColor => setAttributes({ backgroundColor })} 
+								// onChange={backgroundColor => setAttributes({ backgroundColor })} 
+								onChange={onColorChange} 
 								enableAlpha={true}
+								// clearable={false}
 							/>
 						</div>
 

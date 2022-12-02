@@ -46,7 +46,7 @@ const calculatedInlineVars = attributes => {
 	var combinedCss = '';
 
 	var fgbgCss = ``;
-		
+		console.log("bgImageStack is", bgImageStack);
 		// Include backgroundImage
 		if(bgImageStack){ 
 			fgbgCss += `
@@ -62,11 +62,26 @@ const calculatedInlineVars = attributes => {
 		
 		// Include backgroundColor
 		if(backgroundColor){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
+		// Foreground Color
+		if(foregroundColor){ fgbgCss += `--foregroundColor: ${foregroundColor}`; }
+		// Headline Color
+		if(headlineColor){ fgbgCss += `--headlineColor: ${headlineColor}`; }
+		// Link Color
+		if(linkColor){ fgbgCss += `--linkColor: ${linkColor}`; }
+		// Dropcap Color
+		if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor}`; }
+		// Block Quote Color
+		if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor}`; }
+		// Lineart Color
+		if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor}`; }
+		// selectionFGr Color
+		if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor}`; }
+		// selectionBG Color
+		if(selectionBGColor){ fgbgCss += `--selectionBGColor: ${selectionBGColor}`; }
 
+		/*
 		fgbgCss +=
 		`
-		--foregroundColor: ${foregroundColor};
-		--headlineColor: ${headlineColor};
 		--linkColor: ${linkColor};
 		--dropcapColor: ${dropcapColor};
 		--blockquoteColor: ${blockquoteColor};
@@ -74,6 +89,7 @@ const calculatedInlineVars = attributes => {
 		--selectionFGColor: ${selectionFGColor};
 		--selectionBGColor: ${selectionBGColor};
 	`;
+	*/
 	//--backgroundColor: ${bgColorStack};
 
 	/*
@@ -118,4 +134,7 @@ const calculatedInlineVars = attributes => {
 	return false;
 };
 
+// This will be a string of CSS not a React-CSS-Object. This is different from other areas of the app which require
+// the use of the React-CSS-object format, such as Edit.js
+console.log("calculatedInlineVars ", calculatedInlineVars);
 export default calculatedInlineVars;

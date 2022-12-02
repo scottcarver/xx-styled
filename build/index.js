@@ -648,6 +648,13 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
     const onImageSelect = imageObject => setAttributes({
       backgroundImage: imageObject.sizes.full.url
     });
+
+    const onColorChange = function (colorValue) {
+      console.log("changed to", colorValue);
+      setAttributes({
+        backgroundColor: colorValue
+      });
+    };
     /*
     const onSelect = tabName => {
     	console.log("Selecting tab", tabName);
@@ -679,11 +686,11 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bgcolorSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundColor,
-          onChange: backgroundColor => setAttributes({
-            backgroundColor
-          }),
-          enableAlpha: true
+          value: backgroundColor // onChange={backgroundColor => setAttributes({ backgroundColor })} 
+          ,
+          onChange: onColorChange,
+          enableAlpha: true // clearable={false}
+
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: bgcolor1classes
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
@@ -1945,7 +1952,8 @@ const calculatedInlineVars = attributes => {
 
 
   var combinedCss = '';
-  var fgbgCss = ``; // Include backgroundImage
+  var fgbgCss = ``;
+  console.log("bgImageStack is", bgImageStack); // Include backgroundImage
 
   if (bgImageStack) {
     fgbgCss += `
@@ -1962,18 +1970,59 @@ const calculatedInlineVars = attributes => {
 
   if (backgroundColor) {
     fgbgCss += `--backgroundColor: ${backgroundColor};`;
-  }
+  } // Foreground Color
 
-  fgbgCss += `
-		--foregroundColor: ${foregroundColor};
-		--headlineColor: ${headlineColor};
-		--linkColor: ${linkColor};
-		--dropcapColor: ${dropcapColor};
-		--blockquoteColor: ${blockquoteColor};
-		--lineartColor: ${lineartColor};
-		--selectionFGColor: ${selectionFGColor};
-		--selectionBGColor: ${selectionBGColor};
-	`; //--backgroundColor: ${bgColorStack};
+
+  if (foregroundColor) {
+    fgbgCss += `--foregroundColor: ${foregroundColor}`;
+  } // Headline Color
+
+
+  if (headlineColor) {
+    fgbgCss += `--headlineColor: ${headlineColor}`;
+  } // Link Color
+
+
+  if (linkColor) {
+    fgbgCss += `--linkColor: ${linkColor}`;
+  } // Dropcap Color
+
+
+  if (dropcapColor) {
+    fgbgCss += `--dropcapColor: ${dropcapColor}`;
+  } // Block Quote Color
+
+
+  if (blockquoteColor) {
+    fgbgCss += `--blockquoteColor: ${blockquoteColor}`;
+  } // Lineart Color
+
+
+  if (lineartColor) {
+    fgbgCss += `--lineartColor: ${lineartColor}`;
+  } // selectionFGr Color
+
+
+  if (selectionFGColor) {
+    fgbgCss += `--selectionFGColor: ${selectionFGColor}`;
+  } // selectionBG Color
+
+
+  if (selectionBGColor) {
+    fgbgCss += `--selectionBGColor: ${selectionBGColor}`;
+  }
+  /*
+  fgbgCss +=
+  `
+  --linkColor: ${linkColor};
+  --dropcapColor: ${dropcapColor};
+  --blockquoteColor: ${blockquoteColor};
+  --lineartColor: ${lineartColor};
+  --selectionFGColor: ${selectionFGColor};
+  --selectionBGColor: ${selectionBGColor};
+  `;
+  */
+  //--backgroundColor: ${bgColorStack};
 
   /*
   var fontCss = `
@@ -1982,6 +2031,7 @@ const calculatedInlineVars = attributes => {
   	--foregroundCaptionFont: var(--${foregroundCaptionFont});
   `;
   */
+
 
   var fontCss = ``;
 
@@ -2022,8 +2072,11 @@ const calculatedInlineVars = attributes => {
 
 
   return false;
-};
+}; // This will be a string of CSS not a React-CSS-Object. This is different from other areas of the app which require
+// the use of the React-CSS-object format, such as Edit.js
 
+
+console.log("calculatedInlineVars ", calculatedInlineVars);
 /* harmony default export */ __webpack_exports__["default"] = (calculatedInlineVars);
 
 /***/ }),
@@ -2038,8 +2091,13 @@ const calculatedInlineVars = attributes => {
 __webpack_require__.r(__webpack_exports__);
 // Returns a computed value for gradient
 const calculatedPadding = spacingObject => {
-  // Return a Linear Gradient
-  return `${spacingObject.top} ${spacingObject.right} ${spacingObject.bottom} ${spacingObject.left}`; // return `${spacingObject.top} 0 ${spacingObject.bottom} 0`;
+  // Return Shorthand if all values match!
+  if (spacingObject.top == spacingObject.right && spacingObject.top == spacingObject.left && spacingObject.top == spacingObject.bottom) {
+    return `${spacingObject.top}`;
+  } // Return 4 point set
+
+
+  return `${spacingObject.top} ${spacingObject.right} ${spacingObject.bottom} ${spacingObject.left}`;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculatedPadding);
@@ -3147,14 +3205,7 @@ function Edit(props) {
   let styleObj = {};
   const fgbgObj = {
     // Background
-    '--backgroundImage': bgImageStack,
     '--backgroundColor': bgColorStack,
-    '--backgroundSizeSm': bgSizeSm,
-    '--backgroundSizeMd': bgSizeMd,
-    '--backgroundSize': bgSize,
-    '--backgroundPosition': bgPosition,
-    '--backgroundAttachment': bgAttachment,
-    '--backgroundRepeat': bgRepeat,
     // Foreground
     '--foregroundColor': foregroundColor,
     '--headlineColor': headlineColor,
@@ -3164,7 +3215,31 @@ function Edit(props) {
     '--selectionFGColor': selectionFGColor,
     '--selectionBGColor': selectionBGColor,
     '--lineartColor': lineartColor
-  };
+  }; // Background Color
+  // if(bgColorStack){ fgbgObj['--backgroundColor'] = bgColorStack; }
+  // Background Image
+
+  if (bgImageStack) {
+    fgbgObj['--backgroundImage'] = bgImageStack;
+    fgbgObj['--backgroundSizeSm'] = bgSizeSm;
+    fgbgObj['--backgroundSizeMd'] = bgSizeMd;
+    fgbgObj['--backgroundSize'] = bgSize;
+    fgbgObj['--backgroundPosition'] = bgPosition;
+    fgbgObj['--backgroundAttachment'] = bgAttachment;
+    fgbgObj['--backgroundRepeat'] = bgRepeat;
+  }
+  /*
+  '--backgroundImage': bgImageStack,
+  
+  '--backgroundSizeSm': bgSizeSm,
+  '--backgroundSizeMd': bgSizeMd,
+  '--backgroundSize': bgSize,
+  '--backgroundPosition': bgPosition,
+  '--backgroundAttachment': bgAttachment,
+  '--backgroundRepeat': bgRepeat,
+  */
+
+
   const typographyObj = {}; // Selectively add Font Objects
 
   if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
@@ -3177,14 +3252,24 @@ function Edit(props) {
 
   if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
     typographyObj['--foregroundCaptionFont'] = 'var(--' + foregroundCaptionFont + ')';
+  } // Vessel for sizing 
+
+
+  const sizingObj = {}; // Mobile, Tablet, Desktop. This prevents empty vals from being saved
+
+  if (spacingMobileStack != 'undefined') {
+    sizingObj['--spacingMobile'] = spacingMobileStack;
   }
 
-  const sizingObj = {
-    // Spacing
-    '--spacingMobile': spacingMobileStack,
-    '--spacingTablet': spacingTabletStack,
-    '--spacingDesktop': spacingDesktopStack
-  };
+  if (spacingTabletStack != 'undefined') {
+    sizingObj['--spacingTablet'] = spacingTabletStack;
+  }
+
+  console.log("wassamatter with ", spacingDesktopStack);
+
+  if (spacingDesktopStack != 'undefined') {
+    sizingObj['--spacingDesktop'] = spacingDesktopStack;
+  }
 
   if (styleMode === 'named') {
     styleObj = { ...typographyObj,
@@ -3316,15 +3401,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_OnPageStyle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/OnPageStyle */ "./assets/OnPageStyle.js");
-/* harmony import */ var _assets_InlineStyleVars__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../assets/InlineStyleVars */ "./assets/InlineStyleVars.js");
-/* harmony import */ var _assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/lib/js/calculatedInlineVars */ "./assets/lib/js/calculatedInlineVars.js");
+/* harmony import */ var _assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/lib/js/calculatedInlineVars */ "./assets/lib/js/calculatedInlineVars.js");
 
 // Node modules
-
-
-
- // Custom Components
 
 
  // Custom Functions
@@ -3332,7 +3411,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function save(props) {
   // const props = useBlockProps.save();
-  const inlineVarCSS = (0,_assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_6__["default"])(props.attributes);
+  const inlineVarCSS = (0,_assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__["default"])(props.attributes);
   console.log("INLINER", inlineVarCSS);
   console.log("save props!", props);
   const {
