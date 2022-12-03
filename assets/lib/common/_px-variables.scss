@@ -22,7 +22,7 @@ $dark-gray-300: #6c7781;
 $default-font-size: 13px;
 
 :root{
-    --contentWidth: 900px;
+    --contentWidth: 800px;
     --wideWidth: 1000px;
     @media($lg-up){
         --wideWidth: 80%;

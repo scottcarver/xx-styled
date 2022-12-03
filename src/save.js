@@ -36,8 +36,13 @@ export default function save(props) {
 		{ "wp-block--heightenabled": heightEnabled },
 		`xx-styled--headlinefont-${foregroundHeadlineFont}`,
 		`xx-styled--copyfont-${foregroundCopyFont}`,
-		`xx-styled--captionfont-${foregroundCaptionFont}`
+		{[`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'Inherit' }
 	);
+
+
+	console.log("classes includes", classes);
+	// Add Foobar
+	// classNames({ 'foo-bar': true }); // => 'foo-bar'
 
 	// Return the shtuff
 	const blockPropsSavedOb = {

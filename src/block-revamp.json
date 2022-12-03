@@ -122,9 +122,12 @@
 		"dimensions": {
             "type" : "object",
             "default" : {
-                "spacingMobile": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
-				"spacingTablet": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
-				"spacingDesktop": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
+				"spacingMin": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+                "spacingXs": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingSm": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingMd": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingLg": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingHd": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
             }
         }
 	},

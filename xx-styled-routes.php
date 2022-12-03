@@ -9,6 +9,7 @@
 
   // Check that the class exists before trying to use it
   if (!class_exists('CustomRoutes')) { require('routes/CustomRoutes.php');}
+  
   // Instantiate Route Object
   $theme_routes = new CustomRoutes();
 

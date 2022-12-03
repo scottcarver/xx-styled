@@ -151,7 +151,7 @@ export default function Edit(props) {
 	// Mobile, Tablet, Desktop. This prevents empty vals from being saved
 	if(spacingMobileStack != 'undefined'){ sizingObj['--spacingMobile'] = spacingMobileStack; }
 	if(spacingTabletStack != 'undefined'){ sizingObj['--spacingTablet'] = spacingTabletStack; }
-	console.log("wassamatter with ", spacingDesktopStack);
+	// console.log("wassamatter with ", spacingDesktopStack);
 	if(spacingDesktopStack != 'undefined'){ sizingObj['--spacingDesktop'] = spacingDesktopStack; }
 	
 	if(styleMode === 'named'){
@@ -168,7 +168,7 @@ export default function Edit(props) {
 		}
 	}
 
-	console.log('what is styleObj? ', styleObj);
+	// console.log('what is styleObj? ', styleObj);
 
 	// if(styleMode === 'named')}{
 	// 	let styleObj = {}
@@ -178,7 +178,7 @@ export default function Edit(props) {
 
 	// Allow all Types except self-nesting
 	const allBlocks = wp.blocks.getBlockTypes();
-	const bannedBlocks =  ['xx/styled'];
+	const bannedBlocks =  []; // ['xx/styled'];
 	let enabledBlocks = [];
 	for (let i = 0; i < allBlocks.length; i++) {
 		let currentBlock = allBlocks[i].name;

@@ -11,8 +11,9 @@ html.xx-styled{
 }
 
 // Shared Frontend/Admin
+// wp-block-post-content block-editor-block-list__layout
 .xx-styled, 
-.xx-styled--admin .editor-styles-wrapper{
+.xx-styled--admin .wp-block-post-content{
 	position:relative;
 	// padding: 5vw 0;
 	// font-size:1.25em;
@@ -46,7 +47,7 @@ html.xx-styled{
 
 	&.alignfull{
 		// max-width:var(--wideWidth);
-		// max-width:none;
+		max-width:none;
 		
 		// margin:0px
 	}
@@ -133,6 +134,11 @@ html.xx-styled{
 	}
 	*/
 
+	// Lineart
+	hr.wp-block-separator{
+		border-color:var(--lineartColor);
+	}
+
 }
 
 // The Gutenberg editor needs this reset
@@ -160,3 +166,9 @@ html.xx-styled{
 	.wp-block-image{margin:0px auto;}
 }
 
+
+/* Admin Styling uses a section of the page that is rendered by Gutenberg */
+// When 
+.xx-styled--admin .wp-block-post-content{
+	max-width:none;
+}

@@ -2,7 +2,7 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
 :root {
-  --contentWidth: 900px;
+  --contentWidth: 800px;
   --wideWidth: 1000px;
 }
 @media (min-width:1200px) {
@@ -16,7 +16,7 @@ html.xx-styled {
 }
 
 .xx-styled,
-.xx-styled--admin .editor-styles-wrapper {
+.xx-styled--admin .wp-block-post-content {
   position: relative;
   font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
@@ -47,43 +47,47 @@ html.xx-styled {
 }
 @media (min-width: 992px) {
   .xx-styled,
-.xx-styled--admin .editor-styles-wrapper {
+.xx-styled--admin .wp-block-post-content {
     background-size: var(--backgroundSizeMd);
     padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
   .xx-styled,
-.xx-styled--admin .editor-styles-wrapper {
+.xx-styled--admin .wp-block-post-content {
     background-size: var(--backgroundSize);
     padding: var(--spacingDesktop);
   }
 }
+.xx-styled.alignfull,
+.xx-styled--admin .wp-block-post-content.alignfull {
+  max-width: none;
+}
 .xx-styled.alignwide,
-.xx-styled--admin .editor-styles-wrapper.alignwide {
+.xx-styled--admin .wp-block-post-content.alignwide {
   max-width: var(--wideWidth);
 }
-.xx-styled *::-moz-selection, .xx-styled--admin .editor-styles-wrapper *::-moz-selection {
+.xx-styled *::-moz-selection, .xx-styled--admin .wp-block-post-content *::-moz-selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
 .xx-styled *::selection,
-.xx-styled--admin .editor-styles-wrapper *::selection {
+.xx-styled--admin .wp-block-post-content *::selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
 .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6,
-.xx-styled--admin .editor-styles-wrapper h1,
-.xx-styled--admin .editor-styles-wrapper h2,
-.xx-styled--admin .editor-styles-wrapper h3,
-.xx-styled--admin .editor-styles-wrapper h4,
-.xx-styled--admin .editor-styles-wrapper h5,
-.xx-styled--admin .editor-styles-wrapper h6 {
+.xx-styled--admin .wp-block-post-content h1,
+.xx-styled--admin .wp-block-post-content h2,
+.xx-styled--admin .wp-block-post-content h3,
+.xx-styled--admin .wp-block-post-content h4,
+.xx-styled--admin .wp-block-post-content h5,
+.xx-styled--admin .wp-block-post-content h6 {
   color: var(--headlineColor);
   font-family: var(--foregroundHeadlineFont);
 }
 .xx-styled p.has-drop-cap:not(:focus)::first-letter,
-.xx-styled--admin .editor-styles-wrapper p.has-drop-cap:not(:focus)::first-letter {
+.xx-styled--admin .wp-block-post-content p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
   /* cool effect, but for a theme
   margin-left: -1.5em;
@@ -95,34 +99,38 @@ html.xx-styled {
   */
 }
 .xx-styled a,
-.xx-styled--admin .editor-styles-wrapper a {
+.xx-styled--admin .wp-block-post-content a {
   color: var(--linkColor);
 }
 .xx-styled blockquote,
-.xx-styled--admin .editor-styles-wrapper blockquote {
+.xx-styled--admin .wp-block-post-content blockquote {
   color: var(--blockquoteColor);
   border-left: solid 2px var(--blockquoteColor);
   padding-left: 20px;
 }
 .xx-styled blockquote p,
-.xx-styled--admin .editor-styles-wrapper blockquote p {
+.xx-styled--admin .wp-block-post-content blockquote p {
   font-size: 2em;
 }
 .xx-styled blockquote p:before,
-.xx-styled--admin .editor-styles-wrapper blockquote p:before {
+.xx-styled--admin .wp-block-post-content blockquote p:before {
   content: '"';
 }
 .xx-styled blockquote p:after,
-.xx-styled--admin .editor-styles-wrapper blockquote p:after {
+.xx-styled--admin .wp-block-post-content blockquote p:after {
   content: '"';
 }
 .xx-styled blockquote cite,
-.xx-styled--admin .editor-styles-wrapper blockquote cite {
+.xx-styled--admin .wp-block-post-content blockquote cite {
   padding-bottom: 20px;
 }
 .xx-styled figure figcaption,
-.xx-styled--admin .editor-styles-wrapper figure figcaption {
+.xx-styled--admin .wp-block-post-content figure figcaption {
   font-family: var(--foregroundCaptionFont);
+}
+.xx-styled hr.wp-block-separator,
+.xx-styled--admin .wp-block-post-content hr.wp-block-separator {
+  border-color: var(--lineartColor);
 }
 
 .xx-styled--admin .editor-styles-wrapper {
@@ -143,6 +151,11 @@ html.xx-styled {
 }
 .wp-block--heightenabled .wp-block-image {
   margin: 0px auto;
+}
+
+/* Admin Styling uses a section of the page that is rendered by Gutenberg */
+.xx-styled--admin .wp-block-post-content {
+  max-width: none;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

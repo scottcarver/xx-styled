@@ -70,3 +70,19 @@ button{
 	}
 }
 */
+
+
+/** INSIDE THE BLOCK EDITOR **/
+/*
+	1) add maxwidth to key blocks
+	2) add margin to center blocks
+
+.block-editor-block-list__layout{
+	// outline:solid 10px red;
+	> *{
+		max-width: var(--contentWidth);
+		margin-left:auto;
+		margin-right:auto;
+	}
+}
+*/

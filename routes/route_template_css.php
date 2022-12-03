@@ -21,12 +21,13 @@ if($styled_areas) :
         $rules = explode(';', $styleclean);
         $nonulltext = '';
 
-        // Specifically block against null or incomplete data
+        // Loop over CSS Rules
         foreach($rules as $rule){
           $keyvalue =  explode(': ', $rule);
           $key = trim($keyvalue[0]);
           $value = isset($keyvalue[1]) ? trim($keyvalue[1]) : '';
           // Not Null, Undefined, Unset
+          // Specifically block against null or incomplete data
           if(!str_contains($value, 'null') && ($value != 'undefined') && $value !== ''){
             // echo('key:' . $key . "|value:" . $value . "#");
             $nonulltext .= $key . ":" . $value . ";";

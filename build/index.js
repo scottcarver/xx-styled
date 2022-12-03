@@ -3263,9 +3263,8 @@ function Edit(props) {
 
   if (spacingTabletStack != 'undefined') {
     sizingObj['--spacingTablet'] = spacingTabletStack;
-  }
+  } // console.log("wassamatter with ", spacingDesktopStack);
 
-  console.log("wassamatter with ", spacingDesktopStack);
 
   if (spacingDesktopStack != 'undefined') {
     sizingObj['--spacingDesktop'] = spacingDesktopStack;
@@ -3282,16 +3281,17 @@ function Edit(props) {
       ...typographyObj,
       ...sizingObj
     };
-  }
-
-  console.log('what is styleObj? ', styleObj); // if(styleMode === 'named')}{
+  } // console.log('what is styleObj? ', styleObj);
+  // if(styleMode === 'named')}{
   // 	let styleObj = {}
   // }
   // console.log("inlineVarCSS", inlineVarCSS);
   // Allow all Types except self-nesting
 
+
   const allBlocks = wp.blocks.getBlockTypes();
-  const bannedBlocks = ['xx/styled'];
+  const bannedBlocks = []; // ['xx/styled'];
+
   let enabledBlocks = [];
 
   for (let i = 0; i < allBlocks.length; i++) {
@@ -3431,7 +3431,12 @@ function save(props) {
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()("xx-styled", // `wp-block-xx-styled--${blockID}`,
   {
     "wp-block--heightenabled": heightEnabled
-  }, `xx-styled--headlinefont-${foregroundHeadlineFont}`, `xx-styled--copyfont-${foregroundCopyFont}`, `xx-styled--captionfont-${foregroundCaptionFont}`); // Return the shtuff
+  }, `xx-styled--headlinefont-${foregroundHeadlineFont}`, `xx-styled--copyfont-${foregroundCopyFont}`, {
+    [`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'Inherit'
+  });
+  console.log("classes includes", classes); // Add Foobar
+  // classNames({ 'foo-bar': true }); // => 'foo-bar'
+  // Return the shtuff
 
   const blockPropsSavedOb = {
     className: classes,
