@@ -47,7 +47,8 @@ export default function Edit(props) {
 			lineartColor,
 			spacingMobile,
 			spacingTablet,
-			spacingDesktop
+			spacingDesktop,
+			elementType
 		},
 		className,
 		clientId
@@ -149,10 +150,10 @@ export default function Edit(props) {
 	// Vessel for sizing 
 	const sizingObj = { }
 	// Mobile, Tablet, Desktop. This prevents empty vals from being saved
-	if(spacingMobileStack != 'undefined'){ sizingObj['--spacingMobile'] = spacingMobileStack; }
-	if(spacingTabletStack != 'undefined'){ sizingObj['--spacingTablet'] = spacingTabletStack; }
+	if(spacingMobileStack !== "undefined"){ sizingObj['--spacingMobile'] = spacingMobileStack; }
+	if(spacingTabletStack !== "undefined"){ sizingObj['--spacingTablet'] = spacingTabletStack; }
 	// console.log("wassamatter with ", spacingDesktopStack);
-	if(spacingDesktopStack != 'undefined'){ sizingObj['--spacingDesktop'] = spacingDesktopStack; }
+	if(spacingDesktopStack !== "undefined"){ sizingObj['--spacingDesktop'] = spacingDesktopStack; }
 	
 	if(styleMode === 'named'){
 		styleObj = {

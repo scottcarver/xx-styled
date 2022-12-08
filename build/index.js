@@ -2046,12 +2046,25 @@ const calculatedInlineVars = attributes => {
   if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
     fontCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
   }
+  /*
+  	--spacingMobile: ${spacingMobileStack};
+  */
 
-  var sizingCss = `
-		--spacingMobile: ${spacingMobileStack};
-		--spacingTablet: ${spacingTabletStack};
-		--spacingDesktop: ${spacingDesktopStack};
-	`;
+
+  var sizingCss = ``;
+
+  if (spacingMobileStack !== "undefined") {
+    sizingCss += `--spacingMobile: ${spacingMobileStack};`;
+  }
+
+  if (spacingTabletStack !== "undefined") {
+    sizingCss += `--spacingTablet: ${spacingTabletStack};`;
+  }
+
+  if (spacingDesktopStack !== "undefined") {
+    sizingCss += `--spacingDesktop: ${spacingDesktopStack};`;
+  } // Add CSS based on the mode
+
 
   if (styleMode == 'custom') {
     combinedCss += fgbgCss + fontCss + sizingCss;
@@ -2253,16 +2266,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _BGTabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BGTabs */ "./assets/BGTabs.js");
 /* harmony import */ var _components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/StyledPreview */ "./assets/components/StyledPreview.js");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _src_components_InterfacePanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/components/InterfacePanel */ "./src/components/InterfacePanel.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__);
 
 
 // Node modules
 
 /** Internal block libraries
  */
+
 
 
 
@@ -2554,7 +2569,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "headlineSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "headlineSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: headlineColor,
           onChange: headlineColor => setAttributes({
             headlineColor
@@ -2567,7 +2582,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "textSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "textSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: foregroundColor,
           onChange: foregroundColor => setAttributes({
             foregroundColor
@@ -2580,7 +2595,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "linkSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "linkSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: linkColor,
           onChange: linkColor => setAttributes({
             linkColor
@@ -2593,7 +2608,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "blockquoteSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "blockquoteSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: blockquoteColor,
           onChange: blockquoteColor => setAttributes({
             blockquoteColor
@@ -2606,7 +2621,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "dropcapSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "dropcapSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: dropcapColor,
           onChange: dropcapColor => setAttributes({
             dropcapColor
@@ -2619,7 +2634,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "lineartSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "lineartSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: lineartColor,
           onChange: lineartColor => setAttributes({
             lineartColor
@@ -2628,7 +2643,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           class: "px-simplerow px-simplerow--simpleheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Key Gradient")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-simplerow"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.GradientPicker // gradients={gradients}
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.GradientPicker // gradients={gradients}
         , {
           value: babygradient,
           onChange: babygradient => setAttributes({
@@ -2646,7 +2661,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "selectionfgSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "selectionfgSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: selectionFGColor,
           onChange: selectionFGColor => setAttributes({
             selectionFGColor
@@ -2659,7 +2674,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
           name: "selectionbgSwatch"
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "selectionbgSwatch"
-        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
+        }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__.ColorPalette, {
           value: selectionBGColor,
           onChange: selectionBGColor => setAttributes({
             selectionBGColor
@@ -2956,7 +2971,10 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       onChange: toggleBgStack(backgroundStackFirst)
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_BGTabs__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
-    }, this.props)))))), (styleMode == 'named' || styleMode == 'custom') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
+    }, this.props)))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_src_components_InterfacePanel__WEBPACK_IMPORTED_MODULE_5__.InterfacePanel, {
+      attributes: this.props.attributes,
+      setAttributes: this.props.setAttributes
+    }), (styleMode == 'named' || styleMode == 'custom') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
       title: __("Dimensions", "pxblocks"),
       className: "panel-dimensions",
       initialOpen: false
@@ -2964,7 +2982,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       className: "px-sidepanel px-sidepanel--grey"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalBoxControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.__experimentalBoxControl, {
       label: "Mobile Spacing",
       values: spacingMobile,
       sides: ['top', 'bottom', 'left', 'right'],
@@ -2987,7 +3005,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalBoxControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.__experimentalBoxControl, {
       label: "Tablet Spacing (992+)",
       values: spacingTablet,
       sides: ['top', 'bottom', 'left', 'right'],
@@ -3010,7 +3028,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       }
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
       className: "px-simplerow  px-simplerow--paddingcontrol"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__.__experimentalBoxControl, {
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_7__.__experimentalBoxControl, {
       label: "Desktop Spacing (1200+)",
       values: spacingDesktop,
       sides: ['top', 'bottom', 'left', 'right'],
@@ -3079,6 +3097,84 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
     }, "read more"), ".")))));
   }
 
+}
+
+/***/ }),
+
+/***/ "./src/components/InterfacePanel.js":
+/*!******************************************!*\
+  !*** ./src/components/InterfacePanel.js ***!
+  \******************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "InterfacePanel": function() { return /* binding */ InterfacePanel; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+
+const {
+  __
+} = wp.i18n;
+
+
+
+function InterfacePanel(_ref) {
+  let {
+    attributes,
+    setAttributes
+  } = _ref;
+  let colorboxes = [{
+    'name': 'interfaceFGColor',
+    'title': 'Foreground'
+  }, {
+    'name': 'interfaceBGColor',
+    'title': 'Background'
+  }, {
+    'name': 'interfaceKeyColor',
+    'title': 'Key'
+  }];
+
+  if (attributes.styleMode == 'named') {
+    return false;
+  }
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+    title: __("Interface", "pxblocks"),
+    className: "panel-interface",
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-sidepanel"
+  }, colorboxes.map(currentValue => {
+    // const coolPropertyName = ;
+    const onColorChange = function (colorValue) {
+      let cleanColor = colorValue !== undefined ? colorValue : '';
+      setAttributes({
+        [currentValue.name]: cleanColor
+      });
+    };
+
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "px-colorbox",
+      key: currentValue.name
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "UI ", currentValue.title, " Color"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      type: "checkbox",
+      id: `${currentValue.name}Swatch`,
+      name: `${currentValue.name}Swatch`
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+      htmlFor: `${currentValue.name}Swatch`
+    }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+      value: `${attributes[currentValue.name]}`,
+      onChange: onColorChange,
+      enableAlpha: true
+    }));
+  })))));
 }
 
 /***/ }),
@@ -3164,7 +3260,8 @@ function Edit(props) {
       lineartColor,
       spacingMobile,
       spacingTablet,
-      spacingDesktop
+      spacingDesktop,
+      elementType
     },
     className,
     clientId
@@ -3257,16 +3354,16 @@ function Edit(props) {
 
   const sizingObj = {}; // Mobile, Tablet, Desktop. This prevents empty vals from being saved
 
-  if (spacingMobileStack != 'undefined') {
+  if (spacingMobileStack !== "undefined") {
     sizingObj['--spacingMobile'] = spacingMobileStack;
   }
 
-  if (spacingTabletStack != 'undefined') {
+  if (spacingTabletStack !== "undefined") {
     sizingObj['--spacingTablet'] = spacingTabletStack;
   } // console.log("wassamatter with ", spacingDesktopStack);
 
 
-  if (spacingDesktopStack != 'undefined') {
+  if (spacingDesktopStack !== "undefined") {
     sizingObj['--spacingDesktop'] = spacingDesktopStack;
   }
 
@@ -3431,9 +3528,18 @@ function save(props) {
   const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()("xx-styled", // `wp-block-xx-styled--${blockID}`,
   {
     "wp-block--heightenabled": heightEnabled
-  }, `xx-styled--headlinefont-${foregroundHeadlineFont}`, `xx-styled--copyfont-${foregroundCopyFont}`, {
-    [`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'Inherit'
+  }, {
+    [`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit'
+  }, {
+    [`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit'
+  }, {
+    [`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit'
   });
+  /*
+  	`xx-styled--headlinefont-${foregroundHeadlineFont}`,
+  	`xx-styled--copyfont-${foregroundCopyFont}`,
+  */
+
   console.log("classes includes", classes); // Add Foobar
   // classNames({ 'foo-bar': true }); // => 'foo-bar'
   // Return the shtuff
@@ -3548,7 +3654,9 @@ function PoststylePlugin(props) {
   }, {
     "label": "Natural",
     "value": "natural"
-  }];
+  }]; // CurrentPostType
+
+  const currentPostType = useSelect(select => select('core/editor').getCurrentPostType());
   const PostsDropdownControl = compose( // withSelect allows to get posts for our SelectControl and also to get the post meta value
   withSelect(function (select, props) {
     return {
@@ -3638,7 +3746,14 @@ function PoststylePlugin(props) {
         jQuery("body").attr('data-theme', '');
       }
     }
-  });
+  }); // Don't show the interface on the "style" interface
+
+  if (currentPostType === "style") {
+    return false;
+  } else {
+    console.log("Warning, the style picker was not show because you are editing a style	");
+  }
+
   return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
     icon: "art"
@@ -3908,12 +4023,9 @@ const applyWithDispatch = withDispatch(dispatch => {
 
   };
 });
-
-if (true) {
-  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
-    render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
-  });
-}
+(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
+  render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
+});
 
 /***/ }),
 

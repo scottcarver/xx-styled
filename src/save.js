@@ -34,10 +34,15 @@ export default function save(props) {
 		"xx-styled",
 		// `wp-block-xx-styled--${blockID}`,
 		{ "wp-block--heightenabled": heightEnabled },
+		{[`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit' },
+		{[`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit' },
+		{[`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit' }
+	);
+
+	/*
 		`xx-styled--headlinefont-${foregroundHeadlineFont}`,
 		`xx-styled--copyfont-${foregroundCopyFont}`,
-		{[`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'Inherit' }
-	);
+	*/
 
 
 	console.log("classes includes", classes);

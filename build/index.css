@@ -349,6 +349,7 @@
 }
 .px-colorbox .components-color-palette__custom-color {
   height: auto;
+  min-height: 40px;
 }
 .px-colorbox .components-color-picker__body {
   padding: 10px 6px 0 6px;
@@ -356,13 +357,13 @@
 .px-colorbox .components-circular-option-picker__swatches {
   display: none;
   width: calc(100% + 4px);
+  margin-bottom: 20px;
 }
 .px-colorbox .components-circular-option-picker {
-  margin-top: 15px;
-  padding-bottom: 10px;
+  padding-left: 10px;
 }
 .px-colorbox .components-circular-option-picker__custom-clear-wrapper {
-  margin-top: 10px;
+  margin-top: 0px;
 }
 .px-colorbox .components-color-picker__inputs-wrapper {
   align-items: initial;

@@ -21,6 +21,7 @@ import "./editor.scss";
 
 
 
+
 function PoststylePlugin(props) {
 	const {
 		myPostMetaKey,
@@ -57,6 +58,10 @@ function PoststylePlugin(props) {
 		{"label":"Modern","value":"modern"},
 		{"label":"Natural","value":"natural"},
 	];
+
+	// CurrentPostType
+	const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
+	
 
 	const PostsDropdownControl = compose(
 		// withSelect allows to get posts for our SelectControl and also to get the post meta value
@@ -154,6 +159,14 @@ function PoststylePlugin(props) {
 			if(postStyleType === null){ jQuery("body").attr('data-theme','');}
 		}
 	});
+
+	// Don't show the interface on the "style" interface
+	if(currentPostType === "style"){
+		return false;
+	} else {
+		console.log("Warning, the style picker was not show because you are editing a style	");
+	}
+
 	return (
 		<Fragment>
 			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon="art">
@@ -454,11 +467,9 @@ const applyWithDispatch = withDispatch(dispatch => {
 });
 
 
-if(true){
 	registerPlugin("sidebar-poststyle-plugin", {
 		render: compose(
 			applyWithSelect,
 			applyWithDispatch
 		)(PoststylePlugin)
 	});
-}

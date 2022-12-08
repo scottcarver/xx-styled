@@ -12,19 +12,16 @@
 		"anchor": true,
 		"className": true,
 		"customClassName": true,
-		"html": true,
-		"layout": true,
-		"__experimentalLayout": {
-			"allowSizingOnChildren": false,
-			"allowInheriting": true,
-			"allowEditing": true
-		}
-		
+		"html": true
 	},
 	"attributes" : {
 		"align": {
 			"type": "string",
 			"default": ""
+		},
+		"elementType": {
+			"type": "string",
+			"default": "div"
 		},
 		"blockID": {
 			"type": "string",
@@ -254,6 +251,18 @@
 		},
 		"spacingDesktop": {
 			"type": "object",
+			"default": ""
+		},
+		"interfaceFGColor": {
+			"type": "string",
+			"default": ""
+		},
+		"interfaceBGColor": {
+			"type": "string",
+			"default": ""
+		},
+		"interfaceKeyColor": {
+			"type": "string",
 			"default": ""
 		}
 	},

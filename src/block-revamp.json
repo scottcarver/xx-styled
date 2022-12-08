@@ -11,6 +11,11 @@
 		"html": true,
 		"anchor": true,
 		"layout": true,
+		"__experimentalLayout": {
+			"allowSizingOnChildren": false,
+			"allowInheriting": true,
+			"allowEditing": true
+		}
 		"align": ["wide", "full"]
 	},
 	"attributes" : {

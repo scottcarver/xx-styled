@@ -112,12 +112,17 @@ const calculatedInlineVars = attributes => {
 		fontCss+=`--foregroundCaptionFont: var(--${foregroundCaptionFont});`
 	}
 
-	var sizingCss = `
+	/*
 		--spacingMobile: ${spacingMobileStack};
-		--spacingTablet: ${spacingTabletStack};
-		--spacingDesktop: ${spacingDesktopStack};
-	`;
+	*/
 
+	var sizingCss = ``;
+	if(spacingMobileStack !== "undefined"){ sizingCss+=`--spacingMobile: ${spacingMobileStack};` }
+	if(spacingTabletStack !== "undefined"){ sizingCss+=`--spacingTablet: ${spacingTabletStack};` }
+	if(spacingDesktopStack !== "undefined"){ sizingCss+=`--spacingDesktop: ${spacingDesktopStack};` }
+
+	
+	// Add CSS based on the mode
 	if(styleMode == 'custom') { combinedCss += fgbgCss + fontCss + sizingCss; }
 	if(styleMode == 'named') { combinedCss += fontCss + sizingCss; }
 

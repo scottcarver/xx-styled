@@ -101,6 +101,7 @@
 	// Custom Color Picker	
 	.components-color-palette__custom-color{
 		height:auto;
+		min-height:40px;
 	}
 
 	// Color Picker
@@ -112,16 +113,19 @@
 	.components-circular-option-picker__swatches{
 		display:none;
 		width: calc(100% + 4px);
+		margin-bottom: 20px;
 		// padding-bottom: 10px;
 	}
+	
 	.components-circular-option-picker{
-		margin-top:15px;
-		padding-bottom:10px;
+		// margin-top:15px;
+		// padding-bottom:10px;
+		padding-left: 10px;
 	}
 
 	.components-circular-option-picker__custom-clear-wrapper{
 		// margin-top:5px;
-		margin-top: 10px;
+		margin-top: 0px;
 	}
 	// Give more spacing to inputs
 	.components-color-picker__inputs-wrapper {

@@ -6,6 +6,7 @@ import classnames from "classnames";
 
 import BGTabs from "./BGTabs";
 import StyledPreview from "./components/StyledPreview";
+import {InterfacePanel} from "../src/components/InterfacePanel";
 
 const { __ } = wp.i18n;
 import { Component, Fragment} from '@wordpress/element';
@@ -651,6 +652,8 @@ export default class StyleControls extends Component {
 
 			</Fragment>
 			)}
+
+			<InterfacePanel attributes={this.props.attributes} setAttributes={this.props.setAttributes} />					
 
 			{(styleMode =='named' || styleMode =='custom') && (
 			<Fragment>
