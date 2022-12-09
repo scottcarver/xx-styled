@@ -8,8 +8,8 @@ import {Fragment } from '@wordpress/element';
 
 // Custom modules
 import './editor.scss';
-import StyleControls from "../assets/styleControls";
-import AdminStyle from "../assets/AdminStyle";
+import StyleControls from "./components/styleControls";
+import AdminStyle from "./components/AdminStyle";
 import calculated from "../src/library/calculated/calculated";
 
 // Export Edit Function

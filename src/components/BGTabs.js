@@ -23,11 +23,10 @@ const {
 
 // My helper code
 import BGImgControl from "./BGImgControl";
-import BGGradControl from "./BGGradControl";
-// import BGCurrentTabset from "./BGCurrentTabset"; // Component
+import BGGradControl from "../../assets/BGGradControl";
 
-import calculatedTabset from "./lib/js/calculatedTabset"; // Function Component
-import calculatedRgbaString from "../src/library/calculated/calculatedRgbaString";
+import CalculatedTabset from "./CalculatedTabset"; // Function Component
+import calculatedRgbaString from "../library/calculated/calculatedRgbaString";
 
 /* Create a Block Controls wrapper Component */
 export default class BGTabs extends Component {
@@ -72,7 +71,7 @@ export default class BGTabs extends Component {
 		} = this.props;
 
 		const rendermyComponent = true;
-		const themTabs = calculatedTabset(this.props);
+		const themTabs = CalculatedTabset(this.props);
 		const backgroundTabClasses = classnames("px-tabwrap px-tabwrap--margintop", { 
 			"px-tabwrap--centered": themTabs.length > 0,
 			"px-tabwrap--single": themTabs.length === 1,
@@ -97,7 +96,7 @@ export default class BGTabs extends Component {
 		);
 
 		const getBackgroundTab = name => {
-			console.log("got here!");
+			// console.log("got here!");
 			// Help Tab
 			if (name == "bghelptab") {
 				return (

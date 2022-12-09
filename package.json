@@ -1,9 +1,9 @@
 {
 	"name": "xx-styled",
 	"version": "0.1.0",
-	"description": "Generates a contained set of foreground and background styles.",
+	"description": "Generates a contained set of foreground and background styles",
 	"author": "Scott Carver",
-	"license": "GPL-2.0-or-later",
+	"license": "Protected",
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build",

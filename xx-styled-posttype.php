@@ -50,11 +50,11 @@ function register_styled_template() {
   $post_type_object->template = array(
       array( 'xx/styled', array('align'=>'full'), array(
         array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
-        array( 'core/heading', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
+        array( 'core/heading', array('level' => 1, 'textAlign'=>'center', 'content' => 'Welcome to Your Styled Area' )),
         array( 'core/paragraph', array('dropCap'=>true, 'content' => 'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<strong> Vivamus magna justo,</strong> lacisssnia eget <a href="#">consectetur</a> sed, convallis at tellus. Donec sollicitudin <em>molestie malesuada.</em> Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' )),
-        array( 'core/image', array('align'=>'center', 'url' => 'https://via.placeholder.com/1200x700')), // wp_get_attachment_url(2182)
+        array( 'core/image', array('align'=>'center', 'caption'=>'An Image Example', 'url' => 'https://via.placeholder.com/1200x700')), // wp_get_attachment_url(2182)
         array( 'core/separator', array('align'=>'center')),
-        array( 'core/paragraph', array('content' => 'Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
+        array( 'core/paragraph', array('content' => 'ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
         array( 'core/quote', array('value'=>'<p>Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://oregon.gov">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat</p>', 'citation'=>'Great Person')),
         array( 'core/paragraph', array('content' => 'Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.'))
       )
@@ -67,6 +67,9 @@ function register_styled_template() {
 
 
 // Add tags to <html> using the language_attributes hook
+
+
+
 function new_language_attributes($lang){
 
   if(is_admin()){ return $lang; }

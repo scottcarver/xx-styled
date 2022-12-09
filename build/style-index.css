@@ -13,6 +13,7 @@
 
 html.xx-styled {
   max-width: none;
+  min-height: 100%;
 }
 
 .xx-styled,

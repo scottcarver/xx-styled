@@ -36,7 +36,7 @@ function get_style_array() {
 }
    
 
-// inline script via wp_print_scripts
+// Print custom JS to the page output within the Admin
 function print_styled_adminscripts() { 
 
   // Read the JSON file 
@@ -45,6 +45,7 @@ function print_styled_adminscripts() {
   // Decode the JSON file
   $themejson_data = json_decode($themejson,true);
 
+  // Create Font name/label pairs based on theme.json
   $themejson_fontlabels = [];
   foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
     $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
@@ -52,7 +53,7 @@ function print_styled_adminscripts() {
   }
     
   $style_array = get_style_array();
-  $has_styles = sizeof($style_array) > 0;
+  // $has_styles = sizeof($style_array) > 0;
   ?>
   
 	<script>
@@ -62,5 +63,6 @@ function print_styled_adminscripts() {
     var global_current_posttype = "<?php echo get_post_type(); ?>";
 	</script>
 	<?php
+  
 }
 add_action('admin_print_scripts', 'print_styled_adminscripts');

@@ -1,9 +1,8 @@
 // Returns the final "background-color"
-const calculatedTabset = props => {
+// The tabset changes based on the backgroundStackFirst property
+const CalculatedTabset = props => {
 	const { bgColorEnabled, bgImageEnabled, bgGradientEnabled, bgGelEnabled, backgroundStackFirst } = props.attributes;
-	console.log("before");
-	console.log(bgColorEnabled);
-	console.log("affer");
+	
 	const tabOrder = [];
 
 	if (bgGelEnabled) {
@@ -14,7 +13,7 @@ const calculatedTabset = props => {
 		});
 	}
 
-	console.log("stack order " + backgroundStackFirst);
+	// console.log("stack order " + backgroundStackFirst);
 
 	// Stack Order 1
 	if (backgroundStackFirst == "gradient") {
@@ -59,57 +58,8 @@ const calculatedTabset = props => {
 		});
 	}
 
-	console.log(tabOrder);
+	//  console.log(tabOrder);
 	return tabOrder;
 };
 
-export default calculatedTabset;
-
-/*
-
-		const fixedTabset = [
-			{
-				name: "bgcolortab",
-				title: "Base",
-				className: "tab-bgcolor1"
-			},
-			{
-				name: "bgimagetab",
-				title: "Image",
-				className: "tab-bgimage"
-			},
-			{
-				name: "bggradienttab",
-				title: "Gradient",
-				className: "tab-bggradient"
-			},
-			{
-				name: "bggeltab",
-				title: "Gel",
-				className: "tab-bggel"
-			}
-		];
-
-		const fixedTabsetReversed = [
-			{
-				name: "bgcolortab",
-				title: "Base",
-				className: "tab-bgcolor1"
-			},
-			{
-				name: "bggradienttab",
-				title: "Gradient",
-				className: "tab-bggradient"
-			},
-			{
-				name: "bgimagetab",
-				title: "Image",
-				className: "tab-bgimage"
-			},
-			{
-				name: "bggeltab",
-				title: "Gel",
-				className: "tab-bggel"
-			}
-		];
-		*/
+export default CalculatedTabset;

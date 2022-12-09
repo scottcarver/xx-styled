@@ -58,3 +58,7 @@ In addition to the 'single' view created by the 'styled' posttype, additional he
 ## Styled Areas versus 
 is an alternative approach to using the core styling tools in WordPress.
 
+
+## Todo
+- in all cases, check the "enabled" values before returning anything in css/js. [issue] regarding linear-gradient showing when Gel is enabled but no color value is set.
+- there is a know issue with nesting multiple deep where the wide/full does not display. A solution is possible but in the short term just add the classes to get the same effect

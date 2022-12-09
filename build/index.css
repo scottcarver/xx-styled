@@ -556,6 +556,7 @@
 
 html.xx-styled {
   max-width: none;
+  min-height: 100%;
 }
 
 .xx-styled,
@@ -704,21 +705,6 @@ html.xx-styled {
 body.post-type-styled #styledarea-toggle {
   display: none;
 }
-/*
-// Editor Style
-.xx-styled{
-	background-color: var(--backgroundColor);
-	color: var(--foregroundColor);
-	padding: 2px;
-	max-width: none;
-}
-button{
-	display:editor;
-}*/
-.wp-block-create-block-xx-styled {
-  border: 1px dotted #f00;
-}
-
 .edit-post-visual-editor__post-title-wrapper {
   background: white;
   padding: 20px;
@@ -728,46 +714,11 @@ button{
   color: black !important;
   font-family: sans-serif;
 }
-
-/* Typography for inside the editor */
-/*
-.xx-styled--headlinefont-fantasy .wp-block-xx-styled{
-	h1, h2, h3, h4, h5, h6{
-		font-family: var(--fantasy);
-	}
-}
-
-.xx-styled--headlinefont-monospace .wp-block-xx-styled{
-	h1, h2, h3, h4, h5, h6{
-		font-family: var(monospace);
-	}
-}
-
-.xx-styled--headlinefont-cursive .wp-block-xx-styled{
-	h1, h2, h3, h4, h5, h6{
-		font-family: var(cursive);
-	}
-}
-*/
-/** INSIDE THE BLOCK EDITOR **/
-/*
-	1) add maxwidth to key blocks
-	2) add margin to center blocks
-
-.block-editor-block-list__layout{
-	// outline:solid 10px red;
-	> *{
-		max-width: var(--contentWidth);
-		margin-left:auto;
-		margin-right:auto;
-	}
-}
-*/
 /*!************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/components/StyledPreview/StyledPreview.scss ***!
   \************************************************************************************************************************************************************************************************************************************************************************/
 .styled-preview {
-  background-image: url("https://assets.codepen.io/81793/transparent.jpg");
+  background-image: url(f69f09270e41c092e0dc.webp);
   background-position: center;
   width: 100%;
   width: 260px;

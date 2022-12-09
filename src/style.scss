@@ -8,6 +8,7 @@
 // Frontend Fix
 html.xx-styled{
 	max-width: none;
+	min-height: 100%; // this may be problematic
 }
 
 // Shared Frontend/Admin

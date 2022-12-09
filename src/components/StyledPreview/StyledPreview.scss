@@ -1,17 +1,14 @@
 
 .styled-preview{
-  // background:pink;
-  background-image: url("https://assets.codepen.io/81793/transparent.jpg");
+  background-image: url("../../library/img/transparent.webp");
   background-position: center;;
   width: 100%;
   width:260px;
   margin-left:10px;
   height: 180px;
- // margin-top:20px;
   border:solid 4px green;
   outline:solid 1px grey;
   border-radius:5px;
-
   *{transition:.15s all;}
 
   &:hover, &:focus, &:active{
@@ -19,15 +16,10 @@
     .cube{
        transform: translateY(30px);  
        animation-play-state: running;
-      //  animation-name:boop;
-      //  transition:.5s ease all;
       }
   }
 
   &.styled-preview--gradientfirst{
-    // *{
-    //   outline:solid 1px red;
-    // }
     .layer-3{transform: translateZ(-50px);}
     .layer-4{transform: translateZ(-15px);}
   }
@@ -37,7 +29,6 @@
 
 // Stack
 .styled-preview[data-viewtype="stack"]{
-  // border-color:green;
   border-color:transparent;
   perspective: 600px;
 }
@@ -108,7 +99,6 @@
 }
 
 .bgimage{
- // background-image: url(https://assets.codepen.io/81793/rabbit.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
