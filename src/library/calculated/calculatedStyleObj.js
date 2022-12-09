@@ -5,7 +5,23 @@ import calculated from "./calculated";
 // Returns an object containing CSS values, this is used inside the editor 
 const calculatedStyleObj = attributes => {
 
-	const { styleMode, foregroundColor, headlineColor, linkColor, dropcapColor, blockquoteColor, selectionFGColor, selectionBGColor, lineartColor, foregroundHeadlineFont, foregroundCopyFont, foregroundCaptionFont } = attributes;
+	const { 
+		styleMode, 
+		foregroundColor, 
+		headlineColor, 
+		linkColor, 
+		dropcapColor, 
+		blockquoteColor, 
+		selectionFGColor, 
+		selectionBGColor, 
+		lineartColor, 
+		foregroundHeadlineFont, 
+		foregroundCopyFont, 
+		foregroundCaptionFont, 
+		interfaceFGColor,
+		interfaceBGColor,
+		interfaceKeyColor
+	} = attributes;
 
     const bgImageStack = calculated.calculatedBgImage(attributes);
 	const bgColorStack = calculated.calculatedBgColor(attributes);
@@ -50,6 +66,12 @@ const calculatedStyleObj = attributes => {
 		fgbgObj['--backgroundRepeat'] = bgRepeat;
 	}
 
+	// Build Up Interface Support
+	const interfaceObj = {
+		'--interfaceFGColor': interfaceFGColor, 
+		'--interfaceBGColor': interfaceBGColor,
+		'--interfaceKeyColor': interfaceKeyColor,
+	}
     
 
 	// Build Up Typography Support
@@ -77,7 +99,7 @@ const calculatedStyleObj = attributes => {
 	// Selectively spread values into the styleObj based on the styleMode
 	// This prevents unnecessary values from being saved and displayed
 	if(styleMode === 'named'){ styleObj = { ...typographyObj, ...sizingObj } }
-	if(styleMode === 'custom'){ styleObj = {...fgbgObj, ...typographyObj, ...sizingObj } }
+	if(styleMode === 'custom'){ styleObj = {...fgbgObj, ...typographyObj, ...sizingObj, ...interfaceObj } }
   
     // Return formatted Style Object
     return styleObj;

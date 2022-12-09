@@ -15,10 +15,10 @@
 
 
   // STYLESHEETS
-  //style/unique-name.css or style/compiled.css
+  //styled/unique-name.css or styled/compiled.css
   // Create Route with two Regex capture groups
   $theme_routes->addRoute(
-      "^style/([^/]*)/?.css",
+      "^styled/([^/]*)/?.css",
       'routeapi_csscallback',
       plugin_dir_path(__FILE__) . 'routes/route_template_css.php',
       array('param1' => 1)
@@ -32,9 +32,9 @@
 
   
   // JSON DATA
-  //style/unique-name.json or style/compiled.json
+  //styled/unique-name.json or styled/compiled.json
   $theme_routes->addRoute(
-      "^style/([^/]*)/?.json",
+      "^styled/([^/]*)/?.json",
       'routeapi_jsoncallback',
       plugin_dir_path(__FILE__) . 'routes/route_template_json.php',
       array('param1' => 1)
@@ -53,7 +53,7 @@
 
 // Add backend styles for Gutenberg.
 function custom_generated_css() {
-	wp_enqueue_style( 'styled-areas', get_site_url().'/style/compiled.css', false );
+	wp_enqueue_style( 'styled-areas', get_site_url().'/styled/compiled.css', false );
 } 
 
 add_action('wp_enqueue_scripts', 'custom_generated_css');

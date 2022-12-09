@@ -4,7 +4,7 @@ $iscompiled = $stylename === 'compiled';
 $the_slug = $stylename;
 $args = array(
   'name'        =>  $iscompiled  ? null : $the_slug,
-  'post_type'   => 'style',
+  'post_type'   => 'styled',
   'post_status' => 'publish',
   'numberposts' => $iscompiled ? -1 : 1
 );

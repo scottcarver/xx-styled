@@ -256,6 +256,145 @@
   border: dashed 1px black;
 }
 
+.px-colorbox {
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.px-colorbox.px-colorbox-negmarginabove {
+  margin-top: -10px;
+}
+.px-colorbox.px-colorbox--marginabove {
+  margin-top: 20px;
+}
+.px-colorbox.px-colorbox--paddingbelow {
+  padding-bottom: 20px;
+}
+.px-colorbox.px-colorbox--paddingleft {
+  padding-left: 10px;
+}
+.px-colorbox.px-colorbox--lineabove {
+  border-top: solid 1px #eee;
+}
+.px-colorbox.px-colorbox--linebelow {
+  border-bottom: solid 1px #eee;
+}
+.px-colorbox.px-colorbox--nopicker {
+  margin-top: -20px;
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.px-colorbox.px-colorbox--nopicker .components-color-palette__custom-color {
+  display: none;
+}
+.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__option-wrapper {
+  width: 26px;
+  height: 26px;
+}
+.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__swatches {
+  margin-top: 40px;
+}
+.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__custom-clear-wrapper {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+.px-colorbox.px-colorbox--nopicker label {
+  right: 18px;
+}
+.px-colorbox.px-colorbox--nopicker input[type=checkbox] {
+  right: 5px;
+}
+.px-colorbox h2 {
+  margin: 5px 0;
+  padding: 0;
+}
+.px-colorbox input[type=checkbox]:checked ~ div .components-circular-option-picker__swatches {
+  display: flex;
+}
+.px-colorbox input[type=checkbox] {
+  position: absolute;
+  top: 15px;
+  right: -5px;
+}
+.px-colorbox label {
+  position: absolute;
+  top: 10px;
+  right: 8px;
+  font-size: 10px;
+}
+.px-colorbox .component-color-indicator {
+  position: absolute;
+  left: -12px;
+  margin: 0;
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  transition: all 0.1s ease;
+  top: 5px;
+}
+.px-colorbox .components-color-palette .components-color-palette__clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
+.px-colorbox .components-color-palette .components-color-palette__item-wrapper {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+.px-colorbox .components-color-palette__custom-color {
+  height: auto;
+  min-height: 40px;
+}
+.px-colorbox .components-color-picker__body {
+  padding: 10px 6px 0 6px;
+}
+.px-colorbox .components-circular-option-picker__swatches {
+  display: none;
+  width: calc(100% + 4px);
+  margin-bottom: 20px;
+}
+.px-colorbox .components-circular-option-picker {
+  padding-left: 10px;
+}
+.px-colorbox .components-circular-option-picker__custom-clear-wrapper {
+  margin-top: 0px;
+}
+.px-colorbox .components-color-picker__inputs-wrapper {
+  align-items: initial;
+}
+.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-fields label {
+  width: 100%;
+  max-width: none;
+  text-align: center;
+}
+.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-fields input {
+  padding: 0;
+  text-align: center;
+  line-height: 2em;
+  border-color: #ccc;
+}
+.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-fields .edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
+  margin-bottom: 0;
+}
+.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-toggle {
+  text-align: center;
+  padding-top: 1.5em;
+  padding-left: 5px;
+}
+
+.edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
+  margin-bottom: 0;
+}
+.edit-post-settings-sidebar__panel-block .components-color-picker__inputs-fields {
+  justify-content: space-between;
+}
+
 .px-triptych {
   display: flex;
   padding-top: 15px;
@@ -403,145 +542,6 @@
 .px-buttongroup .components-button-group .components-button {
   flex-grow: 1;
   justify-content: center;
-}
-
-.px-colorbox {
-  position: relative;
-  padding-top: 5px;
-  padding-bottom: 10px;
-}
-.px-colorbox.px-colorbox-negmarginabove {
-  margin-top: -10px;
-}
-.px-colorbox.px-colorbox--marginabove {
-  margin-top: 20px;
-}
-.px-colorbox.px-colorbox--paddingbelow {
-  padding-bottom: 20px;
-}
-.px-colorbox.px-colorbox--paddingleft {
-  padding-left: 10px;
-}
-.px-colorbox.px-colorbox--lineabove {
-  border-top: solid 1px #eee;
-}
-.px-colorbox.px-colorbox--linebelow {
-  border-bottom: solid 1px #eee;
-}
-.px-colorbox.px-colorbox--nopicker {
-  margin-top: -20px;
-  border-radius: 10px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.05);
-  margin-bottom: 15px;
-  margin-left: -10px;
-  margin-right: -10px;
-}
-.px-colorbox.px-colorbox--nopicker .components-color-palette__custom-color {
-  display: none;
-}
-.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__option-wrapper {
-  width: 26px;
-  height: 26px;
-}
-.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__swatches {
-  margin-top: 40px;
-}
-.px-colorbox.px-colorbox--nopicker .components-circular-option-picker__custom-clear-wrapper {
-  position: absolute;
-  top: 0;
-  left: 10px;
-}
-.px-colorbox.px-colorbox--nopicker label {
-  right: 18px;
-}
-.px-colorbox.px-colorbox--nopicker input[type=checkbox] {
-  right: 5px;
-}
-.px-colorbox h2 {
-  margin: 5px 0;
-  padding: 0;
-}
-.px-colorbox input[type=checkbox]:checked ~ div .components-circular-option-picker__swatches {
-  display: flex;
-}
-.px-colorbox input[type=checkbox] {
-  position: absolute;
-  top: 15px;
-  right: -5px;
-}
-.px-colorbox label {
-  position: absolute;
-  top: 10px;
-  right: 8px;
-  font-size: 10px;
-}
-.px-colorbox .component-color-indicator {
-  position: absolute;
-  left: -12px;
-  margin: 0;
-  height: 10px;
-  width: 10px;
-  border-radius: 100%;
-  transition: all 0.1s ease;
-  top: 5px;
-}
-.px-colorbox .components-color-palette .components-color-palette__clear {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0;
-}
-.px-colorbox .components-color-palette .components-color-palette__item-wrapper {
-  margin-right: 8px;
-  margin-bottom: 8px;
-}
-.px-colorbox .components-color-palette__custom-color {
-  height: auto;
-  min-height: 40px;
-}
-.px-colorbox .components-color-picker__body {
-  padding: 10px 6px 0 6px;
-}
-.px-colorbox .components-circular-option-picker__swatches {
-  display: none;
-  width: calc(100% + 4px);
-  margin-bottom: 20px;
-}
-.px-colorbox .components-circular-option-picker {
-  padding-left: 10px;
-}
-.px-colorbox .components-circular-option-picker__custom-clear-wrapper {
-  margin-top: 0px;
-}
-.px-colorbox .components-color-picker__inputs-wrapper {
-  align-items: initial;
-}
-.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-fields label {
-  width: 100%;
-  max-width: none;
-  text-align: center;
-}
-.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-fields input {
-  padding: 0;
-  text-align: center;
-  line-height: 2em;
-  border-color: #ccc;
-}
-.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-fields .edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
-  margin-bottom: 0;
-}
-.px-colorbox .components-color-picker__inputs-wrapper .components-color-picker__inputs-toggle {
-  text-align: center;
-  padding-top: 1.5em;
-  padding-left: 5px;
-}
-
-.edit-post-settings-sidebar__panel-block .components-panel__body .components-base-control {
-  margin-bottom: 0;
-}
-.edit-post-settings-sidebar__panel-block .components-color-picker__inputs-fields {
-  justify-content: space-between;
 }
 
 :root {
@@ -701,7 +701,7 @@ html.xx-styled {
   max-width: none;
 }
 
-body.post-type-style #styledarea-toggle {
+body.post-type-styled #styledarea-toggle {
   display: none;
 }
 /*

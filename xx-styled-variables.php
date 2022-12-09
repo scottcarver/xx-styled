@@ -4,13 +4,10 @@
 // This is perhaps better done using compose/applyWithSelect/applyWithDispatch but this is simplified since it doesn't save metadata
 
 function get_style_array() {
-    /**
-     * frontend ajax requests.
-     */
 
     $args = array(
         'name'        =>  null,
-        'post_type'   => 'style',
+        'post_type'   => 'styled',
         'post_status' => 'publish',
         'posts_per_page' => -1,
         'order' => 'ASC',
@@ -33,33 +30,14 @@ function get_style_array() {
         }
       };
 
-    
-    if(isset($styled_array)){ 
-       return $styled_array;
-    } 
-
-
-  
+    // Return Style Array
+    if(isset($styled_array)){ return $styled_array; } 
 
 }
-    /*
-
- wp_enqueue_script( 'frontend-ajax', '/frontend-ajax.js', array('jquery'), null, true );
-    wp_localize_script( 'frontend-ajax', 'frontend_ajax_object',
-        array( 
-            'ajaxurl' => admin_url( 'admin-ajax.php' ),
-            'data_var_1' => 'value 1',
-            'data_var_2' => 'value 2',
-            'styled-areas' => $styled_array,
-        )
-    );
-
-add_action( 'admin_enqueue_scripts', 'theme_enqueue_scripts' ); // wp_enqueue_scripts
-*/
-
+   
 
 // inline script via wp_print_scripts
-function shapeSpace_print_scripts() { 
+function print_styled_adminscripts() { 
 
   // Read the JSON file 
   $themejson = file_get_contents(get_template_directory_uri().'/theme.json');
@@ -70,18 +48,13 @@ function shapeSpace_print_scripts() {
   $themejson_fontlabels = [];
   foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
     $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
-    // var_dump($font);
     array_push($themejson_fontlabels, $selectDropData);
   }
     
-  // Display data
-  // print_r($json_data);
-
-
-	  $style_array = get_style_array();
-    $has_styles = sizeof($style_array) > 0;
-    // var_dump($style_array);
+  $style_array = get_style_array();
+  $has_styles = sizeof($style_array) > 0;
   ?>
+  
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;
     var global_named_fonts = <?php echo json_encode($themejson_fontlabels); ?>;
@@ -90,4 +63,4 @@ function shapeSpace_print_scripts() {
 	</script>
 	<?php
 }
-add_action('admin_print_scripts', 'shapeSpace_print_scripts');
+add_action('admin_print_scripts', 'print_styled_adminscripts');

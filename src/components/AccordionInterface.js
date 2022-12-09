@@ -3,14 +3,14 @@ import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow} from '@wordpress/components';
 import { ColorPalette } from '@wordpress/block-editor';
 
-import PxColorBox from "../library/helpers/PxColorBox/PxColorBox.js"
+import PxColorBox from "./PxColorBox/PxColorBox.js"
 
 export function AccordionInterface({ attributes, setAttributes }){
 
     let colorboxes = [
-        {'name':'interfaceFGColor', 'title':'Foreground'},
-        {'name':'interfaceBGColor', 'title':'Background'},
-        {'name':'interfaceKeyColor', 'title':'Key'} 
+        {'name':'interfaceFGColor', 'title':'UI Foreground Color'},
+        {'name':'interfaceBGColor', 'title':'UI Background Color'},
+        {'name':'interfaceKeyColor', 'title':'UI Key Color'} 
     ];
 
     if(attributes.styleMode=='named'){ return false; }
@@ -20,17 +20,27 @@ export function AccordionInterface({ attributes, setAttributes }){
             <PanelBody title={__("Interface", "pxblocks")} className="panel-interface" initialOpen={false}>
                 <PanelRow>
                     <div className="px-sidepanel">
+              
+                        {/* Add as a Component */}
+                        {colorboxes.map((currentValue) => {  
+                            return( 
+                                <PxColorBox 
+                                    name={currentValue.name}
+                                    title={currentValue.title}
+                                    attributes={attributes} 
+                                    setAttributes={setAttributes}
+                                    key={currentValue.name}
+                                /> 
+                            )
+                        })}
 
-Before  
-                        <PxColorBox name="interfaceFGColor" title="Foreground" attributes={attributes} setAttributes={setAttributes} />
-After
-                   
+                        {/* Add as a raw html */}
+                        {/*  
                         {colorboxes.map((currentValue) => {
                             const onColorChange = function(colorValue){
                                 let cleanColor = (colorValue !== undefined) ? colorValue : '';
                                 setAttributes({ [currentValue.name] : cleanColor });
                             }
-                            //  <ColorBox color={red} /> 
                             return (
                                 <div className="px-colorbox" key={currentValue.name}>
                                     <h2>UI {currentValue.title} Color</h2>
@@ -40,7 +50,7 @@ After
                                 </div>
                             )
                         })}
-
+                         */}
                     </div>
                     
                 </PanelRow>

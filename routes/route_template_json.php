@@ -23,12 +23,24 @@ if($styled_areas){
     if(isset($pieces[2])){
       $cleanjson = JSON_DECODE($pieces[2]);
       // var_dump($cleanjson);
-      $cleanjson->slug = get_post_field( 'post_name',$area->ID);
-      array_push($styled_array, $cleanjson);
+      if($cleanjson){
+        $cleanjson->slug = get_post_field( 'post_name',$area->ID);
+        array_push($styled_array, $cleanjson);
+      }
     }
   
   }
 };
+
+/*
+$routeArgs = array(
+  'path' => 'my-unique-route/(.+?)/(.+?)/?$',
+  'params' => array('param_1','param_2'),
+  'template' => '/public/path_to_template_file.php',
+  'rebuild' => false,
+)
+new Custom_Route('my-unique-route/(.+?)/(.+?)/?$',array('param_1','param_2'),'/public/path_to_template_file.php',true);
+*/
 
 ?>
 <?php if(isset($styled_array)){ 

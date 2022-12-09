@@ -85,8 +85,6 @@ function new_language_attributes($lang){
       $copyTypography  = get_field("poststylemeta_copy");
       $captionTypography = get_field("poststylemeta_captions");
 
-      // $typographyOptions = [$headlineTypography, $copyTypography, $captionTypography];
-      // foreach($typographyOptions as $typestyle){ }
 
       $style = '';
       if($headlineTypography !== null && $headlineTypography !== '' && $headlineTypography !== 'inherit'){

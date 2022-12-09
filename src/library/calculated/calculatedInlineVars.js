@@ -27,6 +27,9 @@ const calculatedInlineVars = attributes => {
 		foregroundCopyFont,
 		foregroundCaptionFont,
 		styleEnabled,
+		interfaceFGColor,
+		interfaceBGColor,
+		interfaceKeyColor
 	} = attributes;
 
 	const bgImageStack = calculatedBgImage(attributes);
@@ -42,64 +45,55 @@ const calculatedInlineVars = attributes => {
 	const spacingDesktopStack = calculatedPadding(attributes.spacingDesktop);
 	const replaceAll = function (string, search, replace){ return string.split(search).join(replace); } 
 	
-	// console.log("CURIOUS", bgSize);
 	var combinedCss = '';
 
 	var fgbgCss = ``;
-		// console.log("bgImageStack is", bgImageStack);
-		// Include backgroundImage
-		if(bgImageStack){ 
-			fgbgCss += `
-			--backgroundImage: ${bgImageStack};
-			--backgroundSizeSm: ${bgSizeSm};
-			--backgroundSizeMd: ${bgSizeMd};
-			--backgroundSize: ${bgSize};
-			--backgroundPosition: ${bgPosition};
-			--backgroundAttachment: ${bgAttachment};
-			--backgroundRepeat: ${bgRepeat};
-			`; 
-		}
-		
-		// Include backgroundColor
-		if(backgroundColor){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
-		// Foreground Color
-		if(foregroundColor){ fgbgCss += `--foregroundColor: ${foregroundColor};`; }
-		// Headline Color
-		if(headlineColor){ fgbgCss += `--headlineColor: ${headlineColor};`; }
-		// Link Color
-		if(linkColor){ fgbgCss += `--linkColor: ${linkColor};`; }
-		// Dropcap Color
-		if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor};`; }
-		// Block Quote Color
-		if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor};`; }
-		// Lineart Color
-		if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor};`; }
-		// selectionFGr Color
-		if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor};`; }
-		// selectionBG Color
-		if(selectionBGColor){ fgbgCss += `--selectionBGColor: ${selectionBGColor};`; }
+	
+	if(bgImageStack){ 
+		fgbgCss += `
+		--backgroundImage: ${bgImageStack};
+		--backgroundSizeSm: ${bgSizeSm};
+		--backgroundSizeMd: ${bgSizeMd};
+		--backgroundSize: ${bgSize};
+		--backgroundPosition: ${bgPosition};
+		--backgroundAttachment: ${bgAttachment};
+		--backgroundRepeat: ${bgRepeat};
+		`; 
+	}
+	
+	// FG/BG Colors
+	if(backgroundColor){ fgbgCss += `--backgroundColor: ${backgroundColor};`; }
+	if(foregroundColor){ fgbgCss += `--foregroundColor: ${foregroundColor};`; }
+	if(headlineColor){ fgbgCss += `--headlineColor: ${headlineColor};`; }
+	if(linkColor){ fgbgCss += `--linkColor: ${linkColor};`; }
+	if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor};`; }
+	if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor};`; }
+	if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor};`; }
+	if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor};`; }
+	if(selectionBGColor){ fgbgCss += `--selectionBGColor: ${selectionBGColor};`; }
 
-		/*
-		fgbgCss +=
-		`
-		--linkColor: ${linkColor};
-		--dropcapColor: ${dropcapColor};
-		--blockquoteColor: ${blockquoteColor};
-		--lineartColor: ${lineartColor};
-		--selectionFGColor: ${selectionFGColor};
-		--selectionBGColor: ${selectionBGColor};
-	`;
-	*/
-	//--backgroundColor: ${bgColorStack};
 
-	/*
-	var fontCss = `
-		--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
-		--foregroundCopyFont: var(--${foregroundCopyFont});
-		--foregroundCaptionFont: var(--${foregroundCaptionFont});
-	`;
-	*/
 
+	// Interface CSS
+	var interfaceCss = ``;
+	if(interfaceFGColor){ fgbgCss += `--interfaceFGColor: ${interfaceFGColor};`; }
+	if(interfaceBGColor){ fgbgCss += `--interfaceBGColor: ${interfaceBGColor};`; }
+	if(interfaceKeyColor){ fgbgCss += `--interfaceKeyColor: ${interfaceKeyColor};`; }
+
+
+	// Typography
+	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
+		interfaceCss+=`--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`
+	}
+	if(foregroundCopyFont !== null && foregroundCopyFont !== 'inherit'){
+		interfaceCss+=`--foregroundCopyFont: var(--${foregroundCopyFont});`
+	}
+	if(foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit'){
+		interfaceCss+=`--foregroundCaptionFont: var(--${foregroundCaptionFont});`
+	}
+
+
+	// Font CSS
 	var fontCss = ``;
 
 	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
@@ -112,15 +106,12 @@ const calculatedInlineVars = attributes => {
 		fontCss+=`--foregroundCaptionFont: var(--${foregroundCaptionFont});`
 	}
 
-	/*
-		--spacingMobile: ${spacingMobileStack};
-	*/
 
+	// Sizing CSS
 	var sizingCss = ``;
 	if(spacingMobileStack !== "undefined"){ sizingCss+=`--spacingMobile: ${spacingMobileStack};` }
 	if(spacingTabletStack !== "undefined"){ sizingCss+=`--spacingTablet: ${spacingTabletStack};` }
 	if(spacingDesktopStack !== "undefined"){ sizingCss+=`--spacingDesktop: ${spacingDesktopStack};` }
-
 	
 	// Add CSS based on the mode
 	if(styleMode == 'custom') { combinedCss += fgbgCss + fontCss + sizingCss; }

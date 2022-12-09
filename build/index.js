@@ -1978,7 +1978,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _library_helpers_PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../library/helpers/PxColorBox/PxColorBox.js */ "./src/library/helpers/PxColorBox/PxColorBox.js");
+/* harmony import */ var _PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PxColorBox/PxColorBox.js */ "./src/components/PxColorBox/PxColorBox.js");
 
 const {
   __
@@ -1994,13 +1994,13 @@ function AccordionInterface(_ref) {
   } = _ref;
   let colorboxes = [{
     'name': 'interfaceFGColor',
-    'title': 'Foreground'
+    'title': 'UI Foreground Color'
   }, {
     'name': 'interfaceBGColor',
-    'title': 'Background'
+    'title': 'UI Background Color'
   }, {
     'name': 'interfaceKeyColor',
-    'title': 'Key'
+    'title': 'UI Key Color'
   }];
 
   if (attributes.styleMode == 'named') {
@@ -2013,34 +2013,14 @@ function AccordionInterface(_ref) {
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "px-sidepanel"
-  }, "Before", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_library_helpers_PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    name: "interfaceFGColor",
-    title: "Foreground",
-    attributes: attributes,
-    setAttributes: setAttributes
-  }), "After", colorboxes.map(currentValue => {
-    const onColorChange = function (colorValue) {
-      let cleanColor = colorValue !== undefined ? colorValue : '';
-      setAttributes({
-        [currentValue.name]: cleanColor
-      });
-    }; //  <ColorBox color={red} /> 
-
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "px-colorbox",
+  }, colorboxes.map(currentValue => {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      name: currentValue.name,
+      title: currentValue.title,
+      attributes: attributes,
+      setAttributes: setAttributes,
       key: currentValue.name
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "UI ", currentValue.title, " Color"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      type: "checkbox",
-      id: `${currentValue.name}Swatch`,
-      name: `${currentValue.name}Swatch`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-      htmlFor: `${currentValue.name}Swatch`
-    }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
-      value: `${attributes[currentValue.name]}`,
-      onChange: onColorChange,
-      enableAlpha: true
-    }));
+    });
   })))));
 }
 
@@ -2517,6 +2497,62 @@ if (global_current_posttype !== 'styled') {
   (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
     render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
   });
+}
+
+/***/ }),
+
+/***/ "./src/components/PxColorBox/PxColorBox.js":
+/*!*************************************************!*\
+  !*** ./src/components/PxColorBox/PxColorBox.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ PxColorBox; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../library/calculated/calculated */ "./src/library/calculated/calculated.js");
+
+// WordPress modules
+ // Custom Modules
+
+ // Export colorbox
+
+function PxColorBox(props) {
+  const {
+    name,
+    title,
+    attributes,
+    setAttributes
+  } = props;
+
+  const onColorChange = function (colorValue) {
+    let cleanColor = colorValue !== undefined ? colorValue : ''; // let colorTransparent = calculated.calculatedRgbaString(cleanColor);
+    // console.log("cleanColor, colorTransparent", cleanColor, colorTransparent);
+
+    setAttributes({
+      [name]: cleanColor
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-colorbox"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "checkbox",
+    id: `${name}Swatch`,
+    name: `${name}Swatch`
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: `${name}Swatch`
+  }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
+    value: attributes[name],
+    onChange: onColorChange,
+    enableAlpha: true
+  }));
 }
 
 /***/ }),
@@ -3330,7 +3366,10 @@ const calculatedInlineVars = attributes => {
     foregroundHeadlineFont,
     foregroundCopyFont,
     foregroundCaptionFont,
-    styleEnabled
+    styleEnabled,
+    interfaceFGColor,
+    interfaceBGColor,
+    interfaceKeyColor
   } = attributes;
   const bgImageStack = (0,_calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes);
   const bgColorStack = (0,_calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__["default"])(attributes);
@@ -3346,89 +3385,87 @@ const calculatedInlineVars = attributes => {
 
   const replaceAll = function (string, search, replace) {
     return string.split(search).join(replace);
-  }; // console.log("CURIOUS", bgSize);
-
+  };
 
   var combinedCss = '';
-  var fgbgCss = ``; // console.log("bgImageStack is", bgImageStack);
-  // Include backgroundImage
+  var fgbgCss = ``;
 
   if (bgImageStack) {
     fgbgCss += `
-			--backgroundImage: ${bgImageStack};
-			--backgroundSizeSm: ${bgSizeSm};
-			--backgroundSizeMd: ${bgSizeMd};
-			--backgroundSize: ${bgSize};
-			--backgroundPosition: ${bgPosition};
-			--backgroundAttachment: ${bgAttachment};
-			--backgroundRepeat: ${bgRepeat};
-			`;
-  } // Include backgroundColor
+		--backgroundImage: ${bgImageStack};
+		--backgroundSizeSm: ${bgSizeSm};
+		--backgroundSizeMd: ${bgSizeMd};
+		--backgroundSize: ${bgSize};
+		--backgroundPosition: ${bgPosition};
+		--backgroundAttachment: ${bgAttachment};
+		--backgroundRepeat: ${bgRepeat};
+		`;
+  } // FG/BG Colors
 
 
   if (backgroundColor) {
     fgbgCss += `--backgroundColor: ${backgroundColor};`;
-  } // Foreground Color
-
+  }
 
   if (foregroundColor) {
     fgbgCss += `--foregroundColor: ${foregroundColor};`;
-  } // Headline Color
-
+  }
 
   if (headlineColor) {
     fgbgCss += `--headlineColor: ${headlineColor};`;
-  } // Link Color
-
+  }
 
   if (linkColor) {
     fgbgCss += `--linkColor: ${linkColor};`;
-  } // Dropcap Color
-
+  }
 
   if (dropcapColor) {
     fgbgCss += `--dropcapColor: ${dropcapColor};`;
-  } // Block Quote Color
-
+  }
 
   if (blockquoteColor) {
     fgbgCss += `--blockquoteColor: ${blockquoteColor};`;
-  } // Lineart Color
-
+  }
 
   if (lineartColor) {
     fgbgCss += `--lineartColor: ${lineartColor};`;
-  } // selectionFGr Color
-
+  }
 
   if (selectionFGColor) {
     fgbgCss += `--selectionFGColor: ${selectionFGColor};`;
-  } // selectionBG Color
-
+  }
 
   if (selectionBGColor) {
     fgbgCss += `--selectionBGColor: ${selectionBGColor};`;
-  }
-  /*
-  fgbgCss +=
-  `
-  --linkColor: ${linkColor};
-  --dropcapColor: ${dropcapColor};
-  --blockquoteColor: ${blockquoteColor};
-  --lineartColor: ${lineartColor};
-  --selectionFGColor: ${selectionFGColor};
-  --selectionBGColor: ${selectionBGColor};
-  `;
-  */
-  //--backgroundColor: ${bgColorStack};
+  } // Interface CSS
 
-  /*
-  var fontCss = `
-  	--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
-  	--foregroundCopyFont: var(--${foregroundCopyFont});
-  	--foregroundCaptionFont: var(--${foregroundCaptionFont});
-  `;
-  */
+
+  var interfaceCss = ``;
+
+  if (interfaceFGColor) {
+    fgbgCss += `--interfaceFGColor: ${interfaceFGColor};`;
+  }
+
+  if (interfaceBGColor) {
+    fgbgCss += `--interfaceBGColor: ${interfaceBGColor};`;
+  }
+
+  if (interfaceKeyColor) {
+    fgbgCss += `--interfaceKeyColor: ${interfaceKeyColor};`;
+  } // Typography
+
+
+  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
+    interfaceCss += `--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`;
+  }
+
+  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
+    interfaceCss += `--foregroundCopyFont: var(--${foregroundCopyFont});`;
+  }
+
+  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
+    interfaceCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
+  } // Font CSS
 
 
   var fontCss = ``;
@@ -3443,10 +3480,7 @@ const calculatedInlineVars = attributes => {
 
   if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
     fontCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
-  }
-  /*
-  	--spacingMobile: ${spacingMobileStack};
-  */
+  } // Sizing CSS
 
 
   var sizingCss = ``;
@@ -3525,6 +3559,20 @@ const calculatedPadding = spacingObject => {
 __webpack_require__.r(__webpack_exports__);
 // Returns a string which identifies the selected Block Style
 const calculatedRgbaString = function (value) {
+  /*
+  value = value.replace('#', '');
+  console.log("value!", value);
+  	// Forcibly reformat 8 digit hex
+  if(typeof(value) == "string" && value.length === 8){
+  	
+  	let red = value.substring(0, 2);
+  	let blue = value.substring(2, 4);
+  	let green = value.substring(4, 6);
+  	let alpha = value.substring(6, 8);
+  	value = { rgb: { r: red, b: blue, g: green, a: alpha } }
+  	console.log(value);
+  }
+  */
   return "rgba(" + value.rgb.r + "," + value.rgb.g + "," + value.rgb.b + "," + value.rgb.a + ")";
 };
 
@@ -3556,7 +3604,10 @@ const calculatedStyleObj = attributes => {
     lineartColor,
     foregroundHeadlineFont,
     foregroundCopyFont,
-    foregroundCaptionFont
+    foregroundCaptionFont,
+    interfaceFGColor,
+    interfaceBGColor,
+    interfaceKeyColor
   } = attributes;
   const bgImageStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBgImage(attributes);
   const bgColorStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBgColor(attributes);
@@ -3595,8 +3646,14 @@ const calculatedStyleObj = attributes => {
     fgbgObj['--backgroundPosition'] = bgPosition;
     fgbgObj['--backgroundAttachment'] = bgAttachment;
     fgbgObj['--backgroundRepeat'] = bgRepeat;
-  } // Build Up Typography Support
+  } // Build Up Interface Support
 
+
+  const interfaceObj = {
+    '--interfaceFGColor': interfaceFGColor,
+    '--interfaceBGColor': interfaceBGColor,
+    '--interfaceKeyColor': interfaceKeyColor
+  }; // Build Up Typography Support
 
   const typographyObj = {}; // Selectively add Font Objects to respect "inherit" option
 
@@ -3638,7 +3695,8 @@ const calculatedStyleObj = attributes => {
   if (styleMode === 'custom') {
     styleObj = { ...fgbgObj,
       ...typographyObj,
-      ...sizingObj
+      ...sizingObj,
+      ...interfaceObj
     };
   } // Return formatted Style Object
 
@@ -3647,59 +3705,6 @@ const calculatedStyleObj = attributes => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculatedStyleObj);
-
-/***/ }),
-
-/***/ "./src/library/helpers/PxColorBox/PxColorBox.js":
-/*!******************************************************!*\
-  !*** ./src/library/helpers/PxColorBox/PxColorBox.js ***!
-  \******************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ PxColorBox; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function PxColorBox(props) {
-  const {
-    name,
-    title,
-    attributes,
-    setAttributes
-  } = props; // { name, title, attributes, setAttributes }
-
-  const onColorChange = function (colorValue) {
-    let cleanColor = colorValue !== undefined ? colorValue : '';
-    console.log("cleanColor is ", cleanColor);
-    console.log("name is ", name); // console.log(setAttributes);
-
-    console.log(props);
-    setAttributes({
-      [name]: cleanColor
-    });
-  };
-
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "px-colorbox"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "UI ", title, " Color"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "checkbox",
-    id: `${name}Swatch`,
-    name: `${name}Swatch`
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: `${name}Swatch`
-  }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, `${name}`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
-    value: attributes[name],
-    onChange: onColorChange,
-    enableAlpha: true
-  }));
-}
 
 /***/ }),
 

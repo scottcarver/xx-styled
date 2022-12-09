@@ -40,13 +40,13 @@ This approach may help some users style their theme more consistently and dynami
 In addition to the 'single' view created by the 'styled' posttype, additional helper urls are added.
 
 ### CSS
-- Individual Styles - `WPBASE/style/taffy.css` (slug is used)
-- All Styles - `WPBASE/style/compiled.css` (special name 'compiled' is used)
+- Individual Styles - `WPBASE/styled/taffy.css` (slug is used)
+- All Styles - `WPBASE/styled/compiled.css` (special name 'compiled' is used)
 <!-- - Entry Styles - `WPBASE/styled-entry/[ID].css` (ID is used, this will pluck any used inline/saved styles and place them in a compiled CSS format) -->
 
 ### JSON
-- Individual JSON - `WPBASE/style/taffy.json` (returns object)
-- Compiled JSON - `WPBASE/style/compiled.json` (returns arrray of objects). This is used in creating variations.
+- Individual JSON - `WPBASE/styled/taffy.json` (returns object)
+- Compiled JSON - `WPBASE/styled/compiled.json` (returns arrray of objects). This is used in creating variations.
 
 
 

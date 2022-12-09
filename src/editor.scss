@@ -5,14 +5,14 @@
  */
 
  @import "library/common/_common.scss";
- @import "library/helpers/PxColorBox/_PxColorBox.scss";
+
  // @import "../assets/lib/scss/styled-preview.scss";
  @import "style.scss";
 
 
 // When editing Styled Areas posttypes, hide the mode which allows disable/reuse
 // In this context only Original/Inline styles are relevant
-body.post-type-style{
+body.post-type-styled{
 	#styledarea-toggle{
 		display:none;
 	}
