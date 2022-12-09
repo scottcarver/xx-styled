@@ -1,17 +1,18 @@
-// NPM
+// WorePress modules
 import { registerBlockType } from '@wordpress/blocks';
 import domReady from '@wordpress/dom-ready';
 const { __ } = wp.i18n;
-// Local
+
+// Custom Modules
 import './editor.scss';
 import './style.scss';
-import Edit from './edit';
+import edit from './edit';
 import save from './save';
-import './sidebar-poststyles.js';
+import './components/SidebarPoststyles.js';
 
 // Register "Styled Area" Block
 registerBlockType('xx/styled', {
-	edit: Edit,
+	edit,
 	save,
 	category: 'design',
 	getEditWrapperProps(attributes) { const { blockAlignment } = attributes;},
@@ -19,24 +20,13 @@ registerBlockType('xx/styled', {
 
 });
 
+
+
 	/*
-
-
 const styles = [
-	// Mark style as default.
-	{
-		name: 'default',
-		label: __( 'Rounded' ),
-		isDefault: true
-	},
-	{
-		name: 'outline',
-		label: __( 'Outline' )
-	},
-	{
-		name: 'squared',
-		label: __( 'Squared' )
-	},
+	{ name: 'default', label: __( 'Rounded' ), isDefault: true },
+	{ name: 'outline', label: __( 'Outline' ) },
+	{ name: 'squared', label: __( 'Squared' ) },
 ]
 
 domReady( function() {

@@ -11,6 +11,9 @@ import calculatedInlineVars from "./calculatedInlineVars";
 import calculatedPadding from "./calculatedPadding";
 import calculatedRgbaString from "./calculatedRgbaString";
 import calculatedGradient from "./calculatedGradient";
+import calculatedStyleObj from "./calculatedStyleObj";
+
+
 
 const calculated = {
     calculatedBgImage, 
@@ -22,7 +25,8 @@ const calculated = {
     calculatedInlineVars,
     calculatedPadding,
     calculatedRgbaString,
-    calculatedGradient
+    calculatedGradient,
+    calculatedStyleObj
 }
 
 export default calculated;

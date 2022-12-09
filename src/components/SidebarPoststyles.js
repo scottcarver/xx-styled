@@ -17,7 +17,7 @@ const { compose } = wp.compose;
 const { __ } = wp.i18n;
 import domReady from "@wordpress/dom-ready";
 // import "./lib/scss/style.scss";
-import "./editor.scss";
+import "../editor.scss";
 
 
 

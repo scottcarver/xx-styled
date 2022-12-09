@@ -1,64 +1,48 @@
 // Node modules
+import classnames from "classnames";
+
+// WordPress Modules
 import { __ } from '@wordpress/i18n';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import classnames from "classnames";
-// Custom Functions
-import calculatedInlineVars from "./library/calculated/calculatedInlineVars";
 
+// Custom modules
+import calculated from "../src/library/calculated/calculated";
 
+// Export Save Function
 export default function save(props) {
-	// const props = useBlockProps.save();
-
-	const inlineVarCSS =  calculatedInlineVars(props.attributes);
 	
-	console.log("INLINER", inlineVarCSS);
-
-	console.log("save props!", props);
-	
+	// Destructure props
 	const {
 		attributes: {
-			blockID,
 			namedstyle,
-			styleEnabled,
 			styleMode,
-			heightEnabled,
 			foregroundHeadlineFont,
 			foregroundCopyFont,
 			foregroundCaptionFont
-		},
-		setAttributes,
-		clientId
+		}
 	} = props;
 
+	// Retrieve Inline CSS
+	const inlineVarCSS =  calculated.calculatedInlineVars(props.attributes);
+
+	// Set classnames for fonts (to allow for fine-tuning)
 	const classes = classnames(
 		"xx-styled",
-		// `wp-block-xx-styled--${blockID}`,
-		{ "wp-block--heightenabled": heightEnabled },
 		{[`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit' },
 		{[`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit' },
 		{[`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit' }
 	);
 
-	/*
-		`xx-styled--headlinefont-${foregroundHeadlineFont}`,
-		`xx-styled--copyfont-${foregroundCopyFont}`,
-	*/
-
-
-	console.log("classes includes", classes);
-	// Add Foobar
-	// classNames({ 'foo-bar': true }); // => 'foo-bar'
-
-	// Return the shtuff
-	const blockPropsSavedOb = {
+	// Create a BlockProps Object
+	const blockProps = {
 		className: classes,
 		style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
 		'data-theme': styleMode == 'named' ? namedstyle : ''
 	}
 	
+	// Save BlockProps and InnerContent
 	return (
-		<div {...useBlockProps.save(blockPropsSavedOb)}>
-			{/* {styleEnabled && <OnPageStyle mode="css" {...{ setAttributes, ...props, blockID }} /> } */}
+		<div {...useBlockProps.save(blockProps)}>
 			<InnerBlocks.Content />
 		</div>
 	);

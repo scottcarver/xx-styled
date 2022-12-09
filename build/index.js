@@ -2052,6 +2052,486 @@ function AccordionInterface(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/SidebarPoststyles.js":
+/*!*********************************************!*\
+  !*** ./src/components/SidebarPoststyles.js ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
+/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
+/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
+/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../editor.scss */ "./src/editor.scss");
+/*
+poststylemeta_type : postStyleType
+poststylemeta_headline : postStyleHeadline
+poststylemeta_copy : postStyleCopy
+poststylemeta_captions : postStyleCaptions
+*/
+
+/* Tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
+
+/* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
+const {
+  createElement,
+  Fragment
+} = wp.element;
+
+ // const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
+
+const {
+  Button,
+  ButtonGroup,
+  PanelRow,
+  PanelBody,
+  ToggleControl,
+  SelectControl,
+  ComboboxControl
+} = wp.components;
+const {
+  withSelect,
+  withDispatch,
+  useSelect
+} = wp.data;
+const {
+  compose
+} = wp.compose;
+const {
+  __
+} = wp.i18n;
+ // import "./lib/scss/style.scss";
+
+
+
+function PoststylePlugin(props) {
+  const {
+    myPostMetaKey,
+    updateMyPostMetaKey,
+    updateMyPostMetaType,
+    updateMyPostMetaHeadline,
+    updateMyPostMetaCopy,
+    updateMyPostMetaCaptions,
+    postStyleType,
+    postStyleHeadline,
+    postStyleCopy,
+    postStyleCaptions,
+    setAttributes
+  } = props;
+  /*
+  const fontOptions = [
+  	{"label":"Inherit","value":"inherit"},
+  	{"label":"Serif","value":"serif"},
+  	{"label":"Sans-Serif","value":"sansserif"},
+  	{"label":"Monospace","value":"monospace"},
+  	{"label":"Cursive","value":"cursive"},
+  	{"label":"Fantasy","value":"fantasy"},
+  ];
+  */
+
+  const fontOptions = global_named_fonts;
+  const stylePresets = [{
+    "label": "None",
+    "value": "none"
+  }, {
+    "label": "News",
+    "value": "news"
+  }, {
+    "label": "Magazine",
+    "value": "magazine"
+  }, {
+    "label": "Technical",
+    "value": "technical"
+  }, {
+    "label": "Modern",
+    "value": "modern"
+  }, {
+    "label": "Natural",
+    "value": "natural"
+  }]; // CurrentPostType
+  // const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
+
+  const PostsDropdownControl = compose( // withSelect allows to get posts for our SelectControl and also to get the post meta value
+  withSelect(function (select, props) {
+    return {
+      posts: select('core').getEntityRecords('postType', 'style', {
+        per_page: -1
+      }) // metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
+
+    };
+  }))(function (props) {
+    // options for SelectControl
+    var options = []; // if posts found
+
+    if (props.posts) {
+      options.push({
+        value: '',
+        label: 'Default'
+      });
+      props.posts.forEach(post => {
+        // simple foreach loop
+        // console.log(post);
+        const dynamicLabel = post.title.rendered !== '' ? post.title.rendered : 'Style ID ' + post.id;
+        console.log("slug, label:", post.generated_slug, dynamicLabel);
+        options.push({
+          value: post.generated_slug,
+          label: dynamicLabel
+        });
+      });
+    } else {
+      options.push({
+        value: postStyleType,
+        label: 'Loading...'
+      });
+    }
+
+    return createElement(ComboboxControl, {
+      label: "Choose a Styled Area",
+      placeholder: 'Default',
+      value: postStyleType,
+      allowReset: true,
+      options: options,
+      onChange: function (content) {
+        updateMyPostMetaType(content); // alert('onchange');
+      },
+      onInputChange: function (inputValue) {
+        setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase()))); // alert('oninput');
+      }
+    });
+  });
+
+  let dynamicOptions = function () {
+    return [{
+      value: "short",
+      label: "Short"
+    }];
+  };
+
+  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
+    /*
+    if(typeof(postStyleType) === undefined){
+    	var postStyleType = '';
+    }
+    */
+
+    /*
+    jQuery("body").removeClass (function (index, className) {
+    	return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
+    }); */
+    // alert('wo');
+    // Moved off of
+    // alert('someone like u ' + postStyleType);
+    var stylestring = '--foregroundHeadlineFont: var(--' + postStyleHeadline + '); --foregroundCopyFont: var(--' + postStyleCopy + '); --foregroundCaptionFont: var(--' + postStyleCaptions + ');';
+    jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType).attr('style', stylestring);
+    var fontClass = "wp-headlinefont--" + postStyleHeadline;
+    var editorClass = ".edit-post-visual-editor";
+
+    if (myPostMetaKey) {
+      // alert('someone like u ' + postStyleType);
+      jQuery("body").addClass("wp-admin--gutenbergdebug");
+      jQuery(editorClass).attr("data-headline", postStyleHeadline);
+      jQuery(editorClass).attr("data-copy", postStyleCopy);
+      jQuery(editorClass).attr("data-captions", postStyleCaptions);
+    } else {
+      // alert('nobody like u ' + postStyleType);
+      jQuery("body").removeClass("wp-admin--gutenbergdebug");
+
+      if (postStyleType === null) {
+        jQuery("body").attr('data-theme', '');
+      }
+    }
+  }); // Don't show the interface on the "style" interface
+
+  /*
+  if(currentPostType === "style"){
+  	return false;
+  } else {
+  	console.log("Warning, the style picker was not show because you are editing a style	");
+  }
+  */
+
+  return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
+    target: "post-style-sidebar-plugin",
+    icon: "art"
+  }, "Entry Style"), createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
+    name: "post-style-sidebar-plugin",
+    icon: "art",
+    title: "Entry Style"
+  }, createElement(Fragment, null, createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol"
+  }, createElement(PostsDropdownControl, null)), createElement(PanelBody, {
+    title: __("Typography", "pxblocks"),
+    initialOpen: false
+  }, createElement(PanelRow, null, fontOptions.length > 0 && createElement("div", {
+    className: "px-sidepanel"
+  }, createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Headline Font Family",
+    placeholder: "Initial",
+    value: postStyleHeadline,
+    allowReset: true,
+    options: fontOptions,
+    onChange: newval => updateMyPostMetaHeadline(newval)
+  })), createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Copy Font Familyx",
+    placeholder: "Initial",
+    value: postStyleCopy,
+    allowReset: true,
+    options: fontOptions,
+    onChange: newval => updateMyPostMetaCopy(newval)
+  })), createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Caption Font Family",
+    placeholder: "Initial",
+    value: postStyleCaptions,
+    allowReset: true,
+    options: fontOptions,
+    onChange: newval => updateMyPostMetaCaptions(newval)
+  })), createElement("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
+  }, createElement(ComboboxControl, {
+    label: "Typographic Themes",
+    placeholder: "Select a Preset",
+    allowReset: true,
+    options: stylePresets,
+    onChange: function (newval) {
+      if (newval === 'none') {
+        updateMyPostMetaHeadline("inherit");
+        updateMyPostMetaCopy("inherit");
+        updateMyPostMetaCaptions("inherit");
+      }
+
+      if (newval === 'news') {
+        updateMyPostMetaHeadline("serif");
+        updateMyPostMetaCopy("sansserif");
+        updateMyPostMetaCaptions("sansserif");
+      }
+
+      if (newval === 'magazine') {
+        updateMyPostMetaHeadline("sansserif");
+        updateMyPostMetaCopy("serif");
+        updateMyPostMetaCaptions("sansserif");
+      }
+
+      if (newval === 'technical') {
+        updateMyPostMetaHeadline("monospace");
+        updateMyPostMetaCopy("monospace");
+        updateMyPostMetaCaptions("sansserif");
+      }
+
+      if (newval === 'modern') {
+        updateMyPostMetaHeadline("sansserif");
+        updateMyPostMetaCopy("sansserif");
+        updateMyPostMetaCaptions("sansserif");
+      }
+
+      if (newval === 'natural') {
+        updateMyPostMetaHeadline("sansserif");
+        updateMyPostMetaCopy("sansserif");
+        updateMyPostMetaCaptions("fantasy");
+      }
+    }
+  }))), fontOptions.length == 0 && createElement("p", null, " No Font Families defined in theme.json, ", createElement("a", {
+    href: "https://fullsiteediting.com/lessons/theme-json-typography-options/",
+    target: "_blank"
+  }, "read more"), "."))))));
+}
+
+const applyWithSelect = withSelect(select => {
+  const {
+    getEditedPostAttribute
+  } = select("core/editor");
+  const {
+    my_post_meta_key: myPostMetaKey
+  } = getEditedPostAttribute("meta");
+  const {
+    my_post_meta_string: myPostMetaString
+  } = getEditedPostAttribute("meta"); // new
+
+  const {
+    poststylemeta_type: postStyleType
+  } = getEditedPostAttribute("meta");
+  const {
+    poststylemeta_headline: postStyleHeadline
+  } = getEditedPostAttribute("meta");
+  const {
+    poststylemeta_copy: postStyleCopy
+  } = getEditedPostAttribute("meta");
+  const {
+    poststylemeta_captions: postStyleCaptions
+  } = getEditedPostAttribute("meta");
+  return {
+    myPostMetaKey,
+    myPostMetaString,
+    postStyleType,
+    postStyleHeadline,
+    postStyleCopy,
+    postStyleCaptions
+  };
+});
+const applyWithDispatch = withDispatch(dispatch => {
+  const {
+    editPost
+  } = dispatch("core/editor");
+  return {
+    updateMyPostMetaKey(value) {
+      editPost({
+        meta: {
+          my_post_meta_key: value
+        }
+      });
+    },
+
+    updateMyPostMetaString(value) {
+      editPost({
+        meta: {
+          my_post_meta_string: value
+        }
+      });
+    },
+
+    // new
+    updateMyPostMetaType(value) {
+      //  if(value === null){ jQuery("body").attr('data-theme','');}
+      //  alert("boop " + value);
+      // Set Type
+      editPost({
+        meta: {
+          poststylemeta_type: value
+        }
+      });
+
+      switch (value) {
+        case "default":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "sansserif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "monospace"
+            }
+          }); // code block
+
+          break;
+
+        case "modern":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "serif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "serif"
+            }
+          }); // code block
+
+          break;
+
+        case "classical":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "sansserif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "sansserif"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "sansserif"
+            }
+          }); // code block
+
+          break;
+
+        case "technical":
+          // Set Style
+          editPost({
+            meta: {
+              poststylemeta_headline: "monospace"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_copy: "monospace"
+            }
+          });
+          editPost({
+            meta: {
+              poststylemeta_captions: "monospace"
+            }
+          }); // code block
+
+          break;
+
+        default: // code block
+
+      } // alert("boop " + value);
+      // editPost({ meta: { poststylemeta_type: value } });
+
+    },
+
+    updateMyPostMetaHeadline(value) {
+      editPost({
+        meta: {
+          poststylemeta_headline: value
+        }
+      });
+    },
+
+    updateMyPostMetaCopy(value) {
+      editPost({
+        meta: {
+          poststylemeta_copy: value
+        }
+      });
+    },
+
+    updateMyPostMetaCaptions(value) {
+      editPost({
+        meta: {
+          poststylemeta_captions: value
+        }
+      });
+    }
+
+  };
+});
+
+if (global_current_posttype !== 'style') {
+  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
+    render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
+  });
+}
+
+/***/ }),
+
 /***/ "./src/components/StyledPreview/StyledPreview.js":
 /*!*******************************************************!*\
   !*** ./src/components/StyledPreview/StyledPreview.js ***!
@@ -2194,17 +2674,17 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ Edit; }
+/* harmony export */   "default": function() { return /* binding */ edit; }
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /* harmony import */ var _assets_styleControls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/styleControls */ "./assets/styleControls.js");
 /* harmony import */ var _assets_AdminStyle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../assets/AdminStyle */ "./assets/AdminStyle.js");
@@ -2212,188 +2692,42 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Node modules
+ // WordPress modules
 
 
- // Custom CSS
 
- // Custom Components
-
-
- // Custom Functions
-// Calculation Functions
+ // Custom modules
 
 
-function Edit(props) {
-  const inlineVarCSS = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedInlineVars(props.attributes); //	const props = useBlockProps();
 
-  console.log("edit INLINE props", inlineVarCSS);
+
+ // Export Edit Function
+
+function edit(props) {
+  // Destructure props
   const {
     attributes: {
       styleMode,
-      blockID,
-      namedstyle,
-      heightEnabled,
-      foregroundColor,
-      foregroundHeadlineFont,
-      foregroundCopyFont,
-      foregroundCaptionFont,
-      headlineColor,
-      selectionFGColor,
-      selectionBGColor,
-      linkColor,
-      dropcapColor,
-      blockquoteColor,
-      lineartColor
+      namedstyle
     },
     className,
-    clientId
-  } = props;
-  const {
     setAttributes
-  } = props;
+  } = props; // Retrieve a CSS Object
 
-  if (blockID == "") {
-    setAttributes({
-      blockID: clientId
-    });
-  }
+  const styleObj = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedStyleObj(props.attributes); // Retrieve/Set Classes
 
-  console.log("styleMode", styleMode);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_4___default()(className, "xx-styled", // `wp-block-xx-styled--${blockID}`,
-  {
-    "wp-block--heightenabled": heightEnabled
-  } // `wp-block--headline-${foregroundHeadlineFont}`,
-  // `wp-block--copy-${foregroundCopyFont}`,
-  // `wp-block--caption-${foregroundCaptionFont}`
-  ); // alignfull
-  // boop
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "xx-styled"); // Create a BlockProps Object
 
-  const bgImageStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBgImage(props.attributes);
-  const bgColorStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBgColor(props.attributes); // const bgSize = calculatedBGIMGSize(props.attributes);
-
-  const bgSizeSm = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGSize(props.attributes, 'sm');
-  const bgSizeMd = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGSize(props.attributes, 'md');
-  const bgSize = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGSize(props.attributes, 'lg');
-  const bgPosition = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBgPos(props.attributes);
-  const bgAttachment = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGAtt(props.attributes);
-  const bgRepeat = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGRepeat(props.attributes);
-  const spacingMobileStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedPadding(props.attributes.spacingMobile);
-  const spacingTabletStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedPadding(props.attributes.spacingTablet);
-  const spacingDesktopStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedPadding(props.attributes.spacingDesktop); // Default Obj
-
-  let styleObj = {};
-  const fgbgObj = {
-    // Background
-    '--backgroundColor': bgColorStack,
-    // Foreground
-    '--foregroundColor': foregroundColor,
-    '--headlineColor': headlineColor,
-    '--linkColor': linkColor,
-    '--dropcapColor': dropcapColor,
-    '--blockquoteColor': blockquoteColor,
-    '--selectionFGColor': selectionFGColor,
-    '--selectionBGColor': selectionBGColor,
-    '--lineartColor': lineartColor
-  }; // Background Color
-  // if(bgColorStack){ fgbgObj['--backgroundColor'] = bgColorStack; }
-  // Add Background Image properties as a group (depends on stack)
-
-  if (bgImageStack) {
-    fgbgObj['--backgroundImage'] = bgImageStack;
-    fgbgObj['--backgroundSizeSm'] = bgSizeSm;
-    fgbgObj['--backgroundSizeMd'] = bgSizeMd;
-    fgbgObj['--backgroundSize'] = bgSize;
-    fgbgObj['--backgroundPosition'] = bgPosition;
-    fgbgObj['--backgroundAttachment'] = bgAttachment;
-    fgbgObj['--backgroundRepeat'] = bgRepeat;
-  }
-  /*
-  '--backgroundImage': bgImageStack,
-  
-  '--backgroundSizeSm': bgSizeSm,
-  '--backgroundSizeMd': bgSizeMd,
-  '--backgroundSize': bgSize,
-  '--backgroundPosition': bgPosition,
-  '--backgroundAttachment': bgAttachment,
-  '--backgroundRepeat': bgRepeat,
-  */
-
-
-  const typographyObj = {}; // Selectively add Font Objects to respect "inherit" option
-
-  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
-    typographyObj['--foregroundHeadlineFont'] = 'var(--' + foregroundHeadlineFont + ')';
-  }
-
-  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
-    typographyObj['--foregroundCopyFont'] = 'var(--' + foregroundCopyFont + ')';
-  }
-
-  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
-    typographyObj['--foregroundCaptionFont'] = 'var(--' + foregroundCaptionFont + ')';
-  } // Vessel for sizing 
-
-
-  const sizingObj = {}; // Mobile, Tablet, Desktop. This prevents empty vals from being saved
-
-  if (spacingMobileStack !== "undefined") {
-    sizingObj['--spacingMobile'] = spacingMobileStack;
-  }
-
-  if (spacingTabletStack !== "undefined") {
-    sizingObj['--spacingTablet'] = spacingTabletStack;
-  } // console.log("wassamatter with ", spacingDesktopStack);
-
-
-  if (spacingDesktopStack !== "undefined") {
-    sizingObj['--spacingDesktop'] = spacingDesktopStack;
-  }
-
-  if (styleMode === 'named') {
-    styleObj = { ...typographyObj,
-      ...sizingObj
-    };
-  }
-
-  if (styleMode === 'custom') {
-    styleObj = { ...fgbgObj,
-      ...typographyObj,
-      ...sizingObj
-    };
-  } // console.log('what is styleObj? ', styleObj);
-  // if(styleMode === 'named')}{
-  // 	let styleObj = {}
-  // }
-  // console.log("inlineVarCSS", inlineVarCSS);
-  // Allow all Types except self-nesting
-
-
-  const allBlocks = wp.blocks.getBlockTypes();
-  const bannedBlocks = []; // ['xx/styled'];
-
-  let enabledBlocks = [];
-
-  for (let i = 0; i < allBlocks.length; i++) {
-    let currentBlock = allBlocks[i].name;
-
-    if (!bannedBlocks.includes(currentBlock)) {
-      enabledBlocks.push(currentBlock);
-    }
-  }
-
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps)({
     className: classes,
-    id: blockID,
     style: styleMode == 'custom' || styleMode == 'named' ? styleObj : undefined,
     'data-theme': styleMode == 'named' ? namedstyle : ''
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_AdminStyle__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_AdminStyle__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
-  }, props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_styleControls__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  }, props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_styleControls__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
-  }, props))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks, {
-    allowedBlocks: enabledBlocks
-  }));
+  }, props))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InnerBlocks, null)));
 }
 
 /***/ }),
@@ -2414,13 +2748,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/save.js");
-/* harmony import */ var _sidebar_poststyles_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sidebar-poststyles.js */ "./src/sidebar-poststyles.js");
-// NPM
+/* harmony import */ var _components_SidebarPoststyles_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/SidebarPoststyles.js */ "./src/components/SidebarPoststyles.js");
+// WorePress modules
 
 
 const {
   __
-} = wp.i18n; // Local
+} = wp.i18n; // Custom Modules
 
 
 
@@ -2447,22 +2781,10 @@ const {
 
 });
 /*
-
 const styles = [
-// Mark style as default.
-{
-	name: 'default',
-	label: __( 'Rounded' ),
-	isDefault: true
-},
-{
-	name: 'outline',
-	label: __( 'Outline' )
-},
-{
-	name: 'squared',
-	label: __( 'Squared' )
-},
+{ name: 'default', label: __( 'Rounded' ), isDefault: true },
+{ name: 'outline', label: __( 'Outline' ) },
+{ name: 'squared', label: __( 'Squared' ) },
 ]
 domReady( function() {
 	wp.blocks.registerBlockVariation( 'xx/styled', {
@@ -2501,7 +2823,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _calculatedPadding__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./calculatedPadding */ "./src/library/calculated/calculatedPadding.js");
 /* harmony import */ var _calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./calculatedRgbaString */ "./src/library/calculated/calculatedRgbaString.js");
 /* harmony import */ var _calculatedGradient__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./calculatedGradient */ "./src/library/calculated/calculatedGradient.js");
+/* harmony import */ var _calculatedStyleObj__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./calculatedStyleObj */ "./src/library/calculated/calculatedStyleObj.js");
 // Custom Calculated Functions
+
 
 
 
@@ -2522,7 +2846,8 @@ const calculated = {
   calculatedInlineVars: _calculatedInlineVars__WEBPACK_IMPORTED_MODULE_6__["default"],
   calculatedPadding: _calculatedPadding__WEBPACK_IMPORTED_MODULE_7__["default"],
   calculatedRgbaString: _calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"],
-  calculatedGradient: _calculatedGradient__WEBPACK_IMPORTED_MODULE_9__["default"]
+  calculatedGradient: _calculatedGradient__WEBPACK_IMPORTED_MODULE_9__["default"],
+  calculatedStyleObj: _calculatedStyleObj__WEBPACK_IMPORTED_MODULE_10__["default"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (calculated);
 
@@ -3242,6 +3567,124 @@ const calculatedRgbaString = function (value) {
 
 /***/ }),
 
+/***/ "./src/library/calculated/calculatedStyleObj.js":
+/*!******************************************************!*\
+  !*** ./src/library/calculated/calculatedStyleObj.js ***!
+  \******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _calculated__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculated */ "./src/library/calculated/calculated.js");
+ // Returns an object containing CSS values, this is used inside the editor 
+
+const calculatedStyleObj = attributes => {
+  const {
+    styleMode,
+    foregroundColor,
+    headlineColor,
+    linkColor,
+    dropcapColor,
+    blockquoteColor,
+    selectionFGColor,
+    selectionBGColor,
+    lineartColor,
+    foregroundHeadlineFont,
+    foregroundCopyFont,
+    foregroundCaptionFont
+  } = attributes;
+  const bgImageStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBgImage(attributes);
+  const bgColorStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBgColor(attributes);
+  const bgSizeSm = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBGIMGSize(attributes, 'sm');
+  const bgSizeMd = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBGIMGSize(attributes, 'md');
+  const bgSize = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBGIMGSize(attributes, 'lg');
+  const bgPosition = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBgPos(attributes);
+  const bgAttachment = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBGIMGAtt(attributes);
+  const bgRepeat = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedBGIMGRepeat(attributes);
+  const spacingMobileStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedPadding(attributes.spacingMobile);
+  const spacingTabletStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedPadding(attributes.spacingTablet);
+  const spacingDesktopStack = _calculated__WEBPACK_IMPORTED_MODULE_0__["default"].calculatedPadding(attributes.spacingDesktop); // Default Obj
+
+  let styleObj = {
+    '--backgroundColor': "red"
+  };
+  const fgbgObj = {
+    // Background
+    '--backgroundColor': bgColorStack,
+    // Foreground
+    '--foregroundColor': foregroundColor,
+    '--headlineColor': headlineColor,
+    '--linkColor': linkColor,
+    '--dropcapColor': dropcapColor,
+    '--blockquoteColor': blockquoteColor,
+    '--selectionFGColor': selectionFGColor,
+    '--selectionBGColor': selectionBGColor,
+    '--lineartColor': lineartColor
+  }; // Add Background Image properties as a group (depends on stack)
+
+  if (bgImageStack) {
+    fgbgObj['--backgroundImage'] = bgImageStack;
+    fgbgObj['--backgroundSizeSm'] = bgSizeSm;
+    fgbgObj['--backgroundSizeMd'] = bgSizeMd;
+    fgbgObj['--backgroundSize'] = bgSize;
+    fgbgObj['--backgroundPosition'] = bgPosition;
+    fgbgObj['--backgroundAttachment'] = bgAttachment;
+    fgbgObj['--backgroundRepeat'] = bgRepeat;
+  } // Build Up Typography Support
+
+
+  const typographyObj = {}; // Selectively add Font Objects to respect "inherit" option
+
+  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
+    typographyObj['--foregroundHeadlineFont'] = 'var(--' + foregroundHeadlineFont + ')';
+  }
+
+  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
+    typographyObj['--foregroundCopyFont'] = 'var(--' + foregroundCopyFont + ')';
+  }
+
+  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
+    typographyObj['--foregroundCaptionFont'] = 'var(--' + foregroundCaptionFont + ')';
+  } // Build Up Sizing Support
+
+
+  const sizingObj = {}; // Mobile, Tablet, Desktop. This prevents empty vals from being saved
+
+  if (spacingMobileStack !== "undefined") {
+    sizingObj['--spacingMobile'] = spacingMobileStack;
+  }
+
+  if (spacingTabletStack !== "undefined") {
+    sizingObj['--spacingTablet'] = spacingTabletStack;
+  }
+
+  if (spacingDesktopStack !== "undefined") {
+    sizingObj['--spacingDesktop'] = spacingDesktopStack;
+  } // Selectively spread values into the styleObj based on the styleMode
+  // This prevents unnecessary values from being saved and displayed
+
+
+  if (styleMode === 'named') {
+    styleObj = { ...typographyObj,
+      ...sizingObj
+    };
+  }
+
+  if (styleMode === 'custom') {
+    styleObj = { ...fgbgObj,
+      ...typographyObj,
+      ...sizingObj
+    };
+  } // Return formatted Style Object
+
+
+  return styleObj;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedStyleObj);
+
+/***/ }),
+
 /***/ "./src/save.js":
 /*!*********************!*\
   !*** ./src/save.js ***!
@@ -3255,544 +3698,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _library_calculated_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./library/calculated/calculatedInlineVars */ "./src/library/calculated/calculatedInlineVars.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/library/calculated/calculated */ "./src/library/calculated/calculated.js");
 
 // Node modules
+ // WordPress Modules
 
 
- // Custom Functions
+ // Custom modules
 
+ // Export Save Function
 
 function save(props) {
-  // const props = useBlockProps.save();
-  const inlineVarCSS = (0,_library_calculated_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__["default"])(props.attributes);
-  console.log("INLINER", inlineVarCSS);
-  console.log("save props!", props);
+  // Destructure props
   const {
     attributes: {
-      blockID,
       namedstyle,
-      styleEnabled,
       styleMode,
-      heightEnabled,
       foregroundHeadlineFont,
       foregroundCopyFont,
       foregroundCaptionFont
-    },
-    setAttributes,
-    clientId
-  } = props;
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_3___default()("xx-styled", // `wp-block-xx-styled--${blockID}`,
-  {
-    "wp-block--heightenabled": heightEnabled
-  }, {
+    }
+  } = props; // Retrieve Inline CSS
+
+  const inlineVarCSS = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedInlineVars(props.attributes); // Set classnames for fonts (to allow for fine-tuning)
+
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", {
     [`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit'
   }, {
     [`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit'
   }, {
     [`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit'
-  });
-  /*
-  	`xx-styled--headlinefont-${foregroundHeadlineFont}`,
-  	`xx-styled--copyfont-${foregroundCopyFont}`,
-  */
+  }); // Create a BlockProps Object
 
-  console.log("classes includes", classes); // Add Foobar
-  // classNames({ 'foo-bar': true }); // => 'foo-bar'
-  // Return the shtuff
-
-  const blockPropsSavedOb = {
+  const blockProps = {
     className: classes,
     style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
     'data-theme': styleMode == 'named' ? namedstyle : ''
-  };
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save(blockPropsSavedOb), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, null));
-}
+  }; // Save BlockProps and InnerContent
 
-/***/ }),
-
-/***/ "./src/sidebar-poststyles.js":
-/*!***********************************!*\
-  !*** ./src/sidebar-poststyles.js ***!
-  \***********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/plugins */ "@wordpress/plugins");
-/* harmony import */ var _wordpress_plugins__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/edit-post */ "@wordpress/edit-post");
-/* harmony import */ var _wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/dom-ready */ "@wordpress/dom-ready");
-/* harmony import */ var _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/*
-poststylemeta_type : postStyleType
-poststylemeta_headline : postStyleHeadline
-poststylemeta_copy : postStyleCopy
-poststylemeta_captions : postStyleCaptions
-*/
-
-/* Tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
-
-/* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
-const {
-  createElement,
-  Fragment
-} = wp.element;
-
- // const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
-
-const {
-  Button,
-  ButtonGroup,
-  PanelRow,
-  PanelBody,
-  ToggleControl,
-  SelectControl,
-  ComboboxControl
-} = wp.components;
-const {
-  withSelect,
-  withDispatch,
-  useSelect
-} = wp.data;
-const {
-  compose
-} = wp.compose;
-const {
-  __
-} = wp.i18n;
- // import "./lib/scss/style.scss";
-
-
-
-function PoststylePlugin(props) {
-  const {
-    myPostMetaKey,
-    updateMyPostMetaKey,
-    updateMyPostMetaType,
-    updateMyPostMetaHeadline,
-    updateMyPostMetaCopy,
-    updateMyPostMetaCaptions,
-    postStyleType,
-    postStyleHeadline,
-    postStyleCopy,
-    postStyleCaptions,
-    setAttributes
-  } = props;
-  /*
-  const fontOptions = [
-  	{"label":"Inherit","value":"inherit"},
-  	{"label":"Serif","value":"serif"},
-  	{"label":"Sans-Serif","value":"sansserif"},
-  	{"label":"Monospace","value":"monospace"},
-  	{"label":"Cursive","value":"cursive"},
-  	{"label":"Fantasy","value":"fantasy"},
-  ];
-  */
-
-  const fontOptions = global_named_fonts;
-  const stylePresets = [{
-    "label": "None",
-    "value": "none"
-  }, {
-    "label": "News",
-    "value": "news"
-  }, {
-    "label": "Magazine",
-    "value": "magazine"
-  }, {
-    "label": "Technical",
-    "value": "technical"
-  }, {
-    "label": "Modern",
-    "value": "modern"
-  }, {
-    "label": "Natural",
-    "value": "natural"
-  }]; // CurrentPostType
-  // const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
-
-  const PostsDropdownControl = compose( // withSelect allows to get posts for our SelectControl and also to get the post meta value
-  withSelect(function (select, props) {
-    return {
-      posts: select('core').getEntityRecords('postType', 'style', {
-        per_page: -1
-      }) // metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
-
-    };
-  }))(function (props) {
-    // options for SelectControl
-    var options = []; // if posts found
-
-    if (props.posts) {
-      options.push({
-        value: '',
-        label: 'Default'
-      });
-      props.posts.forEach(post => {
-        // simple foreach loop
-        // console.log(post);
-        const dynamicLabel = post.title.rendered !== '' ? post.title.rendered : 'Style ID ' + post.id;
-        console.log("slug, label:", post.generated_slug, dynamicLabel);
-        options.push({
-          value: post.generated_slug,
-          label: dynamicLabel
-        });
-      });
-    } else {
-      options.push({
-        value: postStyleType,
-        label: 'Loading...'
-      });
-    }
-
-    return createElement(ComboboxControl, {
-      label: "Choose a Styled Area",
-      placeholder: 'Default',
-      value: postStyleType,
-      allowReset: true,
-      options: options,
-      onChange: function (content) {
-        updateMyPostMetaType(content); // alert('onchange');
-      },
-      onInputChange: function (inputValue) {
-        setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase()))); // alert('oninput');
-      }
-    });
-  });
-
-  let dynamicOptions = function () {
-    return [{
-      value: "short",
-      label: "Short"
-    }];
-  };
-
-  _wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_2___default()(function () {
-    /*
-    if(typeof(postStyleType) === undefined){
-    	var postStyleType = '';
-    }
-    */
-
-    /*
-    jQuery("body").removeClass (function (index, className) {
-    	return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
-    }); */
-    // alert('wo');
-    // Moved off of
-    // alert('someone like u ' + postStyleType);
-    var stylestring = '--foregroundHeadlineFont: var(--' + postStyleHeadline + '); --foregroundCopyFont: var(--' + postStyleCopy + '); --foregroundCaptionFont: var(--' + postStyleCaptions + ');';
-    jQuery("body").addClass('xx-styled--admin').attr('data-theme', postStyleType).attr('style', stylestring);
-    var fontClass = "wp-headlinefont--" + postStyleHeadline;
-    var editorClass = ".edit-post-visual-editor";
-
-    if (myPostMetaKey) {
-      // alert('someone like u ' + postStyleType);
-      jQuery("body").addClass("wp-admin--gutenbergdebug");
-      jQuery(editorClass).attr("data-headline", postStyleHeadline);
-      jQuery(editorClass).attr("data-copy", postStyleCopy);
-      jQuery(editorClass).attr("data-captions", postStyleCaptions);
-    } else {
-      // alert('nobody like u ' + postStyleType);
-      jQuery("body").removeClass("wp-admin--gutenbergdebug");
-
-      if (postStyleType === null) {
-        jQuery("body").attr('data-theme', '');
-      }
-    }
-  }); // Don't show the interface on the "style" interface
-
-  /*
-  if(currentPostType === "style"){
-  	return false;
-  } else {
-  	console.log("Warning, the style picker was not show because you are editing a style	");
-  }
-  */
-
-  return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
-    target: "post-style-sidebar-plugin",
-    icon: "art"
-  }, "Entry Style"), createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebar, {
-    name: "post-style-sidebar-plugin",
-    icon: "art",
-    title: "Entry Style"
-  }, createElement(Fragment, null, createElement("div", {
-    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol"
-  }, createElement(PostsDropdownControl, null)), createElement(PanelBody, {
-    title: __("Typography", "pxblocks"),
-    initialOpen: false
-  }, createElement(PanelRow, null, fontOptions.length > 0 && createElement("div", {
-    className: "px-sidepanel"
-  }, createElement("div", {
-    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
-  }, createElement(ComboboxControl, {
-    label: "Headline Font Family",
-    placeholder: "Initial",
-    value: postStyleHeadline,
-    allowReset: true,
-    options: fontOptions,
-    onChange: newval => updateMyPostMetaHeadline(newval)
-  })), createElement("div", {
-    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
-  }, createElement(ComboboxControl, {
-    label: "Copy Font Familyx",
-    placeholder: "Initial",
-    value: postStyleCopy,
-    allowReset: true,
-    options: fontOptions,
-    onChange: newval => updateMyPostMetaCopy(newval)
-  })), createElement("div", {
-    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
-  }, createElement(ComboboxControl, {
-    label: "Caption Font Family",
-    placeholder: "Initial",
-    value: postStyleCaptions,
-    allowReset: true,
-    options: fontOptions,
-    onChange: newval => updateMyPostMetaCaptions(newval)
-  })), createElement("div", {
-    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol"
-  }, createElement(ComboboxControl, {
-    label: "Typographic Themes",
-    placeholder: "Select a Preset",
-    allowReset: true,
-    options: stylePresets,
-    onChange: function (newval) {
-      if (newval === 'none') {
-        updateMyPostMetaHeadline("inherit");
-        updateMyPostMetaCopy("inherit");
-        updateMyPostMetaCaptions("inherit");
-      }
-
-      if (newval === 'news') {
-        updateMyPostMetaHeadline("serif");
-        updateMyPostMetaCopy("sansserif");
-        updateMyPostMetaCaptions("sansserif");
-      }
-
-      if (newval === 'magazine') {
-        updateMyPostMetaHeadline("sansserif");
-        updateMyPostMetaCopy("serif");
-        updateMyPostMetaCaptions("sansserif");
-      }
-
-      if (newval === 'technical') {
-        updateMyPostMetaHeadline("monospace");
-        updateMyPostMetaCopy("monospace");
-        updateMyPostMetaCaptions("sansserif");
-      }
-
-      if (newval === 'modern') {
-        updateMyPostMetaHeadline("sansserif");
-        updateMyPostMetaCopy("sansserif");
-        updateMyPostMetaCaptions("sansserif");
-      }
-
-      if (newval === 'natural') {
-        updateMyPostMetaHeadline("sansserif");
-        updateMyPostMetaCopy("sansserif");
-        updateMyPostMetaCaptions("fantasy");
-      }
-    }
-  }))), fontOptions.length == 0 && createElement("p", null, " No Font Families defined in theme.json, ", createElement("a", {
-    href: "https://fullsiteediting.com/lessons/theme-json-typography-options/",
-    target: "_blank"
-  }, "read more"), "."))))));
-}
-
-const applyWithSelect = withSelect(select => {
-  const {
-    getEditedPostAttribute
-  } = select("core/editor");
-  const {
-    my_post_meta_key: myPostMetaKey
-  } = getEditedPostAttribute("meta");
-  const {
-    my_post_meta_string: myPostMetaString
-  } = getEditedPostAttribute("meta"); // new
-
-  const {
-    poststylemeta_type: postStyleType
-  } = getEditedPostAttribute("meta");
-  const {
-    poststylemeta_headline: postStyleHeadline
-  } = getEditedPostAttribute("meta");
-  const {
-    poststylemeta_copy: postStyleCopy
-  } = getEditedPostAttribute("meta");
-  const {
-    poststylemeta_captions: postStyleCaptions
-  } = getEditedPostAttribute("meta");
-  return {
-    myPostMetaKey,
-    myPostMetaString,
-    postStyleType,
-    postStyleHeadline,
-    postStyleCopy,
-    postStyleCaptions
-  };
-});
-const applyWithDispatch = withDispatch(dispatch => {
-  const {
-    editPost
-  } = dispatch("core/editor");
-  return {
-    updateMyPostMetaKey(value) {
-      editPost({
-        meta: {
-          my_post_meta_key: value
-        }
-      });
-    },
-
-    updateMyPostMetaString(value) {
-      editPost({
-        meta: {
-          my_post_meta_string: value
-        }
-      });
-    },
-
-    // new
-    updateMyPostMetaType(value) {
-      //  if(value === null){ jQuery("body").attr('data-theme','');}
-      //  alert("boop " + value);
-      // Set Type
-      editPost({
-        meta: {
-          poststylemeta_type: value
-        }
-      });
-
-      switch (value) {
-        case "default":
-          // Set Style
-          editPost({
-            meta: {
-              poststylemeta_headline: "sansserif"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_copy: "serif"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_captions: "monospace"
-            }
-          }); // code block
-
-          break;
-
-        case "modern":
-          // Set Style
-          editPost({
-            meta: {
-              poststylemeta_headline: "serif"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_copy: "serif"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_captions: "serif"
-            }
-          }); // code block
-
-          break;
-
-        case "classical":
-          // Set Style
-          editPost({
-            meta: {
-              poststylemeta_headline: "sansserif"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_copy: "sansserif"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_captions: "sansserif"
-            }
-          }); // code block
-
-          break;
-
-        case "technical":
-          // Set Style
-          editPost({
-            meta: {
-              poststylemeta_headline: "monospace"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_copy: "monospace"
-            }
-          });
-          editPost({
-            meta: {
-              poststylemeta_captions: "monospace"
-            }
-          }); // code block
-
-          break;
-
-        default: // code block
-
-      } // alert("boop " + value);
-      // editPost({ meta: { poststylemeta_type: value } });
-
-    },
-
-    updateMyPostMetaHeadline(value) {
-      editPost({
-        meta: {
-          poststylemeta_headline: value
-        }
-      });
-    },
-
-    updateMyPostMetaCopy(value) {
-      editPost({
-        meta: {
-          poststylemeta_copy: value
-        }
-      });
-    },
-
-    updateMyPostMetaCaptions(value) {
-      editPost({
-        meta: {
-          poststylemeta_captions: value
-        }
-      });
-    }
-
-  };
-});
-
-if (global_current_posttype !== 'style') {
-  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
-    render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
-  });
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save(blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.Content, null));
 }
 
 /***/ }),
