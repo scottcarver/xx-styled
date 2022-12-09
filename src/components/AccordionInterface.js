@@ -3,7 +3,7 @@ import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow} from '@wordpress/components';
 import { ColorPalette } from '@wordpress/block-editor';
 
-export function InterfacePanel({ attributes, setAttributes }){
+export function AccordionInterface({ attributes, setAttributes }){
 
     let colorboxes = [
         {'name':'interfaceFGColor', 'title':'Foreground'},

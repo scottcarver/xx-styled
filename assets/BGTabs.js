@@ -27,7 +27,7 @@ import BGGradControl from "./BGGradControl";
 // import BGCurrentTabset from "./BGCurrentTabset"; // Component
 
 import calculatedTabset from "./lib/js/calculatedTabset"; // Function Component
-import ColorObgtoRgbaString from "./lib/js/ColorObgtoRgbaString";
+import calculatedRgbaString from "../src/library/calculated/calculatedRgbaString";
 
 /* Create a Block Controls wrapper Component */
 export default class BGTabs extends Component {
@@ -292,7 +292,7 @@ export default class BGTabs extends Component {
 								color={backgroundColor3}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundColor3: ColorObgtoRgbaString(value)
+										backgroundColor3: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -317,7 +317,7 @@ export default class BGTabs extends Component {
 								color={backgroundColor1}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundColor1: ColorObgtoRgbaString(value)
+										backgroundColor1: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -337,7 +337,7 @@ export default class BGTabs extends Component {
 								color={backgroundColor2}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundColor2: ColorObgtoRgbaString(value)
+										backgroundColor2: calculatedRgbaString(value)
 									})
 								}
 							/>

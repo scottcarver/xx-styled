@@ -3,13 +3,17 @@ const { __ } = wp.i18n;
 import { FormToggle } from '@wordpress/components';
 import { Component, Fragment } from '@wordpress/element';
 
+
+// Calculation Functions
+import calculated from "../src/library/calculated/calculated";
+
 // Custom Fucntions
-import calculatedBgImage from "./lib/js/calculatedBgImage";
-import calculatedBgColor from "./lib/js/calculatedBgColor";
-import calculatedBGIMGSize from "./lib/js/calculatedBGIMGSize";
-import calculatedBgPos from "./lib/js/calculatedBgPos";
-import calculatedBGIMGAtt from "./lib/js/calculatedBGIMGAtt";
-import calculatedBGIMGRepeat from "./lib/js/calculatedBGIMGRepeat";
+// import calculatedBgImage from "../src/library/calculated/calculatedBgImage";
+// // import calculatedBgColor from "../src/library/calculated/calculatedBgColor";
+// import calculatedBGIMGSize from "../src/library/calculated/calculatedBGIMGSize";
+// import calculatedBgPos from "../src/library/calculated/calculatedBgPos";
+// import calculatedBGIMGAtt from "../src/library/calculated/calculatedBGIMGAtt";
+// import calculatedBGIMGRepeat from "../src/library/calculated/calculatedBGIMGRepeat";
 
 /* Create a Block Controls wrapper Component */
 /**
@@ -49,12 +53,12 @@ export default class InlineStyleVars extends Component {
 		const toggleStyleEnabled = () => setAttributes({ styleEnabled: !styleEnabled });
 
 		// boop
-		const bgImageStack = calculatedBgImage(this.props.attributes);
-		const bgColorStack = calculatedBgColor(this.props.attributes);
-		const bgSize = calculatedBGIMGSize(this.props.attributes, 'lg');
-		const bgPosition = calculatedBgPos(this.props.attributes);
-		const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
-		const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);
+		const bgImageStack = calculated.calculatedBgImage(this.props.attributes);
+		const bgColorStack = calculated.calculatedBgColor(this.props.attributes);
+		const bgSize = calculated.calculatedBGIMGSize(this.props.attributes, 'lg');
+		const bgPosition = calculated.calculatedBgPos(this.props.attributes);
+		const bgAttachment = calculated.calculatedBGIMGAtt(this.props.attributes);
+		const bgRepeat = calculated.calculatedBGIMGRepeat(this.props.attributes);
 
 
 		// body[data-color='custom'] 

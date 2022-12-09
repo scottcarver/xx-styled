@@ -85,6 +85,8 @@ function shapeSpace_print_scripts() {
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;
     var global_named_fonts = <?php echo json_encode($themejson_fontlabels); ?>;
+    <?php /* this is used to prevent the sidebar from running on styles, which causes a looping error */ ?>
+    var global_current_posttype = "<?php echo get_post_type(); ?>";
 	</script>
 	<?php
 }

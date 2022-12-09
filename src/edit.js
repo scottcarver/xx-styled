@@ -6,35 +6,27 @@ import classnames from "classnames";
 import './editor.scss';
 // Custom Components
 import StyleControls from "../assets/styleControls";
-import OnPageStyle from "../assets/OnPageStyle";
 import AdminStyle from "../assets/AdminStyle";
-import InlineStyleVars from "../assets/InlineStyleVars";
 // Custom Functions
-import calculatedBgImage from "../assets/lib/js/calculatedBgImage";
-import calculatedBgColor from "../assets/lib/js/calculatedBgColor";
-import calculatedBGIMGSize from "../assets/lib/js/calculatedBGIMGSize";
-import calculatedBgPos from "../assets/lib/js/calculatedBgPos";
-import calculatedBGIMGAtt from "../assets/lib/js/calculatedBGIMGAtt";
-import calculatedBGIMGRepeat from "../assets/lib/js/calculatedBGIMGRepeat";
-import calculatedInlineVars from "../assets/lib/js/calculatedInlineVars";
-import calculatedPadding from "../assets/lib/js/calculatedPadding";
+
+
+
+// Calculation Functions
+import calculated from "../src/library/calculated/calculated";
 
 export default function Edit(props) {
 
-	const inlineVarCSS =  calculatedInlineVars(props.attributes);
+	const inlineVarCSS =  calculated.calculatedInlineVars(props.attributes);
 
 //	const props = useBlockProps();
 	console.log("edit INLINE props", inlineVarCSS);
 	const {
 		attributes: {
-			styleEnabled,
 			styleMode,
 			blockID,
 			namedstyle,
 			heightEnabled,
 			foregroundColor,
-			blockAlignment,
-			highContrast,
 			foregroundHeadlineFont,
 			foregroundCopyFont,
 			foregroundCaptionFont,
@@ -44,12 +36,7 @@ export default function Edit(props) {
 			linkColor,
 			dropcapColor,
 			blockquoteColor,
-			lineartColor,
-			spacingMobile,
-			spacingTablet,
-			spacingDesktop,
-			elementType
-		},
+			lineartColor		},
 		className,
 		clientId
 	} = props;
@@ -79,18 +66,18 @@ export default function Edit(props) {
 	// alignfull
 	
 	// boop
-	const bgImageStack = calculatedBgImage(props.attributes);
-	const bgColorStack = calculatedBgColor(props.attributes);
+	const bgImageStack = calculated.calculatedBgImage(props.attributes);
+	const bgColorStack = calculated.calculatedBgColor(props.attributes);
 	// const bgSize = calculatedBGIMGSize(props.attributes);
-	const bgSizeSm = calculatedBGIMGSize(props.attributes, 'sm');
-	const bgSizeMd = calculatedBGIMGSize(props.attributes, 'md');
-	const bgSize = calculatedBGIMGSize(props.attributes, 'lg');
-	const bgPosition = calculatedBgPos(props.attributes);
-	const bgAttachment = calculatedBGIMGAtt(props.attributes);
-	const bgRepeat = calculatedBGIMGRepeat(props.attributes);
-	const spacingMobileStack = calculatedPadding(props.attributes.spacingMobile);
-	const spacingTabletStack = calculatedPadding(props.attributes.spacingTablet);
-	const spacingDesktopStack = calculatedPadding(props.attributes.spacingDesktop);
+	const bgSizeSm = calculated.calculatedBGIMGSize(props.attributes, 'sm');
+	const bgSizeMd = calculated.calculatedBGIMGSize(props.attributes, 'md');
+	const bgSize = calculated.calculatedBGIMGSize(props.attributes, 'lg');
+	const bgPosition = calculated.calculatedBgPos(props.attributes);
+	const bgAttachment = calculated.calculatedBGIMGAtt(props.attributes);
+	const bgRepeat = calculated.calculatedBGIMGRepeat(props.attributes);
+	const spacingMobileStack = calculated.calculatedPadding(props.attributes.spacingMobile);
+	const spacingTabletStack = calculated.calculatedPadding(props.attributes.spacingTablet);
+	const spacingDesktopStack = calculated.calculatedPadding(props.attributes.spacingDesktop);
 	
 
 	// Default Obj

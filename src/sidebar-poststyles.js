@@ -60,7 +60,7 @@ function PoststylePlugin(props) {
 	];
 
 	// CurrentPostType
-	const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
+	// const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
 	
 
 	const PostsDropdownControl = compose(
@@ -161,11 +161,13 @@ function PoststylePlugin(props) {
 	});
 
 	// Don't show the interface on the "style" interface
+	/*
 	if(currentPostType === "style"){
 		return false;
 	} else {
 		console.log("Warning, the style picker was not show because you are editing a style	");
 	}
+	*/
 
 	return (
 		<Fragment>
@@ -381,6 +383,7 @@ function PoststylePlugin(props) {
 
 const applyWithSelect = withSelect(select => {
 	const { getEditedPostAttribute } = select("core/editor");
+
 	const { my_post_meta_key: myPostMetaKey } = getEditedPostAttribute("meta");
 	const { my_post_meta_string: myPostMetaString } = getEditedPostAttribute("meta");
 	// new
@@ -466,10 +469,11 @@ const applyWithDispatch = withDispatch(dispatch => {
 	};
 });
 
-
+if(global_current_posttype !== 'style'){
 	registerPlugin("sidebar-poststyle-plugin", {
 		render: compose(
 			applyWithSelect,
 			applyWithDispatch
 		)(PoststylePlugin)
 	});
+}

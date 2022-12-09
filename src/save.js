@@ -3,7 +3,7 @@ import { __ } from '@wordpress/i18n';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 import classnames from "classnames";
 // Custom Functions
-import calculatedInlineVars from "../assets/lib/js/calculatedInlineVars";
+import calculatedInlineVars from "./library/calculated/calculatedInlineVars";
 
 
 export default function save(props) {

@@ -562,7 +562,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _BGImgControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BGImgControl */ "./assets/BGImgControl.js");
 /* harmony import */ var _BGGradControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./BGGradControl */ "./assets/BGGradControl.js");
 /* harmony import */ var _lib_js_calculatedTabset__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/js/calculatedTabset */ "./assets/lib/js/calculatedTabset.js");
-/* harmony import */ var _lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./lib/js/ColorObgtoRgbaString */ "./assets/lib/js/ColorObgtoRgbaString.js");
+/* harmony import */ var _src_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../src/library/calculated/calculatedRgbaString */ "./src/library/calculated/calculatedRgbaString.js");
 
 
 
@@ -822,7 +822,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
           color: backgroundColor3,
           onChangeComplete: value => setAttributes({
-            backgroundColor3: (0,_lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
+            backgroundColor3: (0,_src_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
           })
         }))));
       }
@@ -836,7 +836,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
           color: backgroundColor1,
           onChangeComplete: value => setAttributes({
-            backgroundColor1: (0,_lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
+            backgroundColor1: (0,_src_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox px-colorbox--nopicker"
@@ -856,7 +856,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
           color: backgroundColor2,
           onChangeComplete: value => setAttributes({
-            backgroundColor2: (0,_lib_js_ColorObgtoRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
+            backgroundColor2: (0,_src_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox px-colorbox--nopicker"
@@ -987,1133 +987,6 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
   }
 
 }
-
-/***/ }),
-
-/***/ "./assets/InlineStyleVars.js":
-/*!***********************************!*\
-  !*** ./assets/InlineStyleVars.js ***!
-  \***********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ InlineStyleVars; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/js/calculatedBgColor */ "./assets/lib/js/calculatedBgColor.js");
-/* harmony import */ var _lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/js/calculatedBGIMGSize */ "./assets/lib/js/calculatedBGIMGSize.js");
-/* harmony import */ var _lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/js/calculatedBgPos */ "./assets/lib/js/calculatedBgPos.js");
-/* harmony import */ var _lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/js/calculatedBGIMGAtt */ "./assets/lib/js/calculatedBGIMGAtt.js");
-/* harmony import */ var _lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/js/calculatedBGIMGRepeat */ "./assets/lib/js/calculatedBGIMGRepeat.js");
-/* Internal block libraries */
-const {
-  __
-} = wp.i18n;
-
- // Custom Fucntions
-
-
-
-
-
-
-
-/* Create a Block Controls wrapper Component */
-
-/**
- * Class
- */
-
-function replaceAll(string, search, replace) {
-  return string.split(search).join(replace);
-}
-
-class InlineStyleVars extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
-  constructor() {
-    super(...arguments);
-  }
-
-  render() {
-    const {
-      attributes: {
-        styleEnabled,
-        babygradient,
-        dropcapColor,
-        bgColorEnabled,
-        blockID,
-        bgImage,
-        headlineColor,
-        foregroundColor,
-        linkColor,
-        backgroundColor3,
-        selectionFGColor,
-        selectionBGColor,
-        spacingMobile,
-        spacingTablet,
-        spacingDesktop
-      },
-      setAttributes
-    } = this.props;
-
-    const toggleStyleEnabled = () => setAttributes({
-      styleEnabled: !styleEnabled
-    }); // boop
-
-
-    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_2__["default"])(this.props.attributes);
-    const bgColorStack = (0,_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_3__["default"])(this.props.attributes);
-    const bgSize = (0,_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_4__["default"])(this.props.attributes, 'lg');
-    const bgPosition = (0,_lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_5__["default"])(this.props.attributes);
-    const bgAttachment = (0,_lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_6__["default"])(this.props.attributes);
-    const bgRepeat = (0,_lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_7__["default"])(this.props.attributes); // body[data-color='custom'] 
-    // body[data-color='custom'] 
-
-    const styleObj = {
-      '--backgroundImage': bgImageStack,
-      '--foregroundColor': foregroundColor,
-      '--backgroundColor': backgroundColor,
-      '--headlineColor': headlineColor,
-      '--linkColor': linkColor
-    }; // console.log('meep' );
-
-    return styleObj;
-  }
-
-}
-
-/***/ }),
-
-/***/ "./assets/OnPageStyle.js":
-/*!*******************************!*\
-  !*** ./assets/OnPageStyle.js ***!
-  \*******************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ OnPageStyle; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lib/js/calculatedBgColor */ "./assets/lib/js/calculatedBgColor.js");
-/* harmony import */ var _lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./lib/js/calculatedBGIMGSize */ "./assets/lib/js/calculatedBGIMGSize.js");
-/* harmony import */ var _lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./lib/js/calculatedBgPos */ "./assets/lib/js/calculatedBgPos.js");
-/* harmony import */ var _lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./lib/js/calculatedBGIMGAtt */ "./assets/lib/js/calculatedBGIMGAtt.js");
-/* harmony import */ var _lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./lib/js/calculatedBGIMGRepeat */ "./assets/lib/js/calculatedBGIMGRepeat.js");
-
-
-/* Internal block libraries */
-const {
-  __
-} = wp.i18n;
-
- // Custom Fucntions
-
-
-
-
-
-
-
-/* Create a Block Controls wrapper Component */
-
-/**
- * Class
- */
-
-function replaceAll(string, search, replace) {
-  return string.split(search).join(replace);
-}
-
-class OnPageStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
-  constructor() {
-    super(...arguments);
-  }
-
-  render() {
-    const {
-      attributes: {
-        styleEnabled,
-        babygradient,
-        dropcapColor,
-        blockquoteColor,
-        backgroundColor,
-        bgColorEnabled,
-        blockID,
-        bgImage,
-        headlineColor,
-        foregroundColor,
-        linkColor,
-        selectionFGColor,
-        selectionBGColor,
-        spacingMobile,
-        spacingTablet,
-        spacingDesktop
-      },
-      setAttributes
-    } = this.props;
-
-    const toggleStyleEnabled = () => setAttributes({
-      styleEnabled: !styleEnabled
-    }); // boop
-
-
-    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_2__["default"])(this.props.attributes);
-    const bgColorStack = (0,_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_3__["default"])(this.props.attributes);
-    const bgSize = (0,_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_4__["default"])(this.props.attributes, 'sm'); // sm, md, lg
-
-    const bgPosition = (0,_lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_5__["default"])(this.props.attributes);
-    const bgAttachment = (0,_lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_6__["default"])(this.props.attributes);
-    const bgRepeat = (0,_lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_7__["default"])(this.props.attributes); // body[data-color='custom'] 
-    // body[data-color='custom'] 
-
-    const styleObj = {
-      '--backgroundImage': bgImageStack,
-      '--backgroundColor': backgroundColor,
-      // bgColorStack
-      '--backgroundSizeSm': bgSize['sm'],
-      '--backgroundSizeMd': bgSize['md'],
-      '--backgroundSize': bgSize['lg'],
-      '--backgroundPosition': bgPosition,
-      '--backgroundAttachment': bgAttachment,
-      '--backgroundRepeat': bgRepeat,
-      '--foregroundColor': foregroundColor,
-      '--headlineColor': headlineColor,
-      '--linkColor': linkColor,
-      '--selectionColor': linkColor,
-      '--selectionBGColor': linkColor
-    };
-    const styleInline = `
-			--backgroundImage: ${bgImageStack};
-		`; // body[data-color='custom'] 
-    // body[data-color='custom'] 
-
-    var combinedCss = ` 
-			.wp-block-section--${blockID} { 
-				background-image: ${bgImageStack};
-				background-color: ${bgColorStack};
-				color: ${foregroundColor};
-				background-size: ${bgSize.lg};
-				background-position: ${bgPosition};
-				background-attachment: ${bgAttachment};
-				background-repeat: ${bgRepeat};
-				padding: ${spacingMobile.top} ${spacingMobile.right} ${spacingMobile.bottom} ${spacingMobile.left};
-			}
-			
-			.wp-block-section--${blockID} *::selection {
-				color: ${selectionFGColor};
-				background-color: ${selectionBGColor};
-			}
-
-			.wp-block-section--${blockID} h1, .wp-block-section--${blockID} h2, .wp-block-section--${blockID} h3,
-			.wp-block-section--${blockID} h4, .wp-block-section--${blockID} h5, .wp-block-section--${blockID} h6{
-				color: ${headlineColor};
-			}
-
-			.wp-block-section--${blockID} a{
-				color: ${linkColor};
-			}
-
-			blockquote{
-				color:${blockquoteColor};
-			}
-			.wp-block-section--${blockID} p.has-drop-cap:first-child:first-letter{color: ${dropcapColor};}
-
-			p.has-drop-cap:not(:focus)::first-letter{color: ${dropcapColor};}
-
-			@media(min-width: 992px){
-				.wp-block-section--${blockID}{ 
-					padding: ${spacingTablet.top} ${spacingTablet.right} ${spacingTablet.bottom} ${spacingTablet.left};
-				}
-			}
-			@media(min-width:1200px){
-				.wp-block-section--${blockID}{ 
-					padding: ${spacingDesktop.top} ${spacingDesktop.right} ${spacingDesktop.bottom} ${spacingDesktop.left};
-				}
-			}			
-		`; // Remove Newlines, Tabs are spaces
-
-    var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
-
-    compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
-    /*
-    const stringRendered = <div style={styleObj}></div>;
-    const words = stringRendered.split('"');
-    console.log(words);	*/
-    // Vars
-
-    if (this.props.mode == "vars") {
-      return styleObj;
-    }
-
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      type: "text/css",
-      dangerouslySetInnerHTML: {
-        __html: compressedCSS
-      }
-    });
-  }
-
-}
-
-/***/ }),
-
-/***/ "./assets/components/StyledPreview.js":
-/*!********************************************!*\
-  !*** ./assets/components/StyledPreview.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ StyledPreview; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _styled_preview_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styled-preview.scss */ "./assets/components/styled-preview.scss");
-/* harmony import */ var _styled_tile_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styled-tile.scss */ "./assets/components/styled-tile.scss");
-/* harmony import */ var _lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./../lib/js/calculatedGradient */ "./assets/lib/js/calculatedGradient.js");
-
-
-/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
-// Node modules
-
-/*  Internal block libraries */
-
-const {
-  __
-} = wp.i18n;
-
-
-
-
-
-/* Create a Block Controls wrapper Component */
-
-class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
-  constructor() {
-    super(...arguments);
-  }
-
-  componentDidMount() {}
-
-  render() {
-    const {
-      positionVert,
-      attributes: {
-        bgColorEnabled,
-        bgGradientEnabled,
-        bgImageEnabled,
-        bgGelEnabled,
-        foregroundColor,
-        headlineColor,
-        linkColor,
-        backgroundColor,
-        backgroundColor3,
-        backgroundImage,
-        backgroundStackFirst,
-        foregroundHeadlineFont,
-        foregroundCopyFont,
-        foregroundCaptionFont
-      },
-      setAttributes
-    } = this.props;
-    const bgImageStack = (0,_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_4__["default"])(this.props.attributes);
-    var combinedCss = ` 
-			.fgtext{
-				color: ${foregroundColor};
-				font-family: ${foregroundCopyFont}
-			}
-			.fgtext h1{
-				color: ${headlineColor};
-				font-family: ${foregroundHeadlineFont}
-			}
-			.fgtext p{
-				color: ${foregroundColor};
-				
-			}
-			.fgtext a{
-				color: ${linkColor};
-			}
-			.fgcolor{
-				background: ${backgroundColor3};
-				// outline: solid 1px red;
-			}
-			.bgimage{
-				background-image: url(${backgroundImage});
-			}
-			.gradient{
-				background: ${(0,_lib_js_calculatedGradient__WEBPACK_IMPORTED_MODULE_5__["default"])(this.props.attributes)};
-			}
-			.base{
-				background: ${backgroundColor};
-			}
-		`;
-    var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
-
-    compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "px-sidepanel"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "px-simplerow px-simplerow--padleft px-simplerow--padtop px-simplerow--padbottom"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Preview:"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "px-sidepanel"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "px-simplerow px-simplerow--padbottom"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `styled-preview ${backgroundStackFirst == "gradient" ? "styled-preview--gradientfirst" : ""}`,
-      "data-viewtype": "stack"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "cube"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: "layer layer-1 fgtext textual"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Foreground Text"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem Ipsum Preview ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-      href: "#"
-    }, "Stuffs"), " halibut")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `layer layer-2 ${bgGelEnabled ? "fgcolor" : ""}`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `layer layer-3 ${bgImageEnabled ? "bgimage" : ""}`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `layer layer-4 ${bgGradientEnabled ? "gradient" : ""}`
-    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `layer layer-5 ${bgColorEnabled ? "base" : ""}`
-    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
-      type: "text/css",
-      dangerouslySetInnerHTML: {
-        __html: compressedCSS
-      }
-    }))));
-  }
-
-}
-
-/***/ }),
-
-/***/ "./assets/lib/js/ColorObgtoRgbaString.js":
-/*!***********************************************!*\
-  !*** ./assets/lib/js/ColorObgtoRgbaString.js ***!
-  \***********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a string which identifies the selected Block Style
-const ColorObgtoRgbaString = function (value) {
-  return "rgba(" + value.rgb.r + "," + value.rgb.g + "," + value.rgb.b + "," + value.rgb.a + ")";
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (ColorObgtoRgbaString);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedBGIMGAtt.js":
-/*!*********************************************!*\
-  !*** ./assets/lib/js/calculatedBGIMGAtt.js ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for background-size
-const calculatedBGIMGAtt = attributes => {
-  const {
-    bgGelEnabled,
-    bgImageEnabled,
-    backgroundImageAttachment,
-    backgroundImage,
-    bgGradientEnabled,
-    backgroundGradientAttachment,
-    backgroundStackFirst
-  } = attributes; // Store each layer in an array
-
-  const bgLayers = []; // Capture output in a string
-
-  let bgLayersString = ""; // if background enabled
-
-  if (bgGelEnabled) {
-    bgLayers.push("scroll");
-  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
-  // Gradient Stacks First
-
-
-  if (backgroundStackFirst == "gradient") {
-    // Gradient
-    if (bgGradientEnabled) {
-      bgLayers.push(backgroundGradientAttachment);
-    } // Image
-
-
-    if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageAttachment);
-    } // Image stacks first
-
-  } else {
-    // Image
-    if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageAttachment);
-    } // Gradient
-
-
-    if (bgGradientEnabled) {
-      bgLayers.push(backgroundGradientAttachment);
-    }
-  } // Concatenate a style string, Adding commas, but not on the last
-
-
-  for (var i = 0; i < bgLayers.length; i++) {
-    bgLayersString += bgLayers[i];
-
-    if (i < bgLayers.length - 1) {
-      bgLayersString += ", ";
-    }
-  } // When no styles are available, return 'none'
-
-
-  if (bgLayers.length == 0) {
-    bgLayersString += "scroll";
-  }
-
-  return bgLayersString;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGAtt);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedBGIMGRepeat.js":
-/*!************************************************!*\
-  !*** ./assets/lib/js/calculatedBGIMGRepeat.js ***!
-  \************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for background-size
-const calculatedBGIMGRepeat = attributes => {
-  const {
-    bgGelEnabled,
-    bgImageEnabled,
-    backgroundImage,
-    backgroundImageRepeat,
-    bgGradientEnabled,
-    backgroundStackFirst
-  } = attributes; // Store each layer in an array
-
-  const bgLayers = []; // Capture output in a string
-
-  let bgLayersString = ""; // if background enabled
-
-  if (bgGelEnabled) {
-    bgLayers.push("no-repeat");
-  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
-  // Gradient Stacks First
-
-
-  if (backgroundStackFirst == "gradient") {
-    // Gradient
-    if (bgGradientEnabled) {
-      bgLayers.push("no-repeat");
-    } // Image
-
-
-    if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageRepeat);
-    } // Image stacks first
-
-  } else {
-    // Image
-    if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageRepeat);
-    } // Gradient
-
-
-    if (bgGradientEnabled) {
-      bgLayers.push("no-repeat");
-    }
-  } // Concatenate a style string, Adding commas, but not on the last
-
-
-  for (var i = 0; i < bgLayers.length; i++) {
-    bgLayersString += bgLayers[i];
-
-    if (i < bgLayers.length - 1) {
-      bgLayersString += ", ";
-    }
-  } // When no styles are available, return 'none'
-
-
-  if (bgLayers.length == 0) {
-    bgLayersString += "auto";
-  }
-
-  return bgLayersString;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGRepeat);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedBGIMGSize.js":
-/*!**********************************************!*\
-  !*** ./assets/lib/js/calculatedBGIMGSize.js ***!
-  \**********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for background-size
-const calculatedBGIMGSize = (attributes, key) => {
-  // console.log("key is", key);
-  const {
-    bgGelEnabled,
-    backgroundStackFirst,
-    bgImageEnabled,
-    backgroundImage,
-    backgroundImageSize,
-    backgroundImageSizeCustomSm,
-    backgroundImageSizeCustomMd,
-    backgroundImageSizeCustom,
-    bgGradientEnabled
-  } = attributes;
-  let activeData = backgroundImageSizeCustom;
-
-  if (key == 'sm') {
-    activeData = backgroundImageSizeCustomSm;
-  }
-
-  if (key == 'md') {
-    activeData = backgroundImageSizeCustomMd;
-  } // Store each layer in an array
-
-
-  const bgLayers = []; // Capture output in a string
-
-  let bgLayersString = ""; // if background enabled
-
-  if (bgGelEnabled) {
-    bgLayers.push("cover");
-  } // console.log('backgroundImageSizeCustom', activeData);
-  // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
-  // Gradient Stacks First
-
-
-  if (backgroundStackFirst == "gradient") {
-    if (bgGradientEnabled) {
-      bgLayers.push("cover");
-    }
-
-    if (bgImageEnabled && backgroundImage) {
-      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
-    } // Image stacks first
-
-  } else {
-    if (bgImageEnabled && backgroundImage) {
-      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
-    }
-
-    if (bgGradientEnabled) {
-      bgLayers.push("cover");
-    }
-  } // Concatenate a style string
-
-
-  for (var i = 0; i < bgLayers.length; i++) {
-    bgLayersString += bgLayers[i]; // Adding commas, but not on the last
-
-    if (i < bgLayers.length - 1) {
-      bgLayersString += ", ";
-    }
-  } // When no styles are available, return 'none'
-
-
-  if (bgLayers.length == 0) {
-    bgLayersString += "auto";
-  }
-
-  let bgLayerObject = {
-    'sm': bgLayersString,
-    'md': bgLayersString,
-    'lg': bgLayersString
-  }; // return bgLayerObject;
-
-  return bgLayersString;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGSize);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedBgColor.js":
-/*!********************************************!*\
-  !*** ./assets/lib/js/calculatedBgColor.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns the final "background-color"
-const calculatedBgColor = attributes => {
-  // Get all of these variables
-  const {
-    bgColorEnabled,
-    backgroundColor
-  } = attributes;
-
-  if (bgColorEnabled && backgroundColor != null) {
-    return backgroundColor;
-  } else {
-    return false; // return "transparent";
-  }
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedBgColor);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedBgImage.js":
-/*!********************************************!*\
-  !*** ./assets/lib/js/calculatedBgImage.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _calculatedGradient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculatedGradient */ "./assets/lib/js/calculatedGradient.js");
-/* harmony import */ var _calculatedGel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculatedGel */ "./assets/lib/js/calculatedGel.js");
-/* harmony import */ var _calculatedImg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculatedImg */ "./assets/lib/js/calculatedImg.js");
-// We need to reuese this other function, calculatedGradient
-
-
- // Returns the final "background-image", which is a combination of gradient and image
-
-const calculatedBgImage = attributes => {
-  // Get all of these variables
-  const {
-    bgImageEnabled,
-    bgGradientEnabled,
-    bgGelEnabled,
-    backgroundImage,
-    backgroundStackFirst
-  } = attributes; // Store each layer in an array
-
-  const bgLayers = []; // Capture output in a string
-
-  let bgLayersString = ""; // Push Base Color
-
-  if (bgGelEnabled) {
-    bgLayers.push((0,_calculatedGel__WEBPACK_IMPORTED_MODULE_1__["default"])(attributes));
-  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
-  // Gradient Stacks First!
-
-
-  if (backgroundStackFirst == "gradient") {
-    // Gradient
-    if (bgGradientEnabled) {
-      bgLayers.push((0,_calculatedGradient__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes));
-    } // Image
-
-
-    if (bgImageEnabled && backgroundImage) {
-      bgLayers.push((0,_calculatedImg__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes));
-    } // Image Stacks First!
-
-  } else {
-    // Image
-    if (bgImageEnabled && backgroundImage) {
-      bgLayers.push((0,_calculatedImg__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes));
-    } // Gradient
-
-
-    if (bgGradientEnabled) {
-      bgLayers.push((0,_calculatedGradient__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes));
-    }
-  } // Concatenate a style string
-
-
-  for (var i = 0; i < bgLayers.length; i++) {
-    bgLayersString += bgLayers[i]; // Adding commas, but not on the last
-
-    if (i < bgLayers.length - 1) {
-      bgLayersString += ", ";
-    }
-  } // When no styles are available, return 'none'
-
-
-  if (bgLayers.length == 0) {
-    // bgLayersString += "none";
-    bgLayersString += "";
-  }
-
-  return bgLayersString;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedBgImage);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedBgPos.js":
-/*!******************************************!*\
-  !*** ./assets/lib/js/calculatedBgPos.js ***!
-  \******************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns the final "background-position"
-const calculatedBgPos = attributes => {
-  // Get all of these variables
-  const {
-    focalPoint,
-    backgroundImageAlignHori,
-    backgroundImageAlignVert,
-    backgroundImageAlignVertCustom,
-    backgroundImageAlignHoriCustom
-  } = attributes;
-  var combined = focalPoint.x * 100 + "% " + focalPoint.y * 100 + "%";
-  return combined;
-  /*
-  let hSelect, vSelect;
-  // Horizontal
-  if (backgroundImageAlignHori == "custom") {
-  	hSelect = backgroundImageAlignHoriCustom + "%";
-  } else {
-  	hSelect = backgroundImageAlignHori;
-  }
-  	// Vertical
-  if (backgroundImageAlignVert == "custom") {
-  	vSelect = backgroundImageAlignVertCustom + "%";
-  } else {
-  	vSelect = backgroundImageAlignVert;
-  }
-  //  ${backgroundImageAlignHori} ${backgroundImageAlignVert};
-  const composed = hSelect + " " + vSelect;
-  console.log(composed);
-  return composed;
-  */
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedBgPos);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedGel.js":
-/*!****************************************!*\
-  !*** ./assets/lib/js/calculatedGel.js ***!
-  \****************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for gradient
-const calculatedGel = attributes => {
-  // Get all of these variables
-  const {
-    backgroundColor3
-  } = attributes; // Return a Linear Gradient
-
-  return "linear-gradient(" + backgroundColor3 + ", " + backgroundColor3 + ")";
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedGel);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedGradient.js":
-/*!*********************************************!*\
-  !*** ./assets/lib/js/calculatedGradient.js ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for gradient
-const calculatedGradient = attributes => {
-  // Get all of these variables
-  const {
-    backgroundColor1,
-    backgroundColor2,
-    backgroundColor1Start,
-    backgroundColor2Start,
-    gradientType,
-    gradientLinearAngle,
-    gradientAlignRadialHori,
-    gradientAlignRadialVert
-  } = attributes; // Return a Linear Gradient
-
-  if (gradientType == "linear") {
-    return "linear-gradient(" + gradientLinearAngle + "deg, " + backgroundColor1 + " " + backgroundColor1Start + "%, " + backgroundColor2 + " " + backgroundColor2Start + "%)";
-  } // Return a Radial Gradient
-
-
-  if (gradientType == "radial") {
-    var gradient = "radial-gradient(circle at " + gradientAlignRadialHori + "% " + gradientAlignRadialVert + "%, " + backgroundColor1 + " " + backgroundColor1Start + "%, " + backgroundColor2 + " " + backgroundColor2Start + "%)";
-    return gradient;
-  }
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedGradient);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedImg.js":
-/*!****************************************!*\
-  !*** ./assets/lib/js/calculatedImg.js ***!
-  \****************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for gradient
-const calculatedImg = attributes => {
-  // Get all of these variables
-  const {
-    backgroundImage
-  } = attributes; // Return a Linear Gradient
-
-  return "url(" + backgroundImage + ")";
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedImg);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedInlineVars.js":
-/*!***********************************************!*\
-  !*** ./assets/lib/js/calculatedInlineVars.js ***!
-  \***********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculatedBgColor */ "./assets/lib/js/calculatedBgColor.js");
-/* harmony import */ var _calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculatedBGIMGSize */ "./assets/lib/js/calculatedBGIMGSize.js");
-/* harmony import */ var _calculatedBgPos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calculatedBgPos */ "./assets/lib/js/calculatedBgPos.js");
-/* harmony import */ var _calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./calculatedBGIMGAtt */ "./assets/lib/js/calculatedBGIMGAtt.js");
-/* harmony import */ var _calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./calculatedBGIMGRepeat */ "./assets/lib/js/calculatedBGIMGRepeat.js");
-/* harmony import */ var _calculatedPadding__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./calculatedPadding */ "./assets/lib/js/calculatedPadding.js");
-// Custom Functions
-
-
-
-
-
-
- // Returns the final "background-image", which is a combination of gradient and image
-
-const calculatedInlineVars = attributes => {
-  // Get all of these variables
-  const {
-    foregroundColor,
-    headlineColor,
-    linkColor,
-    dropcapColor,
-    blockquoteColor,
-    lineartColor,
-    styleMode,
-    selectionFGColor,
-    selectionBGColor,
-    backgroundColor,
-    backgroundColor3,
-    foregroundHeadlineFont,
-    foregroundCopyFont,
-    foregroundCaptionFont,
-    styleEnabled
-  } = attributes;
-  const bgImageStack = (0,_calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes);
-  const bgColorStack = (0,_calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__["default"])(attributes);
-  const bgSizeSm = (0,_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes, 'sm');
-  const bgSizeMd = (0,_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes, 'md');
-  const bgSize = (0,_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes, 'lg');
-  const bgPosition = (0,_calculatedBgPos__WEBPACK_IMPORTED_MODULE_3__["default"])(attributes);
-  const bgAttachment = (0,_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_4__["default"])(attributes);
-  const bgRepeat = (0,_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes);
-  const spacingMobileStack = (0,_calculatedPadding__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes.spacingMobile);
-  const spacingTabletStack = (0,_calculatedPadding__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes.spacingTablet);
-  const spacingDesktopStack = (0,_calculatedPadding__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes.spacingDesktop);
-
-  const replaceAll = function (string, search, replace) {
-    return string.split(search).join(replace);
-  }; // console.log("CURIOUS", bgSize);
-
-
-  var combinedCss = '';
-  var fgbgCss = ``;
-  console.log("bgImageStack is", bgImageStack); // Include backgroundImage
-
-  if (bgImageStack) {
-    fgbgCss += `
-			--backgroundImage: ${bgImageStack};
-			--backgroundSizeSm: ${bgSizeSm};
-			--backgroundSizeMd: ${bgSizeMd};
-			--backgroundSize: ${bgSize};
-			--backgroundPosition: ${bgPosition};
-			--backgroundAttachment: ${bgAttachment};
-			--backgroundRepeat: ${bgRepeat};
-			`;
-  } // Include backgroundColor
-
-
-  if (backgroundColor) {
-    fgbgCss += `--backgroundColor: ${backgroundColor};`;
-  } // Foreground Color
-
-
-  if (foregroundColor) {
-    fgbgCss += `--foregroundColor: ${foregroundColor};`;
-  } // Headline Color
-
-
-  if (headlineColor) {
-    fgbgCss += `--headlineColor: ${headlineColor};`;
-  } // Link Color
-
-
-  if (linkColor) {
-    fgbgCss += `--linkColor: ${linkColor};`;
-  } // Dropcap Color
-
-
-  if (dropcapColor) {
-    fgbgCss += `--dropcapColor: ${dropcapColor};`;
-  } // Block Quote Color
-
-
-  if (blockquoteColor) {
-    fgbgCss += `--blockquoteColor: ${blockquoteColor};`;
-  } // Lineart Color
-
-
-  if (lineartColor) {
-    fgbgCss += `--lineartColor: ${lineartColor};`;
-  } // selectionFGr Color
-
-
-  if (selectionFGColor) {
-    fgbgCss += `--selectionFGColor: ${selectionFGColor};`;
-  } // selectionBG Color
-
-
-  if (selectionBGColor) {
-    fgbgCss += `--selectionBGColor: ${selectionBGColor};`;
-  }
-  /*
-  fgbgCss +=
-  `
-  --linkColor: ${linkColor};
-  --dropcapColor: ${dropcapColor};
-  --blockquoteColor: ${blockquoteColor};
-  --lineartColor: ${lineartColor};
-  --selectionFGColor: ${selectionFGColor};
-  --selectionBGColor: ${selectionBGColor};
-  `;
-  */
-  //--backgroundColor: ${bgColorStack};
-
-  /*
-  var fontCss = `
-  	--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
-  	--foregroundCopyFont: var(--${foregroundCopyFont});
-  	--foregroundCaptionFont: var(--${foregroundCaptionFont});
-  `;
-  */
-
-
-  var fontCss = ``;
-
-  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
-    fontCss += `--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`;
-  }
-
-  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
-    fontCss += `--foregroundCopyFont: var(--${foregroundCopyFont});`;
-  }
-
-  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
-    fontCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
-  }
-  /*
-  	--spacingMobile: ${spacingMobileStack};
-  */
-
-
-  var sizingCss = ``;
-
-  if (spacingMobileStack !== "undefined") {
-    sizingCss += `--spacingMobile: ${spacingMobileStack};`;
-  }
-
-  if (spacingTabletStack !== "undefined") {
-    sizingCss += `--spacingTablet: ${spacingTabletStack};`;
-  }
-
-  if (spacingDesktopStack !== "undefined") {
-    sizingCss += `--spacingDesktop: ${spacingDesktopStack};`;
-  } // Add CSS based on the mode
-
-
-  if (styleMode == 'custom') {
-    combinedCss += fgbgCss + fontCss + sizingCss;
-  }
-
-  if (styleMode == 'named') {
-    combinedCss += fontCss + sizingCss;
-  } // Remove Newlines, Tabs are spaces
-
-
-  var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
-
-  compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim(); // Return style when enabled
-
-  if (styleEnabled) {
-    return compressedCSS;
-  } // Otherwise Return False
-
-
-  return false;
-}; // This will be a string of CSS not a React-CSS-Object. This is different from other areas of the app which require
-// the use of the React-CSS-object format, such as Edit.js
-
-
-console.log("calculatedInlineVars ", calculatedInlineVars);
-/* harmony default export */ __webpack_exports__["default"] = (calculatedInlineVars);
-
-/***/ }),
-
-/***/ "./assets/lib/js/calculatedPadding.js":
-/*!********************************************!*\
-  !*** ./assets/lib/js/calculatedPadding.js ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// Returns a computed value for gradient
-const calculatedPadding = spacingObject => {
-  // Return Shorthand if all values match!
-  if (spacingObject.top == spacingObject.right && spacingObject.top == spacingObject.left && spacingObject.top == spacingObject.bottom) {
-    return `${spacingObject.top}`;
-  } // Return 4 point set
-
-
-  return `${spacingObject.top} ${spacingObject.right} ${spacingObject.bottom} ${spacingObject.left}`;
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (calculatedPadding);
 
 /***/ }),
 
@@ -2265,8 +1138,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _BGTabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./BGTabs */ "./assets/BGTabs.js");
-/* harmony import */ var _components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/StyledPreview */ "./assets/components/StyledPreview.js");
-/* harmony import */ var _src_components_InterfacePanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/components/InterfacePanel */ "./src/components/InterfacePanel.js");
+/* harmony import */ var _src_components_StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../src/components/StyledPreview/StyledPreview */ "./src/components/StyledPreview/StyledPreview.js");
+/* harmony import */ var _src_components_AccordionInterface__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../src/components/AccordionInterface */ "./src/components/AccordionInterface.js");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
@@ -2874,7 +1747,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
         padding: "0px 20px 0px 10px"
       },
       "aria-label": "select style " + option.value
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null)), option.label))))))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null)), option.label))))))), styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_src_components_StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_4__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
     }, this.props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
       title: __("Foreground", "pxblocks"),
@@ -2971,7 +1844,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
       onChange: toggleBgStack(backgroundStackFirst)
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_BGTabs__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
       setAttributes
-    }, this.props)))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_src_components_InterfacePanel__WEBPACK_IMPORTED_MODULE_5__.InterfacePanel, {
+    }, this.props)))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_src_components_AccordionInterface__WEBPACK_IMPORTED_MODULE_5__.AccordionInterface, {
       attributes: this.props.attributes,
       setAttributes: this.props.setAttributes
     }), (styleMode == 'named' || styleMode == 'custom') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(PanelBody, {
@@ -3101,16 +1974,16 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Comp
 
 /***/ }),
 
-/***/ "./src/components/InterfacePanel.js":
-/*!******************************************!*\
-  !*** ./src/components/InterfacePanel.js ***!
-  \******************************************/
+/***/ "./src/components/AccordionInterface.js":
+/*!**********************************************!*\
+  !*** ./src/components/AccordionInterface.js ***!
+  \**********************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "InterfacePanel": function() { return /* binding */ InterfacePanel; }
+/* harmony export */   "AccordionInterface": function() { return /* binding */ AccordionInterface; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
@@ -3125,7 +1998,7 @@ const {
 
 
 
-function InterfacePanel(_ref) {
+function AccordionInterface(_ref) {
   let {
     attributes,
     setAttributes
@@ -3179,6 +2052,139 @@ function InterfacePanel(_ref) {
 
 /***/ }),
 
+/***/ "./src/components/StyledPreview/StyledPreview.js":
+/*!*******************************************************!*\
+  !*** ./src/components/StyledPreview/StyledPreview.js ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ StyledPreview; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _StyledPreview_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StyledPreview.scss */ "./src/components/StyledPreview/StyledPreview.scss");
+/* harmony import */ var _StyledTile_StyledTile_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../StyledTile/StyledTile.scss */ "./src/components/StyledTile/StyledTile.scss");
+/* harmony import */ var _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../library/calculated/calculated */ "./src/library/calculated/calculated.js");
+
+
+/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
+// Node modules
+ //  WP Libraries
+
+const {
+  __
+} = wp.i18n;
+ // Project Files
+
+
+
+
+/* Create a Block Controls wrapper Component */
+
+class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Component {
+  constructor() {
+    super(...arguments);
+  }
+
+  componentDidMount() {}
+
+  render() {
+    const {
+      positionVert,
+      attributes: {
+        bgColorEnabled,
+        bgGradientEnabled,
+        bgImageEnabled,
+        bgGelEnabled,
+        foregroundColor,
+        headlineColor,
+        linkColor,
+        backgroundColor,
+        backgroundColor3,
+        backgroundImage,
+        backgroundStackFirst,
+        foregroundHeadlineFont,
+        foregroundCopyFont,
+        foregroundCaptionFont
+      },
+      setAttributes
+    } = this.props;
+    const bgImageStack = _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedBgImage(this.props.attributes);
+    var combinedCss = ` 
+			.fgtext{
+				color: ${foregroundColor};
+				font-family: ${foregroundCopyFont}
+			}
+			.fgtext h1{
+				color: ${headlineColor};
+				font-family: ${foregroundHeadlineFont}
+			}
+			.fgtext p{
+				color: ${foregroundColor};
+				
+			}
+			.fgtext a{
+				color: ${linkColor};
+			}
+			.fgcolor{
+				background: ${backgroundColor3};
+				// outline: solid 1px red;
+			}
+			.bgimage{
+				background-image: url(${backgroundImage});
+			}
+			.gradient{
+				background: ${_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedGradient(this.props.attributes)};
+			}
+			.base{
+				background: ${backgroundColor};
+			}
+		`;
+    var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
+
+    compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "px-sidepanel"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padleft px-simplerow--padtop px-simplerow--padbottom"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("strong", null, "Preview:"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "px-sidepanel"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "px-simplerow px-simplerow--padbottom"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `styled-preview ${backgroundStackFirst == "gradient" ? "styled-preview--gradientfirst" : ""}`,
+      "data-viewtype": "stack"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "cube"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: "layer layer-1 fgtext textual"
+    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h1", null, "Foreground Text"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem Ipsum Preview ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+      href: "#"
+    }, "Stuffs"), " halibut")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `layer layer-2 ${bgGelEnabled ? "fgcolor" : ""}`
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `layer layer-3 ${bgImageEnabled ? "bgimage" : ""}`
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `layer layer-4 ${bgGradientEnabled ? "gradient" : ""}`
+    }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      className: `layer layer-5 ${bgColorEnabled ? "base" : ""}`
+    }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", {
+      type: "text/css",
+      dangerouslySetInnerHTML: {
+        __html: compressedCSS
+      }
+    }))));
+  }
+
+}
+
+/***/ }),
+
 /***/ "./src/edit.js":
 /*!*********************!*\
   !*** ./src/edit.js ***!
@@ -3201,17 +2207,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /* harmony import */ var _assets_styleControls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/styleControls */ "./assets/styleControls.js");
-/* harmony import */ var _assets_OnPageStyle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../assets/OnPageStyle */ "./assets/OnPageStyle.js");
-/* harmony import */ var _assets_AdminStyle__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../assets/AdminStyle */ "./assets/AdminStyle.js");
-/* harmony import */ var _assets_InlineStyleVars__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../assets/InlineStyleVars */ "./assets/InlineStyleVars.js");
-/* harmony import */ var _assets_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../assets/lib/js/calculatedBgImage */ "./assets/lib/js/calculatedBgImage.js");
-/* harmony import */ var _assets_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../assets/lib/js/calculatedBgColor */ "./assets/lib/js/calculatedBgColor.js");
-/* harmony import */ var _assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../assets/lib/js/calculatedBGIMGSize */ "./assets/lib/js/calculatedBGIMGSize.js");
-/* harmony import */ var _assets_lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../assets/lib/js/calculatedBgPos */ "./assets/lib/js/calculatedBgPos.js");
-/* harmony import */ var _assets_lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../assets/lib/js/calculatedBGIMGAtt */ "./assets/lib/js/calculatedBGIMGAtt.js");
-/* harmony import */ var _assets_lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../assets/lib/js/calculatedBGIMGRepeat */ "./assets/lib/js/calculatedBGIMGRepeat.js");
-/* harmony import */ var _assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../assets/lib/js/calculatedInlineVars */ "./assets/lib/js/calculatedInlineVars.js");
-/* harmony import */ var _assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../assets/lib/js/calculatedPadding */ "./assets/lib/js/calculatedPadding.js");
+/* harmony import */ var _assets_AdminStyle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../assets/AdminStyle */ "./assets/AdminStyle.js");
+/* harmony import */ var _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../src/library/calculated/calculated */ "./src/library/calculated/calculated.js");
 
 
 // Node modules
@@ -3222,32 +2219,21 @@ __webpack_require__.r(__webpack_exports__);
  // Custom Components
 
 
-
-
  // Custom Functions
-
-
-
-
-
-
-
+// Calculation Functions
 
 
 function Edit(props) {
-  const inlineVarCSS = (0,_assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_16__["default"])(props.attributes); //	const props = useBlockProps();
+  const inlineVarCSS = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedInlineVars(props.attributes); //	const props = useBlockProps();
 
   console.log("edit INLINE props", inlineVarCSS);
   const {
     attributes: {
-      styleEnabled,
       styleMode,
       blockID,
       namedstyle,
       heightEnabled,
       foregroundColor,
-      blockAlignment,
-      highContrast,
       foregroundHeadlineFont,
       foregroundCopyFont,
       foregroundCaptionFont,
@@ -3257,11 +2243,7 @@ function Edit(props) {
       linkColor,
       dropcapColor,
       blockquoteColor,
-      lineartColor,
-      spacingMobile,
-      spacingTablet,
-      spacingDesktop,
-      elementType
+      lineartColor
     },
     className,
     clientId
@@ -3286,18 +2268,18 @@ function Edit(props) {
   ); // alignfull
   // boop
 
-  const bgImageStack = (0,_assets_lib_js_calculatedBgImage__WEBPACK_IMPORTED_MODULE_10__["default"])(props.attributes);
-  const bgColorStack = (0,_assets_lib_js_calculatedBgColor__WEBPACK_IMPORTED_MODULE_11__["default"])(props.attributes); // const bgSize = calculatedBGIMGSize(props.attributes);
+  const bgImageStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBgImage(props.attributes);
+  const bgColorStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBgColor(props.attributes); // const bgSize = calculatedBGIMGSize(props.attributes);
 
-  const bgSizeSm = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes, 'sm');
-  const bgSizeMd = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes, 'md');
-  const bgSize = (0,_assets_lib_js_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_12__["default"])(props.attributes, 'lg');
-  const bgPosition = (0,_assets_lib_js_calculatedBgPos__WEBPACK_IMPORTED_MODULE_13__["default"])(props.attributes);
-  const bgAttachment = (0,_assets_lib_js_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_14__["default"])(props.attributes);
-  const bgRepeat = (0,_assets_lib_js_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_15__["default"])(props.attributes);
-  const spacingMobileStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingMobile);
-  const spacingTabletStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingTablet);
-  const spacingDesktopStack = (0,_assets_lib_js_calculatedPadding__WEBPACK_IMPORTED_MODULE_17__["default"])(props.attributes.spacingDesktop); // Default Obj
+  const bgSizeSm = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGSize(props.attributes, 'sm');
+  const bgSizeMd = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGSize(props.attributes, 'md');
+  const bgSize = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGSize(props.attributes, 'lg');
+  const bgPosition = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBgPos(props.attributes);
+  const bgAttachment = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGAtt(props.attributes);
+  const bgRepeat = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedBGIMGRepeat(props.attributes);
+  const spacingMobileStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedPadding(props.attributes.spacingMobile);
+  const spacingTabletStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedPadding(props.attributes.spacingTablet);
+  const spacingDesktopStack = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedPadding(props.attributes.spacingDesktop); // Default Obj
 
   let styleObj = {};
   const fgbgObj = {
@@ -3405,7 +2387,7 @@ function Edit(props) {
     style: styleMode == 'custom' || styleMode == 'named' ? styleObj : undefined,
     'data-theme': styleMode == 'named' ? namedstyle : ''
   });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_AdminStyle__WEBPACK_IMPORTED_MODULE_8__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_AdminStyle__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
   }, props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_assets_styleControls__WEBPACK_IMPORTED_MODULE_6__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
@@ -3433,19 +2415,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
 /* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./save */ "./src/save.js");
 /* harmony import */ var _sidebar_poststyles_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sidebar-poststyles.js */ "./src/sidebar-poststyles.js");
+// NPM
+
+
+const {
+  __
+} = wp.i18n; // Local
 
 
 
 
 
- // const { PluginDocumentSettingPanel } = wp.editPost;
-
+ // Register "Styled Area" Block
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('xx/styled', {
   edit: _edit__WEBPACK_IMPORTED_MODULE_4__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_5__["default"],
+  category: 'design',
 
-  //category: 'wholesome-blocks',
   getEditWrapperProps(attributes) {
     const {
       blockAlignment
@@ -3459,23 +2446,799 @@ __webpack_require__.r(__webpack_exports__);
   }
 
 });
-_wordpress_dom_ready__WEBPACK_IMPORTED_MODULE_1___default()(function () {
-  wp.blocks.registerBlockVariation('xx/styled', {
-    name: 'blue-light',
-    label: 'Itza Light Blu',
-    title: 'BG Light Blue',
-    category: 'wholesome-blocks',
-    attributes: {
-      backgroundColor: '#FF0000'
+/*
+
+const styles = [
+// Mark style as default.
+{
+	name: 'default',
+	label: __( 'Rounded' ),
+	isDefault: true
+},
+{
+	name: 'outline',
+	label: __( 'Outline' )
+},
+{
+	name: 'squared',
+	label: __( 'Squared' )
+},
+]
+domReady( function() {
+	wp.blocks.registerBlockVariation( 'xx/styled', {
+	name: 'blue-light',
+	label: 'Itza Light Blu',
+	title: 'BG Light Blue',
+	category: 'wholesome-blocks',
+	attributes: { backgroundColor: '#FF0000' }
+} );
+
+wp.blocks.registerBlockStyle( 'xx/styled', {
+	name: 'rounded',
+	label: 'Rounded Corners',
+} );
+
+} );
+*/
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculated.js":
+/*!**********************************************!*\
+  !*** ./src/library/calculated/calculated.js ***!
+  \**********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculatedBgImage */ "./src/library/calculated/calculatedBgImage.js");
+/* harmony import */ var _calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculatedBgColor */ "./src/library/calculated/calculatedBgColor.js");
+/* harmony import */ var _calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculatedBGIMGSize */ "./src/library/calculated/calculatedBGIMGSize.js");
+/* harmony import */ var _calculatedBgPos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calculatedBgPos */ "./src/library/calculated/calculatedBgPos.js");
+/* harmony import */ var _calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./calculatedBGIMGAtt */ "./src/library/calculated/calculatedBGIMGAtt.js");
+/* harmony import */ var _calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./calculatedBGIMGRepeat */ "./src/library/calculated/calculatedBGIMGRepeat.js");
+/* harmony import */ var _calculatedInlineVars__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./calculatedInlineVars */ "./src/library/calculated/calculatedInlineVars.js");
+/* harmony import */ var _calculatedPadding__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./calculatedPadding */ "./src/library/calculated/calculatedPadding.js");
+/* harmony import */ var _calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./calculatedRgbaString */ "./src/library/calculated/calculatedRgbaString.js");
+/* harmony import */ var _calculatedGradient__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./calculatedGradient */ "./src/library/calculated/calculatedGradient.js");
+// Custom Calculated Functions
+
+
+
+
+
+
+
+
+
+
+const calculated = {
+  calculatedBgImage: _calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__["default"],
+  calculatedBgColor: _calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__["default"],
+  calculatedBGIMGSize: _calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"],
+  calculatedBgPos: _calculatedBgPos__WEBPACK_IMPORTED_MODULE_3__["default"],
+  calculatedBGIMGAtt: _calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_4__["default"],
+  calculatedBGIMGRepeat: _calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_5__["default"],
+  calculatedInlineVars: _calculatedInlineVars__WEBPACK_IMPORTED_MODULE_6__["default"],
+  calculatedPadding: _calculatedPadding__WEBPACK_IMPORTED_MODULE_7__["default"],
+  calculatedRgbaString: _calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"],
+  calculatedGradient: _calculatedGradient__WEBPACK_IMPORTED_MODULE_9__["default"]
+};
+/* harmony default export */ __webpack_exports__["default"] = (calculated);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedBGIMGAtt.js":
+/*!******************************************************!*\
+  !*** ./src/library/calculated/calculatedBGIMGAtt.js ***!
+  \******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for background-size
+const calculatedBGIMGAtt = attributes => {
+  const {
+    bgGelEnabled,
+    bgImageEnabled,
+    backgroundImageAttachment,
+    backgroundImage,
+    bgGradientEnabled,
+    backgroundGradientAttachment,
+    backgroundStackFirst
+  } = attributes; // Store each layer in an array
+
+  const bgLayers = []; // Capture output in a string
+
+  let bgLayersString = ""; // if background enabled
+
+  if (bgGelEnabled) {
+    bgLayers.push("scroll");
+  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  // Gradient Stacks First
+
+
+  if (backgroundStackFirst == "gradient") {
+    // Gradient
+    if (bgGradientEnabled) {
+      bgLayers.push(backgroundGradientAttachment);
+    } // Image
+
+
+    if (bgImageEnabled && backgroundImage) {
+      bgLayers.push(backgroundImageAttachment);
+    } // Image stacks first
+
+  } else {
+    // Image
+    if (bgImageEnabled && backgroundImage) {
+      bgLayers.push(backgroundImageAttachment);
+    } // Gradient
+
+
+    if (bgGradientEnabled) {
+      bgLayers.push(backgroundGradientAttachment);
     }
-  });
+  } // Concatenate a style string, Adding commas, but not on the last
+
+
+  for (var i = 0; i < bgLayers.length; i++) {
+    bgLayersString += bgLayers[i];
+
+    if (i < bgLayers.length - 1) {
+      bgLayersString += ", ";
+    }
+  } // When no styles are available, return 'none'
+
+
+  if (bgLayers.length == 0) {
+    bgLayersString += "scroll";
+  }
+
+  return bgLayersString;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGAtt);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedBGIMGRepeat.js":
+/*!*********************************************************!*\
+  !*** ./src/library/calculated/calculatedBGIMGRepeat.js ***!
+  \*********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for background-size
+const calculatedBGIMGRepeat = attributes => {
+  const {
+    bgGelEnabled,
+    bgImageEnabled,
+    backgroundImage,
+    backgroundImageRepeat,
+    bgGradientEnabled,
+    backgroundStackFirst
+  } = attributes; // Store each layer in an array
+
+  const bgLayers = []; // Capture output in a string
+
+  let bgLayersString = ""; // if background enabled
+
+  if (bgGelEnabled) {
+    bgLayers.push("no-repeat");
+  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  // Gradient Stacks First
+
+
+  if (backgroundStackFirst == "gradient") {
+    // Gradient
+    if (bgGradientEnabled) {
+      bgLayers.push("no-repeat");
+    } // Image
+
+
+    if (bgImageEnabled && backgroundImage) {
+      bgLayers.push(backgroundImageRepeat);
+    } // Image stacks first
+
+  } else {
+    // Image
+    if (bgImageEnabled && backgroundImage) {
+      bgLayers.push(backgroundImageRepeat);
+    } // Gradient
+
+
+    if (bgGradientEnabled) {
+      bgLayers.push("no-repeat");
+    }
+  } // Concatenate a style string, Adding commas, but not on the last
+
+
+  for (var i = 0; i < bgLayers.length; i++) {
+    bgLayersString += bgLayers[i];
+
+    if (i < bgLayers.length - 1) {
+      bgLayersString += ", ";
+    }
+  } // When no styles are available, return 'none'
+
+
+  if (bgLayers.length == 0) {
+    bgLayersString += "auto";
+  }
+
+  return bgLayersString;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGRepeat);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedBGIMGSize.js":
+/*!*******************************************************!*\
+  !*** ./src/library/calculated/calculatedBGIMGSize.js ***!
+  \*******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for background-size
+const calculatedBGIMGSize = (attributes, key) => {
+  // console.log("key is", key);
+  const {
+    bgGelEnabled,
+    backgroundStackFirst,
+    bgImageEnabled,
+    backgroundImage,
+    backgroundImageSize,
+    backgroundImageSizeCustomSm,
+    backgroundImageSizeCustomMd,
+    backgroundImageSizeCustom,
+    bgGradientEnabled
+  } = attributes;
+  let activeData = backgroundImageSizeCustom;
+
+  if (key == 'sm') {
+    activeData = backgroundImageSizeCustomSm;
+  }
+
+  if (key == 'md') {
+    activeData = backgroundImageSizeCustomMd;
+  } // Store each layer in an array
+
+
+  const bgLayers = []; // Capture output in a string
+
+  let bgLayersString = ""; // if background enabled
+
+  if (bgGelEnabled) {
+    bgLayers.push("cover");
+  } // console.log('backgroundImageSizeCustom', activeData);
+  // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  // Gradient Stacks First
+
+
+  if (backgroundStackFirst == "gradient") {
+    if (bgGradientEnabled) {
+      bgLayers.push("cover");
+    }
+
+    if (bgImageEnabled && backgroundImage) {
+      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
+    } // Image stacks first
+
+  } else {
+    if (bgImageEnabled && backgroundImage) {
+      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
+    }
+
+    if (bgGradientEnabled) {
+      bgLayers.push("cover");
+    }
+  } // Concatenate a style string
+
+
+  for (var i = 0; i < bgLayers.length; i++) {
+    bgLayersString += bgLayers[i]; // Adding commas, but not on the last
+
+    if (i < bgLayers.length - 1) {
+      bgLayersString += ", ";
+    }
+  } // When no styles are available, return 'none'
+
+
+  if (bgLayers.length == 0) {
+    bgLayersString += "auto";
+  }
+
+  let bgLayerObject = {
+    'sm': bgLayersString,
+    'md': bgLayersString,
+    'lg': bgLayersString
+  }; // return bgLayerObject;
+
+  return bgLayersString;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedBGIMGSize);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedBgColor.js":
+/*!*****************************************************!*\
+  !*** ./src/library/calculated/calculatedBgColor.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns the final "background-color"
+const calculatedBgColor = attributes => {
+  // Get all of these variables
+  const {
+    bgColorEnabled,
+    backgroundColor
+  } = attributes;
+
+  if (bgColorEnabled && backgroundColor != null) {
+    return backgroundColor;
+  } else {
+    return false; // return "transparent";
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedBgColor);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedBgImage.js":
+/*!*****************************************************!*\
+  !*** ./src/library/calculated/calculatedBgImage.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _calculatedGradient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculatedGradient */ "./src/library/calculated/calculatedGradient.js");
+/* harmony import */ var _calculatedGel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculatedGel */ "./src/library/calculated/calculatedGel.js");
+/* harmony import */ var _calculatedImg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculatedImg */ "./src/library/calculated/calculatedImg.js");
+// We need to reuese this other function, calculatedGradient
+
+
+ // Returns the final "background-image", which is a combination of gradient and image
+
+const calculatedBgImage = attributes => {
+  // Get all of these variables
+  const {
+    bgImageEnabled,
+    bgGradientEnabled,
+    bgGelEnabled,
+    backgroundImage,
+    backgroundStackFirst
+  } = attributes; // Store each layer in an array
+
+  const bgLayers = []; // Capture output in a string
+
+  let bgLayersString = ""; // Push Base Color
+
+  if (bgGelEnabled) {
+    bgLayers.push((0,_calculatedGel__WEBPACK_IMPORTED_MODULE_1__["default"])(attributes));
+  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  // Gradient Stacks First!
+
+
+  if (backgroundStackFirst == "gradient") {
+    // Gradient
+    if (bgGradientEnabled) {
+      bgLayers.push((0,_calculatedGradient__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes));
+    } // Image
+
+
+    if (bgImageEnabled && backgroundImage) {
+      bgLayers.push((0,_calculatedImg__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes));
+    } // Image Stacks First!
+
+  } else {
+    // Image
+    if (bgImageEnabled && backgroundImage) {
+      bgLayers.push((0,_calculatedImg__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes));
+    } // Gradient
+
+
+    if (bgGradientEnabled) {
+      bgLayers.push((0,_calculatedGradient__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes));
+    }
+  } // Concatenate a style string
+
+
+  for (var i = 0; i < bgLayers.length; i++) {
+    bgLayersString += bgLayers[i]; // Adding commas, but not on the last
+
+    if (i < bgLayers.length - 1) {
+      bgLayersString += ", ";
+    }
+  } // When no styles are available, return 'none'
+
+
+  if (bgLayers.length == 0) {
+    // bgLayersString += "none";
+    bgLayersString += "";
+  }
+
+  return bgLayersString;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedBgImage);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedBgPos.js":
+/*!***************************************************!*\
+  !*** ./src/library/calculated/calculatedBgPos.js ***!
+  \***************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns the final "background-position"
+const calculatedBgPos = attributes => {
+  // Get all of these variables
+  const {
+    focalPoint,
+    backgroundImageAlignHori,
+    backgroundImageAlignVert,
+    backgroundImageAlignVertCustom,
+    backgroundImageAlignHoriCustom
+  } = attributes;
+  var combined = focalPoint.x * 100 + "% " + focalPoint.y * 100 + "%";
+  return combined;
   /*
-  wp.blocks.registerBlockStyle( 'xx/styled', {
-  	name: 'rounded',
-  	label: 'Rounded Corners',
-  } );
+  let hSelect, vSelect;
+  // Horizontal
+  if (backgroundImageAlignHori == "custom") {
+  	hSelect = backgroundImageAlignHoriCustom + "%";
+  } else {
+  	hSelect = backgroundImageAlignHori;
+  }
+  	// Vertical
+  if (backgroundImageAlignVert == "custom") {
+  	vSelect = backgroundImageAlignVertCustom + "%";
+  } else {
+  	vSelect = backgroundImageAlignVert;
+  }
+  //  ${backgroundImageAlignHori} ${backgroundImageAlignVert};
+  const composed = hSelect + " " + vSelect;
+  console.log(composed);
+  return composed;
   */
-});
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedBgPos);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedGel.js":
+/*!*************************************************!*\
+  !*** ./src/library/calculated/calculatedGel.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for gradient
+const calculatedGel = attributes => {
+  // Get all of these variables
+  const {
+    backgroundColor3
+  } = attributes; // Return a Linear Gradient
+
+  return "linear-gradient(" + backgroundColor3 + ", " + backgroundColor3 + ")";
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedGel);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedGradient.js":
+/*!******************************************************!*\
+  !*** ./src/library/calculated/calculatedGradient.js ***!
+  \******************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for gradient
+const calculatedGradient = attributes => {
+  // Get all of these variables
+  const {
+    backgroundColor1,
+    backgroundColor2,
+    backgroundColor1Start,
+    backgroundColor2Start,
+    gradientType,
+    gradientLinearAngle,
+    gradientAlignRadialHori,
+    gradientAlignRadialVert
+  } = attributes; // Return a Linear Gradient
+
+  if (gradientType == "linear") {
+    return "linear-gradient(" + gradientLinearAngle + "deg, " + backgroundColor1 + " " + backgroundColor1Start + "%, " + backgroundColor2 + " " + backgroundColor2Start + "%)";
+  } // Return a Radial Gradient
+
+
+  if (gradientType == "radial") {
+    var gradient = "radial-gradient(circle at " + gradientAlignRadialHori + "% " + gradientAlignRadialVert + "%, " + backgroundColor1 + " " + backgroundColor1Start + "%, " + backgroundColor2 + " " + backgroundColor2Start + "%)";
+    return gradient;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedGradient);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedImg.js":
+/*!*************************************************!*\
+  !*** ./src/library/calculated/calculatedImg.js ***!
+  \*************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for gradient
+const calculatedImg = attributes => {
+  // Get all of these variables
+  const {
+    backgroundImage
+  } = attributes; // Return a Linear Gradient
+
+  return "url(" + backgroundImage + ")";
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedImg);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedInlineVars.js":
+/*!********************************************************!*\
+  !*** ./src/library/calculated/calculatedInlineVars.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./calculatedBgImage */ "./src/library/calculated/calculatedBgImage.js");
+/* harmony import */ var _calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./calculatedBgColor */ "./src/library/calculated/calculatedBgColor.js");
+/* harmony import */ var _calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./calculatedBGIMGSize */ "./src/library/calculated/calculatedBGIMGSize.js");
+/* harmony import */ var _calculatedBgPos__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./calculatedBgPos */ "./src/library/calculated/calculatedBgPos.js");
+/* harmony import */ var _calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./calculatedBGIMGAtt */ "./src/library/calculated/calculatedBGIMGAtt.js");
+/* harmony import */ var _calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./calculatedBGIMGRepeat */ "./src/library/calculated/calculatedBGIMGRepeat.js");
+/* harmony import */ var _calculatedPadding__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./calculatedPadding */ "./src/library/calculated/calculatedPadding.js");
+// Custom Functions
+
+
+
+
+
+
+ // Returns the final "background-image", which is a combination of gradient and image
+
+const calculatedInlineVars = attributes => {
+  // Get all of these variables
+  const {
+    foregroundColor,
+    headlineColor,
+    linkColor,
+    dropcapColor,
+    blockquoteColor,
+    lineartColor,
+    styleMode,
+    selectionFGColor,
+    selectionBGColor,
+    backgroundColor,
+    backgroundColor3,
+    foregroundHeadlineFont,
+    foregroundCopyFont,
+    foregroundCaptionFont,
+    styleEnabled
+  } = attributes;
+  const bgImageStack = (0,_calculatedBgImage__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes);
+  const bgColorStack = (0,_calculatedBgColor__WEBPACK_IMPORTED_MODULE_1__["default"])(attributes);
+  const bgSizeSm = (0,_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes, 'sm');
+  const bgSizeMd = (0,_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes, 'md');
+  const bgSize = (0,_calculatedBGIMGSize__WEBPACK_IMPORTED_MODULE_2__["default"])(attributes, 'lg');
+  const bgPosition = (0,_calculatedBgPos__WEBPACK_IMPORTED_MODULE_3__["default"])(attributes);
+  const bgAttachment = (0,_calculatedBGIMGAtt__WEBPACK_IMPORTED_MODULE_4__["default"])(attributes);
+  const bgRepeat = (0,_calculatedBGIMGRepeat__WEBPACK_IMPORTED_MODULE_5__["default"])(attributes);
+  const spacingMobileStack = (0,_calculatedPadding__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes.spacingMobile);
+  const spacingTabletStack = (0,_calculatedPadding__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes.spacingTablet);
+  const spacingDesktopStack = (0,_calculatedPadding__WEBPACK_IMPORTED_MODULE_6__["default"])(attributes.spacingDesktop);
+
+  const replaceAll = function (string, search, replace) {
+    return string.split(search).join(replace);
+  }; // console.log("CURIOUS", bgSize);
+
+
+  var combinedCss = '';
+  var fgbgCss = ``;
+  console.log("bgImageStack is", bgImageStack); // Include backgroundImage
+
+  if (bgImageStack) {
+    fgbgCss += `
+			--backgroundImage: ${bgImageStack};
+			--backgroundSizeSm: ${bgSizeSm};
+			--backgroundSizeMd: ${bgSizeMd};
+			--backgroundSize: ${bgSize};
+			--backgroundPosition: ${bgPosition};
+			--backgroundAttachment: ${bgAttachment};
+			--backgroundRepeat: ${bgRepeat};
+			`;
+  } // Include backgroundColor
+
+
+  if (backgroundColor) {
+    fgbgCss += `--backgroundColor: ${backgroundColor};`;
+  } // Foreground Color
+
+
+  if (foregroundColor) {
+    fgbgCss += `--foregroundColor: ${foregroundColor};`;
+  } // Headline Color
+
+
+  if (headlineColor) {
+    fgbgCss += `--headlineColor: ${headlineColor};`;
+  } // Link Color
+
+
+  if (linkColor) {
+    fgbgCss += `--linkColor: ${linkColor};`;
+  } // Dropcap Color
+
+
+  if (dropcapColor) {
+    fgbgCss += `--dropcapColor: ${dropcapColor};`;
+  } // Block Quote Color
+
+
+  if (blockquoteColor) {
+    fgbgCss += `--blockquoteColor: ${blockquoteColor};`;
+  } // Lineart Color
+
+
+  if (lineartColor) {
+    fgbgCss += `--lineartColor: ${lineartColor};`;
+  } // selectionFGr Color
+
+
+  if (selectionFGColor) {
+    fgbgCss += `--selectionFGColor: ${selectionFGColor};`;
+  } // selectionBG Color
+
+
+  if (selectionBGColor) {
+    fgbgCss += `--selectionBGColor: ${selectionBGColor};`;
+  }
+  /*
+  fgbgCss +=
+  `
+  --linkColor: ${linkColor};
+  --dropcapColor: ${dropcapColor};
+  --blockquoteColor: ${blockquoteColor};
+  --lineartColor: ${lineartColor};
+  --selectionFGColor: ${selectionFGColor};
+  --selectionBGColor: ${selectionBGColor};
+  `;
+  */
+  //--backgroundColor: ${bgColorStack};
+
+  /*
+  var fontCss = `
+  	--foregroundHeadlineFont: var(--${foregroundHeadlineFont});
+  	--foregroundCopyFont: var(--${foregroundCopyFont});
+  	--foregroundCaptionFont: var(--${foregroundCaptionFont});
+  `;
+  */
+
+
+  var fontCss = ``;
+
+  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
+    fontCss += `--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`;
+  }
+
+  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
+    fontCss += `--foregroundCopyFont: var(--${foregroundCopyFont});`;
+  }
+
+  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
+    fontCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
+  }
+  /*
+  	--spacingMobile: ${spacingMobileStack};
+  */
+
+
+  var sizingCss = ``;
+
+  if (spacingMobileStack !== "undefined") {
+    sizingCss += `--spacingMobile: ${spacingMobileStack};`;
+  }
+
+  if (spacingTabletStack !== "undefined") {
+    sizingCss += `--spacingTablet: ${spacingTabletStack};`;
+  }
+
+  if (spacingDesktopStack !== "undefined") {
+    sizingCss += `--spacingDesktop: ${spacingDesktopStack};`;
+  } // Add CSS based on the mode
+
+
+  if (styleMode == 'custom') {
+    combinedCss += fgbgCss + fontCss + sizingCss;
+  }
+
+  if (styleMode == 'named') {
+    combinedCss += fontCss + sizingCss;
+  } // Remove Newlines, Tabs are spaces
+
+
+  var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
+
+  compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim(); // Return style when enabled
+
+  if (styleEnabled) {
+    return compressedCSS;
+  } // Otherwise Return False
+
+
+  return false;
+}; // This will be a string of CSS not a React-CSS-Object. This is different from other areas of the app which require
+// the use of the React-CSS-object format, such as Edit.js
+
+
+console.log("calculatedInlineVars ", calculatedInlineVars);
+/* harmony default export */ __webpack_exports__["default"] = (calculatedInlineVars);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedPadding.js":
+/*!*****************************************************!*\
+  !*** ./src/library/calculated/calculatedPadding.js ***!
+  \*****************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a computed value for gradient
+const calculatedPadding = spacingObject => {
+  // Return Shorthand if all values match!
+  if (spacingObject.top == spacingObject.right && spacingObject.top == spacingObject.left && spacingObject.top == spacingObject.bottom) {
+    return `${spacingObject.top}`;
+  } // Return 4 point set
+
+
+  return `${spacingObject.top} ${spacingObject.right} ${spacingObject.bottom} ${spacingObject.left}`;
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedPadding);
+
+/***/ }),
+
+/***/ "./src/library/calculated/calculatedRgbaString.js":
+/*!********************************************************!*\
+  !*** ./src/library/calculated/calculatedRgbaString.js ***!
+  \********************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// Returns a string which identifies the selected Block Style
+const calculatedRgbaString = function (value) {
+  return "rgba(" + value.rgb.r + "," + value.rgb.g + "," + value.rgb.b + "," + value.rgb.a + ")";
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (calculatedRgbaString);
 
 /***/ }),
 
@@ -3498,7 +3261,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/lib/js/calculatedInlineVars */ "./assets/lib/js/calculatedInlineVars.js");
+/* harmony import */ var _library_calculated_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./library/calculated/calculatedInlineVars */ "./src/library/calculated/calculatedInlineVars.js");
 
 // Node modules
 
@@ -3508,7 +3271,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function save(props) {
   // const props = useBlockProps.save();
-  const inlineVarCSS = (0,_assets_lib_js_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__["default"])(props.attributes);
+  const inlineVarCSS = (0,_library_calculated_calculatedInlineVars__WEBPACK_IMPORTED_MODULE_4__["default"])(props.attributes);
   console.log("INLINER", inlineVarCSS);
   console.log("save props!", props);
   const {
@@ -3655,8 +3418,8 @@ function PoststylePlugin(props) {
     "label": "Natural",
     "value": "natural"
   }]; // CurrentPostType
+  // const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
 
-  const currentPostType = useSelect(select => select('core/editor').getCurrentPostType());
   const PostsDropdownControl = compose( // withSelect allows to get posts for our SelectControl and also to get the post meta value
   withSelect(function (select, props) {
     return {
@@ -3748,11 +3511,13 @@ function PoststylePlugin(props) {
     }
   }); // Don't show the interface on the "style" interface
 
-  if (currentPostType === "style") {
-    return false;
+  /*
+  if(currentPostType === "style"){
+  	return false;
   } else {
-    console.log("Warning, the style picker was not show because you are editing a style	");
+  	console.log("Warning, the style picker was not show because you are editing a style	");
   }
+  */
 
   return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_1__.PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
@@ -4023,9 +3788,12 @@ const applyWithDispatch = withDispatch(dispatch => {
 
   };
 });
-(0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
-  render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
-});
+
+if (global_current_posttype !== 'style') {
+  (0,_wordpress_plugins__WEBPACK_IMPORTED_MODULE_0__.registerPlugin)("sidebar-poststyle-plugin", {
+    render: compose(applyWithSelect, applyWithDispatch)(PoststylePlugin)
+  });
+}
 
 /***/ }),
 
@@ -4096,10 +3864,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
-/***/ "./assets/components/styled-preview.scss":
-/*!***********************************************!*\
-  !*** ./assets/components/styled-preview.scss ***!
-  \***********************************************/
+/***/ "./src/components/StyledPreview/StyledPreview.scss":
+/*!*********************************************************!*\
+  !*** ./src/components/StyledPreview/StyledPreview.scss ***!
+  \*********************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4109,10 +3877,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./assets/components/styled-tile.scss":
-/*!********************************************!*\
-  !*** ./assets/components/styled-tile.scss ***!
-  \********************************************/
+/***/ "./src/components/StyledTile/StyledTile.scss":
+/*!***************************************************!*\
+  !*** ./src/components/StyledTile/StyledTile.scss ***!
+  \***************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

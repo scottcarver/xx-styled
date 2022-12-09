@@ -2,14 +2,14 @@
 
 // Node modules
 import classnames from "classnames";
-
-/*  Internal block libraries */
+//  WP Libraries
 const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
-import "./styled-preview.scss";
-import "./styled-tile.scss";
-import calculatedBgImage from "./../lib/js/calculatedBgImage";
-import calculatedGradient from "./../lib/js/calculatedGradient";
+// Project Files
+import "./StyledPreview.scss";
+import "../StyledTile/StyledTile.scss";
+import calculated from "../../library/calculated/calculated";
+
 
 /* Create a Block Controls wrapper Component */
 export default class StyledPreview extends Component {
@@ -39,7 +39,7 @@ export default class StyledPreview extends Component {
 			setAttributes
 		} = this.props;
 
-		const bgImageStack = calculatedBgImage(this.props.attributes);
+		const bgImageStack = calculated.calculatedBgImage(this.props.attributes);
 		var combinedCss = ` 
 			.fgtext{
 				color: ${foregroundColor};
@@ -64,7 +64,7 @@ export default class StyledPreview extends Component {
 				background-image: url(${backgroundImage});
 			}
 			.gradient{
-				background: ${calculatedGradient(this.props.attributes)};
+				background: ${calculated.calculatedGradient(this.props.attributes)};
 			}
 			.base{
 				background: ${backgroundColor};
