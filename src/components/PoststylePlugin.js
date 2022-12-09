@@ -67,7 +67,7 @@ function PoststylePlugin(props) {
 		// withSelect allows to get posts for our SelectControl and also to get the post meta value
 		withSelect( function( select, props ) {
 			return {
-				posts: select( 'core' ).getEntityRecords( 'postType', 'style', { per_page: -1 } ),
+				posts: select( 'core' ).getEntityRecords( 'postType', 'styled', { per_page: -1 } ),
 				// metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
 			}
 		} ) )( function( props ) {
@@ -415,8 +415,6 @@ const applyWithDispatch = withDispatch(dispatch => {
 		// new
 		updateMyPostMetaType(value) {
 
-			//  if(value === null){ jQuery("body").attr('data-theme','');}
-			//  alert("boop " + value);
 			// Set Type
 			editPost({ meta: { poststylemeta_type: value } });
 
@@ -451,11 +449,8 @@ const applyWithDispatch = withDispatch(dispatch => {
 					break;
 				default:
 
-				// code block
 			}
 
-			// alert("boop " + value);
-			// editPost({ meta: { poststylemeta_type: value } });
 		},
 		updateMyPostMetaHeadline(value) {
 			editPost({ meta: { poststylemeta_headline: value } });
@@ -469,7 +464,7 @@ const applyWithDispatch = withDispatch(dispatch => {
 	};
 });
 
-if(global_current_posttype !== 'style'){
+if(global_current_posttype !== 'styled'){
 	registerPlugin("sidebar-poststyle-plugin", {
 		render: compose(
 			applyWithSelect,

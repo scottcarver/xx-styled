@@ -46,7 +46,7 @@ const calculatedInlineVars = attributes => {
 	var combinedCss = '';
 
 	var fgbgCss = ``;
-		console.log("bgImageStack is", bgImageStack);
+		// console.log("bgImageStack is", bgImageStack);
 		// Include backgroundImage
 		if(bgImageStack){ 
 			fgbgCss += `
@@ -141,5 +141,5 @@ const calculatedInlineVars = attributes => {
 
 // This will be a string of CSS not a React-CSS-Object. This is different from other areas of the app which require
 // the use of the React-CSS-object format, such as Edit.js
-console.log("calculatedInlineVars ", calculatedInlineVars);
+// console.log("calculatedInlineVars ", calculatedInlineVars);
 export default calculatedInlineVars;

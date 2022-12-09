@@ -261,6 +261,7 @@ export default class StyleControls extends Component {
 							<label htmlFor="lineartSwatch">Palette</label>
 							<ColorPalette value={lineartColor} onChange={lineartColor => setAttributes({ lineartColor })} />
 						</div>
+						{/* 						
 						<div class="px-simplerow px-simplerow--simpleheadline">
 							<h2>Key Gradient</h2>
 						</div>
@@ -270,7 +271,7 @@ export default class StyleControls extends Component {
 								value={ babygradient }
 								onChange={babygradient => setAttributes({ babygradient })}
 							/>
-						</div>
+						</div> */}
 					</Fragment>
 				);
 			}
@@ -653,8 +654,11 @@ export default class StyleControls extends Component {
 			</Fragment>
 			)}
 
-			<AccordionInterface attributes={this.props.attributes} setAttributes={this.props.setAttributes} />					
+			{/* <AccordionInterface attributes={this.props.attributes} setAttributes={this.props.setAttributes} />					 */}
+			<AccordionInterface {...this.props} />
 
+			
+			
 			{(styleMode =='named' || styleMode =='custom') && (
 			<Fragment>
 				<PanelBody title={__("Dimensions", "pxblocks")} className="panel-dimensions" initialOpen={false}>

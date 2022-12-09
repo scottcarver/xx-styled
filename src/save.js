@@ -22,10 +22,10 @@ export default function save(props) {
 		}
 	} = props;
 
-	// Retrieve Inline CSS
+	// Retrieve Inline CSS using helper function
 	const inlineVarCSS =  calculated.calculatedInlineVars(props.attributes);
 
-	// Set classnames for fonts (to allow for fine-tuning)
+	// Set classnames (font-classes allow for fine-tuning)
 	const classes = classnames(
 		"xx-styled",
 		{[`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit' },
@@ -40,7 +40,7 @@ export default function save(props) {
 		'data-theme': styleMode == 'named' ? namedstyle : ''
 	}
 	
-	// Save BlockProps and InnerContent
+	// Save BlockProps and InnerBlocks content
 	return (
 		<div {...useBlockProps.save(blockProps)}>
 			<InnerBlocks.Content />

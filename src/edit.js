@@ -49,7 +49,10 @@ export default function edit(props) {
 				{styleMode=="custom" && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
 
 				{/* Sidebar Controls */}
-				<InspectorControls><StyleControls {...{ setAttributes, ...props }} /></InspectorControls>
+				<InspectorControls>
+				{/* <StyleControls {...{ setAttributes, ...props }} /> */}
+					<StyleControls {...props} />
+				</InspectorControls>
 
 				{/* Inner Blocks */}
 				<InnerBlocks />

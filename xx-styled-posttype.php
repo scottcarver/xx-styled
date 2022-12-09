@@ -1,6 +1,19 @@
 <?php
+
+
+// 1) Initilize 'styled' posttype upon WP init action hook
+add_action( 'init', 'initialize_styled_posttype' );
+
+// 2) Initilize Posttype Template upon WP init action hook
+add_action( 'init', 'register_styled_template' );
+
+// 3) Filter Language attributes (and body tag) with WP language_attributes filter hook
+add_filter('language_attributes', 'new_language_attributes');
+
+
 // Create Post Type
-function my_custom_post_styles() {
+function initialize_styled_posttype() {
+  // Prepare Labels
   $labels = array(
     'name'               => _x( 'Styled Areas', 'post type general name' ),
     'singular_name'      => _x( 'Style Area', 'post type singular name' ),
@@ -13,26 +26,27 @@ function my_custom_post_styles() {
     'search_items'       => __( 'Search Styles' ),
     'not_found'          => __( 'No Styles found' ),
     'not_found_in_trash' => __( 'No Styles found in the Trash' ), 
-    // 'parent_item_colon'  => ’,
     'menu_name'          => 'Styled Areas',
   );
+  // Prepare Arts
   $args = array(
     'labels'        => $labels,
     'description'   => 'Holds our Styles and Style specific data',
     'public'        => true,
     'menu_icon' => 'dashicons-art',
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor'), //, 'thumbnail', 'excerpt', 'comments', 'custom-fields'
-    'has_archive'   => true,
+    'supports'      => array( 'title', 'editor'),
+    'has_archive'   => false,
     'show_in_rest' => true
   );
-  register_post_type( 'style', $args ); 
+  // Register Posttype
+  register_post_type( 'styled', $args ); 
 }
-add_action( 'init', 'my_custom_post_styles' );
 
-// Create Style Posttype Template
-function register_style_template() {
-  $post_type_object = get_post_type_object( 'style' );
+
+// Extend the 'styled' posttype Template
+function register_styled_template() {
+  $post_type_object = get_post_type_object( 'styled' );
   $post_type_object->template = array(
       array( 'xx/styled', array('align'=>'full'), array(
         array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
@@ -48,20 +62,22 @@ function register_style_template() {
   );
   // $post_type_object->template_lock = 'all';
 }
-add_action( 'init', 'register_style_template' );
 
 
 
 
 // Add tags to <html> using the language_attributes hook
 function new_language_attributes($lang){
+
+  if(is_admin()){ return $lang; }
+
   // Allow the user to add some additional classes (by adding this constant)
   $customstyles = '';
   
   // Allow the theme or plugin to add html classes
   if(defined('CUSTOM_CLASSES_HTML')){ $customstyles .= CUSTOM_CLASSES_HTML; }
 
-  $bodystyles = 'xx-styled ' . $customstyles;
+  $bodystyles = 'wp-site-xx-styled xx-styled ' . $customstyles;
   
   if (function_exists('get_field')) {
       $namedstyle= get_field("poststylemeta_type");
@@ -69,7 +85,9 @@ function new_language_attributes($lang){
       $copyTypography  = get_field("poststylemeta_copy");
       $captionTypography = get_field("poststylemeta_captions");
 
-      
+      // $typographyOptions = [$headlineTypography, $copyTypography, $captionTypography];
+      // foreach($typographyOptions as $typestyle){ }
+
       $style = '';
       if($headlineTypography !== null && $headlineTypography !== '' && $headlineTypography !== 'inherit'){
         $style .= '--foregroundHeadlineFont: var(--'.$headlineTypography.');';
@@ -84,25 +102,20 @@ function new_language_attributes($lang){
         $bodystyles .= ' xx-styled--captionfont-'.$captionTypography;
       }
 
-      // $style = '';
+      if($namedstyle){
+        $namedstyle = ' data-theme="'.$namedstyle.'"';
+      }
+
+      if($style){
+        $style = ' style="'.$style.'"';
+      }
+
+
   } else {
       $namedstyle= "NONE";
   }
 
 
-  // if(is_admin()){$bodystyles="xx-styled";}
+  return $lang . ' class="'.$bodystyles.'"' . $namedstyle . $style;
+}
 
-  // if(is_single()) {
-  //     $ar = get_the_category();
-  //     foreach($ar as $c) {
-  //         if($c->slug=='in-italiano') {
-  //             return "lang=\"it\"";
-  //         }
-  //     }
-  // }
-  // return $lang;
-  return $lang . ' class="'.$bodystyles.'"' . ' data-theme="'.$namedstyle.'"' . ' style="'.$style.'"';
-}
-if(!is_admin()){
-  add_filter('language_attributes', 'new_language_attributes');
-}

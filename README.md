@@ -1,7 +1,7 @@
 # Styled Areas - Gutenberg Block
 This codebase contains a WP/Gutenberg plugin which provides the user with a new "Styled Area" block. A Styled Area is a container element which can be assigned foreground/background styles, and can accept [InnerBlocks](https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/nested-blocks-inner-blocks/). This is meant to replicate a common design pattern where bands of content span the full width of the site. 
 
-![Code Preview](assets/img/docs/styled-controlswithpreview.jpg)
+![Code Preview](src/library/img/styled-controlswithpreview.jpg)
 
 ## Installation
 

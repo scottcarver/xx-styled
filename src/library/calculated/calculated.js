@@ -1,8 +1,8 @@
 
 
 // Custom Calculated Functions
-import calculatedBgImage from "./calculatedBgImage";
 import calculatedBgColor from "./calculatedBgColor";
+import calculatedBgImage from "./calculatedBgImage";
 import calculatedBGIMGSize from "./calculatedBGIMGSize";
 import calculatedBgPos from "./calculatedBgPos";
 import calculatedBGIMGAtt from "./calculatedBGIMGAtt";
@@ -14,10 +14,10 @@ import calculatedGradient from "./calculatedGradient";
 import calculatedStyleObj from "./calculatedStyleObj";
 
 
-
+// Combine these utilities into one object
 const calculated = {
-    calculatedBgImage, 
     calculatedBgColor,
+    calculatedBgImage, 
     calculatedBGIMGSize,
     calculatedBgPos,
     calculatedBGIMGAtt,
@@ -29,5 +29,6 @@ const calculated = {
     calculatedStyleObj
 }
 
+// Export `calculated` utility
 export default calculated;
 
