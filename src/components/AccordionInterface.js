@@ -12,8 +12,9 @@ export function AccordionInterface({ attributes, setAttributes }){
         {'name':'interfaceBGColor', 'title':'UI Background Color'},
         {'name':'interfaceKeyColor', 'title':'UI Key Color'} 
     ];
-
-    if(attributes.styleMode=='named'){ return false; }
+    
+    // don't show the control when it is disabled, or a named styled
+    if(attributes.styleMode=='disabled' || attributes.styleMode=='named'){ return false; }
 
     return (
         <Fragment>

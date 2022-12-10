@@ -7,11 +7,14 @@ import classnames from "classnames";
 import BGTabs from "./BGTabs";
 import StyledPreview from "./StyledPreview/StyledPreview";
 import {AccordionInterface} from "./AccordionInterface";
+import {AccordionDimensions} from "./AccordionDimensions";
+import { AccordionTypography } from "./AccordionTypography";
 
 const { __ } = wp.i18n;
 import { Component, Fragment} from '@wordpress/element';
 import { ColorPalette} from '@wordpress/block-editor';
 import { __experimentalBoxControl as BoxControl, GradientPicker} from '@wordpress/components';
+
 // This uses the old syntax and maybe needs updated to @wordpress
 const {
 	PanelBody, // this is new in this demo
@@ -22,84 +25,6 @@ const {
 	FormToggle,
 	ComboboxControl
 } = wp.components;
-
-
-const options = [
-    {
-        value: 'small',
-        label: 'Small',
-    },
-    {
-        value: 'normal',
-        label: 'Normal',
-    },
-    {
-        value: 'large',
-        label: 'Large',
-    },
-    {
-        value: 'huge',
-        label: 'Huge',
-    },
-];
- 
-/*
-const fontOptions = [
-	{"label":"Inherit","value":"inherit"},
-	{"label":"Serif","value":"serif"},
-	{"label":"Sans-Serif","value":"sansserif"},
-	{"label":"Monospace","value":"monospace"},
-	{"label":"Cursive","value":"cursive"},
-	{"label":"Fantasy","value":"fantasy"},
-];
-*/
-
-const gradients=[
-    {
-      gradient: 'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
-      name: 'Vivid cyan blue to vivid purple',
-      slug: 'vivid-cyan-blue-to-vivid-purple'
-    },
-    {
-      gradient: 'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)',
-      name: 'Light green cyan to vivid green cyan',
-      slug: 'light-green-cyan-to-vivid-green-cyan'
-    },
-    {
-      gradient: 'linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)',
-      name: 'Luminous vivid amber to luminous vivid orange',
-      slug: 'luminous-vivid-amber-to-luminous-vivid-orange'
-    },
-    {
-      gradient: 'linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%)',
-      name: 'Luminous vivid orange to vivid red',
-      slug: 'luminous-vivid-orange-to-vivid-red'
-    },
-    {
-      gradient: 'linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%)',
-      name: 'Very light gray to cyan bluish gray',
-      slug: 'very-light-gray-to-cyan-bluish-gray'
-    },
-    {
-      gradient: 'linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%)',
-      name: 'Cool to warm spectrum',
-      slug: 'cool-to-warm-spectrum'
-    }
-];
-
-const fontOptions = global_named_fonts;
-
-const stylePresets = [
-	{"label":"None","value":"none"},
-	{"label":"News","value":"news"},
-	{"label":"Magazine","value":"magazine"},
-	{"label":"Technical","value":"technical"},
-	{"label":"Modern","value":"modern"},
-	{"label":"Natural","value":"natural"},
-];
-
-
-const { withState } = wp.compose;
 
 /**
  * Create a Block Controls wrapper Component
@@ -138,21 +63,6 @@ export default class StyleControls extends Component {
 			setAttributes,
 			clientID
 		} = this.props;
-
-		const onSelect = tabName => {
-			console.log("Selecting tab", tabName);
-		};
-
-		const selectTab = tabName => {
-			console.log("Selecting tab", tabName);
-		};
-
-		
-		const attributeLibrary = {
-			'black-bg' : { 'backgroundColor': '#000000', 'foregroundColor': '#FFFFFF' },
-			'red-bg' : { 'backgroundColor': '#FF0000', 'foregroundColor': '#0000FF' },
-			'white-bg' : { 'backgroundColor0': '#FFFFFF', 'foregroundColor': '#000000' }
-		}
 
 
 		// Toggles
@@ -373,6 +283,8 @@ export default class StyleControls extends Component {
 			}
 		};
 
+		const fontOptions = global_named_fonts;
+
 		return (
 			<Fragment>
 
@@ -481,7 +393,6 @@ export default class StyleControls extends Component {
 						<TabPanel
 							className="px-tabwrap px-tabwrap--centered px-tabwrap--margintop"
 							activeclassName="active-tab"
-							onSelect={onSelect}
 							tabs={[
 								{
 									name: "fgcolor",
@@ -598,162 +509,10 @@ export default class StyleControls extends Component {
 			{/* <AccordionInterface attributes={this.props.attributes} setAttributes={this.props.setAttributes} />					 */}
 			<AccordionInterface {...this.props} />
 
+			<AccordionDimensions {...this.props} />
+
+			<AccordionTypography {...this.props} />
 			
-			
-			{(styleMode =='named' || styleMode =='custom') && (
-			<Fragment>
-				<PanelBody title={__("Dimensions", "pxblocks")} className="panel-dimensions" initialOpen={false}>
-					  {/* <PanelRow>
-					  <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
-							  <label htmlFor="heightenabled-form-toggle">{__("Height Enabled", "pxblocks")}</label>
-							  <FormToggle
-								  id="heightenabled-form-toggle"
-								  label={__("Styles Enabled", "pxblocks")}
-								  checked={heightEnabled}
-								  onChange={toggleHeightEnabled}
-							  />
-						  </div>
-					  </PanelRow> */}
-					  <PanelRow>
-					  <div className="px-sidepanel px-sidepanel--grey">
-						  <div className="px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol">
-							  <BoxControl 
-								  label="Mobile Spacing"
-								  values={spacingMobile}
-								  sides={ [ 'top', 'bottom', 'left', 'right'  ] } 
-								  resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								  defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								  onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
-							  />
-						  </div>
-						  <div className="px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
-							  <BoxControl 
-								  label="Tablet Spacing (992+)"
-								  values={spacingTablet}
-								  sides={ [ 'top', 'bottom', 'left', 'right'  ] } 
-								  resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								  defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								  onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
-							  />
-						  </div>
-						  <div className="px-simplerow  px-simplerow--paddingcontrol">
-							  <BoxControl 
-								  label="Desktop Spacing (1200+)"
-								  values={spacingDesktop}
-								  sides={ [ 'top',  'bottom', 'left', 'right' ] } 
-								  resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								  defaultValues={ { top: '0', bottom: '0', left:'0', right:'0' }} 
-								  onChange={(newdata) => { setAttributes({ spacingDesktop: newdata }); }} 
-							  />
-						  </div>
-					  </div>
-					  </PanelRow>
-				  	</PanelBody> 
-					<PanelBody title={__("Typography", "pxblocks")} className="panel-typography" initialOpen={false}>
-					<PanelRow>
-						{/* Dropdown */}
-						{fontOptions.length > 0 && (
-							<div className="px-sidepanel">
-								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-									<ComboboxControl
-										label="Headline Font Family"
-										placeholder= 'Initial'
-										value={foregroundHeadlineFont}
-										allowReset={true}
-										options={fontOptions}
-										onChange={(newval) => setAttributes({ foregroundHeadlineFont: newval })}
-										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-											option.label.toLowerCase().startsWith(newval.toLowerCase())
-										))}
-									/>
-								</div>
-								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-									<ComboboxControl
-										label="Copy Font Family"
-										placeholder= 'Initial'
-										value={foregroundCopyFont}
-										allowReset={true}
-										options={fontOptions}
-										onChange={(newval) => setAttributes({ foregroundCopyFont: newval })}
-										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-											option.label.toLowerCase().startsWith(newval.toLowerCase())
-										))}
-									/>
-								</div>
-								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-									<ComboboxControl
-										label="Caption Font Family"
-										placeholder= 'Initial'
-										value={foregroundCaptionFont}
-										allowReset={true}
-										options={fontOptions}
-										onChange={(newval) => setAttributes({ foregroundCaptionFont: newval })}
-										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-											option.label.toLowerCase().startsWith(newval.toLowerCase())
-										))}
-									/>
-								</div>
-											{/*
-								<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol px-simplerow--hasborderbottom">
-									<ComboboxControl
-										label="Typographic Themes"
-										placeholder= 'Select a Preset'
-										allowReset={true}
-										options={stylePresets}
-										onChange={function(newval){
-											if(newval === 'none'){
-												setAttributes({ foregroundHeadlineFont: "inherit" });
-												setAttributes({ foregroundCopyFont: "inherit" });
-												setAttributes({ foregroundCaptionFont: "inherit" });
-												setAttributes({ foregroundHeadlineFont: null });
-												setAttributes({ foregroundCopyFont: null });
-												setAttributes({ foregroundCaptionFont: null });
-											}
-											if(newval === 'news'){
-												setAttributes({ foregroundHeadlineFont: "serif" });
-												setAttributes({ foregroundCopyFont: "sansserif" });
-												setAttributes({ foregroundCaptionFont: "sansserif" });
-											}
-											if(newval === 'magazine'){
-												setAttributes({ foregroundHeadlineFont: "sansserif" });
-												setAttributes({ foregroundCopyFont: "serif" });
-												setAttributes({ foregroundCaptionFont: "sansserif" });
-											}
-											if(newval === 'technical'){
-												setAttributes({ foregroundHeadlineFont: "monospace" });
-												setAttributes({ foregroundCopyFont: "monospace" });
-												setAttributes({ foregroundCaptionFont: "sansserif" });
-											}
-											if(newval === 'modern'){
-												setAttributes({ foregroundHeadlineFont: "monospace" });
-												setAttributes({ foregroundCopyFont: "sansserif" });
-												setAttributes({ foregroundCaptionFont: "sansserif" });
-											}
-											if(newval === 'natural'){
-												setAttributes({ foregroundHeadlineFont: "cursive" });
-												setAttributes({ foregroundCopyFont: "sansserif" });
-												setAttributes({ foregroundCaptionFont: "cursive" });
-											}
-										
-										}}
-										onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-											option.label.toLowerCase().startsWith(newval.toLowerCase())
-										))}
-									/>
-								</div>
-								 */}
-							</div>
-							
-						)}
-						{/* Fallback note */}
-						{fontOptions.length == 0 && (
-							<p> No Font Families defined in theme.json, <a href="https://fullsiteediting.com/lessons/theme-json-typography-options/" target="_blank">read more</a>.</p>
-						)}
-						
-					</PanelRow>
-				</PanelBody>
-				</Fragment>
-			)}
 			</Fragment>
 		);
 	}

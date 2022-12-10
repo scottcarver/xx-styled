@@ -1,31 +1,22 @@
-/*
-poststylemeta_type : postStyleType
-poststylemeta_headline : postStyleHeadline
-poststylemeta_copy : postStyleCopy
-poststylemeta_captions : postStyleCaptions
-*/
+/* Note! This was based on a tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
+/* Many ideas were taken from here lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
 
-/* Tutorial on dynamic post select https://rudrastyh.com/gutenberg/get-posts-in-dynamic-select-control.html */
-/* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
+// WordPress Modules
+const { __ } = wp.i18n;
 const { createElement, Fragment } = wp.element;
 import { registerPlugin } from '@wordpress/plugins';
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
-// const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
-const { Button, ButtonGroup, PanelRow, PanelBody, ToggleControl, SelectControl, ComboboxControl } = wp.components;
-const { withSelect, withDispatch, useSelect } = wp.data;
-const { compose } = wp.compose;
-const { __ } = wp.i18n;
 import domReady from "@wordpress/dom-ready";
-// import "./lib/scss/style.scss";
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+const { PanelRow, PanelBody, ComboboxControl } = wp.components;
+const { withSelect, withDispatch } = wp.data;
+const { compose } = wp.compose;
+
+// Custom Modules
 import "../editor.scss";
 
-
-
-
+// PostStyle Sidebar Plugin
 function PoststylePlugin(props) {
 	const {
-		myPostMetaKey,
-		updateMyPostMetaKey,
 		updateMyPostMetaType,
 		updateMyPostMetaHeadline,
 		updateMyPostMetaCopy,
@@ -34,368 +25,178 @@ function PoststylePlugin(props) {
 		postStyleHeadline,
 		postStyleCopy,
 		postStyleCaptions,
-		setAttributes
 	} = props;
-
-	/*
-	const fontOptions = [
-		{"label":"Inherit","value":"inherit"},
-		{"label":"Serif","value":"serif"},
-		{"label":"Sans-Serif","value":"sansserif"},
-		{"label":"Monospace","value":"monospace"},
-		{"label":"Cursive","value":"cursive"},
-		{"label":"Fantasy","value":"fantasy"},
-	];
-	*/
 
 	const fontOptions = global_named_fonts;
 
-	const stylePresets = [
-		{"label":"None","value":"none"},
-		{"label":"News","value":"news"},
-		{"label":"Magazine","value":"magazine"},
-		{"label":"Technical","value":"technical"},
-		{"label":"Modern","value":"modern"},
-		{"label":"Natural","value":"natural"},
-	];
-
-	// CurrentPostType
-	// const currentPostType = useSelect( select => select( 'core/editor' ).getCurrentPostType() );
-	
-
 	const PostsDropdownControl = compose(
-		// withSelect allows to get posts for our SelectControl and also to get the post meta value
-		withSelect( function( select, props ) {
-			return {
-				posts: select( 'core' ).getEntityRecords( 'postType', 'styled', { per_page: -1 } ),
-				// metaValue: select( 'core/editor' ).getEditedPostAttribute( 'meta' )[ props.metaKey ],
-			}
-		} ) )( function( props ) {
-			
-			// options for SelectControl
+		// withSelect allows to collect posts for our SelectControl
+		withSelect(function(select, props){
+			// It is provided with data from the styled posttype 
+			return { posts: select( 'core' ).getEntityRecords( 'postType', 'styled', { per_page: -1 } ), }
+		// Results are passed into a new function 
+		}))(function(props){
+			// Build an array of name/values needed for SelectControl
 			var options = [];
-			
-			// if posts found
+			// If there are results
 			if( props.posts ) {
-				options.push( { value: '', label: 'Default' } );
-				props.posts.forEach((post) => { // simple foreach loop
-					// console.log(post);
+				// Add a default label, which resets the field
+				options.push({ value: '', label: 'Default' });
+				// Add one value/label options per entry
+				props.posts.forEach((post) => {
 					const dynamicLabel = (post.title.rendered !== '') ? post.title.rendered : 'Style ID ' + post.id;
-					console.log("slug, label:", post.generated_slug, dynamicLabel);
 					options.push({value:post.generated_slug, label:dynamicLabel});
 				});
+			// Show a fallback message while loading
 			} else {
 				options.push( { value: postStyleType, label: 'Loading...' } )
 			}
 	
-			return createElement( ComboboxControl,
-				{
+			// Create an Element the dynamic ComboControl
+			return createElement( ComboboxControl, {
 					label:"Choose a Styled Area",
 					placeholder: 'Default',
 					value:postStyleType,
 					allowReset:true,
 					options:options,
-					onChange: function( content ) {
-						updateMyPostMetaType(content);
-						// alert('onchange');
-					},
+					onChange: function( content ) { updateMyPostMetaType(content); },
 					onInputChange: function( inputValue ) {
 						setFilteredOptions(options.filter(option =>
 							option.label.toLowerCase().startsWith(inputValue.toLowerCase())
 						))
-						// alert('oninput');
 					},
-				
 				}
 			);
-			
-	
 		}
-	
 	);
 	
-
-	let dynamicOptions = function(){
-		return [
-			{
-				value: "short",
-				label: "Short"
-			}
-		];
-
-	}
-		
-
-
-
+	// Add Classes/Styles to the DOM when things load or change
 	domReady(function() {
-		/*
-		if(typeof(postStyleType) === undefined){
-			var postStyleType = '';
-		}
-		*/
-			/*
-			jQuery("body").removeClass (function (index, className) {
-				return (className.match (/(^|\s)xx-styled\S+/g) || []).join(' ');
-			}); */
-			// alert('wo');
-			// Moved off of
-			// alert('someone like u ' + postStyleType);
-			var stylestring = '--foregroundHeadlineFont: var(--'+postStyleHeadline+'); --foregroundCopyFont: var(--'+postStyleCopy+'); --foregroundCaptionFont: var(--'+postStyleCaptions+');'
-			jQuery("body").addClass('xx-styled--admin').attr('data-theme',postStyleType).attr('style',stylestring);
+		// var editorClass = ".edit-post-visual-editor";
+		// Build font style string based on availability
+		var stylestring = '';
+		var classstring = 'xx-styled--admin';
+		var allstyles = '';
+		var styles = global_named_fonts;
+		var types = ['xx-styled--headlinefont', 'xx-styled--foregroundfont', 'xx-styled--captionfont']
 		
+		// Build a string of classes that include all font/type combinations
+		for (let s = 0; s < styles.length; s++) {
+			for (let t = 0; t < types.length; t++) {
+				allstyles +=  (types[t] + "-" + styles[s].value + " ");
+			 }
+		 }
+		 
+		 // Build strings for style and class tags
+		if(postStyleHeadline){ 
+			stylestring += '--foregroundHeadlineFont: var(--'+postStyleHeadline+');';
+			classstring += ' xx-styled--headlinefont-'+postStyleHeadline; 
+		}
+		if(postStyleCopy){ 
+			stylestring += '--foregroundCopyFont: var(--'+postStyleCopy+');'; 
+			classstring += ' xx-styled--foregroundfont-'+postStyleCopy; 
+		}
+		if(postStyleCaptions){ 
+			stylestring += '--foregroundCaptionFont: var(--'+postStyleCaptions+');'; 
+			classstring += ' xx-styled--captionfont-'+postStyleCaptions; 
+		}
 
-		var fontClass = "wp-headlinefont--" + postStyleHeadline;
-		var editorClass = ".edit-post-visual-editor";
+		// Add/Remove all the Properties!
+		jQuery("body").removeClass(allstyles).addClass(classstring).attr('data-theme',postStyleType).attr('style',stylestring);
+		
+		/*
+		// if(postStyleType === null){ jQuery("body").attr('data-theme','');}
+		
 		if (myPostMetaKey) {
-			// alert('someone like u ' + postStyleType);
 			jQuery("body").addClass("wp-admin--gutenbergdebug");
 			jQuery(editorClass).attr("data-headline", postStyleHeadline);
 			jQuery(editorClass).attr("data-copy", postStyleCopy);
 			jQuery(editorClass).attr("data-captions", postStyleCaptions);
+			console.log("yeppers");
 		} else {
-			// alert('nobody like u ' + postStyleType);
+			jQuery(editorClass).attr("data-headline", postStyleHeadline);
+			jQuery(editorClass).attr("data-copy", postStyleCopy);
+			jQuery(editorClass).attr("data-captions", postStyleCaptions);
+			console.log("nopers");
 			jQuery("body").removeClass("wp-admin--gutenbergdebug");
-			if(postStyleType === null){ jQuery("body").attr('data-theme','');}
 		}
+		*/
+
 	});
 
-	// Don't show the interface on the "style" interface
-	/*
-	if(currentPostType === "style"){
-		return false;
-	} else {
-		console.log("Warning, the style picker was not show because you are editing a style	");
-	}
-	*/
 
 	return (
 		<Fragment>
+			{/* Menu Item */}
 			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon="art">
 				Entry Style
 			</PluginSidebarMoreMenuItem>
+			{/* Sidebar Component */}
 			<PluginSidebar name="post-style-sidebar-plugin" icon="art" title="Entry Style">
-				{/*
-				<div className="px-simplerow px-simplerow--first">
-					<ToggleControl label="Override Default Styles?" checked={myPostMetaKey} onChange={updateMyPostMetaKey} />
-				</div>
-				 {myPostMetaKey ? ( */}
-					<Fragment>
+				<Fragment>
 
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol">
-							<PostsDropdownControl /> 
-						</div>
+					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol">
+						<PostsDropdownControl /> 
+					</div>
 
-						
-						<PanelBody title={__("Typography", "pxblocks")} initialOpen={false}>
-							<PanelRow>
-								{/* Dropdown */}
-								{fontOptions.length > 0 && (
-									<div className="px-sidepanel">
-										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-											<ComboboxControl
-												label="Headline Font Family"
-												placeholder= 'Initial'
-												value={postStyleHeadline}
-												allowReset={true}
-												options={fontOptions}
-												onChange={(newval) => updateMyPostMetaHeadline(newval)}
-											/>
-										</div>
-										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-											<ComboboxControl
-												label="Copy Font Familyx"
-												placeholder= 'Initial'
-												value={postStyleCopy}
-												allowReset={true}
-												options={fontOptions}
-												onChange={(newval) => updateMyPostMetaCopy(newval)}
-											/>
-										</div>
-										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-											<ComboboxControl
-												label="Caption Font Family"
-												placeholder= 'Initial'
-												value={postStyleCaptions}
-												allowReset={true}
-												options={fontOptions}
-												onChange={(newval) => updateMyPostMetaCaptions(newval)}
-											/>
-										</div>
-										<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-											<ComboboxControl
-												label="Typographic Themes"
-												placeholder= 'Select a Preset'
-												allowReset={true}
-												options={stylePresets}
-												onChange={function(newval){
-													if(newval === 'none'){
-														updateMyPostMetaHeadline("inherit");
-														updateMyPostMetaCopy("inherit");
-														updateMyPostMetaCaptions("inherit");
-													}
-													if(newval === 'news'){
-														updateMyPostMetaHeadline("serif");
-														updateMyPostMetaCopy("sansserif");
-														updateMyPostMetaCaptions("sansserif");
-													}
-													if(newval === 'magazine'){
-														updateMyPostMetaHeadline("sansserif");
-														updateMyPostMetaCopy("serif");
-														updateMyPostMetaCaptions("sansserif");
-													}
-													if(newval === 'technical'){
-														updateMyPostMetaHeadline("monospace");
-														updateMyPostMetaCopy("monospace");
-														updateMyPostMetaCaptions("sansserif");
-													}
-													if(newval === 'modern'){
-														updateMyPostMetaHeadline("sansserif");
-														updateMyPostMetaCopy("sansserif");
-														updateMyPostMetaCaptions("sansserif");
-													}
-													if(newval === 'natural'){
-														updateMyPostMetaHeadline("sansserif");
-														updateMyPostMetaCopy("sansserif");
-														updateMyPostMetaCaptions("fantasy");
-													}
-												}}
-											/>
-										</div>
-										
+					<PanelBody title={__("Typography", "pxblocks")} initialOpen={false}>
+						<PanelRow>
+							{/* Show Dropdowns, if there are available options */}
+							{fontOptions.length > 0 && (
+								<div className="px-sidepanel">
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Headline Font Family"
+											placeholder= 'Initial'
+											value={postStyleHeadline}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaHeadline(newval)}
+										/>
 									</div>
-								)}
-								{/* Fallback note */}
-								{fontOptions.length == 0 && (
-									<p> No Font Families defined in theme.json, <a href="https://fullsiteediting.com/lessons/theme-json-typography-options/" target="_blank">read more</a>.</p>
-								)}
-							</PanelRow>
-						</PanelBody>
-{/* 				
-						<div className="px-simplerow px-simplerow--flatbottom px-simplerow--flatheadline">
-							<h2>Headline Font</h2>
-						</div>
-						<div className="px-buttongroup px-buttongroup--small">
-							<ButtonGroup aria-label={__("Headline Font")}>
-								<Button
-									isDefault
-									isPrimary={postStyleHeadline === "serif"}
-									onClick={() => {
-										updateMyPostMetaHeadline("serif");
-									}}
-								>
-									Serif
-								</Button>
-								<Button
-									isDefault
-									isPrimary={postStyleHeadline === "sansserif"}
-									onClick={() => {
-										updateMyPostMetaHeadline("sansserif");
-									}}
-								>
-									Sans-Serif
-								</Button>
-								<Button
-									isDefault
-									isPrimary={postStyleHeadline === "monospace"}
-									onClick={() => {
-										updateMyPostMetaHeadline("monospace");
-									}}
-								>
-									Monospace
-								</Button>
-							</ButtonGroup>
-						</div>
-						<div className="px-simplerow px-simplerow--flatbottom">
-							<h2>Copy Font</h2>
-						</div>
-						<div className="px-buttongroup px-buttongroup--small">
-							<ButtonGroup aria-label={__("Copy Font")}>
-								<Button
-									isDefault
-									isPrimary={postStyleCopy === "serif"}
-									onClick={() => {
-										updateMyPostMetaCopy("serif");
-									}}
-								>
-									Serif
-								</Button>
-								<Button
-									isDefault
-									isPrimary={postStyleCopy === "sansserif"}
-									onClick={() => {
-										updateMyPostMetaCopy("sansserif");
-									}}
-								>
-									Sans-Serif
-								</Button>
-								<Button
-									isDefault
-									isPrimary={postStyleCopy === "monospace"}
-									onClick={() => {
-										updateMyPostMetaCopy("monospace");
-									}}
-								>
-									Monospace
-								</Button>
-							</ButtonGroup>
-						</div>
-						<div className="px-simplerow px-simplerow--flatbottom">
-							<h2>Caption Font</h2>
-						</div>
-						<div className="px-buttongroup px-buttongroup--small">
-							<ButtonGroup aria-label={__("Caption Font")}>
-								<Button
-									isDefault
-									isPrimary={postStyleCaptions === "serif"}
-									onClick={() => {
-										updateMyPostMetaCaptions("serif");
-									}}
-								>
-									Serif
-								</Button>
-								<Button
-									isDefault
-									isPrimary={postStyleCaptions === "sansserif"}
-									onClick={() => {
-										updateMyPostMetaCaptions("sansserif");
-									}}
-								>
-									Sans-Serif
-								</Button>
-								<Button
-									isDefault
-									isPrimary={postStyleCaptions === "monospace"}
-									onClick={() => {
-										updateMyPostMetaCaptions("monospace");
-									}}
-								>
-									Monospace
-								</Button>
-							</ButtonGroup>
-						</div> */}
-
-					</Fragment>
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Copy Font Family"
+											placeholder= 'Initial'
+											value={postStyleCopy}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaCopy(newval)}
+										/>
+									</div>
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Caption Font Family"
+											placeholder= 'Initial'
+											value={postStyleCaptions}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaCaptions(newval)}
+										/>
+									</div>
+								</div>
+							)}
+							{/* Fallback note */}
+							{fontOptions.length == 0 && (
+								<p> No Font Families defined in theme.json, <a href="https://fullsiteediting.com/lessons/theme-json-typography-options/" target="_blank">read more</a>.</p>
+							)}
+						</PanelRow>
+					</PanelBody>
+				</Fragment>
 			</PluginSidebar>
 		</Fragment>
 	);
 }
 
+// Apply With Select
 const applyWithSelect = withSelect(select => {
 	const { getEditedPostAttribute } = select("core/editor");
-
-	const { my_post_meta_key: myPostMetaKey } = getEditedPostAttribute("meta");
-	const { my_post_meta_string: myPostMetaString } = getEditedPostAttribute("meta");
-	// new
 	const { poststylemeta_type: postStyleType } = getEditedPostAttribute("meta");
 	const { poststylemeta_headline: postStyleHeadline } = getEditedPostAttribute("meta");
 	const { poststylemeta_copy: postStyleCopy } = getEditedPostAttribute("meta");
 	const { poststylemeta_captions: postStyleCaptions } = getEditedPostAttribute("meta");
 
-
 	return {
-		myPostMetaKey,
-		myPostMetaString,
 		postStyleType,
 		postStyleHeadline,
 		postStyleCopy,
@@ -403,54 +204,12 @@ const applyWithSelect = withSelect(select => {
 	};
 });
 
+// Apply With Dispatch
 const applyWithDispatch = withDispatch(dispatch => {
 	const { editPost } = dispatch("core/editor");
 	return {
-		updateMyPostMetaKey(value) {
-			editPost({ meta: { my_post_meta_key: value } });
-		},
-		updateMyPostMetaString(value) {
-			editPost({ meta: { my_post_meta_string: value } });
-		},
-		// new
 		updateMyPostMetaType(value) {
-
-			// Set Type
 			editPost({ meta: { poststylemeta_type: value } });
-
-			switch (value) {
-				case "default":
-					// Set Style
-					editPost({ meta: { poststylemeta_headline: "sansserif" } });
-					editPost({ meta: { poststylemeta_copy: "serif" } });
-					editPost({ meta: { poststylemeta_captions: "monospace" } });
-					// code block
-					break;
-				case "modern":
-					// Set Style
-					editPost({ meta: { poststylemeta_headline: "serif" } });
-					editPost({ meta: { poststylemeta_copy: "serif" } });
-					editPost({ meta: { poststylemeta_captions: "serif" } });
-					// code block
-					break;
-				case "classical":
-					// Set Style
-					editPost({ meta: { poststylemeta_headline: "sansserif" } });
-					editPost({ meta: { poststylemeta_copy: "sansserif" } });
-					editPost({ meta: { poststylemeta_captions: "sansserif" } });
-					// code block
-					break;
-				case "technical":
-					// Set Style
-					editPost({ meta: { poststylemeta_headline: "monospace" } });
-					editPost({ meta: { poststylemeta_copy: "monospace" } });
-					editPost({ meta: { poststylemeta_captions: "monospace" } });
-					// code block
-					break;
-				default:
-
-			}
-
 		},
 		updateMyPostMetaHeadline(value) {
 			editPost({ meta: { poststylemeta_headline: value } });
@@ -464,6 +223,7 @@ const applyWithDispatch = withDispatch(dispatch => {
 	};
 });
 
+// Run the Sidebar plugin (but not for the 'styled' posttype)
 if(global_current_posttype !== 'styled'){
 	registerPlugin("sidebar-poststyle-plugin", {
 		render: compose(

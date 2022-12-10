@@ -24,6 +24,7 @@ register_meta('post', 'poststylemeta_captions', array(
     'type' => 'string',
 ));
 
+/*
 function myprefix_register_meta() {
     register_meta('post', 'post_preferredstyle', array(
         'show_in_rest' => true,
@@ -32,4 +33,6 @@ function myprefix_register_meta() {
     ));
 }
 
+
 add_action('init', 'myprefix_register_meta');
+*/

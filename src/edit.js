@@ -8,7 +8,7 @@ import {Fragment } from '@wordpress/element';
 
 // Custom modules
 import './editor.scss';
-import StyleControls from "./components/styleControls";
+import StyleControls from "./components/StyleControls";
 import AdminStyle from "./components/AdminStyle";
 import calculated from "../src/library/calculated/calculated";
 
