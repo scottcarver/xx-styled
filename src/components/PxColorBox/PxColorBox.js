@@ -23,7 +23,7 @@ export default function PxColorBox(props){
     }
 
     return (
-        <div className="px-colorbox">
+        <div className="px-colorbox px-colorbox--nudgecontentleft">
             <h2>{title}</h2>
             <input type="checkbox" id={`${name}Swatch`}  name={`${name}Swatch`}></input>
             <label htmlFor={`${name}Swatch`}>Palette</label>

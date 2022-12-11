@@ -47,6 +47,14 @@
 		input[type=checkbox] { right: 5px; }
 	}
 
+	// Inside of sidebars there is less room
+	&.px-colorbox--nudgecontentleft{
+		.components-circular-option-picker{
+			padding-left:10px;
+		}
+	}
+	
+
 	// Header label
 	h2 {
 		margin: 5px 0;
@@ -117,11 +125,13 @@
 		// padding-bottom: 10px;
 	}
 	
+	/*
 	.components-circular-option-picker{
 		// margin-top:15px;
 		// padding-bottom:10px;
 		padding-left: 10px;
 	}
+	*/
 
 	.components-circular-option-picker__custom-clear-wrapper{
 		// margin-top:5px;

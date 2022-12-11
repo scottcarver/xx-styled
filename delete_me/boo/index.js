@@ -5,7 +5,7 @@ import classnames from "classnames";
 import "./lib/scss/style.scss";
 import "./lib/scss/editor.scss";
 import attributes from "./attributes";
-import StyleControls from "./styleControls";
+import StyleControls from "./StyleControls";
 // import RowHeader from "./rowHeader";
 import OnPageStyle from "./OnPageStyle";
 

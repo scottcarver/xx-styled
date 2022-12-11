@@ -1,13 +1,18 @@
 # Styled Areas - Gutenberg Block
-This codebase contains a WP/Gutenberg plugin which provides the user with a new "Styled Area" block. A Styled Area is a container element which can be assigned foreground/background styles, and can accept [InnerBlocks](https://developer.wordpress.org/block-editor/how-to-guides/block-tutorial/nested-blocks-inner-blocks/). This is meant to replicate a common design pattern where bands of content span the full width of the site. 
+*Styled Areas* is a WP block/plugin which provides the user with a new "Styled Area" block &mdash; a visual editing interface for creating color schemes inside your website. Practically speaking, a Styled Area is a container element which uses CSS Variables to style the foreground/background content inside it.
 
 ![Code Preview](src/library/img/styled-controlswithpreview.jpg)
+
+<!-- ## Benefits
+- the CSS vars can be used inline, onpage, or in an external stylesheet
+- CSS vars are less intrusive than regular CSS rules, they do nothing by default (the `.xx-styled` adds rules)
+- create one-off styles in post, or create  -->
 
 ## Installation
 
 1. Download this repo and add the "xx-styled" directory to the "plugins" directory of your WordPress installation `/wp-content/plugins/`
 2. Activate the plugin through the 'Plugins' screen in WordPress
-3. New controls/editors are now available
+3. New controls/editors are now available! A new "Styled Areas" posttype in the admin sidebar, a block called "Styled Area" available in the block editor, and a sidebar plugin for managing post styles.
 
 
 ## Description
@@ -62,3 +67,4 @@ is an alternative approach to using the core styling tools in WordPress.
 ## Todo
 - in all cases, check the "enabled" values before returning anything in css/js. [issue] regarding linear-gradient showing when Gel is enabled but no color value is set.
 - there is a know issue with nesting multiple deep where the wide/full does not display. A solution is possible but in the short term just add the classes to get the same effect
+- padding function has an issue where if you only input 1 value (and leave others blank), the *others* are rendered as "undefined" - likely fix is inside of calclatedPadding.js

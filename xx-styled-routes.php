@@ -1,23 +1,30 @@
 <?php
-   /*
-   Plugin Name: WP Enrouter
-   Plugin URI: https://github.com/scottcarver/wp-enrouter
-   description: Wraps CustomRoute Class in a plugin for reuse, with examples.
-   Version: 0.0.1
-   Author: Sam, Scott
-   */
+// Run addnewrouts function
+xxstyled_addnewroutes();
+// Add CSS to the Frontend of the site
+add_action('wp_enqueue_scripts', 'xxstyled_creategeneratedcss');
+// Add CSS to the Frontend of the site
+add_action( 'admin_enqueue_scripts', 'xxstyled_creategeneratedcss' );
+
+
+
+// Enqueue compiled.css stylesheet to both the frontend and admin ara
+function xxstyled_creategeneratedcss() {
+	wp_enqueue_style( 'styled-areas', get_site_url().'/styled/compiled.css', false );
+} 
+
+
+// Create new URLs which provide CSS and JSON to the theme
+function xxstyled_addnewroutes(){
 
   // Check that the class exists before trying to use it
   if (!class_exists('CustomRoutes')) { require('routes/CustomRoutes.php');}
-  
+
   // Instantiate Route Object
-  $theme_routes = new CustomRoutes();
+  $plugin_routes = new CustomRoutes();
 
-
-  // STYLESHEETS
-  //styled/unique-name.css or styled/compiled.css
-  // Create Route with two Regex capture groups
-  $theme_routes->addRoute(
+  // 1) Create CSS file dynamically (styled/unique-slug.css or styled/compiled.css)
+  $plugin_routes->addRoute(
       "^styled/([^/]*)/?.css",
       'routeapi_csscallback',
       plugin_dir_path(__FILE__) . 'routes/route_template_css.php',
@@ -25,15 +32,10 @@
   );
 
   // Make URL Data Available to Template
-  function routeapi_csscallback($param1){
-    set_query_var('namedstyle', $param1);
-  }
-  
+  function routeapi_csscallback($param1){ set_query_var('namedstyle', $param1); }
 
-  
-  // JSON DATA
-  //styled/unique-name.json or styled/compiled.json
-  $theme_routes->addRoute(
+  // 2) Create JSON data dynamically (styled/unique-slug.json or styled/compiled.json)
+  $plugin_routes->addRoute(
       "^styled/([^/]*)/?.json",
       'routeapi_jsoncallback',
       plugin_dir_path(__FILE__) . 'routes/route_template_json.php',
@@ -41,24 +43,9 @@
   );
 
   // Make URL Data Available to Template
-  function routeapi_jsoncallback($param1){
-    set_query_var('namedstyle', $param1);
-  }
+  function routeapi_jsoncallback($param1){ set_query_var('namedstyle', $param1); }
 
   // Flush Routes
-  $theme_routes->forceFlush();
-  
+  $plugin_routes->forceFlush();
 
- 
-
-// Add backend styles for Gutenberg.
-function custom_generated_css() {
-	wp_enqueue_style( 'styled-areas', get_site_url().'/styled/compiled.css', false );
-} 
-
-add_action('wp_enqueue_scripts', 'custom_generated_css');
-add_action( 'admin_enqueue_scripts', 'custom_generated_css' );
-
-
-
-?>
+}

@@ -1657,7 +1657,7 @@ function PxColorBox(props) {
   };
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "px-colorbox"
+    className: "px-colorbox px-colorbox--nudgecontentleft"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "checkbox",
     id: `${name}Swatch`,

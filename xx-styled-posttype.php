@@ -1,12 +1,9 @@
 <?php
 
-
 // 1) Initilize 'styled' posttype upon WP init action hook
 add_action( 'init', 'initialize_styled_posttype' );
-
 // 2) Initilize Posttype Template upon WP init action hook
 add_action( 'init', 'register_styled_template' );
-
 // 3) Filter Language attributes (and body tag) with WP language_attributes filter hook
 add_filter('language_attributes', 'new_language_attributes');
 
@@ -60,9 +57,8 @@ function register_styled_template() {
       )
     )
   );
-  // $post_type_object->template_lock = 'all';
+  $post_type_object->template_lock = 'all';
 }
-
 
 
 
@@ -72,6 +68,7 @@ function register_styled_template() {
 
 function new_language_attributes($lang){
 
+  // Do not attempt to alter the wp-admin area
   if(is_admin()){ return $lang; }
 
   // Allow the user to add some additional classes (by adding this constant)
@@ -87,9 +84,8 @@ function new_language_attributes($lang){
       $headlineTypography = get_field("poststylemeta_headline");
       $copyTypography  = get_field("poststylemeta_copy");
       $captionTypography = get_field("poststylemeta_captions");
-
-
       $style = '';
+
       if($headlineTypography !== null && $headlineTypography !== '' && $headlineTypography !== 'inherit'){
         $style .= '--foregroundHeadlineFont: var(--'.$headlineTypography.');';
         $bodystyles .= ' xx-styled--headlinefont-'.$headlineTypography;
@@ -111,11 +107,9 @@ function new_language_attributes($lang){
         $style = ' style="'.$style.'"';
       }
 
-
   } else {
       $namedstyle= "NONE";
   }
-
 
   return $lang . ' class="'.$bodystyles.'"' . $namedstyle . $style;
 }
