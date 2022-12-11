@@ -1,4 +1,4 @@
-<?php // Add CSS Header
+<?php // Add JSON Header
 header("Content-type: application/json"); 
 $stylename = get_query_var('namedstyle');
 $iscompiled = $stylename  === 'compiled';

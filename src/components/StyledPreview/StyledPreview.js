@@ -34,7 +34,8 @@ export default class StyledPreview extends Component {
 				backgroundStackFirst,
 				foregroundHeadlineFont,
 				foregroundCopyFont,
-				foregroundCaptionFont
+				foregroundCaptionFont,
+				styleMode
 			},
 			setAttributes
 		} = this.props;
@@ -74,6 +75,9 @@ export default class StyledPreview extends Component {
 		// Remove extraneous spaces
 		compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
 		
+		// don't show the control when it is disabled, or a named styled
+		if(styleMode !== 'custom'){ return false; }
+
         return (
             <Fragment>
 				<div className="px-sidepanel">
