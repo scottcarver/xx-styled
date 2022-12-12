@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"description": "Generates a contained set of foreground and background styles",
 	"author": "Scott Carver",
-	"license": "Protected",
+	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
 	"scripts": {
 		"build": "wp-scripts build",

@@ -4,7 +4,7 @@
 	"name": "xx/styled",
 	"version": "0.1.0",
 	"title": "Styled Area",
-	"category": "common",
+	"category": "design",
 	"icon": "art",
 	"description": "A complete portable thematic set of FG/BG styles.",
 	"supports": {
@@ -17,12 +17,10 @@
 	"attributes" : {
 		"align": {
 			"type": "string",
-			"default": "",
 			"comment" : "needed for fullwidth control"
 		},
 		"blockID": {
 			"type": "string",
-			"default": "",
 			"comment" : "used for unique naming"
 		},
 		"namedstyle": {
@@ -50,32 +48,25 @@
 			"default": false
 		},
 		"foregroundColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"headlineColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"linkColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"dropcapColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"blockquoteColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"lineartColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"keyGradient": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"foregroundHeadlineFont": {
 			"type": "string",
@@ -90,12 +81,10 @@
 			"default": "inherit"
 		},
 		"selectionFGColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"selectionBGColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"backgroundColorCount": {
 			"type": "string",
@@ -107,22 +96,18 @@
 		},
 		"backgroundColor": {
 			"type": "string",
-			"default": "",
 			"comment":"used as the base color in the generated style"
 		},
 		"backgroundGel": {
 			"type": "string",
-			"default": "",
 			"comment":"used as the gel color"
 		},
 		"backgroundGrad1": {
 			"type": "string",
-			"default": "",
 			"comment":"used as gradient color 1"
 		},
 		"backgroundGrad2": {
 			"type": "string",
-			"default": "",
 			"comment":"used as gradient color 2"
 		},
 		"backgroundGrad1Start": {
@@ -201,16 +186,13 @@
 			"default": ""
 		},
 		"interfaceFGColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"interfaceBGColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		},
 		"interfaceKeyColor": {
-			"type": "string",
-			"default": ""
+			"type": "string"
 		}
 	},
 	"textdomain": "xx-styled",

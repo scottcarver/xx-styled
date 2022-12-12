@@ -1,0 +1,103 @@
+
+/* xx-styled is used in the frontend and backend, it is isolated here to prevent duplication */
+@mixin xxstyled-innards{
+  box-sizing: border-box;
+  position:relative;
+	margin:0px auto;
+	// Foreground, Background, Padding
+	font-family:var(--foregroundCopyFont);
+	color: var(--foregroundColor);
+	background-image: var(--backgroundImage);
+	background-color: var(--backgroundColor);
+	background-position: var(--backgroundPosition);
+	background-attachment: var(--backgroundAttachment);
+	background-repeat: var(--backgroundRepeat);
+	background-size: var(--backgroundSizeSm);
+	max-width:var(--contentWidth);
+  padding:.01px;
+	padding: var(--spacingMobile);
+
+   // Medium Screens
+	@media(min-width: 992px){ 
+		background-size: var(--backgroundSizeMd);
+		padding: var(--spacingTablet); 
+	}
+
+  // Large Screens 
+	@media(min-width:1200px){ 
+		background-size: var(--backgroundSize);
+		padding: var(--spacingDesktop); 
+	}
+
+  // Box Sizing
+  *{  box-sizing: border-box; }
+
+  // Modifier: Align Full
+	&.alignfull{ max-width:none; }
+
+  // Modifier: Align Wide
+	&.alignwide{ max-width:var(--wideWidth); }
+
+	// Selection
+	*::selection {
+		color: var(--selectionFGColor);
+		background-color: var(--selectionBGColor);
+	}
+
+	// Heading
+	h1, h2, h3, h4, h5, h6{
+		color: var(--headlineColor);
+		font-family:var(--foregroundHeadlineFont);
+	}
+
+	// Dropcap
+	p.has-drop-cap:not(:focus)::first-letter{
+		color: var(--dropcapColor);
+	}
+
+	// Link
+	a{
+		color: var(--linkColor);
+	}
+
+	blockquote{
+		color: var(--blockquoteColor);
+    border-color:var(--blockquoteColor);
+		// border-left:solid 2px var(--blockquoteColor);
+		// padding-left:20px;
+		
+    /*
+		p{
+			font-size:2em;
+			&:before{content:'"';}
+			&:after{content:'"';}
+		}
+		cite{
+			// border-bottom:2px solid currentColor;
+			padding-bottom:20px;
+		}
+    */
+	};
+
+	// Caption	
+	figure{
+		figcaption{
+			font-family:var(--foregroundCaptionFont);
+		}
+	}
+
+	/*
+	svg{
+		path{
+			fill:red;
+		}
+	}
+	*/
+
+	// Lineart
+	hr.wp-block-separator{
+    background-color:var(--lineartColor);
+		border-color:var(--lineartColor);
+	}
+}
+

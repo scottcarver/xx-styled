@@ -1,34 +1,26 @@
-/**
- * The following styles get applied inside the editor only.
- *
- * Replace them with your own styles or remove the file completely.
- */
-
+// Editor Styles
+ @import "library/common/_px-variables.scss"; 
  @import "library/common/_common.scss";
-
- // @import "../assets/lib/scss/styled-preview.scss";
- @import "style.scss";
+ @import "library/scss/_xx-styled-mixin.scss"; 
 
 
-// When editing Styled Areas posttypes, hide the mode which allows disable/reuse
-// In this context only Original/Inline styles are relevant
+// Add xx-styled specifically for the admin
+.xx-styled--admin{
+	// Make the editor wrapper fullwidth
+	.editor-styles-wrapper{
+		max-width: none;
+		width: 100%;
+	}
+	// Add xx-styles to the editor's content area
+	.wp-block-post-content{
+		@include xxstyled-innards;
+		max-width:none;
+	}
+}
+
+// When editing 'styled' posttypes
 body.post-type-styled{
-	#styledarea-toggle{
-		display:none;
-	}
-	.panel-dimensions, .panel-typography{
-		// display:none;
-	}
-
-} 
-
-.edit-post-visual-editor__post-title-wrapper{
-	background:white;
-	padding:20px;
-	margin:0;
-	h1.wp-block-post-title{
-		color:black !important;
-		font-family:sans-serif;
-	}
+	// Hide the toggle which allows disable/named/custom
+	#styledarea-toggle{ display:none; }
 }
 
