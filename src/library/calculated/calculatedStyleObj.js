@@ -16,9 +16,9 @@ const calculatedStyleObj = attributes => {
 		selectionBGColor, 
 		lineartColor, 
 		keyGradient,
-		foregroundHeadlineFont, 
-		foregroundCopyFont, 
-		foregroundCaptionFont, 
+		fgHeadlineFont, 
+		fgCopyFont, 
+		fgCaptionFont, 
 		interfaceFGColor,
 		interfaceBGColor,
 		interfaceKeyColor
@@ -81,14 +81,14 @@ const calculatedStyleObj = attributes => {
 	const typographyObj = {}
 	
 	// Selectively add Font Objects to respect "inherit" option
-	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
-		typographyObj['--foregroundHeadlineFont'] = 'var(--'+foregroundHeadlineFont+')';
+	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
+		typographyObj['--fgHeadlineFont'] = 'var(--'+fgHeadlineFont+')';
 	}
-	if(foregroundCopyFont !== null && foregroundCopyFont !== 'inherit'){
-		typographyObj['--foregroundCopyFont'] = 'var(--'+foregroundCopyFont+')';
+	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){
+		typographyObj['--fgCopyFont'] = 'var(--'+fgCopyFont+')';
 	}
-	if(foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit'){
-		typographyObj['--foregroundCaptionFont'] = 'var(--'+foregroundCaptionFont+')';
+	if(fgCaptionFont !== null && fgCaptionFont !== 'inherit'){
+		typographyObj['--fgCaptionFont'] = 'var(--'+fgCaptionFont+')';
 	}
 
     // Build Up Sizing Support

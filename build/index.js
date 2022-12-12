@@ -34,7 +34,7 @@ function AccordionBackground(props) {
       bgGradientEnabled,
       bgImageEnabled,
       bgGelEnabled,
-      backgroundStackFirst,
+      bgStackFirst,
       styleMode
     },
     setAttributes
@@ -64,16 +64,16 @@ function AccordionBackground(props) {
     });
   };
 
-  const toggleBgStack = backgroundStackFirst => function () {
-    if (backgroundStackFirst == "image") {
+  const toggleBgStack = bgStackFirst => function () {
+    if (bgStackFirst == "image") {
       setAttributes({
-        backgroundStackFirst: "gradient"
+        bgStackFirst: "gradient"
       });
     }
 
-    if (backgroundStackFirst == "gradient") {
+    if (bgStackFirst == "gradient") {
       setAttributes({
-        backgroundStackFirst: "image"
+        bgStackFirst: "image"
       });
     }
   }; // Don't show when disabled
@@ -98,7 +98,7 @@ function AccordionBackground(props) {
     label: __("Gel", "pxblocks"),
     checked: bgGelEnabled,
     onChange: toggleGelEnabled
-  })), backgroundStackFirst === "gradient" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+  })), bgStackFirst === "gradient" ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
     className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
     htmlFor: "gradient-styleenabled-form-toggle"
@@ -150,8 +150,8 @@ function AccordionBackground(props) {
   }, __("Re-Order Gradient & Image", "pxblocks")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.FormToggle, {
     id: "bgimage-stackfirst-form-toggle",
     label: __("Image over Gradient?", "pxblocks"),
-    checked: backgroundStackFirst == "image",
-    onChange: toggleBgStack(backgroundStackFirst)
+    checked: bgStackFirst == "image",
+    onChange: toggleBgStack(bgStackFirst)
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_BGTabs__WEBPACK_IMPORTED_MODULE_3__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
   }, props))))));
@@ -545,7 +545,7 @@ const {
 function AccordionSavedStyles(props) {
   const {
     attributes: {
-      namedstyle,
+      namedStyle,
       styleMode
     },
     setAttributes
@@ -566,25 +566,25 @@ function AccordionSavedStyles(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ComboboxControl, {
     label: "Select a Style",
     placeholder: "Default",
-    value: namedstyle,
+    value: namedStyle,
     allowReset: true,
     options: global_named_styles,
     onChange: newval => setAttributes({
-      namedstyle: newval
+      namedStyle: newval
     }),
     onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "px-simplerow px-simplerow--hasstyletiles"
   }, global_named_styles.map(option => // className={"style-tile " + "style-tile--active"}
-  // className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`} 
+  // className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`} 
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`,
+    className: `styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`,
     key: option.value
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("button", {
     className: "xx-styled",
     "data-theme": option.value,
     onClick: () => setAttributes({
-      namedstyle: option.value
+      namedStyle: option.value
     }),
     style: {
       padding: "0px 20px 0px 10px"
@@ -646,11 +646,11 @@ function AccordionTypography(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ComboboxControl, {
     label: "Headline Font Family",
     placeholder: "Initial",
-    value: attributes.foregroundHeadlineFont,
+    value: attributes.fgHeadlineFont,
     allowReset: true,
     options: fontOptions,
     onChange: newval => setAttributes({
-      foregroundHeadlineFont: newval
+      fgHeadlineFont: newval
     }),
     onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -658,11 +658,11 @@ function AccordionTypography(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ComboboxControl, {
     label: "Copy Font Family",
     placeholder: "Initial",
-    value: attributes.foregroundCopyFont,
+    value: attributes.fgCopyFont,
     allowReset: true,
     options: fontOptions,
     onChange: newval => setAttributes({
-      foregroundCopyFont: newval
+      fgCopyFont: newval
     }),
     onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -670,11 +670,11 @@ function AccordionTypography(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ComboboxControl, {
     label: "Caption Font Family",
     placeholder: "Initial",
-    value: attributes.foregroundCaptionFont,
+    value: attributes.fgCaptionFont,
     allowReset: true,
     options: fontOptions,
     onChange: newval => setAttributes({
-      foregroundCaptionFont: newval
+      fgCaptionFont: newval
     }),
     onInputChange: newval => setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(newval.toLowerCase())))
   }))), fontOptions.length == 0 && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " No Font Families defined in theme.json, ", (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
@@ -818,7 +818,7 @@ class BGImgControl extends Component {
     const {
       positionVert,
       attributes: {
-        backgroundImageSize,
+        bgImageSizeDefault,
         bgImageSize,
         bgImageSizeSm,
         bgImageSizeMd,
@@ -851,34 +851,34 @@ class BGImgControl extends Component {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
       "aria-label": __("Column Layout")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageSize === "cover",
+      isPrimary: bgImageSizeDefault === "cover",
       onClick: () => {
         setAttributes({
-          backgroundImageSize: "cover"
+          bgImageSizeDefault: "cover"
         });
       }
     }, "Cover"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageSize === "contain",
+      isPrimary: bgImageSizeDefault === "contain",
       onClick: () => {
         setAttributes({
-          backgroundImageSize: "contain"
+          bgImageSizeDefault: "contain"
         });
       }
     }, "Contain"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageSize === "auto",
+      isPrimary: bgImageSizeDefault === "auto",
       onClick: () => {
         setAttributes({
-          backgroundImageSize: "auto"
+          bgImageSizeDefault: "auto"
         });
       }
     }, "Auto"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageSize === "custom",
+      isPrimary: bgImageSizeDefault === "custom",
       onClick: () => {
         setAttributes({
-          backgroundImageSize: "custom"
+          bgImageSizeDefault: "custom"
         });
       }
-    }, "Custom"))), backgroundImageSize === "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    }, "Custom"))), bgImageSizeDefault === "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "px-triptych"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
       label: "Small",
@@ -1019,13 +1019,13 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
     const {
       attributes: {
         bgGelEnabled,
-        backgroundColorCount,
+        bgColorCount,
         backgroundColor,
-        backgroundGrad1,
-        backgroundGrad2,
+        bgGrad1,
+        bgGrad2,
         backgroundGel,
-        backgroundGrad1Start,
-        backgroundGrad2Start,
+        bgGrad1Start,
+        bgGrad2Start,
         backgroundImage,
         bgGradientAttachment,
         gradientType,
@@ -1055,9 +1055,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
     };
 
     const bgcolor1classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()("px-colorbox", "px-colorbox--marginabove", {
-      "px-colorbox--paddingbelow": backgroundColorCount == "gradient"
+      "px-colorbox--paddingbelow": bgColorCount == "gradient"
     }, {
-      "px-colorbox--linebelow": backgroundColorCount == "gradient"
+      "px-colorbox--linebelow": bgColorCount == "gradient"
     });
 
     const getBackgroundTab = name => {
@@ -1211,9 +1211,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
-          color: backgroundGrad1,
+          color: bgGrad1,
           onChangeComplete: value => setAttributes({
-            backgroundGrad1: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
+            bgGrad1: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox px-colorbox--nopicker"
@@ -1224,16 +1224,16 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bg1Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundGrad1,
-          onChange: backgroundGrad1 => setAttributes({
-            backgroundGrad1
+          value: bgGrad1,
+          onChange: bgGrad1 => setAttributes({
+            bgGrad1
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
-          color: backgroundGrad2,
+          color: bgGrad2,
           onChangeComplete: value => setAttributes({
-            backgroundGrad2: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
+            bgGrad2: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox px-colorbox--nopicker"
@@ -1244,9 +1244,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bg2Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundGrad2,
-          onChange: backgroundGrad2 => setAttributes({
-            backgroundGrad2
+          value: bgGrad2,
+          onChange: bgGrad2 => setAttributes({
+            bgGrad2
           })
         })));
       } // Gradient Tab
@@ -1259,10 +1259,10 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("Color 1"),
-          value: backgroundGrad1Start,
-          onChange: backgroundGrad1Start => {
+          value: bgGrad1Start,
+          onChange: bgGrad1Start => {
             setAttributes({
-              backgroundGrad1Start
+              bgGrad1Start
             });
           },
           min: -50,
@@ -1271,10 +1271,10 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           className: "px-columnrow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("Color 2"),
-          value: backgroundGrad2Start,
-          onChange: backgroundGrad2Start => {
+          value: bgGrad2Start,
+          onChange: bgGrad2Start => {
             setAttributes({
-              backgroundGrad2Start
+              bgGrad2Start
             });
           },
           min: -50,
@@ -1363,14 +1363,14 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // Returns the final "background-color"
-// The tabset changes based on the backgroundStackFirst property
+// The tabset changes based on the bgStackFirst property
 const CalculatedTabset = props => {
   const {
     bgColorEnabled,
     bgImageEnabled,
     bgGradientEnabled,
     bgGelEnabled,
-    backgroundStackFirst
+    bgStackFirst
   } = props.attributes;
   const tabOrder = [];
 
@@ -1380,11 +1380,11 @@ const CalculatedTabset = props => {
       title: "Gel",
       className: "tab-bggel"
     });
-  } // console.log("stack order " + backgroundStackFirst);
+  } // console.log("stack order " + bgStackFirst);
   // Stack Order 1
 
 
-  if (backgroundStackFirst == "gradient") {
+  if (bgStackFirst == "gradient") {
     if (bgGradientEnabled) {
       tabOrder.push({
         name: "bggradienttab",
@@ -1567,9 +1567,10 @@ function PoststylePlugin(props) {
       }); // Add one value/label options per entry
 
       props.posts.forEach(post => {
+        console.log("a post! ", post);
         const dynamicLabel = post.title.rendered !== '' ? post.title.rendered : 'Style ID ' + post.id;
         options.push({
-          value: post.generated_slug,
+          value: post.slug,
           label: dynamicLabel
         });
       }); // Show a fallback message while loading
@@ -1591,7 +1592,9 @@ function PoststylePlugin(props) {
         updateMyPostMetaType(content);
       },
       onInputChange: function (inputValue) {
-        setFilteredOptions(options.filter(option => option.label.toLowerCase().startsWith(inputValue.toLowerCase())));
+        setFilteredOptions(options.filter(option => {
+          option.slug;
+        }));
       }
     });
   }); // Add Classes/Styles to the DOM when things load or change
@@ -1609,24 +1612,26 @@ function PoststylePlugin(props) {
       for (let t = 0; t < types.length; t++) {
         allstyles += types[t] + "-" + styles[s].value + " ";
       }
-    } // Build strings for style and class tags
+    }
 
+    console.log("items include, ", postStyleHeadline, postStyleCopy, postStyleCaptions); // Build strings for style and class tags
 
     if (postStyleHeadline) {
-      stylestring += '--foregroundHeadlineFont: var(--' + postStyleHeadline + ');';
+      stylestring += '--fgHeadlineFont: var(--' + postStyleHeadline + ');';
       classstring += ' xx-styled--headlinefont-' + postStyleHeadline;
     }
 
     if (postStyleCopy) {
-      stylestring += '--foregroundCopyFont: var(--' + postStyleCopy + ');';
+      stylestring += '--fgCopyFont: var(--' + postStyleCopy + ');';
       classstring += ' xx-styled--foregroundfont-' + postStyleCopy;
     }
 
     if (postStyleCaptions) {
-      stylestring += '--foregroundCaptionFont: var(--' + postStyleCaptions + ');';
+      stylestring += '--fgCaptionFont: var(--' + postStyleCaptions + ');';
       classstring += ' xx-styled--captionfont-' + postStyleCaptions;
-    } // Add/Remove all the Properties!
+    }
 
+    console.log("stylestring, classstring: ", stylestring, classstring); // Add/Remove all the Properties!
 
     jQuery("body").removeClass(allstyles).addClass(classstring).attr('data-theme', postStyleType).attr('style', stylestring);
     /*
@@ -1868,9 +1873,9 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
         backgroundColor,
         backgroundGel,
         backgroundImage,
-        backgroundStackFirst,
-        foregroundHeadlineFont,
-        foregroundCopyFont,
+        bgStackFirst,
+        fgHeadlineFont,
+        fgCopyFont,
         styleMode
       }
     } = this.props;
@@ -1878,11 +1883,11 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
     var combinedCss = ` 
 			.fgtext{
 				color: ${foregroundColor};
-				font-family: ${foregroundCopyFont}
+				font-family: ${fgCopyFont}
 			}
 			.fgtext h1{
 				color: ${headlineColor};
-				font-family: ${foregroundHeadlineFont}
+				font-family: ${fgHeadlineFont}
 			}
 			.fgtext p{
 				color: ${foregroundColor};
@@ -1922,7 +1927,7 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "px-simplerow px-simplerow--padbottom"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      className: `styled-preview ${backgroundStackFirst == "gradient" ? "styled-preview--gradientfirst" : ""}`,
+      className: `styled-preview ${bgStackFirst == "gradient" ? "styled-preview--gradientfirst" : ""}`,
       "data-viewtype": "stack"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "cube"
@@ -2056,20 +2061,33 @@ function edit(props) {
   const {
     attributes: {
       styleMode,
-      namedstyle
+      namedStyle,
+      fgHeadlineFont,
+      fgCopyFont,
+      fgCaptionFont,
+      blockID
     },
     className,
     setAttributes
   } = props; // Retrieve a CSS Object
 
   const styleObj = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedStyleObj(props.attributes); // Retrieve/Set Classes
+  // const classes = classnames( className, "xx-styled");
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()(className, "xx-styled"); // Create a BlockProps Object
+  console.log("the cycle ", fgHeadlineFont, fgCopyFont, fgCaptionFont);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()("xx-styled", "xx-styled--block", {
+    [`xx-styled--headlinefont-${fgHeadlineFont}`]: fgHeadlineFont !== 'inherit' && fgHeadlineFont
+  }, {
+    [`xx-styled--copyfont-${fgCopyFont}`]: fgCopyFont !== 'inherit' && fgCopyFont
+  }, {
+    [`xx-styled--captionfont-${fgCaptionFont}`]: fgCaptionFont !== 'inherit' && fgCaptionFont
+  }); // Create a BlockProps Object
 
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps)({
     className: classes,
+    id: blockID,
     style: styleMode == 'custom' || styleMode == 'named' ? styleObj : undefined,
-    'data-theme': styleMode == 'named' ? namedstyle : ''
+    'data-theme': styleMode == 'named' ? namedStyle : ''
   });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdminStyle__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     setAttributes
@@ -2148,6 +2166,7 @@ const {
     const {
       blockID
     } = attributes;
+    console.log("my id is ", blockID);
   }
 
 });
@@ -2221,7 +2240,7 @@ const calculatedBGIMGAtt = attributes => {
     backgroundImage,
     bgGradientEnabled,
     bgGradientAttachment,
-    backgroundStackFirst
+    bgStackFirst
   } = attributes; // Store each layer in an array
 
   const bgLayers = []; // Capture output in a string
@@ -2230,11 +2249,11 @@ const calculatedBGIMGAtt = attributes => {
 
   if (bgGelEnabled) {
     bgLayers.push("scroll");
-  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  } // Note: The user can swap layer order of Gradient and Image using the bgStackFirst variable
   // Gradient Stacks First
 
 
-  if (backgroundStackFirst == "gradient") {
+  if (bgStackFirst == "gradient") {
     // Gradient
     if (bgGradientEnabled) {
       bgLayers.push(bgGradientAttachment);
@@ -2294,7 +2313,7 @@ const calculatedBGIMGRepeat = attributes => {
     backgroundImage,
     bgImageRepeat,
     bgGradientEnabled,
-    backgroundStackFirst
+    bgStackFirst
   } = attributes; // Store each layer in an array
 
   const bgLayers = []; // Capture output in a string
@@ -2303,11 +2322,11 @@ const calculatedBGIMGRepeat = attributes => {
 
   if (bgGelEnabled) {
     bgLayers.push("no-repeat");
-  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  } // Note: The user can swap layer order of Gradient and Image using the bgStackFirst variable
   // Gradient Stacks First
 
 
-  if (backgroundStackFirst == "gradient") {
+  if (bgStackFirst == "gradient") {
     // Gradient
     if (bgGradientEnabled) {
       bgLayers.push("no-repeat");
@@ -2364,10 +2383,10 @@ const calculatedBGIMGSize = (attributes, key) => {
   // console.log("key is", key);
   const {
     bgGelEnabled,
-    backgroundStackFirst,
+    bgStackFirst,
     bgImageEnabled,
     backgroundImage,
-    backgroundImageSize,
+    bgImageSizeDefault,
     bgImageSizeSm,
     bgImageSizeMd,
     bgImageSize,
@@ -2391,22 +2410,22 @@ const calculatedBGIMGSize = (attributes, key) => {
   if (bgGelEnabled) {
     bgLayers.push("cover");
   } // console.log('bgImageSize', activeData);
-  // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  // Note: The user can swap layer order of Gradient and Image using the bgStackFirst variable
   // Gradient Stacks First
 
 
-  if (backgroundStackFirst == "gradient") {
+  if (bgStackFirst == "gradient") {
     if (bgGradientEnabled) {
       bgLayers.push("cover");
     }
 
     if (bgImageEnabled && backgroundImage) {
-      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
+      bgImageSizeDefault == "custom" ? bgLayers.push(activeData) : bgLayers.push(bgImageSizeDefault);
     } // Image stacks first
 
   } else {
     if (bgImageEnabled && backgroundImage) {
-      backgroundImageSize == "custom" ? bgLayers.push(activeData) : bgLayers.push(backgroundImageSize);
+      bgImageSizeDefault == "custom" ? bgLayers.push(activeData) : bgLayers.push(bgImageSizeDefault);
     }
 
     if (bgGradientEnabled) {
@@ -2491,7 +2510,7 @@ const calculatedBgImage = attributes => {
     bgGradientEnabled,
     bgGelEnabled,
     backgroundImage,
-    backgroundStackFirst
+    bgStackFirst
   } = attributes; // Store each layer in an array
 
   const bgLayers = []; // Capture output in a string
@@ -2500,11 +2519,11 @@ const calculatedBgImage = attributes => {
 
   if (bgGelEnabled) {
     bgLayers.push((0,_calculatedGel__WEBPACK_IMPORTED_MODULE_1__["default"])(attributes));
-  } // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+  } // Note: The user can swap layer order of Gradient and Image using the bgStackFirst variable
   // Gradient Stacks First!
 
 
-  if (backgroundStackFirst == "gradient") {
+  if (bgStackFirst == "gradient") {
     // Gradient
     if (bgGradientEnabled) {
       bgLayers.push((0,_calculatedGradient__WEBPACK_IMPORTED_MODULE_0__["default"])(attributes));
@@ -2605,10 +2624,10 @@ __webpack_require__.r(__webpack_exports__);
 const calculatedGradient = attributes => {
   // Get all of these variables
   const {
-    backgroundGrad1,
-    backgroundGrad2,
-    backgroundGrad1Start,
-    backgroundGrad2Start,
+    bgGrad1,
+    bgGrad2,
+    bgGrad1Start,
+    bgGrad2Start,
     gradientType,
     gradientLinearAngle,
     gradientAlignRadialHori,
@@ -2616,12 +2635,12 @@ const calculatedGradient = attributes => {
   } = attributes; // Return a Linear Gradient
 
   if (gradientType == "linear") {
-    return "linear-gradient(" + gradientLinearAngle + "deg, " + backgroundGrad1 + " " + backgroundGrad1Start + "%, " + backgroundGrad2 + " " + backgroundGrad2Start + "%)";
+    return "linear-gradient(" + gradientLinearAngle + "deg, " + bgGrad1 + " " + bgGrad1Start + "%, " + bgGrad2 + " " + bgGrad2Start + "%)";
   } // Return a Radial Gradient
 
 
   if (gradientType == "radial") {
-    var gradient = "radial-gradient(circle at " + gradientAlignRadialHori + "% " + gradientAlignRadialVert + "%, " + backgroundGrad1 + " " + backgroundGrad1Start + "%, " + backgroundGrad2 + " " + backgroundGrad2Start + "%)";
+    var gradient = "radial-gradient(circle at " + gradientAlignRadialHori + "% " + gradientAlignRadialVert + "%, " + bgGrad1 + " " + bgGrad1Start + "%, " + bgGrad2 + " " + bgGrad2Start + "%)";
     return gradient;
   }
 };
@@ -2690,9 +2709,9 @@ const calculatedInlineVars = attributes => {
     selectionFGColor,
     selectionBGColor,
     backgroundColor,
-    foregroundHeadlineFont,
-    foregroundCopyFont,
-    foregroundCaptionFont,
+    fgHeadlineFont,
+    fgCopyFont,
+    fgCaptionFont,
     interfaceFGColor,
     interfaceBGColor,
     interfaceKeyColor
@@ -2785,31 +2804,31 @@ const calculatedInlineVars = attributes => {
   } // Typography
 
 
-  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
-    interfaceCss += `--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`;
+  if (fgHeadlineFont !== null && fgHeadlineFont !== 'inherit') {
+    interfaceCss += `--fgHeadlineFont: var(--${fgHeadlineFont});`;
   }
 
-  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
-    interfaceCss += `--foregroundCopyFont: var(--${foregroundCopyFont});`;
+  if (fgCopyFont !== null && fgCopyFont !== 'inherit') {
+    interfaceCss += `--fgCopyFont: var(--${fgCopyFont});`;
   }
 
-  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
-    interfaceCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
+  if (fgCaptionFont !== null && fgCaptionFont !== 'inherit') {
+    interfaceCss += `--fgCaptionFont: var(--${fgCaptionFont});`;
   } // Font CSS
 
 
   var fontCss = ``;
 
-  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
-    fontCss += `--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`;
+  if (fgHeadlineFont !== null && fgHeadlineFont !== 'inherit') {
+    fontCss += `--fgHeadlineFont: var(--${fgHeadlineFont});`;
   }
 
-  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
-    fontCss += `--foregroundCopyFont: var(--${foregroundCopyFont});`;
+  if (fgCopyFont !== null && fgCopyFont !== 'inherit') {
+    fontCss += `--fgCopyFont: var(--${fgCopyFont});`;
   }
 
-  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
-    fontCss += `--foregroundCaptionFont: var(--${foregroundCaptionFont});`;
+  if (fgCaptionFont !== null && fgCaptionFont !== 'inherit') {
+    fontCss += `--fgCaptionFont: var(--${fgCaptionFont});`;
   } // Sizing CSS
 
 
@@ -2933,9 +2952,9 @@ const calculatedStyleObj = attributes => {
     selectionBGColor,
     lineartColor,
     keyGradient,
-    foregroundHeadlineFont,
-    foregroundCopyFont,
-    foregroundCaptionFont,
+    fgHeadlineFont,
+    fgCopyFont,
+    fgCaptionFont,
     interfaceFGColor,
     interfaceBGColor,
     interfaceKeyColor
@@ -2989,16 +3008,16 @@ const calculatedStyleObj = attributes => {
 
   const typographyObj = {}; // Selectively add Font Objects to respect "inherit" option
 
-  if (foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit') {
-    typographyObj['--foregroundHeadlineFont'] = 'var(--' + foregroundHeadlineFont + ')';
+  if (fgHeadlineFont !== null && fgHeadlineFont !== 'inherit') {
+    typographyObj['--fgHeadlineFont'] = 'var(--' + fgHeadlineFont + ')';
   }
 
-  if (foregroundCopyFont !== null && foregroundCopyFont !== 'inherit') {
-    typographyObj['--foregroundCopyFont'] = 'var(--' + foregroundCopyFont + ')';
+  if (fgCopyFont !== null && fgCopyFont !== 'inherit') {
+    typographyObj['--fgCopyFont'] = 'var(--' + fgCopyFont + ')';
   }
 
-  if (foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit') {
-    typographyObj['--foregroundCaptionFont'] = 'var(--' + foregroundCaptionFont + ')';
+  if (fgCaptionFont !== null && fgCaptionFont !== 'inherit') {
+    typographyObj['--fgCaptionFont'] = 'var(--' + fgCaptionFont + ')';
   } // Build Up Sizing Support
 
 
@@ -3073,28 +3092,30 @@ function save(props) {
   // Destructure props
   const {
     attributes: {
-      namedstyle,
+      namedStyle,
       styleMode,
-      foregroundHeadlineFont,
-      foregroundCopyFont,
-      foregroundCaptionFont
+      fgHeadlineFont,
+      fgCopyFont,
+      fgCaptionFont,
+      blockID
     }
   } = props; // Retrieve Inline CSS using helper function
 
   const inlineVarCSS = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedInlineVars(props.attributes); // Set classnames (font-classes allow for fine-tuning)
 
   const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", "xx-styled--block", {
-    [`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit'
+    [`xx-styled--headlinefont-${fgHeadlineFont}`]: fgHeadlineFont !== 'inherit' && fgHeadlineFont
   }, {
-    [`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit'
+    [`xx-styled--copyfont-${fgCopyFont}`]: fgCopyFont !== 'inherit' && fgCopyFont
   }, {
-    [`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit'
+    [`xx-styled--captionfont-${fgCaptionFont}`]: fgCaptionFont !== 'inherit' && fgCaptionFont
   }); // Create a BlockProps Object
 
   const blockProps = {
     className: classes,
+    id: blockID,
     style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
-    'data-theme': styleMode == 'named' ? namedstyle : ''
+    'data-theme': styleMode == 'named' ? namedStyle : ''
   }; // Save BlockProps and InnerBlocks content
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save(blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.Content, null));

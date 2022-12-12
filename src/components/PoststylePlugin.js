@@ -44,8 +44,9 @@ function PoststylePlugin(props) {
 				options.push({ value: '', label: 'Default' });
 				// Add one value/label options per entry
 				props.posts.forEach((post) => {
+					console.log("a post! ", post);
 					const dynamicLabel = (post.title.rendered !== '') ? post.title.rendered : 'Style ID ' + post.id;
-					options.push({value:post.generated_slug, label:dynamicLabel});
+					options.push({value:post.slug, label:dynamicLabel});
 				});
 			// Show a fallback message while loading
 			} else {
@@ -60,11 +61,9 @@ function PoststylePlugin(props) {
 					allowReset:true,
 					options:options,
 					onChange: function( content ) { updateMyPostMetaType(content); },
-					onInputChange: function( inputValue ) {
-						setFilteredOptions(options.filter(option =>
-							option.label.toLowerCase().startsWith(inputValue.toLowerCase())
-						))
-					},
+					onInputChange: function(inputValue ) {
+						setFilteredOptions(options.filter(option => { option.slug }
+					))},
 				}
 			);
 		}
@@ -87,19 +86,25 @@ function PoststylePlugin(props) {
 			 }
 		 }
 		 
+		console.log("items include, ", postStyleHeadline, postStyleCopy, postStyleCaptions);
+
+
 		 // Build strings for style and class tags
 		if(postStyleHeadline){ 
-			stylestring += '--foregroundHeadlineFont: var(--'+postStyleHeadline+');';
+			stylestring += '--fgHeadlineFont: var(--'+postStyleHeadline+');';
 			classstring += ' xx-styled--headlinefont-'+postStyleHeadline; 
 		}
 		if(postStyleCopy){ 
-			stylestring += '--foregroundCopyFont: var(--'+postStyleCopy+');'; 
+			stylestring += '--fgCopyFont: var(--'+postStyleCopy+');'; 
 			classstring += ' xx-styled--foregroundfont-'+postStyleCopy; 
 		}
 		if(postStyleCaptions){ 
-			stylestring += '--foregroundCaptionFont: var(--'+postStyleCaptions+');'; 
+			stylestring += '--fgCaptionFont: var(--'+postStyleCaptions+');'; 
 			classstring += ' xx-styled--captionfont-'+postStyleCaptions; 
 		}
+
+		console.log("stylestring, classstring: ", stylestring, classstring);
+
 
 		// Add/Remove all the Properties!
 		jQuery("body").removeClass(allstyles).addClass(classstring).attr('data-theme',postStyleType).attr('style',stylestring);

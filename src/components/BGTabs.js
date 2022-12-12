@@ -23,13 +23,13 @@ export default class BGTabs extends Component {
 		const {
 			attributes: {
 				bgGelEnabled,
-				backgroundColorCount,
+				bgColorCount,
 				backgroundColor,
-				backgroundGrad1,
-				backgroundGrad2,
+				bgGrad1,
+				bgGrad2,
 				backgroundGel,
-				backgroundGrad1Start,
-				backgroundGrad2Start,
+				bgGrad1Start,
+				bgGrad2Start,
 				backgroundImage,
 				bgGradientAttachment,
 				gradientType,
@@ -57,8 +57,8 @@ export default class BGTabs extends Component {
 		const bgcolor1classes = classnames(
 			"px-colorbox",
 			"px-colorbox--marginabove",
-			{ "px-colorbox--paddingbelow": backgroundColorCount == "gradient" },
-			{ "px-colorbox--linebelow": backgroundColorCount == "gradient" }
+			{ "px-colorbox--paddingbelow": bgColorCount == "gradient" },
+			{ "px-colorbox--linebelow": bgColorCount == "gradient" }
 		);
 
 		const getBackgroundTab = name => {
@@ -251,10 +251,10 @@ export default class BGTabs extends Component {
 						<div className="px-colorbox">
 							<h2>Gradient Color 1</h2>
 							<ColorPicker
-								color={backgroundGrad1}
+								color={bgGrad1}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundGrad1: calculatedRgbaString(value)
+										bgGrad1: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -264,17 +264,17 @@ export default class BGTabs extends Component {
 							<input type="checkbox" id="bg1Swatch" name="bg1Swatch"></input>
 							<label htmlFor="bg1Swatch">Palette</label>
 							<ColorPalette
-								value={backgroundGrad1}
-								onChange={backgroundGrad1 => setAttributes({ backgroundGrad1 })}
+								value={bgGrad1}
+								onChange={bgGrad1 => setAttributes({ bgGrad1 })}
 							/>
 						</div>
 						<div className="px-colorbox">
 							<h2>Gradient Color 2</h2>
 							<ColorPicker
-								color={backgroundGrad2}
+								color={bgGrad2}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundGrad2: calculatedRgbaString(value)
+										bgGrad2: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -283,8 +283,8 @@ export default class BGTabs extends Component {
 							<input type="checkbox" id="bg2Swatch" name="bg2Swatch"></input>
 							<label htmlFor="bg2Swatch">Palette</label>
 							<ColorPalette
-								value={backgroundGrad2}
-								onChange={backgroundGrad2 => setAttributes({ backgroundGrad2 })}
+								value={bgGrad2}
+								onChange={bgGrad2 => setAttributes({ bgGrad2 })}
 							/>
 						</div>
 					</Fragment>
@@ -301,10 +301,10 @@ export default class BGTabs extends Component {
 						<div className="px-columnrow">
 							<RangeControl
 								label={__("Color 1")}
-								value={backgroundGrad1Start}
-								onChange={backgroundGrad1Start => {
+								value={bgGrad1Start}
+								onChange={bgGrad1Start => {
 									setAttributes({
-										backgroundGrad1Start
+										bgGrad1Start
 									});
 								}}
 								min={-50}
@@ -314,10 +314,10 @@ export default class BGTabs extends Component {
 						<div className="px-columnrow">
 							<RangeControl
 								label={__("Color 2")}
-								value={backgroundGrad2Start}
-								onChange={backgroundGrad2Start => {
+								value={bgGrad2Start}
+								onChange={bgGrad2Start => {
 									setAttributes({
-										backgroundGrad2Start
+										bgGrad2Start
 									});
 								}}
 								min={-50}

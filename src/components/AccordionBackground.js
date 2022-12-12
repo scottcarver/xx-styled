@@ -13,7 +13,7 @@ export function AccordionBackground(props){
             bgGradientEnabled,
             bgImageEnabled,
             bgGelEnabled,
-            backgroundStackFirst,
+            bgStackFirst,
             styleMode,
         },
         setAttributes
@@ -25,13 +25,13 @@ export function AccordionBackground(props){
     const toggleGradientEnabled = () => { setAttributes({ bgGradientEnabled: !bgGradientEnabled }); };
     const toggleImageEnabled = () => { setAttributes({ bgImageEnabled: !bgImageEnabled }); };
     const toggleGelEnabled = () => { setAttributes({ bgGelEnabled: !bgGelEnabled }); };
-    const toggleBgStack = backgroundStackFirst =>
+    const toggleBgStack = bgStackFirst =>
         function() {
-            if (backgroundStackFirst == "image") {
-                setAttributes({ backgroundStackFirst: "gradient" });
+            if (bgStackFirst == "image") {
+                setAttributes({ bgStackFirst: "gradient" });
             }
-            if (backgroundStackFirst == "gradient") {
-                setAttributes({ backgroundStackFirst: "image" });
+            if (bgStackFirst == "gradient") {
+                setAttributes({ bgStackFirst: "image" });
             }
         };
         
@@ -55,7 +55,7 @@ export function AccordionBackground(props){
                         </div>
 
                         {/* When Gradient is first, order them that way */}
-                        {backgroundStackFirst === "gradient" ? (
+                        {bgStackFirst === "gradient" ? (
                             <Fragment>
                                 <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
                                     <label htmlFor="gradient-styleenabled-form-toggle">{__("Gradient", "pxblocks")}</label>
@@ -114,8 +114,8 @@ export function AccordionBackground(props){
                                 <FormToggle
                                     id="bgimage-stackfirst-form-toggle"
                                     label={__("Image over Gradient?", "pxblocks")}
-                                    checked={backgroundStackFirst == "image"}
-                                    onChange={toggleBgStack(backgroundStackFirst)}
+                                    checked={bgStackFirst == "image"}
+                                    onChange={toggleBgStack(bgStackFirst)}
                                 />
                             </div>
                         )}

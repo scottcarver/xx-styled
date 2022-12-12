@@ -17,6 +17,9 @@ registerBlockType('xx/styled', {
 	// icon,
 	category: 'design',
 	getEditWrapperProps(attributes) { const { blockAlignment } = attributes;},
-	getSelectedBlockClientId(attributes) { const { blockID } = attributes;},
+	getSelectedBlockClientId(attributes) { 
+		const { blockID } = attributes;
+		console.log("my id is ", blockID);
+	},
 });
 

@@ -1,7 +1,7 @@
 // Returns the final "background-color"
-// The tabset changes based on the backgroundStackFirst property
+// The tabset changes based on the bgStackFirst property
 const CalculatedTabset = props => {
-	const { bgColorEnabled, bgImageEnabled, bgGradientEnabled, bgGelEnabled, backgroundStackFirst } = props.attributes;
+	const { bgColorEnabled, bgImageEnabled, bgGradientEnabled, bgGelEnabled, bgStackFirst } = props.attributes;
 	
 	const tabOrder = [];
 
@@ -13,10 +13,10 @@ const CalculatedTabset = props => {
 		});
 	}
 
-	// console.log("stack order " + backgroundStackFirst);
+	// console.log("stack order " + bgStackFirst);
 
 	// Stack Order 1
-	if (backgroundStackFirst == "gradient") {
+	if (bgStackFirst == "gradient") {
 		if (bgGradientEnabled) {
 			tabOrder.push({
 				name: "bggradienttab",

@@ -19,7 +19,11 @@ export default function edit(props) {
 	const {
 		attributes: { 
 			styleMode, 
-			namedstyle 
+			namedStyle,
+			fgHeadlineFont,
+			fgCopyFont,
+			fgCaptionFont,
+			blockID
 		},
 		className, 
 		setAttributes
@@ -30,13 +34,25 @@ export default function edit(props) {
 	const styleObj = calculated.calculatedStyleObj(props.attributes);
 
 	// Retrieve/Set Classes
-	const classes = classnames( className, "xx-styled");
+	// const classes = classnames( className, "xx-styled");
+
+	console.log("the cycle ", fgHeadlineFont, fgCopyFont, fgCaptionFont);
+
+
+	const classes = classnames(
+		"xx-styled",
+		"xx-styled--block",
+		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont)},
+		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont) },
+		{[`xx-styled--captionfont-${fgCaptionFont}`]: (fgCaptionFont !== 'inherit' && fgCaptionFont) }
+	);
 
 	// Create a BlockProps Object
 	const blockProps = useBlockProps( {
 		className: classes,
+		id: blockID,
 		style: (styleMode == 'custom' || styleMode == 'named' ) ? styleObj : undefined,
-		'data-theme': (styleMode == 'named') ? namedstyle : ''
+		'data-theme': (styleMode == 'named') ? namedStyle : ''
 	});
 	
 	

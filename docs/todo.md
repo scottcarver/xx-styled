@@ -13,3 +13,9 @@
     element.setAttribute(attr, attributes[attr]);
   });
 ```
+
+- there can be a mismatch between data that occurs when a name is added after the fact. To reproduce:
+1) create an entry with no title and save it. The Url will be a number like 1234
+2) selector UI will have a slug "mycooolthing" but the CSS will have a number "1234" 
+
+it seems likely the classname is based on the title, not the slug, and when it doesn't match exactly, it is an issue

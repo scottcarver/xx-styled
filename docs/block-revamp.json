@@ -27,7 +27,7 @@
 		"settings": {
             "type" : "object",
             "default" : {
-				"namedstyle": "",
+				"namedStyle": "",
 				"blockID": "",
 				"styleEnabled": true,
 				"styleMode": "custom",
@@ -57,11 +57,11 @@
 				"bgGradientEnabled": false,
 				"bgImageEnabled": false,
 				"bgGelEnabled": false,
-				"backgroundColorCount": "flat",
-				"backgroundStackFirst": "image",
+				"bgColorCount": "flat",
+				"bgStackFirst": "image",
 				"backgroundColor": "#ddd",
-				"backgroundGrad1": "#ffffff",
-				"backgroundGrad2": "#ffffff",
+				"bgGrad1": "#ffffff",
+				"bgGrad2": "#ffffff",
 				"backgroundGel": "transparent",
 				"gradientType": "linear",
 				"gradientLinearAngle": 45,
@@ -76,8 +76,8 @@
 				"backgroundGradientAlignHoriCustom": 100,
 				"gradientAlignRadialHori": 50,
 				"gradientAlignRadialVert": 50,
-				"backgroundGrad1Start": 0,
-				"backgroundGrad2Start": 100,
+				"bgGrad1Start": 0,
+				"bgGrad2Start": 100,
 				// New
 				"backgroundGradientAlign": { "vertical":"center", "horizontal":"center" },
 				"backgroundGradientAlignCustom": { "vertical":100, "horizontal":100 },
@@ -90,7 +90,7 @@
             "default" : {
 				"backgroundImage": null ,
 				"focalPoint": { "x": 0.5, "y": 0.1 },
-				"backgroundImageSize": "cover",
+				"bgImageSizeDefault": "cover",
 				"bgImageRepeat": "no-repeat",
 				"bgImageAttachment": "scroll",
 				// Consolidated
@@ -119,9 +119,9 @@
 		"typography": {
             "type" : "object",
             "default" : {
-                "foregroundHeadlineFont": "inherit",
-				"foregroundCopyFont": "inherit",
-				"foregroundCaptionFont": "inherit"
+                "fgHeadlineFont": "inherit",
+				"fgCopyFont": "inherit",
+				"fgCaptionFont": "inherit"
             }
         },
 		"dimensions": {

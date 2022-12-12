@@ -7,7 +7,7 @@ export function AccordionSavedStyles(props){
 
     const {
         attributes: {
-            namedstyle,
+            namedStyle,
             styleMode
         },
         setAttributes
@@ -26,10 +26,10 @@ export function AccordionSavedStyles(props){
                             <ComboboxControl
                                 label="Select a Style"
                                 placeholder= 'Default'
-                                value={namedstyle}
+                                value={namedStyle}
                                 allowReset={true}
                                 options={global_named_styles}
-                                onChange={(newval) => setAttributes({ namedstyle: newval })}
+                                onChange={(newval) => setAttributes({ namedStyle: newval })}
                                 onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
                                     option.label.toLowerCase().startsWith(newval.toLowerCase())
                                 ))}
@@ -39,10 +39,10 @@ export function AccordionSavedStyles(props){
                         <div className="px-simplerow px-simplerow--hasstyletiles">
                             {global_named_styles.map((option) => (
                                 // className={"style-tile " + "style-tile--active"}
-                                // className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`} 
-                                <div className={`styled-tile ${namedstyle == option.value ? "styled-tile--active" : ""}`}
+                                // className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`} 
+                                <div className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`}
                                 key={option.value}>
-                                    <button className={"xx-styled"} data-theme={option.value} onClick={() => setAttributes({ namedstyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
+                                    <button className={"xx-styled"} data-theme={option.value} onClick={() => setAttributes({ namedStyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
                                         <h3>Aa</h3>
                                         <p>Lorem Ipsum eget tortor risus.</p>
                                         <span></span><span></span><span></span><span></span>

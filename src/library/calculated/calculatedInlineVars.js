@@ -23,9 +23,9 @@ const calculatedInlineVars = attributes => {
 		selectionFGColor,
 		selectionBGColor,
 		backgroundColor,
-		foregroundHeadlineFont,
-		foregroundCopyFont,
-		foregroundCaptionFont,
+		fgHeadlineFont,
+		fgCopyFont,
+		fgCaptionFont,
 		interfaceFGColor,
 		interfaceBGColor,
 		interfaceKeyColor
@@ -82,28 +82,28 @@ const calculatedInlineVars = attributes => {
 
 
 	// Typography
-	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
-		interfaceCss+=`--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`
+	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
+		interfaceCss+=`--fgHeadlineFont: var(--${fgHeadlineFont});`
 	}
-	if(foregroundCopyFont !== null && foregroundCopyFont !== 'inherit'){
-		interfaceCss+=`--foregroundCopyFont: var(--${foregroundCopyFont});`
+	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){
+		interfaceCss+=`--fgCopyFont: var(--${fgCopyFont});`
 	}
-	if(foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit'){
-		interfaceCss+=`--foregroundCaptionFont: var(--${foregroundCaptionFont});`
+	if(fgCaptionFont !== null && fgCaptionFont !== 'inherit'){
+		interfaceCss+=`--fgCaptionFont: var(--${fgCaptionFont});`
 	}
 
 
 	// Font CSS
 	var fontCss = ``;
 
-	if(foregroundHeadlineFont !== null && foregroundHeadlineFont !== 'inherit'){
-		fontCss+=`--foregroundHeadlineFont: var(--${foregroundHeadlineFont});`
+	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
+		fontCss+=`--fgHeadlineFont: var(--${fgHeadlineFont});`
 	}
-	if(foregroundCopyFont !== null && foregroundCopyFont !== 'inherit'){
-		fontCss+=`--foregroundCopyFont: var(--${foregroundCopyFont});`
+	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){
+		fontCss+=`--fgCopyFont: var(--${fgCopyFont});`
 	}
-	if(foregroundCaptionFont !== null && foregroundCaptionFont !== 'inherit'){
-		fontCss+=`--foregroundCaptionFont: var(--${foregroundCaptionFont});`
+	if(fgCaptionFont !== null && fgCaptionFont !== 'inherit'){
+		fontCss+=`--fgCaptionFont: var(--${fgCaptionFont});`
 	}
 
 

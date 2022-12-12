@@ -16,7 +16,7 @@
   box-sizing: border-box;
   position: relative;
   margin: 0px auto;
-  font-family: var(--foregroundCopyFont);
+  font-family: var(--fgCopyFont);
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);
   background-color: var(--backgroundColor);
@@ -26,6 +26,12 @@
   background-size: var(--backgroundSizeSm);
   padding: 0.01px;
   padding: var(--spacingMobile);
+}
+.xx-styled.xx-styled--block {
+  max-width: var(--contentWidth);
+}
+.xx-styled.xx-styled--html {
+  min-height: 100%;
 }
 @media (min-width: 992px) {
   .xx-styled {
@@ -58,7 +64,7 @@
 }
 .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
   color: var(--headlineColor);
-  font-family: var(--foregroundHeadlineFont);
+  font-family: var(--fgHeadlineFont);
 }
 .xx-styled p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
@@ -71,7 +77,7 @@
   border-color: var(--blockquoteColor);
 }
 .xx-styled figure figcaption {
-  font-family: var(--foregroundCaptionFont);
+  font-family: var(--fgCaptionFont);
 }
 .xx-styled hr.wp-block-separator {
   background-color: var(--lineartColor);

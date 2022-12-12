@@ -6,7 +6,7 @@
 	margin:0px auto;
 
 	// Foreground, Background, Padding
-	font-family:var(--foregroundCopyFont);
+	font-family:var(--fgCopyFont);
 	color: var(--foregroundColor);
 	background-image: var(--backgroundImage);
 	background-color: var(--backgroundColor);
@@ -14,9 +14,18 @@
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
 	background-size: var(--backgroundSizeSm);
-	// max-width:var(--contentWidth);
   padding:.01px;
 	padding: var(--spacingMobile);
+
+  // Modifier: Block
+  &.xx-styled--block{
+    max-width:var(--contentWidth);
+  }
+
+  // Modifier: HTML
+  &.xx-styled--html{
+    min-height:100%;
+  }
 
    // Medium Screens
 	@media(min-width: 992px){ 
@@ -48,7 +57,7 @@
 	// Heading
 	h1, h2, h3, h4, h5, h6{
 		color: var(--headlineColor);
-		font-family:var(--foregroundHeadlineFont);
+		font-family:var(--fgHeadlineFont);
 	}
 
 	// Dropcap
@@ -69,7 +78,7 @@
 	// Caption	
 	figure{
 		figcaption{
-			font-family:var(--foregroundCaptionFont);
+			font-family:var(--fgCaptionFont);
 		}
 	}
 
@@ -80,4 +89,3 @@
 	}
 
 }
-

@@ -6,6 +6,7 @@
  * Requires PHP:      7.0
  * Version:           0.0.1
  * Author:            Scott Carver
+ * Author:            Scott Carver
  * License:           Protected
  * Text Domain:       styled
  *

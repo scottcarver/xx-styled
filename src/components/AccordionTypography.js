@@ -21,10 +21,10 @@ const fontOptions = global_named_fonts;
                                 <ComboboxControl
                                     label="Headline Font Family"
                                     placeholder= 'Initial'
-                                    value={attributes.foregroundHeadlineFont}
+                                    value={attributes.fgHeadlineFont}
                                     allowReset={true}
                                     options={fontOptions}
-                                    onChange={(newval) => setAttributes({ foregroundHeadlineFont: newval })}
+                                    onChange={(newval) => setAttributes({ fgHeadlineFont: newval })}
                                     onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
                                         option.label.toLowerCase().startsWith(newval.toLowerCase())
                                     ))}
@@ -35,10 +35,10 @@ const fontOptions = global_named_fonts;
                                 <ComboboxControl
                                     label="Copy Font Family"
                                     placeholder= 'Initial'
-                                    value={attributes.foregroundCopyFont}
+                                    value={attributes.fgCopyFont}
                                     allowReset={true}
                                     options={fontOptions}
-                                    onChange={(newval) => setAttributes({ foregroundCopyFont: newval })}
+                                    onChange={(newval) => setAttributes({ fgCopyFont: newval })}
                                     onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
                                         option.label.toLowerCase().startsWith(newval.toLowerCase())
                                     ))}
@@ -49,10 +49,10 @@ const fontOptions = global_named_fonts;
                                 <ComboboxControl
                                     label="Caption Font Family"
                                     placeholder= 'Initial'
-                                    value={attributes.foregroundCaptionFont}
+                                    value={attributes.fgCaptionFont}
                                     allowReset={true}
                                     options={fontOptions}
-                                    onChange={(newval) => setAttributes({ foregroundCaptionFont: newval })}
+                                    onChange={(newval) => setAttributes({ fgCaptionFont: newval })}
                                     onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
                                         option.label.toLowerCase().startsWith(newval.toLowerCase())
                                     ))}

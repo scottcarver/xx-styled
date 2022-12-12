@@ -26,9 +26,9 @@ export default class StyledPreview extends Component {
 				backgroundColor,
 				backgroundGel,
 				backgroundImage,
-				backgroundStackFirst,
-				foregroundHeadlineFont,
-				foregroundCopyFont,
+				bgStackFirst,
+				fgHeadlineFont,
+				fgCopyFont,
 				styleMode
 			}
 		} = this.props;
@@ -37,11 +37,11 @@ export default class StyledPreview extends Component {
 		var combinedCss = ` 
 			.fgtext{
 				color: ${foregroundColor};
-				font-family: ${foregroundCopyFont}
+				font-family: ${fgCopyFont}
 			}
 			.fgtext h1{
 				color: ${headlineColor};
-				font-family: ${foregroundHeadlineFont}
+				font-family: ${fgHeadlineFont}
 			}
 			.fgtext p{
 				color: ${foregroundColor};
@@ -81,7 +81,7 @@ export default class StyledPreview extends Component {
 				<div className="px-sidepanel">
 					<div className="px-simplerow px-simplerow--padbottom">
 						{/* Styled Preview */}
-						<div className={`styled-preview ${backgroundStackFirst=="gradient" ? "styled-preview--gradientfirst" : ""}`} data-viewtype="stack">
+						<div className={`styled-preview ${bgStackFirst=="gradient" ? "styled-preview--gradientfirst" : ""}`} data-viewtype="stack">
 							<div className="cube">
 								<div className="layer layer-1 fgtext textual">
 									<h1>Foreground Text</h1>

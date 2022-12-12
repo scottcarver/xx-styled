@@ -10,11 +10,12 @@
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,
-		"className": true,
+		"className": false,
 		"customClassName": true,
 		"html": true
 	},
 	"attributes" : {
+		
 		"align": {
 			"type": "string",
 			"comment" : "needed for fullwidth control"
@@ -26,7 +27,7 @@
 			"type": "string",
 			"comment" : "used for unique naming"
 		},
-		"namedstyle": {
+		"namedStyle": {
 			"type": "string",
 			"comment" : "slug that matches url-name"
 		},
@@ -36,23 +37,7 @@
 		},
 
 
-		"bgColorEnabled": {
-			"type": "boolean",
-			"default": true
-		},
-		"bgGradientEnabled": {
-			"type": "boolean",
-			"default": false
-		},
-		"bgImageEnabled": {
-			"type": "boolean",
-			"default": false
-		},
-		"bgGelEnabled": {
-			"type": "boolean",
-			"default": false
-		},
-		
+	
 
 
 
@@ -87,19 +72,6 @@
 
 
 
-		"foregroundHeadlineFont": {
-			"type": "string",
-			"default": "inherit"
-		},
-		"foregroundCopyFont": {
-			"type": "string",
-			"default": "inherit"
-		},
-		"foregroundCaptionFont": {
-			"type": "string",
-			"default": "inherit"
-		},
-
 
 
 		
@@ -114,12 +86,27 @@
 		},
 
 
-		
-		"backgroundColorCount": {
+		"bgColorEnabled": {
+			"type": "boolean",
+			"default": true
+		},
+		"bgGradientEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"bgImageEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"bgGelEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"bgColorCount": {
 			"type": "string",
 			"default": "flat"
 		},
-		"backgroundStackFirst": {
+		"bgStackFirst": {
 			"type": "string",
 			"default": "image"
 		},
@@ -131,19 +118,19 @@
 			"type": "string",
 			"comment":"used as the gel color"
 		},
-		"backgroundGrad1": {
+		"bgGrad1": {
 			"type": "string",
 			"comment":"used as gradient color 1"
 		},
-		"backgroundGrad2": {
+		"bgGrad2": {
 			"type": "string",
 			"comment":"used as gradient color 2"
 		},
-		"backgroundGrad1Start": {
+		"bgGrad1Start": {
 			"type": "number",
 			"default": 0
 		},
-		"backgroundGrad2Start": {
+		"bgGrad2Start": {
 			"type": "number",
 			"default": 100
 		},
@@ -163,6 +150,8 @@
 			"type": "number",
 			"default": 50
 		},
+
+
 		"backgroundImage": {
 			"type": "string",
 			"default": ""
@@ -171,7 +160,7 @@
 			"type": "object",
 			"default": { "x": 0.5, "y": 0.1 }
 		},
-		"backgroundImageSize": {
+		"bgImageSizeDefault": {
 			"type": "string",
 			"default": "cover"
 		},
@@ -214,9 +203,22 @@
 		"spacingDesktop": {
 			"type": "object",
 			"default": ""
+		},
+
+
+
+		"fgHeadlineFont": {
+			"type": "string",
+			"default": "inherit"
+		},
+		"fgCopyFont": {
+			"type": "string",
+			"default": "inherit"
+		},
+		"fgCaptionFont": {
+			"type": "string",
+			"default": "inherit"
 		}
-
-
 	},
 	"textdomain": "xx-styled",
 	"editorScript": "file:./index.js",

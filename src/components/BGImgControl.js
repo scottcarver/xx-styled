@@ -14,7 +14,7 @@ export default class BGImgControl extends Component {
 		const {
 			positionVert,
 			attributes: {
-				backgroundImageSize,
+				bgImageSizeDefault,
 				bgImageSize,
 				bgImageSizeSm,
 				bgImageSizeMd,
@@ -56,33 +56,33 @@ export default class BGImgControl extends Component {
 				<div className="px-buttongroup px-buttongroup--small">
 					<ButtonGroup aria-label={__("Column Layout")}>
 						<Button
-							isPrimary={backgroundImageSize === "cover"}
+							isPrimary={bgImageSizeDefault === "cover"}
 							onClick={() => {
-								setAttributes({ backgroundImageSize: "cover" });
+								setAttributes({ bgImageSizeDefault: "cover" });
 							}}
 						>
 							Cover
 						</Button>
 						<Button
-							isPrimary={backgroundImageSize === "contain"}
+							isPrimary={bgImageSizeDefault === "contain"}
 							onClick={() => {
-								setAttributes({ backgroundImageSize: "contain" });
+								setAttributes({ bgImageSizeDefault: "contain" });
 							}}
 						>
 							Contain
 						</Button>
 						<Button
-							isPrimary={backgroundImageSize === "auto"}
+							isPrimary={bgImageSizeDefault === "auto"}
 							onClick={() => {
-								setAttributes({ backgroundImageSize: "auto" });
+								setAttributes({ bgImageSizeDefault: "auto" });
 							}}
 						>
 							Auto
 						</Button>
 						<Button
-							isPrimary={backgroundImageSize === "custom"}
+							isPrimary={bgImageSizeDefault === "custom"}
 							onClick={() => {
-								setAttributes({ backgroundImageSize: "custom" });
+								setAttributes({ bgImageSizeDefault: "custom" });
 							}}
 						>
 							Custom
@@ -91,11 +91,8 @@ export default class BGImgControl extends Component {
 				</div>
 
 				{/* Only show custom size conditionally */}
-				{backgroundImageSize === "custom" && (
+				{bgImageSizeDefault === "custom" && (
 					<Fragment>
-
-
-
 						<div className="px-triptych">
 							<div>
 								<UnitControl

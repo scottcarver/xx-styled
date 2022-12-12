@@ -14,11 +14,12 @@ export default function save(props) {
 	// Destructure props
 	const {
 		attributes: {
-			namedstyle,
+			namedStyle,
 			styleMode,
-			foregroundHeadlineFont,
-			foregroundCopyFont,
-			foregroundCaptionFont
+			fgHeadlineFont,
+			fgCopyFont,
+			fgCaptionFont,
+			blockID
 		}
 	} = props;
 
@@ -29,16 +30,17 @@ export default function save(props) {
 	const classes = classnames(
 		"xx-styled",
 		"xx-styled--block",
-		{[`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit' },
-		{[`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit' },
-		{[`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit' }
+		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont)},
+		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont) },
+		{[`xx-styled--captionfont-${fgCaptionFont}`]: (fgCaptionFont !== 'inherit' && fgCaptionFont) }
 	);
 
 	// Create a BlockProps Object
 	const blockProps = {
 		className: classes,
+		id: blockID,
 		style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
-		'data-theme': styleMode == 'named' ? namedstyle : ''
+		'data-theme': styleMode == 'named' ? namedStyle : ''
 	}
 	
 	// Save BlockProps and InnerBlocks content

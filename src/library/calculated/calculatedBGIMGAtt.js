@@ -7,7 +7,7 @@ const calculatedBGIMGAtt = attributes => {
 		backgroundImage,
 		bgGradientEnabled,
 		bgGradientAttachment,
-		backgroundStackFirst
+		bgStackFirst
 	} = attributes;
 
 	// Store each layer in an array
@@ -20,9 +20,9 @@ const calculatedBGIMGAtt = attributes => {
 		bgLayers.push("scroll");
 	}
 
-	// Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
+	// Note: The user can swap layer order of Gradient and Image using the bgStackFirst variable
 	// Gradient Stacks First
-	if (backgroundStackFirst == "gradient") {
+	if (bgStackFirst == "gradient") {
 		// Gradient
 		if (bgGradientEnabled) {
 			bgLayers.push(bgGradientAttachment);
