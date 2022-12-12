@@ -1,6 +1,16 @@
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
   \***************************************************************************************************************************************************************************************************************************************/
+:root {
+  --contentWidth: 800px;
+  --wideWidth: 1000px;
+}
+@media (min-width:1200px) {
+  :root {
+    --wideWidth: 80%;
+  }
+}
+
 /* xx-styled is used in the frontend and backend, it is isolated here to prevent duplication */
 .xx-styled {
   box-sizing: border-box;
@@ -14,16 +24,8 @@
   background-attachment: var(--backgroundAttachment);
   background-repeat: var(--backgroundRepeat);
   background-size: var(--backgroundSizeSm);
-  max-width: var(--contentWidth);
   padding: 0.01px;
   padding: var(--spacingMobile);
-  /*
-  svg{
-  	path{
-  		fill:red;
-  	}
-  }
-  */
 }
 @media (min-width: 992px) {
   .xx-styled {
@@ -67,17 +69,6 @@
 .xx-styled blockquote {
   color: var(--blockquoteColor);
   border-color: var(--blockquoteColor);
-  /*
-  p{
-  	font-size:2em;
-  	&:before{content:'"';}
-  	&:after{content:'"';}
-  }
-  cite{
-  	// border-bottom:2px solid currentColor;
-  	padding-bottom:20px;
-  }
-    */
 }
 .xx-styled figure figcaption {
   font-family: var(--foregroundCaptionFont);

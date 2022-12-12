@@ -10,15 +10,15 @@ const calculatedBGIMGSize = (attributes, key) => {
 		bgImageEnabled,
 		backgroundImage,
 		backgroundImageSize,
-		backgroundImageSizeCustomSm,
-		backgroundImageSizeCustomMd,
-		backgroundImageSizeCustom,
+		bgImageSizeSm,
+		bgImageSizeMd,
+		bgImageSize,
 		bgGradientEnabled
 	} = attributes;
 
-	let activeData = backgroundImageSizeCustom;
-	if(key == 'sm'){ activeData = backgroundImageSizeCustomSm;}
-	if(key == 'md'){ activeData = backgroundImageSizeCustomMd;}
+	let activeData = bgImageSize;
+	if(key == 'sm'){ activeData = bgImageSizeSm;}
+	if(key == 'md'){ activeData = bgImageSizeMd;}
 
 
 	// Store each layer in an array
@@ -32,7 +32,7 @@ const calculatedBGIMGSize = (attributes, key) => {
 		bgLayers.push("cover");
 	}
 
-	// console.log('backgroundImageSizeCustom', activeData);
+	// console.log('bgImageSize', activeData);
 
 	// Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
 	// Gradient Stacks First

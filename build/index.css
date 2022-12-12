@@ -582,16 +582,8 @@
   background-attachment: var(--backgroundAttachment);
   background-repeat: var(--backgroundRepeat);
   background-size: var(--backgroundSizeSm);
-  max-width: var(--contentWidth);
   padding: 0.01px;
   padding: var(--spacingMobile);
-  /*
-  svg{
-  	path{
-  		fill:red;
-  	}
-  }
-  */
   max-width: none;
 }
 @media (min-width: 992px) {
@@ -636,17 +628,6 @@
 .xx-styled--admin .wp-block-post-content blockquote {
   color: var(--blockquoteColor);
   border-color: var(--blockquoteColor);
-  /*
-  p{
-  	font-size:2em;
-  	&:before{content:'"';}
-  	&:after{content:'"';}
-  }
-  cite{
-  	// border-bottom:2px solid currentColor;
-  	padding-bottom:20px;
-  }
-    */
 }
 .xx-styled--admin .wp-block-post-content figure figcaption {
   font-family: var(--foregroundCaptionFont);

@@ -4,6 +4,7 @@
   box-sizing: border-box;
   position:relative;
 	margin:0px auto;
+
 	// Foreground, Background, Padding
 	font-family:var(--foregroundCopyFont);
 	color: var(--foregroundColor);
@@ -13,7 +14,7 @@
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
 	background-size: var(--backgroundSizeSm);
-	max-width:var(--contentWidth);
+	// max-width:var(--contentWidth);
   padding:.01px;
 	padding: var(--spacingMobile);
 
@@ -63,20 +64,6 @@
 	blockquote{
 		color: var(--blockquoteColor);
     border-color:var(--blockquoteColor);
-		// border-left:solid 2px var(--blockquoteColor);
-		// padding-left:20px;
-		
-    /*
-		p{
-			font-size:2em;
-			&:before{content:'"';}
-			&:after{content:'"';}
-		}
-		cite{
-			// border-bottom:2px solid currentColor;
-			padding-bottom:20px;
-		}
-    */
 	};
 
 	// Caption	
@@ -86,18 +73,11 @@
 		}
 	}
 
-	/*
-	svg{
-		path{
-			fill:red;
-		}
-	}
-	*/
-
 	// Lineart
 	hr.wp-block-separator{
     background-color:var(--lineartColor);
 		border-color:var(--lineartColor);
 	}
+
 }
 

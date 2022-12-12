@@ -15,11 +15,11 @@ export default class BGImgControl extends Component {
 			positionVert,
 			attributes: {
 				backgroundImageSize,
-				backgroundImageSizeCustom,
-				backgroundImageSizeCustomSm,
-				backgroundImageSizeCustomMd,
-				backgroundImageRepeat,
-				backgroundImageAttachment
+				bgImageSize,
+				bgImageSizeSm,
+				bgImageSizeMd,
+				bgImageRepeat,
+				bgImageAttachment
 			},
 			setAttributes
 		} = this.props;
@@ -100,24 +100,24 @@ export default class BGImgControl extends Component {
 							<div>
 								<UnitControl
 									label="Small"
-									onChange={(newdata) => { setAttributes({ backgroundImageSizeCustomSm: newdata }); }} 
-									value={backgroundImageSizeCustomSm}
+									onChange={(newdata) => { setAttributes({ bgImageSizeSm: newdata }); }} 
+									value={bgImageSizeSm}
 									units={defaultUnits}
 								/>
 							</div>
 							<div>
 								<UnitControl
 									label="Medium"
-									onChange={(newdata) => { setAttributes({ backgroundImageSizeCustomMd: newdata }); }} 
-									value={backgroundImageSizeCustomMd}
+									onChange={(newdata) => { setAttributes({ bgImageSizeMd: newdata }); }} 
+									value={bgImageSizeMd}
 									units={defaultUnits}
 								/>
 							</div>
 							<div>
 								<UnitControl
 									label="Large"
-									onChange={(newdata) => { setAttributes({ backgroundImageSizeCustom: newdata }); }} 
-									value={backgroundImageSizeCustom}
+									onChange={(newdata) => { setAttributes({ bgImageSize: newdata }); }} 
+									value={bgImageSize}
 									units={defaultUnits}
 								/>
 							</div>
@@ -127,10 +127,10 @@ export default class BGImgControl extends Component {
 						<div className="px-columnrow px-columnrow--nolabel px-columnrow--spaceabove">
 							<RangeControl
 								label={__("Custom")}
-								value={backgroundImageSizeCustom}
-								onChange={backgroundImageSizeCustom => {
+								value={bgImageSize}
+								onChange={bgImageSize => {
 									setAttributes({
-										backgroundImageSizeCustom
+										bgImageSize
 									});
 								}}
 								min={0}
@@ -148,40 +148,40 @@ export default class BGImgControl extends Component {
 				<div className="px-buttongroup px-buttongroup--small">
 					<ButtonGroup aria-label={__("Column Layout")}>
 						<Button
-							isPrimary={backgroundImageRepeat === "no-repeat"}
+							isPrimary={bgImageRepeat === "no-repeat"}
 							onClick={() => {
 								setAttributes({
-									backgroundImageRepeat: "no-repeat"
+									bgImageRepeat: "no-repeat"
 								});
 							}}
 						>
 							No
 						</Button>
 						<Button
-							isPrimary={backgroundImageRepeat === "repeat"}
+							isPrimary={bgImageRepeat === "repeat"}
 							onClick={() => {
 								setAttributes({
-									backgroundImageRepeat: "repeat"
+									bgImageRepeat: "repeat"
 								});
 							}}
 						>
 							Yes
 						</Button>
 						<Button
-							isPrimary={backgroundImageRepeat === "repeat-x"}
+							isPrimary={bgImageRepeat === "repeat-x"}
 							onClick={() => {
 								setAttributes({
-									backgroundImageRepeat: "repeat-x"
+									bgImageRepeat: "repeat-x"
 								});
 							}}
 						>
 							Repeat-x
 						</Button>
 						<Button
-							isPrimary={backgroundImageRepeat === "repeat-y"}
+							isPrimary={bgImageRepeat === "repeat-y"}
 							onClick={() => {
 								setAttributes({
-									backgroundImageRepeat: "repeat-y"
+									bgImageRepeat: "repeat-y"
 								});
 							}}
 						>
@@ -197,20 +197,20 @@ export default class BGImgControl extends Component {
 				<div className="px-buttongroup">
 					<ButtonGroup aria-label={__("Column Layout")}>
 						<Button
-							isPrimary={backgroundImageAttachment === "scroll"}
+							isPrimary={bgImageAttachment === "scroll"}
 							onClick={() => {
 								setAttributes({
-									backgroundImageAttachment: "scroll"
+									bgImageAttachment: "scroll"
 								});
 							}}
 						>
 							Scroll
 						</Button>
 						<Button
-							isPrimary={backgroundImageAttachment === "fixed"}
+							isPrimary={bgImageAttachment === "fixed"}
 							onClick={() => {
 								setAttributes({
-									backgroundImageAttachment: "fixed"
+									bgImageAttachment: "fixed"
 								});
 							}}
 						>

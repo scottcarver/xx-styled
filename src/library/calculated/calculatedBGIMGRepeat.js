@@ -4,7 +4,7 @@ const calculatedBGIMGRepeat = attributes => {
 		bgGelEnabled,
 		bgImageEnabled,
 		backgroundImage,
-		backgroundImageRepeat,
+		bgImageRepeat,
 		bgGradientEnabled,
 		backgroundStackFirst
 	} = attributes;
@@ -28,13 +28,13 @@ const calculatedBGIMGRepeat = attributes => {
 		}
 		// Image
 		if (bgImageEnabled && backgroundImage) {
-			bgLayers.push(backgroundImageRepeat);
+			bgLayers.push(bgImageRepeat);
 		}
 		// Image stacks first
 	} else {
 		// Image
 		if (bgImageEnabled && backgroundImage) {
-			bgLayers.push(backgroundImageRepeat);
+			bgLayers.push(bgImageRepeat);
 		}
 		// Gradient
 		if (bgGradientEnabled) {

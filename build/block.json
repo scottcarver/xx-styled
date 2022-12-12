@@ -19,6 +19,9 @@
 			"type": "string",
 			"comment" : "needed for fullwidth control"
 		},
+		"blockAlignment": {
+			"type": "string"
+		},
 		"blockID": {
 			"type": "string",
 			"comment" : "used for unique naming"
@@ -31,6 +34,8 @@
 			"type": "string",
 			"default": "custom"
 		},
+
+
 		"bgColorEnabled": {
 			"type": "boolean",
 			"default": true
@@ -47,10 +52,14 @@
 			"type": "boolean",
 			"default": false
 		},
-		"foregroundColor": {
+		
+
+
+
+		"headlineColor": {
 			"type": "string"
 		},
-		"headlineColor": {
+		"foregroundColor": {
 			"type": "string"
 		},
 		"linkColor": {
@@ -68,6 +77,16 @@
 		"keyGradient": {
 			"type": "string"
 		},
+		"selectionFGColor": {
+			"type": "string"
+		},
+		"selectionBGColor": {
+			"type": "string"
+		},
+
+
+
+
 		"foregroundHeadlineFont": {
 			"type": "string",
 			"default": "inherit"
@@ -80,12 +99,22 @@
 			"type": "string",
 			"default": "inherit"
 		},
-		"selectionFGColor": {
+
+
+
+		
+		"interfaceFGColor": {
 			"type": "string"
 		},
-		"selectionBGColor": {
+		"interfaceBGColor": {
 			"type": "string"
 		},
+		"interfaceKeyColor": {
+			"type": "string"
+		},
+
+
+		
 		"backgroundColorCount": {
 			"type": "string",
 			"default": "flat"
@@ -146,33 +175,34 @@
 			"type": "string",
 			"default": "cover"
 		},
-		"backgroundImageSizeCustomSm": {
+		"bgImageSizeSm": {
 			"type": "string",
 			"default": "100%"
 		},
-		"backgroundImageSizeCustomMd": {
+		"bgImageSizeMd": {
 			"type": "string",
 			"default": "100%"
 		},
-		"backgroundImageSizeCustom": {
+		"bgImageSize": {
 			"type": "string",
 			"default": "100%"
 		},
-		"backgroundImageRepeat": {
+		"bgImageRepeat": {
 			"type": "string",
 			"default": "no-repeat"
 		},
-		"backgroundImageAttachment": {
+		"bgImageAttachment": {
 			"type": "string",
 			"default": "scroll"
 		},
-		"backgroundGradientAttachment": {
+		"bgGradientAttachment": {
 			"type": "string",
 			"default": "scroll"
 		},
-		"blockAlignment": {
-			"type": "string"
-		},
+	
+
+
+
 		"spacingMobile": {
 			"type": "object",
 			"default": ""
@@ -184,16 +214,9 @@
 		"spacingDesktop": {
 			"type": "object",
 			"default": ""
-		},
-		"interfaceFGColor": {
-			"type": "string"
-		},
-		"interfaceBGColor": {
-			"type": "string"
-		},
-		"interfaceKeyColor": {
-			"type": "string"
 		}
+
+
 	},
 	"textdomain": "xx-styled",
 	"editorScript": "file:./index.js",

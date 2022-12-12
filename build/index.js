@@ -819,11 +819,11 @@ class BGImgControl extends Component {
       positionVert,
       attributes: {
         backgroundImageSize,
-        backgroundImageSizeCustom,
-        backgroundImageSizeCustomSm,
-        backgroundImageSizeCustomMd,
-        backgroundImageRepeat,
-        backgroundImageAttachment
+        bgImageSize,
+        bgImageSizeSm,
+        bgImageSizeMd,
+        bgImageRepeat,
+        bgImageAttachment
       },
       setAttributes
     } = this.props;
@@ -884,28 +884,28 @@ class BGImgControl extends Component {
       label: "Small",
       onChange: newdata => {
         setAttributes({
-          backgroundImageSizeCustomSm: newdata
+          bgImageSizeSm: newdata
         });
       },
-      value: backgroundImageSizeCustomSm,
+      value: bgImageSizeSm,
       units: defaultUnits
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
       label: "Medium",
       onChange: newdata => {
         setAttributes({
-          backgroundImageSizeCustomMd: newdata
+          bgImageSizeMd: newdata
         });
       },
-      value: backgroundImageSizeCustomMd,
+      value: bgImageSizeMd,
       units: defaultUnits
     })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.__experimentalUnitControl, {
       label: "Large",
       onChange: newdata => {
         setAttributes({
-          backgroundImageSizeCustom: newdata
+          bgImageSize: newdata
         });
       },
-      value: backgroundImageSizeCustom,
+      value: bgImageSize,
       units: defaultUnits
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "px-simplerow px-simplerow--shortheadline"
@@ -914,31 +914,31 @@ class BGImgControl extends Component {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
       "aria-label": __("Column Layout")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageRepeat === "no-repeat",
+      isPrimary: bgImageRepeat === "no-repeat",
       onClick: () => {
         setAttributes({
-          backgroundImageRepeat: "no-repeat"
+          bgImageRepeat: "no-repeat"
         });
       }
     }, "No"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageRepeat === "repeat",
+      isPrimary: bgImageRepeat === "repeat",
       onClick: () => {
         setAttributes({
-          backgroundImageRepeat: "repeat"
+          bgImageRepeat: "repeat"
         });
       }
     }, "Yes"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageRepeat === "repeat-x",
+      isPrimary: bgImageRepeat === "repeat-x",
       onClick: () => {
         setAttributes({
-          backgroundImageRepeat: "repeat-x"
+          bgImageRepeat: "repeat-x"
         });
       }
     }, "Repeat-x"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageRepeat === "repeat-y",
+      isPrimary: bgImageRepeat === "repeat-y",
       onClick: () => {
         setAttributes({
-          backgroundImageRepeat: "repeat-y"
+          bgImageRepeat: "repeat-y"
         });
       }
     }, "Repeat-y"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -948,17 +948,17 @@ class BGImgControl extends Component {
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
       "aria-label": __("Column Layout")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageAttachment === "scroll",
+      isPrimary: bgImageAttachment === "scroll",
       onClick: () => {
         setAttributes({
-          backgroundImageAttachment: "scroll"
+          bgImageAttachment: "scroll"
         });
       }
     }, "Scroll"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
-      isPrimary: backgroundImageAttachment === "fixed",
+      isPrimary: bgImageAttachment === "fixed",
       onClick: () => {
         setAttributes({
-          backgroundImageAttachment: "fixed"
+          bgImageAttachment: "fixed"
         });
       }
     }, "Fixed"))));
@@ -1027,7 +1027,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         backgroundGrad1Start,
         backgroundGrad2Start,
         backgroundImage,
-        backgroundGradientAttachment,
+        bgGradientAttachment,
         gradientType,
         gradientLinearAngle,
         gradientAlignRadialHori,
@@ -1325,18 +1325,18 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           "aria-label": __("Column Layout")
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
           isDefault: true,
-          isPrimary: backgroundGradientAttachment === "scroll",
+          isPrimary: bgGradientAttachment === "scroll",
           onClick: () => {
             setAttributes({
-              backgroundGradientAttachment: "scroll"
+              bgGradientAttachment: "scroll"
             });
           }
         }, "Scroll"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
           isDefault: true,
-          isPrimary: backgroundGradientAttachment === "fixed",
+          isPrimary: bgGradientAttachment === "fixed",
           onClick: () => {
             setAttributes({
-              backgroundGradientAttachment: "fixed"
+              bgGradientAttachment: "fixed"
             });
           }
         }, "Fixed"))));
@@ -2217,10 +2217,10 @@ const calculatedBGIMGAtt = attributes => {
   const {
     bgGelEnabled,
     bgImageEnabled,
-    backgroundImageAttachment,
+    bgImageAttachment,
     backgroundImage,
     bgGradientEnabled,
-    backgroundGradientAttachment,
+    bgGradientAttachment,
     backgroundStackFirst
   } = attributes; // Store each layer in an array
 
@@ -2237,23 +2237,23 @@ const calculatedBGIMGAtt = attributes => {
   if (backgroundStackFirst == "gradient") {
     // Gradient
     if (bgGradientEnabled) {
-      bgLayers.push(backgroundGradientAttachment);
+      bgLayers.push(bgGradientAttachment);
     } // Image
 
 
     if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageAttachment);
+      bgLayers.push(bgImageAttachment);
     } // Image stacks first
 
   } else {
     // Image
     if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageAttachment);
+      bgLayers.push(bgImageAttachment);
     } // Gradient
 
 
     if (bgGradientEnabled) {
-      bgLayers.push(backgroundGradientAttachment);
+      bgLayers.push(bgGradientAttachment);
     }
   } // Concatenate a style string, Adding commas, but not on the last
 
@@ -2292,7 +2292,7 @@ const calculatedBGIMGRepeat = attributes => {
     bgGelEnabled,
     bgImageEnabled,
     backgroundImage,
-    backgroundImageRepeat,
+    bgImageRepeat,
     bgGradientEnabled,
     backgroundStackFirst
   } = attributes; // Store each layer in an array
@@ -2315,13 +2315,13 @@ const calculatedBGIMGRepeat = attributes => {
 
 
     if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageRepeat);
+      bgLayers.push(bgImageRepeat);
     } // Image stacks first
 
   } else {
     // Image
     if (bgImageEnabled && backgroundImage) {
-      bgLayers.push(backgroundImageRepeat);
+      bgLayers.push(bgImageRepeat);
     } // Gradient
 
 
@@ -2368,19 +2368,19 @@ const calculatedBGIMGSize = (attributes, key) => {
     bgImageEnabled,
     backgroundImage,
     backgroundImageSize,
-    backgroundImageSizeCustomSm,
-    backgroundImageSizeCustomMd,
-    backgroundImageSizeCustom,
+    bgImageSizeSm,
+    bgImageSizeMd,
+    bgImageSize,
     bgGradientEnabled
   } = attributes;
-  let activeData = backgroundImageSizeCustom;
+  let activeData = bgImageSize;
 
   if (key == 'sm') {
-    activeData = backgroundImageSizeCustomSm;
+    activeData = bgImageSizeSm;
   }
 
   if (key == 'md') {
-    activeData = backgroundImageSizeCustomMd;
+    activeData = bgImageSizeMd;
   } // Store each layer in an array
 
 
@@ -2390,7 +2390,7 @@ const calculatedBGIMGSize = (attributes, key) => {
 
   if (bgGelEnabled) {
     bgLayers.push("cover");
-  } // console.log('backgroundImageSizeCustom', activeData);
+  } // console.log('bgImageSize', activeData);
   // Note: The user can swap layer order of Gradient and Image using the backgroundStackFirst variable
   // Gradient Stacks First
 

@@ -3,10 +3,10 @@ const calculatedBGIMGAtt = attributes => {
 	const {
 		bgGelEnabled,
 		bgImageEnabled,
-		backgroundImageAttachment,
+		bgImageAttachment,
 		backgroundImage,
 		bgGradientEnabled,
-		backgroundGradientAttachment,
+		bgGradientAttachment,
 		backgroundStackFirst
 	} = attributes;
 
@@ -25,21 +25,21 @@ const calculatedBGIMGAtt = attributes => {
 	if (backgroundStackFirst == "gradient") {
 		// Gradient
 		if (bgGradientEnabled) {
-			bgLayers.push(backgroundGradientAttachment);
+			bgLayers.push(bgGradientAttachment);
 		}
 		// Image
 		if (bgImageEnabled && backgroundImage) {
-			bgLayers.push(backgroundImageAttachment);
+			bgLayers.push(bgImageAttachment);
 		}
 		// Image stacks first
 	} else {
 		// Image
 		if (bgImageEnabled && backgroundImage) {
-			bgLayers.push(backgroundImageAttachment);
+			bgLayers.push(bgImageAttachment);
 		}
 		// Gradient
 		if (bgGradientEnabled) {
-			bgLayers.push(backgroundGradientAttachment);
+			bgLayers.push(bgGradientAttachment);
 		}
 	}
 

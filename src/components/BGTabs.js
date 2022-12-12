@@ -31,7 +31,7 @@ export default class BGTabs extends Component {
 				backgroundGrad1Start,
 				backgroundGrad2Start,
 				backgroundImage,
-				backgroundGradientAttachment,
+				bgGradientAttachment,
 				gradientType,
 				gradientLinearAngle,
 				gradientAlignRadialHori,
@@ -386,10 +386,10 @@ export default class BGTabs extends Component {
 							<ButtonGroup aria-label={__("Column Layout")}>
 								<Button
 									isDefault
-									isPrimary={backgroundGradientAttachment === "scroll"}
+									isPrimary={bgGradientAttachment === "scroll"}
 									onClick={() => {
 										setAttributes({
-											backgroundGradientAttachment: "scroll"
+											bgGradientAttachment: "scroll"
 										});
 									}}
 								>
@@ -397,10 +397,10 @@ export default class BGTabs extends Component {
 								</Button>
 								<Button
 									isDefault
-									isPrimary={backgroundGradientAttachment === "fixed"}
+									isPrimary={bgGradientAttachment === "fixed"}
 									onClick={() => {
 										setAttributes({
-											backgroundGradientAttachment: "fixed"
+											bgGradientAttachment: "fixed"
 										});
 									}}
 								>
