@@ -83,13 +83,13 @@ const calculatedInlineVars = attributes => {
 
 	// Typography
 	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
-		interfaceCss+=`--fgHeadlineFont: var(--${fgHeadlineFont});`
+		interfaceCss+=`--foregroundHeadlineFont: var(--${fgHeadlineFont});`
 	}
 	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){
-		interfaceCss+=`--fgCopyFont: var(--${fgCopyFont});`
+		interfaceCss+=`--foregroundCopyFont: var(--${fgCopyFont});`
 	}
 	if(fgCaptionFont !== null && fgCaptionFont !== 'inherit'){
-		interfaceCss+=`--fgCaptionFont: var(--${fgCaptionFont});`
+		interfaceCss+=`--foregroundCaptionFont: var(--${fgCaptionFont});`
 	}
 
 
@@ -97,13 +97,13 @@ const calculatedInlineVars = attributes => {
 	var fontCss = ``;
 
 	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
-		fontCss+=`--fgHeadlineFont: var(--${fgHeadlineFont});`
+		fontCss+=`--foregroundHeadlineFont: var(--${fgHeadlineFont});`
 	}
 	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){
-		fontCss+=`--fgCopyFont: var(--${fgCopyFont});`
+		fontCss+=`--foregroundCopyFont: var(--${fgCopyFont});`
 	}
 	if(fgCaptionFont !== null && fgCaptionFont !== 'inherit'){
-		fontCss+=`--fgCaptionFont: var(--${fgCaptionFont});`
+		fontCss+=`--foregroundCaptionFont: var(--${fgCaptionFont});`
 	}
 
 

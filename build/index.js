@@ -593,7 +593,7 @@ function AccordionSavedStyles(props) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null)), option.label))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: "post-new.php?post_type=style",
+    href: "post-new.php?post_type=styled",
     style: {
       padding: "5px"
     }
@@ -804,8 +804,7 @@ const {
 const {
   Component,
   Fragment
-} = wp.element; // const { Button, ButtonGroup, RangeControl } = wp.components;
-
+} = wp.element;
 
 /* Create a Block Controls wrapper Component */
 
@@ -816,7 +815,6 @@ class BGImgControl extends Component {
 
   render() {
     const {
-      positionVert,
       attributes: {
         bgImageSizeDefault,
         bgImageSize,
@@ -1054,11 +1052,11 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
       });
     };
 
-    const bgcolor1classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()("px-colorbox", "px-colorbox--marginabove", {
-      "px-colorbox--paddingbelow": bgColorCount == "gradient"
-    }, {
-      "px-colorbox--linebelow": bgColorCount == "gradient"
-    });
+    const bgcolor1classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()("px-colorbox", "px-colorbox--marginabove"); // 
+    // 
+    // ,
+    // 	{ "px-colorbox--paddingbelow": bgColorCount == "gradient" },
+    // 	{ "px-colorbox--linebelow": bgColorCount == "gradient" }
 
     const getBackgroundTab = name => {
       // Help Tab
@@ -1380,8 +1378,7 @@ const CalculatedTabset = props => {
       title: "Gel",
       className: "tab-bggel"
     });
-  } // console.log("stack order " + bgStackFirst);
-  // Stack Order 1
+  } // Stack Order 1
 
 
   if (bgStackFirst == "gradient") {
@@ -1606,51 +1603,32 @@ function PoststylePlugin(props) {
     var classstring = 'xx-styled--admin';
     var allstyles = '';
     var styles = global_named_fonts;
-    var types = ['xx-styled--headlinefont', 'xx-styled--foregroundfont', 'xx-styled--captionfont']; // Build a string of classes that include all font/type combinations
+    var types = ['xx-styled--headlinefont', 'xx-styled--copyfont', 'xx-styled--captionfont']; // Build a string of classes that include all font/type combinations
 
     for (let s = 0; s < styles.length; s++) {
       for (let t = 0; t < types.length; t++) {
         allstyles += types[t] + "-" + styles[s].value + " ";
       }
-    }
+    } // Build strings for style and class tags
 
-    console.log("items include, ", postStyleHeadline, postStyleCopy, postStyleCaptions); // Build strings for style and class tags
 
     if (postStyleHeadline) {
-      stylestring += '--fgHeadlineFont: var(--' + postStyleHeadline + ');';
+      stylestring += '--foregroundHeadlineFont: var(--' + postStyleHeadline + ');';
       classstring += ' xx-styled--headlinefont-' + postStyleHeadline;
     }
 
     if (postStyleCopy) {
-      stylestring += '--fgCopyFont: var(--' + postStyleCopy + ');';
-      classstring += ' xx-styled--foregroundfont-' + postStyleCopy;
+      stylestring += '--foregroundCopyFont: var(--' + postStyleCopy + ');';
+      classstring += ' xx-styled--copyfont-' + postStyleCopy;
     }
 
     if (postStyleCaptions) {
-      stylestring += '--fgCaptionFont: var(--' + postStyleCaptions + ');';
+      stylestring += '--foregroundCaptionFont: var(--' + postStyleCaptions + ');';
       classstring += ' xx-styled--captionfont-' + postStyleCaptions;
-    }
+    } // Add/Remove all the Properties!
 
-    console.log("stylestring, classstring: ", stylestring, classstring); // Add/Remove all the Properties!
 
     jQuery("body").removeClass(allstyles).addClass(classstring).attr('data-theme', postStyleType).attr('style', stylestring);
-    /*
-    // if(postStyleType === null){ jQuery("body").attr('data-theme','');}
-    
-    if (myPostMetaKey) {
-    	jQuery("body").addClass("wp-admin--gutenbergdebug");
-    	jQuery(editorClass).attr("data-headline", postStyleHeadline);
-    	jQuery(editorClass).attr("data-copy", postStyleCopy);
-    	jQuery(editorClass).attr("data-captions", postStyleCaptions);
-    	console.log("yeppers");
-    } else {
-    	jQuery(editorClass).attr("data-headline", postStyleHeadline);
-    	jQuery(editorClass).attr("data-copy", postStyleCopy);
-    	jQuery(editorClass).attr("data-captions", postStyleCaptions);
-    	console.log("nopers");
-    	jQuery("body").removeClass("wp-admin--gutenbergdebug");
-    }
-    */
   });
   return createElement(Fragment, null, createElement(_wordpress_edit_post__WEBPACK_IMPORTED_MODULE_2__.PluginSidebarMoreMenuItem, {
     target: "post-style-sidebar-plugin",
@@ -2154,21 +2132,7 @@ const {
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
   // icon,
-  category: 'design',
-
-  getEditWrapperProps(attributes) {
-    const {
-      blockAlignment
-    } = attributes;
-  },
-
-  getSelectedBlockClientId(attributes) {
-    const {
-      blockID
-    } = attributes;
-    console.log("my id is ", blockID);
-  }
-
+  category: 'design'
 });
 
 /***/ }),
@@ -2805,30 +2769,30 @@ const calculatedInlineVars = attributes => {
 
 
   if (fgHeadlineFont !== null && fgHeadlineFont !== 'inherit') {
-    interfaceCss += `--fgHeadlineFont: var(--${fgHeadlineFont});`;
+    interfaceCss += `--foregroundHeadlineFont: var(--${fgHeadlineFont});`;
   }
 
   if (fgCopyFont !== null && fgCopyFont !== 'inherit') {
-    interfaceCss += `--fgCopyFont: var(--${fgCopyFont});`;
+    interfaceCss += `--foregroundCopyFont: var(--${fgCopyFont});`;
   }
 
   if (fgCaptionFont !== null && fgCaptionFont !== 'inherit') {
-    interfaceCss += `--fgCaptionFont: var(--${fgCaptionFont});`;
+    interfaceCss += `--foregroundCaptionFont: var(--${fgCaptionFont});`;
   } // Font CSS
 
 
   var fontCss = ``;
 
   if (fgHeadlineFont !== null && fgHeadlineFont !== 'inherit') {
-    fontCss += `--fgHeadlineFont: var(--${fgHeadlineFont});`;
+    fontCss += `--foregroundHeadlineFont: var(--${fgHeadlineFont});`;
   }
 
   if (fgCopyFont !== null && fgCopyFont !== 'inherit') {
-    fontCss += `--fgCopyFont: var(--${fgCopyFont});`;
+    fontCss += `--foregroundCopyFont: var(--${fgCopyFont});`;
   }
 
   if (fgCaptionFont !== null && fgCaptionFont !== 'inherit') {
-    fontCss += `--fgCaptionFont: var(--${fgCaptionFont});`;
+    fontCss += `--foregroundCaptionFont: var(--${fgCaptionFont});`;
   } // Sizing CSS
 
 
@@ -3009,15 +2973,15 @@ const calculatedStyleObj = attributes => {
   const typographyObj = {}; // Selectively add Font Objects to respect "inherit" option
 
   if (fgHeadlineFont !== null && fgHeadlineFont !== 'inherit') {
-    typographyObj['--fgHeadlineFont'] = 'var(--' + fgHeadlineFont + ')';
+    typographyObj['--foregroundHeadlineFont'] = 'var(--' + fgHeadlineFont + ')';
   }
 
   if (fgCopyFont !== null && fgCopyFont !== 'inherit') {
-    typographyObj['--fgCopyFont'] = 'var(--' + fgCopyFont + ')';
+    typographyObj['--foregroundCopyFont'] = 'var(--' + fgCopyFont + ')';
   }
 
   if (fgCaptionFont !== null && fgCaptionFont !== 'inherit') {
-    typographyObj['--fgCaptionFont'] = 'var(--' + fgCaptionFont + ')';
+    typographyObj['--foregroundCaptionFont'] = 'var(--' + fgCaptionFont + ')';
   } // Build Up Sizing Support
 
 
@@ -3113,10 +3077,18 @@ function save(props) {
 
   const blockProps = {
     className: classes,
-    id: blockID,
-    style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
-    'data-theme': styleMode == 'named' ? namedStyle : ''
-  }; // Save BlockProps and InnerBlocks content
+    id: blockID
+  }; // Conditionally add style
+
+  if (inlineVarCSS) {
+    blockProps['style'] = inlineVarCSS;
+  } // Conditionally add data-theme
+
+
+  if (styleMode == 'named') {
+    blockProps['data-theme'] = namedStyle;
+  } // Save BlockProps and InnerBlocks content
+
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps.save(blockProps), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks.Content, null));
 }

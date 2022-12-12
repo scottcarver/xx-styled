@@ -53,7 +53,7 @@ export function AccordionSavedStyles(props){
                         </div>
                         {/* 		*/}				
                         <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
-                            <a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
+                            <a href="post-new.php?post_type=styled" style={{padding: "5px"}}>+ Create New Style</a>	
                         </div> 
                     </div>
                 </PanelRow>

@@ -38,10 +38,14 @@ export default function save(props) {
 	// Create a BlockProps Object
 	const blockProps = {
 		className: classes,
-		id: blockID,
-		style: styleMode == 'custom' || styleMode == 'named' ? inlineVarCSS : {},
-		'data-theme': styleMode == 'named' ? namedStyle : ''
+		id: blockID
 	}
+
+	// Conditionally add style
+	if(inlineVarCSS){ blockProps['style'] = inlineVarCSS; }
+
+	// Conditionally add data-theme
+	if(styleMode == 'named'){  blockProps['data-theme'] = namedStyle; }
 	
 	// Save BlockProps and InnerBlocks content
 	return (

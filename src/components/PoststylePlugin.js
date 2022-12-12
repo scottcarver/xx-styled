@@ -77,7 +77,7 @@ function PoststylePlugin(props) {
 		var classstring = 'xx-styled--admin';
 		var allstyles = '';
 		var styles = global_named_fonts;
-		var types = ['xx-styled--headlinefont', 'xx-styled--foregroundfont', 'xx-styled--captionfont']
+		var types = ['xx-styled--headlinefont', 'xx-styled--copyfont', 'xx-styled--captionfont']
 		
 		// Build a string of classes that include all font/type combinations
 		for (let s = 0; s < styles.length; s++) {
@@ -86,46 +86,23 @@ function PoststylePlugin(props) {
 			 }
 		 }
 		 
-		console.log("items include, ", postStyleHeadline, postStyleCopy, postStyleCaptions);
-
 
 		 // Build strings for style and class tags
 		if(postStyleHeadline){ 
-			stylestring += '--fgHeadlineFont: var(--'+postStyleHeadline+');';
+			stylestring += '--foregroundHeadlineFont: var(--'+postStyleHeadline+');';
 			classstring += ' xx-styled--headlinefont-'+postStyleHeadline; 
 		}
 		if(postStyleCopy){ 
-			stylestring += '--fgCopyFont: var(--'+postStyleCopy+');'; 
-			classstring += ' xx-styled--foregroundfont-'+postStyleCopy; 
+			stylestring += '--foregroundCopyFont: var(--'+postStyleCopy+');'; 
+			classstring += ' xx-styled--copyfont-'+postStyleCopy; 
 		}
 		if(postStyleCaptions){ 
-			stylestring += '--fgCaptionFont: var(--'+postStyleCaptions+');'; 
+			stylestring += '--foregroundCaptionFont: var(--'+postStyleCaptions+');'; 
 			classstring += ' xx-styled--captionfont-'+postStyleCaptions; 
 		}
 
-		console.log("stylestring, classstring: ", stylestring, classstring);
-
-
 		// Add/Remove all the Properties!
 		jQuery("body").removeClass(allstyles).addClass(classstring).attr('data-theme',postStyleType).attr('style',stylestring);
-		
-		/*
-		// if(postStyleType === null){ jQuery("body").attr('data-theme','');}
-		
-		if (myPostMetaKey) {
-			jQuery("body").addClass("wp-admin--gutenbergdebug");
-			jQuery(editorClass).attr("data-headline", postStyleHeadline);
-			jQuery(editorClass).attr("data-copy", postStyleCopy);
-			jQuery(editorClass).attr("data-captions", postStyleCaptions);
-			console.log("yeppers");
-		} else {
-			jQuery(editorClass).attr("data-headline", postStyleHeadline);
-			jQuery(editorClass).attr("data-copy", postStyleCopy);
-			jQuery(editorClass).attr("data-captions", postStyleCaptions);
-			console.log("nopers");
-			jQuery("body").removeClass("wp-admin--gutenbergdebug");
-		}
-		*/
 
 	});
 

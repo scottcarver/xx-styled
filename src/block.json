@@ -15,17 +15,9 @@
 		"html": true
 	},
 	"attributes" : {
-		
 		"align": {
 			"type": "string",
 			"comment" : "needed for fullwidth control"
-		},
-		"blockAlignment": {
-			"type": "string"
-		},
-		"blockID": {
-			"type": "string",
-			"comment" : "used for unique naming"
 		},
 		"namedStyle": {
 			"type": "string",
@@ -35,12 +27,6 @@
 			"type": "string",
 			"default": "custom"
 		},
-
-
-	
-
-
-
 		"headlineColor": {
 			"type": "string"
 		},
@@ -68,13 +54,6 @@
 		"selectionBGColor": {
 			"type": "string"
 		},
-
-
-
-
-
-
-		
 		"interfaceFGColor": {
 			"type": "string"
 		},
@@ -84,8 +63,6 @@
 		"interfaceKeyColor": {
 			"type": "string"
 		},
-
-
 		"bgColorEnabled": {
 			"type": "boolean",
 			"default": true
@@ -102,21 +79,17 @@
 			"type": "boolean",
 			"default": false
 		},
-		"bgColorCount": {
-			"type": "string",
-			"default": "flat"
-		},
 		"bgStackFirst": {
 			"type": "string",
 			"default": "image"
 		},
-		"backgroundColor": {
-			"type": "string",
-			"comment":"used as the base color in the generated style"
-		},
 		"backgroundGel": {
 			"type": "string",
 			"comment":"used as the gel color"
+		},
+		"backgroundColor": {
+			"type": "string",
+			"comment":"used as the base color in the generated style"
 		},
 		"bgGrad1": {
 			"type": "string",
@@ -150,8 +123,6 @@
 			"type": "number",
 			"default": 50
 		},
-
-
 		"backgroundImage": {
 			"type": "string",
 			"default": ""
@@ -188,10 +159,6 @@
 			"type": "string",
 			"default": "scroll"
 		},
-	
-
-
-
 		"spacingMobile": {
 			"type": "object",
 			"default": ""
@@ -204,9 +171,6 @@
 			"type": "object",
 			"default": ""
 		},
-
-
-
 		"fgHeadlineFont": {
 			"type": "string",
 			"default": "inherit"

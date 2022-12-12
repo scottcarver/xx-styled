@@ -56,10 +56,14 @@ export default class BGTabs extends Component {
 
 		const bgcolor1classes = classnames(
 			"px-colorbox",
-			"px-colorbox--marginabove",
-			{ "px-colorbox--paddingbelow": bgColorCount == "gradient" },
-			{ "px-colorbox--linebelow": bgColorCount == "gradient" }
+			"px-colorbox--marginabove"
 		);
+
+		// 
+		// 
+		// ,
+		// 	{ "px-colorbox--paddingbelow": bgColorCount == "gradient" },
+		// 	{ "px-colorbox--linebelow": bgColorCount == "gradient" }
 
 		const getBackgroundTab = name => {
 			// Help Tab

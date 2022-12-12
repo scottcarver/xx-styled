@@ -574,7 +574,7 @@
   box-sizing: border-box;
   position: relative;
   margin: 0px auto;
-  font-family: var(--fgCopyFont);
+  font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);
   background-color: var(--backgroundColor);
@@ -623,7 +623,7 @@
 }
 .xx-styled--admin .wp-block-post-content h1, .xx-styled--admin .wp-block-post-content h2, .xx-styled--admin .wp-block-post-content h3, .xx-styled--admin .wp-block-post-content h4, .xx-styled--admin .wp-block-post-content h5, .xx-styled--admin .wp-block-post-content h6 {
   color: var(--headlineColor);
-  font-family: var(--fgHeadlineFont);
+  font-family: var(--foregroundHeadlineFont);
 }
 .xx-styled--admin .wp-block-post-content p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
@@ -636,7 +636,7 @@
   border-color: var(--blockquoteColor);
 }
 .xx-styled--admin .wp-block-post-content figure figcaption {
-  font-family: var(--fgCaptionFont);
+  font-family: var(--foregroundCaptionFont);
 }
 .xx-styled--admin .wp-block-post-content hr.wp-block-separator {
   background-color: var(--lineartColor);

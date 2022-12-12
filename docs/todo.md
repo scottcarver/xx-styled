@@ -19,3 +19,14 @@
 2) selector UI will have a slug "mycooolthing" but the CSS will have a number "1234" 
 
 it seems likely the classname is based on the title, not the slug, and when it doesn't match exactly, it is an issue
+
+## Layout Option
+In the future, add this to the 'supports' option:
+
+```
+	"__experimentalLayout": {
+			"allowSizingOnChildren": false,
+			"allowInheriting": true,
+			"allowEditing": true
+		}
+```

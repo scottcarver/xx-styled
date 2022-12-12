@@ -13,8 +13,6 @@ const CalculatedTabset = props => {
 		});
 	}
 
-	// console.log("stack order " + bgStackFirst);
-
 	// Stack Order 1
 	if (bgStackFirst == "gradient") {
 		if (bgGradientEnabled) {

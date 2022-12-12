@@ -16,7 +16,7 @@
   box-sizing: border-box;
   position: relative;
   margin: 0px auto;
-  font-family: var(--fgCopyFont);
+  font-family: var(--foregroundCopyFont);
   color: var(--foregroundColor);
   background-image: var(--backgroundImage);
   background-color: var(--backgroundColor);
@@ -64,7 +64,7 @@
 }
 .xx-styled h1, .xx-styled h2, .xx-styled h3, .xx-styled h4, .xx-styled h5, .xx-styled h6 {
   color: var(--headlineColor);
-  font-family: var(--fgHeadlineFont);
+  font-family: var(--foregroundHeadlineFont);
 }
 .xx-styled p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
@@ -77,7 +77,7 @@
   border-color: var(--blockquoteColor);
 }
 .xx-styled figure figcaption {
-  font-family: var(--fgCaptionFont);
+  font-family: var(--foregroundCaptionFont);
 }
 .xx-styled hr.wp-block-separator {
   background-color: var(--lineartColor);

@@ -3,8 +3,8 @@
 /*  Internal block libraries */
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-// const { Button, ButtonGroup, RangeControl } = wp.components;
-import { __experimentalUnitControl as UnitControl,  Button, ButtonGroup, RangeControl } from '@wordpress/components';
+import { __experimentalUnitControl as UnitControl,  Button, ButtonGroup} from '@wordpress/components';
+
 /* Create a Block Controls wrapper Component */
 export default class BGImgControl extends Component {
 	constructor() {
@@ -12,7 +12,6 @@ export default class BGImgControl extends Component {
 	}
 	render() {
 		const {
-			positionVert,
 			attributes: {
 				bgImageSizeDefault,
 				bgImageSize,
@@ -59,32 +58,28 @@ export default class BGImgControl extends Component {
 							isPrimary={bgImageSizeDefault === "cover"}
 							onClick={() => {
 								setAttributes({ bgImageSizeDefault: "cover" });
-							}}
-						>
+							}}>
 							Cover
 						</Button>
 						<Button
 							isPrimary={bgImageSizeDefault === "contain"}
 							onClick={() => {
 								setAttributes({ bgImageSizeDefault: "contain" });
-							}}
-						>
+							}}>
 							Contain
 						</Button>
 						<Button
 							isPrimary={bgImageSizeDefault === "auto"}
 							onClick={() => {
 								setAttributes({ bgImageSizeDefault: "auto" });
-							}}
-						>
+							}}>
 							Auto
 						</Button>
 						<Button
 							isPrimary={bgImageSizeDefault === "custom"}
 							onClick={() => {
 								setAttributes({ bgImageSizeDefault: "custom" });
-							}}
-						>
+							}}>
 							Custom
 						</Button>
 					</ButtonGroup>
@@ -119,22 +114,7 @@ export default class BGImgControl extends Component {
 								/>
 							</div>
 						</div>
-{/* 						
-						Two
-						<div className="px-columnrow px-columnrow--nolabel px-columnrow--spaceabove">
-							<RangeControl
-								label={__("Custom")}
-								value={bgImageSize}
-								onChange={bgImageSize => {
-									setAttributes({
-										bgImageSize
-									});
-								}}
-								min={0}
-								max={200}
-							/>
-						</div>
-						Three */}
+
 					</Fragment>
 				)}
 
@@ -150,8 +130,7 @@ export default class BGImgControl extends Component {
 								setAttributes({
 									bgImageRepeat: "no-repeat"
 								});
-							}}
-						>
+							}}>
 							No
 						</Button>
 						<Button
@@ -160,8 +139,7 @@ export default class BGImgControl extends Component {
 								setAttributes({
 									bgImageRepeat: "repeat"
 								});
-							}}
-						>
+							}}>
 							Yes
 						</Button>
 						<Button
@@ -170,8 +148,7 @@ export default class BGImgControl extends Component {
 								setAttributes({
 									bgImageRepeat: "repeat-x"
 								});
-							}}
-						>
+							}}>
 							Repeat-x
 						</Button>
 						<Button
@@ -180,8 +157,7 @@ export default class BGImgControl extends Component {
 								setAttributes({
 									bgImageRepeat: "repeat-y"
 								});
-							}}
-						>
+							}}>
 							Repeat-y
 						</Button>
 					</ButtonGroup>
@@ -199,8 +175,7 @@ export default class BGImgControl extends Component {
 								setAttributes({
 									bgImageAttachment: "scroll"
 								});
-							}}
-						>
+							}}>
 							Scroll
 						</Button>
 						<Button
@@ -209,8 +184,7 @@ export default class BGImgControl extends Component {
 								setAttributes({
 									bgImageAttachment: "fixed"
 								});
-							}}
-						>
+							}}>
 							Fixed
 						</Button>
 					</ButtonGroup>

@@ -90,7 +90,7 @@ function new_language_attributes($lang){
       }
       if($copyTypography !== null && $copyTypography !== '' && $copyTypography !== 'inherit'){
         $style .= '--foregroundCopyFont: var(--'.$copyTypography.');';
-        $bodystyles .= ' xx-styled--foregroundfont-'.$copyTypography;
+        $bodystyles .= ' xx-styled--copyfont-'.$copyTypography;
       }
       if($captionTypography !== null && $captionTypography !== '' && $captionTypography !== 'inherit'){
         $style .= '--foregroundCaptionFont: var(--'.$captionTypography.');';

@@ -82,13 +82,13 @@ const calculatedStyleObj = attributes => {
 	
 	// Selectively add Font Objects to respect "inherit" option
 	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
-		typographyObj['--fgHeadlineFont'] = 'var(--'+fgHeadlineFont+')';
+		typographyObj['--foregroundHeadlineFont'] = 'var(--'+fgHeadlineFont+')';
 	}
 	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){
-		typographyObj['--fgCopyFont'] = 'var(--'+fgCopyFont+')';
+		typographyObj['--foregroundCopyFont'] = 'var(--'+fgCopyFont+')';
 	}
 	if(fgCaptionFont !== null && fgCaptionFont !== 'inherit'){
-		typographyObj['--fgCaptionFont'] = 'var(--'+fgCaptionFont+')';
+		typographyObj['--foregroundCaptionFont'] = 'var(--'+fgCaptionFont+')';
 	}
 
     // Build Up Sizing Support
