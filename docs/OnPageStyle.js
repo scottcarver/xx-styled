@@ -29,14 +29,10 @@ export default class OnPageStyle extends Component {
 	render() {
 		const {
 			attributes: {
-				styleEnabled,
-				babygradient,
 				dropcapColor,
 				blockquoteColor,
 				backgroundColor,
-				bgColorEnabled,
 				blockID,
-				bgImage,
 				headlineColor,
 				foregroundColor,
 				linkColor,
@@ -49,7 +45,6 @@ export default class OnPageStyle extends Component {
 			setAttributes
 		} = this.props;
 
-		const toggleStyleEnabled = () => setAttributes({ styleEnabled: !styleEnabled });
 
 		// boop
 		const bgImageStack = calculated.calculatedBgImage(this.props.attributes);

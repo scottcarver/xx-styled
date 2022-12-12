@@ -9,7 +9,7 @@ License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-This plugin adds a new Block ("xx/styled") and Posttype ("styled") which allows the user to create reusable, themed areas. These are called "styled areas." 
+This plugin adds a new Block ("xx/styled") and Posttype ("styled") which allows the user to create reusable, themed areas (called "styled areas"). 
 
 == Installation ==
 

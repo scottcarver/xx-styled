@@ -1,24 +1,16 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
-import {PanelBody, PanelRow, FormToggle} from '@wordpress/components';
-import {ComboboxControl,  TabPanel, Button, ButtonGroup} from '@wordpress/components';
+import {PanelBody, PanelRow} from '@wordpress/components';
+import {TabPanel,  GradientPicker} from '@wordpress/components';
 import { ColorPalette} from '@wordpress/block-editor';
 
 export function AccordionForeground(props){
 
-    console.log("have props", props);
+    // console.log("have props", props);
 
     const {
         attributes: {
-            namedstyle,
-            styleEnabled,
             styleMode,
-            heightEnabled,
-            bgColorEnabled,
-            bgGradientEnabled,
-            bgImageEnabled,
-            bgGelEnabled,
-            backgroundStackFirst,
             headlineColor,
             foregroundColor,
             linkColor,
@@ -27,9 +19,7 @@ export function AccordionForeground(props){
             lineartColor,
             selectionFGColor,
             selectionBGColor,
-            foregroundHeadlineFont,
-            foregroundCopyFont,
-            foregroundCaptionFont,
+            keyGradient,
         },
         setAttributes
     } = props;
@@ -75,6 +65,11 @@ export function AccordionForeground(props){
                         <label htmlFor="lineartSwatch">Palette</label>
                         <ColorPalette value={lineartColor} onChange={lineartColor => setAttributes({ lineartColor })} />
                     </div>
+                    <div className="px-gradientbox">
+                        <h2>Key Gradient</h2>
+                        <GradientPicker value={keyGradient} onChange={keyGradient => setAttributes({ keyGradient })} />
+                    </div>
+                    
                 </Fragment>
             );
         }
@@ -104,36 +99,33 @@ export function AccordionForeground(props){
         }
     };
 
-
     return (
         <Fragment>
-                {styleMode=='custom' && (
-                <Fragment>
-                    <PanelBody title={__("Foreground", "pxblocks")}  className="panel-foreground" initialOpen={false}>
-                        <PanelRow>
-                            <div className="px-sidepanel">
-                                <TabPanel
-                                    className="px-tabwrap px-tabwrap--centered px-tabwrap--margintop"
-                                    activeclassName="active-tab"
-                                    tabs={[
-                                        {
-                                            name: "fgcolor",
-                                            title: "Color",
-                                            className: "tab-one"
-                                        },
-                                        {
-                                            name: "fgselection",
-                                            title: "Selection",
-                                            className: "tab-two"
-                                        },
-                                    ]}>
-                                    {tab => getForegroundTab(tab.name)}
-                                </TabPanel>
-                            </div>
-                        </PanelRow>
-                    </PanelBody>
-                </Fragment>
-                )}
+            {styleMode=='custom' && (
+                <PanelBody title={__("Foreground", "pxblocks")}  className="panel-foreground" initialOpen={false}>
+                    <PanelRow>
+                        <div className="px-sidepanel">
+                            <TabPanel
+                                className="px-tabwrap px-tabwrap--centered px-tabwrap--margintop"
+                                activeclassName="active-tab"
+                                tabs={[
+                                    {
+                                        name: "fgcolor",
+                                        title: "Color",
+                                        className: "tab-one"
+                                    },
+                                    {
+                                        name: "fgselection",
+                                        title: "Selection",
+                                        className: "tab-two"
+                                    },
+                                ]}>
+                                {tab => getForegroundTab(tab.name)}
+                            </TabPanel>
+                        </div>
+                    </PanelRow>
+                </PanelBody>
+            )}
         </Fragment>
     );
 }

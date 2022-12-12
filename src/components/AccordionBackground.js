@@ -1,12 +1,11 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow, FormToggle} from '@wordpress/components';
-import {ComboboxControl} from '@wordpress/components';
 import BGTabs from "./BGTabs";
 
 export function AccordionBackground(props){
 
-    console.log("have props", props);
+    // console.log("have props", props);
 
     const {
         attributes: {
@@ -21,36 +20,11 @@ export function AccordionBackground(props){
     } = props;
 
 
-    // Destructure props
-    /*
-	const {
-		attributes: { 
-            bgColorEnabled,
-            bgGradientEnabled,
-            bgImageEnabled,
-            bgGelEnabled,
-            toggleGelEnabled,
-            toggleImageEnabled,
-            toggleGradientEnabled,
-            backgroundStackFirst,
-            toggleBgColorEnabled,
-            styleMode,
-		},
-		setAttributes
-	} = props;
-
-    */
-   
-    const fontOptions = global_named_fonts;
-
     // Toggles
-    const toggleStyleEnabled = () => setAttributes({ styleEnabled: !styleEnabled });
     const toggleBgColorEnabled = () => { setAttributes({ bgColorEnabled: !bgColorEnabled }); };
     const toggleGradientEnabled = () => { setAttributes({ bgGradientEnabled: !bgGradientEnabled }); };
     const toggleImageEnabled = () => { setAttributes({ bgImageEnabled: !bgImageEnabled }); };
     const toggleGelEnabled = () => { setAttributes({ bgGelEnabled: !bgGelEnabled }); };
-    const toggleFgEnabled = () => setAttributes({ foregroundEnabled: !foregroundEnabled });
-    const toggleHeightEnabled = () => setAttributes({ heightEnabled: !heightEnabled });
     const toggleBgStack = backgroundStackFirst =>
         function() {
             if (backgroundStackFirst == "image") {
@@ -62,13 +36,12 @@ export function AccordionBackground(props){
         };
         
         
-    
+    // Don't show when disabled
     if(styleMode=='disabled'){ return false; }
-    // return (<p>boop</p>);
+
     return (
         <Fragment>
            <PanelBody title={__("Background", "pxblocks")} className="panel-background" initialOpen={false}>
-					{/*  icon="format-image" */}
                 <PanelRow>
                     <div className="px-sidepanel">
                         <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom">
@@ -80,6 +53,7 @@ export function AccordionBackground(props){
                                 onChange={toggleGelEnabled}
                             />
                         </div>
+
                         {/* When Gradient is first, order them that way */}
                         {backgroundStackFirst === "gradient" ? (
                             <Fragment>
@@ -146,7 +120,7 @@ export function AccordionBackground(props){
                             </div>
                         )}
 
-
+                        {/* BG Tabs */}
                         <BGTabs {...{ setAttributes, ...props }} />
 
                     </div>

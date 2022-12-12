@@ -32,15 +32,6 @@ if($styled_areas){
   }
 };
 
-/*
-$routeArgs = array(
-  'path' => 'my-unique-route/(.+?)/(.+?)/?$',
-  'params' => array('param_1','param_2'),
-  'template' => '/public/path_to_template_file.php',
-  'rebuild' => false,
-)
-new Custom_Route('my-unique-route/(.+?)/(.+?)/?$',array('param_1','param_2'),'/public/path_to_template_file.php',true);
-*/
 
 ?>
 <?php if(isset($styled_array)){ 

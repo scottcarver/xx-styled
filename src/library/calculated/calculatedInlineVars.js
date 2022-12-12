@@ -18,15 +18,14 @@ const calculatedInlineVars = attributes => {
 		dropcapColor,
 		blockquoteColor,
 		lineartColor,
+		keyGradient,
 		styleMode,
 		selectionFGColor,
 		selectionBGColor,
 		backgroundColor,
-		backgroundColor3,
 		foregroundHeadlineFont,
 		foregroundCopyFont,
 		foregroundCaptionFont,
-		styleEnabled,
 		interfaceFGColor,
 		interfaceBGColor,
 		interfaceKeyColor
@@ -69,9 +68,10 @@ const calculatedInlineVars = attributes => {
 	if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor};`; }
 	if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor};`; }
 	if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor};`; }
+	if(keyGradient){ fgbgCss += `--keyGradient: ${keyGradient};`; }
 	if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor};`; }
 	if(selectionBGColor){ fgbgCss += `--selectionBGColor: ${selectionBGColor};`; }
-
+	
 
 
 	// Interface CSS
@@ -124,7 +124,7 @@ const calculatedInlineVars = attributes => {
 	compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
 
 	// Return style when enabled
-	if(styleEnabled){ return compressedCSS }
+	if(styleMode !== 'disabled'){ return compressedCSS }
 
 	// Otherwise Return False
 	return false;

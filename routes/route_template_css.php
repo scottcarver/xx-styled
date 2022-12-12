@@ -29,28 +29,14 @@ if($styled_areas) :
           // Not Null, Undefined, Unset
           // Specifically block against null or incomplete data
           if(!str_contains($value, 'null') && ($value != 'undefined') && $value !== ''){
-            // echo('key:' . $key . "|value:" . $value . "#");
             $nonulltext .= $key . ":" . $value . ";";
           }
         }
         
-        $styleformatted = '[data-theme="' . $post_slug . '"]{' . $nonulltext . '}';  //$styleclean
+        $styleformatted = '.styled-' . $post_slug . ', [data-theme="' . $post_slug . '"]{' . $nonulltext . '}';
        array_push($styled_array, $styleformatted);
       }
     }
-    /* Works!
-    $post_content = $styled_areas[0]->post_content;
-    $pieces = explode('style="', $post_content);
-    $styledbit = explode('" ', $pieces[1]);
-    $styleclean = $styledbit[0];
-    */
-    // echo 'ID on the first post found ' . $styled_areas[0]->ID;
 endif;
 
 foreach($styled_array as $style){ echo($style); }
-// var_dump($styled_array);
-
-
-/*
-<?php if($styleclean){ ?>.xx-styled--<?php echo($stylename); ?>{ <?php echo($styleclean); ?> } <?php } ?>
-*/

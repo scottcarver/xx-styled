@@ -15,12 +15,14 @@ const calculatedStyleObj = attributes => {
 		selectionFGColor, 
 		selectionBGColor, 
 		lineartColor, 
+		keyGradient,
 		foregroundHeadlineFont, 
 		foregroundCopyFont, 
 		foregroundCaptionFont, 
 		interfaceFGColor,
 		interfaceBGColor,
 		interfaceKeyColor
+	
 	} = attributes;
 
     const bgImageStack = calculated.calculatedBgImage(attributes);
@@ -52,6 +54,7 @@ const calculatedStyleObj = attributes => {
 		'--selectionFGColor': selectionFGColor,
 		'--selectionBGColor': selectionBGColor,
 		'--lineartColor':lineartColor,
+		'--keyGradient':keyGradient,
 	};
 
  

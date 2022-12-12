@@ -1,12 +1,9 @@
 # Styled Areas - Gutenberg Block
-*Styled Areas* is a WP block/plugin which provides the user with a new "Styled Area" block &mdash; a visual editing interface for creating color schemes inside your website. Practically speaking, a Styled Area is a container element which uses CSS Variables to style the foreground/background content inside it.
+"*Styled Areas*" is a WordPress Plugin which provides the user with an alternative visual-editing interface for creating color themes inside of a WP website using a new Block and Posttype. 
 
-![Code Preview](src/library/img/styled-controlswithpreview.jpg)
+![Screenshot of Styled Areas interface](src/library/img/styled-controlswithpreview.jpg)
 
-<!-- ## Benefits
-- the CSS vars can be used inline, onpage, or in an external stylesheet
-- CSS vars are less intrusive than regular CSS rules, they do nothing by default (the `.xx-styled` adds rules)
-- create one-off styles in post, or create  -->
+Practically speaking, a Styled Area is a container element which uses CSS Variables for displaying foreground/background colors on the content inside of it. To make this even more powerful, Styled Areas can be saved, reused, and assigned to a post/page level.
 
 ## Installation
 
@@ -41,30 +38,21 @@ There is default support if you create light/dark modes:
 This approach may help some users style their theme more consistently and dynamically by simplifying how color is added to container blocks and inner elements (p,h1,etc) without controlling each one individually.
 
 
-## Added Routes
-In addition to the 'single' view created by the 'styled' posttype, additional helper urls are added.
+## Additional Routes
+In addition to the 'single' entry, additional helper urls are added:
 
 ### CSS
-- Individual Styles - `WPBASE/styled/taffy.css` (slug is used)
+- Individual Styles - `WPBASE/styled/my-cool-style.css` (slug is used)
 - All Styles - `WPBASE/styled/compiled.css` (special name 'compiled' is used)
 <!-- - Entry Styles - `WPBASE/styled-entry/[ID].css` (ID is used, this will pluck any used inline/saved styles and place them in a compiled CSS format) -->
 
 ### JSON
-- Individual JSON - `WPBASE/styled/taffy.json` (returns object)
+- Individual JSON - `WPBASE/styled/my-cool-style.json` (returns object)
 - Compiled JSON - `WPBASE/styled/compiled.json` (returns arrray of objects). This is used in creating variations.
 
 
 
 
-### Removals
-- ro
+## Styled Areas versus Global Styles
+I began working on this block in 2019, and it developed alongside the core styling tools in WordPress. While the core WP features focus on 1) Global Styles and 2) inline styles, this project is more focus on streamlining the creation of reusable styles. Both approaches may be useful in different cases!
 
-
-## Styled Areas versus 
-is an alternative approach to using the core styling tools in WordPress.
-
-
-## Todo
-- in all cases, check the "enabled" values before returning anything in css/js. [issue] regarding linear-gradient showing when Gel is enabled but no color value is set.
-- there is a know issue with nesting multiple deep where the wide/full does not display. A solution is possible but in the short term just add the classes to get the same effect
-- padding function has an issue where if you only input 1 value (and leave others blank), the *others* are rendered as "undefined" - likely fix is inside of calclatedPadding.js

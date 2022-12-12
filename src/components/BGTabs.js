@@ -1,31 +1,16 @@
-/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
 
 // Node modules
 import classnames from "classnames";
 
-/*  Internal block libraries */
+// WordPress modules
 const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
 import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
-import { FocalPointPicker } from '@wordpress/components';
+import { FocalPointPicker, TabPanel, Button, ButtonGroup, RangeControl, ColorPicker } from '@wordpress/components';
 
-
-const {
-	TabPanel,
-	Button,
-	ButtonGroup,
-	RangeControl,
-	IconButton,
-	Placeholder,
-	ColorIndicator,
-	ColorPicker
-} = wp.components;
-
-// My helper code
+// Custom Modules
 import BGImgControl from "./BGImgControl";
-import BGGradControl from "../../assets/BGGradControl";
-
-import CalculatedTabset from "./CalculatedTabset"; // Function Component
+import CalculatedTabset from "./CalculatedTabset";
 import calculatedRgbaString from "../library/calculated/calculatedRgbaString";
 
 /* Create a Block Controls wrapper Component */
@@ -36,35 +21,21 @@ export default class BGTabs extends Component {
 	componentDidMount() { }
 	render() {
 		const {
-			positionVert,
 			attributes: {
-				blockID,
-				styleEnabled,
-				heightEnabled,
-				bgColorEnabled,
-				bgGradientEnabled,
-				bgImageEnabled,
 				bgGelEnabled,
 				backgroundColorCount,
-				foregroundColor,
 				backgroundColor,
-				backgroundColor1,
-				backgroundColor2,
-				backgroundColor3,
-				backgroundColor1Start,
-				backgroundColor2Start,
+				backgroundGrad1,
+				backgroundGrad2,
+				backgroundGel,
+				backgroundGrad1Start,
+				backgroundGrad2Start,
 				backgroundImage,
-				backgroundStackFirst,
 				backgroundGradientAttachment,
 				gradientType,
 				gradientLinearAngle,
 				gradientAlignRadialHori,
 				gradientAlignRadialVert,
-				selectionFGColor,
-				selectionBGColor,
-				foregroundHeadlineFont,
-				foregroundCopyFont,
-				foregroundCaptionFont,
 				focalPoint
 			},
 			setAttributes
@@ -82,11 +53,6 @@ export default class BGTabs extends Component {
 			console.log( "changed to", colorValue);
 			setAttributes({ backgroundColor: colorValue });
 		}
-		/*
-		const onSelect = tabName => {
-			console.log("Selecting tab", tabName);
-        };
-        */
 
 		const bgcolor1classes = classnames(
 			"px-colorbox",
@@ -96,7 +62,6 @@ export default class BGTabs extends Component {
 		);
 
 		const getBackgroundTab = name => {
-			// console.log("got here!");
 			// Help Tab
 			if (name == "bghelptab") {
 				return (
@@ -111,26 +76,16 @@ export default class BGTabs extends Component {
 					<Fragment>
 						<div className="px-colorbox">
 							<h2>Color</h2>
-							{/* <ColorIndicator colorValue={foregroundColor} /> */}
 							<input type="checkbox" id="bgcolorSwatch" name="bgcolorSwatch"></input>
 							<label htmlFor="bgcolorSwatch">Palette</label>
 							<ColorPalette 
 								value={backgroundColor} 
-								// onChange={backgroundColor => setAttributes({ backgroundColor })} 
 								onChange={onColorChange} 
 								enableAlpha={true}
-								// clearable={false}
 							/>
 						</div>
 
 						<div className={bgcolor1classes}>
-							{/* <h2>Color</h2>
-							<ColorIndicator colorValue={backgroundColor} />
-							<ColorPalette
-								enableAlpha
-								value={backgroundColor}
-								onChange={backgroundColor => setAttributes({ backgroundColor })}
-							/> */}
 							<ColorPicker
 								color={backgroundColor}
 								onChangeComplete={value => setAttributes({ backgroundColor: value.hex })}
@@ -189,12 +144,6 @@ export default class BGTabs extends Component {
 									title: "Settings",
 									className: "tab-gradsettings"
 								}
-								// ,
-								// {
-								// 	name: "gradbgtab",
-								// 	title: "Background",
-								// 	className: "tab-gradbg"
-								// }
 							]}
 						>
 							{tab => getGradientTab(tab.name)}
@@ -203,12 +152,6 @@ export default class BGTabs extends Component {
 				);
 			}
 
-			const dimensions = {
-				width: 400,
-				height: 100,
-			};
-
-			
 
 			// Image Tab
 			if (name == "bgimagetab") {
@@ -224,14 +167,10 @@ export default class BGTabs extends Component {
 
 						<FocalPointPicker
 							url={ backgroundImage }
-							// dimensions={ dimensions }
 							value={ focalPoint }
 							onChange={focalPoint =>
-								setAttributes({
-									focalPoint: focalPoint
-								})
+								setAttributes({ focalPoint: focalPoint })
 							}
-							// onChange={ ( focalPoint ) => setFocalPoint( { focalPoint } ) }
 						/>
 						</Fragment>
 						)}
@@ -260,7 +199,6 @@ export default class BGTabs extends Component {
 						{backgroundImage && (
 							<BGImgControl {...{ setAttributes, ...this.props }} />
 						)}
-					
 
 						{/* END BACKGROUND IMAGE TAB */}
 					</Fragment>
@@ -280,18 +218,18 @@ export default class BGTabs extends Component {
 							<input type="checkbox" id="bg3Swatch" name="bg3Swatch"></input>
 							<label htmlFor="bg3Swatch">Palette</label>
 							<ColorPalette
-								value={backgroundColor3}
-								onChange={backgroundColor3 => setAttributes({ backgroundColor3 })}
+								value={backgroundGel}
+								onChange={backgroundGel => setAttributes({ backgroundGel })}
 							/>
 						</div>
 						<div className="px-simplerow px-simplerow--padleft">
 						{/* Background Image Enabled Toggle */}
 						<div className={mycurrentproblem}>
 							<ColorPicker
-								color={backgroundColor3}
+								color={backgroundGel}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundColor3: calculatedRgbaString(value)
+										backgroundGel: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -313,10 +251,10 @@ export default class BGTabs extends Component {
 						<div className="px-colorbox">
 							<h2>Gradient Color 1</h2>
 							<ColorPicker
-								color={backgroundColor1}
+								color={backgroundGrad1}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundColor1: calculatedRgbaString(value)
+										backgroundGrad1: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -326,17 +264,17 @@ export default class BGTabs extends Component {
 							<input type="checkbox" id="bg1Swatch" name="bg1Swatch"></input>
 							<label htmlFor="bg1Swatch">Palette</label>
 							<ColorPalette
-								value={backgroundColor1}
-								onChange={backgroundColor1 => setAttributes({ backgroundColor1 })}
+								value={backgroundGrad1}
+								onChange={backgroundGrad1 => setAttributes({ backgroundGrad1 })}
 							/>
 						</div>
 						<div className="px-colorbox">
 							<h2>Gradient Color 2</h2>
 							<ColorPicker
-								color={backgroundColor2}
+								color={backgroundGrad2}
 								onChangeComplete={value =>
 									setAttributes({
-										backgroundColor2: calculatedRgbaString(value)
+										backgroundGrad2: calculatedRgbaString(value)
 									})
 								}
 							/>
@@ -345,8 +283,8 @@ export default class BGTabs extends Component {
 							<input type="checkbox" id="bg2Swatch" name="bg2Swatch"></input>
 							<label htmlFor="bg2Swatch">Palette</label>
 							<ColorPalette
-								value={backgroundColor2}
-								onChange={backgroundColor2 => setAttributes({ backgroundColor2 })}
+								value={backgroundGrad2}
+								onChange={backgroundGrad2 => setAttributes({ backgroundGrad2 })}
 							/>
 						</div>
 					</Fragment>
@@ -363,10 +301,10 @@ export default class BGTabs extends Component {
 						<div className="px-columnrow">
 							<RangeControl
 								label={__("Color 1")}
-								value={backgroundColor1Start}
-								onChange={backgroundColor1Start => {
+								value={backgroundGrad1Start}
+								onChange={backgroundGrad1Start => {
 									setAttributes({
-										backgroundColor1Start
+										backgroundGrad1Start
 									});
 								}}
 								min={-50}
@@ -376,10 +314,10 @@ export default class BGTabs extends Component {
 						<div className="px-columnrow">
 							<RangeControl
 								label={__("Color 2")}
-								value={backgroundColor2Start}
-								onChange={backgroundColor2Start => {
+								value={backgroundGrad2Start}
+								onChange={backgroundGrad2Start => {
 									setAttributes({
-										backgroundColor2Start
+										backgroundGrad2Start
 									});
 								}}
 								min={-50}
@@ -473,27 +411,10 @@ export default class BGTabs extends Component {
 					</Fragment>
 				);
 			}
-			{
-				/* 
-			// Image Tab
-			if (name == "gradbgtab") {
-				return (
-					<Fragment>
-						<BGGradControl {...{ setAttributes, ...this.props }} />
-					</Fragment>
-				);
-			}
-			*/
-			}
 		};
 
 		return (
 			<Fragment>
-				{/* BACKGROUND Tabs
-				<div className="px-simplerow px-simplerow--shortheadline">
-					<h2>Background Tabs!</h2>
-				</div>
-                 */}
 				{themTabs.length > 0 && rendermyComponent && (
 					<TabPanel className={backgroundTabClasses} activeClass="active-tab" tabs={themTabs}>
 						{tab => getBackgroundTab(tab.name)}

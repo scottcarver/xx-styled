@@ -1,23 +1,13 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
-import {PanelBody, PanelRow, FormToggle} from '@wordpress/components';
-import {ComboboxControl, ButtonGroup, Button} from '@wordpress/components';
+import {ButtonGroup, Button} from '@wordpress/components';
 
 export function StyledTypeToggle(props){
 
-    console.log("have props", props);
+    // console.log("have props", props);
 
     const {
         attributes: {
-            bgColorEnabled,
-            bgGradientEnabled,
-            bgImageEnabled,
-            bgGelEnabled,
-            toggleGelEnabled,
-            toggleImageEnabled,
-            toggleGradientEnabled,
-            backgroundStackFirst,
-            toggleBgColorEnabled,
             styleMode,
         },
         setAttributes
@@ -35,7 +25,6 @@ export function StyledTypeToggle(props){
                         isPrimary={styleMode === "disabled"}
                         onClick={() => {
                             setAttributes({ styleMode: "disabled" });
-                            setAttributes({ styleEnabled: false });
                         }}>
                         Disabled
                     </Button>
@@ -44,7 +33,6 @@ export function StyledTypeToggle(props){
                         isPrimary={styleMode === "named"}
                         onClick={() => {
                             setAttributes({ styleMode: "named" });
-                            setAttributes({ styleEnabled: true });
                         }}>
                         Named
                     </Button>
@@ -53,7 +41,6 @@ export function StyledTypeToggle(props){
                         isPrimary={styleMode === "custom"}
                         onClick={() => {
                             setAttributes({ styleMode: "custom" });
-                            setAttributes({ styleEnabled: true });
                         }}>
                         Custom
                     </Button>

@@ -1,11 +1,7 @@
-/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
-
-// Node modules
-import classnames from "classnames";
-//  WP Libraries
+//  WordPress modules
 const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
-// Project Files
+// Custom modules
 import "./StyledPreview.scss";
 import "../StyledTile/StyledTile.scss";
 import calculated from "../../library/calculated/calculated";
@@ -19,7 +15,6 @@ export default class StyledPreview extends Component {
 	componentDidMount() { }
 	render() {
 		const {
-			positionVert,
 			attributes: {
 				bgColorEnabled,
 				bgGradientEnabled,
@@ -29,15 +24,13 @@ export default class StyledPreview extends Component {
 				headlineColor,
 				linkColor,
 				backgroundColor,
-				backgroundColor3,
+				backgroundGel,
 				backgroundImage,
 				backgroundStackFirst,
 				foregroundHeadlineFont,
 				foregroundCopyFont,
-				foregroundCaptionFont,
 				styleMode
-			},
-			setAttributes
+			}
 		} = this.props;
 
 		const bgImageStack = calculated.calculatedBgImage(this.props.attributes);
@@ -58,7 +51,7 @@ export default class StyledPreview extends Component {
 				color: ${linkColor};
 			}
 			.fgcolor{
-				background: ${backgroundColor3};
+				background: ${backgroundGel};
 				// outline: solid 1px red;
 			}
 			.bgimage{

@@ -11,17 +11,7 @@
                 outline:solid 3px var(--wp-admin-theme-color);
             }
         }
-        // button:active{
-        //     outline:solid 3px var(--wp-admin-theme-color);
-        // }
-        
     }
-    // &:not(.styled-tile--active){
-    //     button{
-    //         outline:solid 3px black;
-    //     }
-        
-    // }
 
     button{
         width:100%;
@@ -30,7 +20,6 @@
         border-radius:5px;
         position:relative;
         margin-bottom:5px;
-        // padding:5px;
 
         &:hover, &:focus{
             outline:solid 3px var(--wp-admin-theme-color);

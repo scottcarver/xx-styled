@@ -551,6 +551,15 @@
   justify-content: center;
 }
 
+.px-gradientbox h2 {
+  padding-left: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.px-gradientbox .components-custom-gradient-picker__ui-line {
+  align-items: flex-start;
+}
+
 :root {
   --contentWidth: 800px;
   --wideWidth: 1000px;

@@ -2,10 +2,10 @@
 const calculatedGradient = attributes => {
 	// Get all of these variables
 	const {
-		backgroundColor1,
-		backgroundColor2,
-		backgroundColor1Start,
-		backgroundColor2Start,
+		backgroundGrad1,
+		backgroundGrad2,
+		backgroundGrad1Start,
+		backgroundGrad2Start,
 		gradientType,
 		gradientLinearAngle,
 		gradientAlignRadialHori,
@@ -17,13 +17,13 @@ const calculatedGradient = attributes => {
 			"linear-gradient(" +
 			gradientLinearAngle +
 			"deg, " +
-			backgroundColor1 +
+			backgroundGrad1 +
 			" " +
-			backgroundColor1Start +
+			backgroundGrad1Start +
 			"%, " +
-			backgroundColor2 +
+			backgroundGrad2 +
 			" " +
-			backgroundColor2Start +
+			backgroundGrad2Start +
 			"%)"
 		);
 	}
@@ -35,13 +35,13 @@ const calculatedGradient = attributes => {
 			"% " +
 			gradientAlignRadialVert +
 			"%, " +
-			backgroundColor1 +
+			backgroundGrad1 +
 			" " +
-			backgroundColor1Start +
+			backgroundGrad1Start +
 			"%, " +
-			backgroundColor2 +
+			backgroundGrad2 +
 			" " +
-			backgroundColor2Start +
+			backgroundGrad2Start +
 			"%)";
 		return gradient;
 	}

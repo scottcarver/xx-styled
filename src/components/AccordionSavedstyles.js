@@ -1,34 +1,14 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow, ComboboxControl} from '@wordpress/components';
-import { ColorPalette } from '@wordpress/block-editor';
 
-import PxColorBox from "./PxColorBox/PxColorBox.js"
 
-export function AccordionSavedstyles(props){
+export function AccordionSavedStyles(props){
 
     const {
         attributes: {
             namedstyle,
-            styleEnabled,
-            styleMode,
-            heightEnabled,
-            bgColorEnabled,
-            bgGradientEnabled,
-            bgImageEnabled,
-            bgGelEnabled,
-            backgroundStackFirst,
-            headlineColor,
-            foregroundColor,
-            linkColor,
-            dropcapColor,
-            blockquoteColor,
-            lineartColor,
-            selectionFGColor,
-            selectionBGColor,
-            foregroundHeadlineFont,
-            foregroundCopyFont,
-            foregroundCaptionFont,
+            styleMode
         },
         setAttributes
     } = props;
@@ -71,10 +51,10 @@ export function AccordionSavedstyles(props){
                                 </div>
                             ))}
                         </div>
-                        {/* 						
+                        {/* 		*/}				
                         <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
                             <a href="post-new.php?post_type=style" style={{padding: "5px"}}>+ Create New Style</a>	
-                        </div> */}
+                        </div> 
                     </div>
                 </PanelRow>
             </PanelBody>

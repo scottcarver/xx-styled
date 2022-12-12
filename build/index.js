@@ -1,257 +1,6 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./assets/BGGradControl.js":
-/*!*********************************!*\
-  !*** ./assets/BGGradControl.js ***!
-  \*********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ BGGradControl; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-
-
-/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
-
-/*  Internal block libraries */
-const {
-  __
-} = wp.i18n;
-const {
-  Component,
-  Fragment
-} = wp.element;
-const {
-  Button,
-  ButtonGroup,
-  RangeControl
-} = wp.components;
-/* Create a Block Controls wrapper Component */
-
-class BGGradControl extends Component {
-  constructor() {
-    super(...arguments);
-  }
-
-  render() {
-    const {
-      positionVert,
-      attributes: {
-        backgroundGradientSize,
-        backgroundGradientSizeCustom,
-        backgroundGradientRepeat,
-        backgroundGradientAttachment,
-        backgroundGradientAlignVert,
-        backgroundGradientAlignHori,
-        backgroundGradientAlignVertCustom,
-        backgroundGradientAlignHoriCustom
-      },
-      setAttributes
-    } = this.props;
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow px-simplerow--shortheadline"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Background Size")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup px-buttongroup--small"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
-      "aria-label": __("Column Layout")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientSize === "cover",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientSize: "cover"
-        });
-      }
-    }, "Cover"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientSize === "contain",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientSize: "contain"
-        });
-      }
-    }, "Contain"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientSize === "auto",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientSize: "auto"
-        });
-      }
-    }, "Auto"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientSize === "custom",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientSize: "custom"
-        });
-      }
-    }, "Custom"))), backgroundGradientSize === "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-columnrow px-columnrow--nolabel px-columnrow--spaceabove"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
-      label: __("Custom"),
-      value: backgroundGradientSizeCustom,
-      onChange: backgroundGradientSizeCustom => {
-        setAttributes({
-          backgroundGradientSizeCustom
-        });
-      },
-      min: 0,
-      max: 200
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow px-simplerow--shortheadline"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Background Repeat")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup px-buttongroup--small"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
-      "aria-label": __("Column Layout")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientRepeat === "no-repeat",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientRepeat: "no-repeat"
-        });
-      }
-    }, "No"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientRepeat === "repeat",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientRepeat: "repeat"
-        });
-      }
-    }, "Yes"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientRepeat === "repeat-x",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientRepeat: "repeat-x"
-        });
-      }
-    }, "Repeat-x"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientRepeat === "repeat-y",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientRepeat: "repeat-y"
-        });
-      }
-    }, "Repeat-y"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow px-simplerow--shortheadline"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Background Position"), this.props.position), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-sidepanel"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Vertical")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup px-buttongroup--small"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
-      "aria-label": __("Column Layout")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignVert === "top",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignVert: "top"
-        });
-      }
-    }, "Top"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignVert === "center",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignVert: "center"
-        });
-      }
-    }, "Center"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignVert === "bottom",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignVert: "bottom"
-        });
-      }
-    }, "Bottom"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignVert === "custom",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignVert: "custom"
-        });
-      }
-    }, "Custom"))), backgroundGradientAlignVert == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-columnrow px-columnrow--smallspaceabove"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
-      label: __("Custom"),
-      value: backgroundGradientAlignVertCustom,
-      onChange: backgroundGradientAlignVertCustom => {
-        setAttributes({
-          backgroundGradientAlignVertCustom
-        });
-      },
-      min: -50,
-      max: 200
-    })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow px-simplerow--padtop"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, "Horizontal"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup px-buttongroup--small"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(ButtonGroup, {
-      "aria-label": __("Column Layout")
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignHori === "left",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignHori: "left"
-        });
-      }
-    }, "Left"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignHori === "center",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignHori: "center"
-        });
-      }
-    }, "Center"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignHori === "right",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignHori: "right"
-        });
-      }
-    }, "Right"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Button, {
-      isDefault: true,
-      isPrimary: backgroundGradientAlignHori === "custom",
-      onClick: () => {
-        setAttributes({
-          backgroundGradientAlignHori: "custom"
-        });
-      }
-    }, "Custom"))), backgroundGradientAlignHori == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-columnrow px-columnrow--smallspaceabove"
-    }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(RangeControl, {
-      label: __("Custom"),
-      value: backgroundGradientAlignHoriCustom,
-      onChange: backgroundGradientAlignHoriCustom => {
-        setAttributes({
-          backgroundGradientAlignHoriCustom
-        });
-      },
-      min: -50,
-      max: 200
-    }))));
-  }
-
-}
-
-/***/ }),
-
 /***/ "./src/components/AccordionBackground.js":
 /*!***********************************************!*\
   !*** ./src/components/AccordionBackground.js ***!
@@ -277,9 +26,8 @@ const {
 
 
 
-
 function AccordionBackground(props) {
-  console.log("have props", props);
+  // console.log("have props", props);
   const {
     attributes: {
       bgColorEnabled,
@@ -290,31 +38,7 @@ function AccordionBackground(props) {
       styleMode
     },
     setAttributes
-  } = props; // Destructure props
-
-  /*
-  const {
-  attributes: { 
-          bgColorEnabled,
-          bgGradientEnabled,
-          bgImageEnabled,
-          bgGelEnabled,
-          toggleGelEnabled,
-          toggleImageEnabled,
-          toggleGradientEnabled,
-          backgroundStackFirst,
-          toggleBgColorEnabled,
-          styleMode,
-  },
-  setAttributes
-  } = props;
-   */
-
-  const fontOptions = global_named_fonts; // Toggles
-
-  const toggleStyleEnabled = () => setAttributes({
-    styleEnabled: !styleEnabled
-  });
+  } = props; // Toggles
 
   const toggleBgColorEnabled = () => {
     setAttributes({
@@ -340,14 +64,6 @@ function AccordionBackground(props) {
     });
   };
 
-  const toggleFgEnabled = () => setAttributes({
-    foregroundEnabled: !foregroundEnabled
-  });
-
-  const toggleHeightEnabled = () => setAttributes({
-    heightEnabled: !heightEnabled
-  });
-
   const toggleBgStack = backgroundStackFirst => function () {
     if (backgroundStackFirst == "image") {
       setAttributes({
@@ -360,12 +76,12 @@ function AccordionBackground(props) {
         backgroundStackFirst: "image"
       });
     }
-  };
+  }; // Don't show when disabled
+
 
   if (styleMode == 'disabled') {
     return false;
-  } // return (<p>boop</p>);
-
+  }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
     title: __("Background", "pxblocks"),
@@ -458,15 +174,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PxColorBox/PxColorBox.js */ "./src/components/PxColorBox/PxColorBox.js");
 
 const {
   __
 } = wp.i18n;
-
-
 
 
 
@@ -476,15 +187,10 @@ function AccordionDimensions(_ref) {
     setAttributes
   } = _ref;
 
-  // let colorboxes = [
-  //     {'name':'interfaceFGColor', 'title':'UI Foreground Color'},
-  //     {'name':'interfaceBGColor', 'title':'UI Background Color'},
-  //     {'name':'interfaceKeyColor', 'title':'UI Key Color'} 
-  // ];
+  // Return nothing when the styleMode is disabled
   if (attributes.styleMode == 'disabled') {
     return false;
-  } // {(styleMode =='named' || styleMode =='custom') && (
-
+  }
 
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: __("Dimensions", "pxblocks"),
@@ -592,18 +298,10 @@ const {
 
 
 function AccordionForeground(props) {
-  console.log("have props", props);
+  // console.log("have props", props);
   const {
     attributes: {
-      namedstyle,
-      styleEnabled,
       styleMode,
-      heightEnabled,
-      bgColorEnabled,
-      bgGradientEnabled,
-      bgImageEnabled,
-      bgGelEnabled,
-      backgroundStackFirst,
       headlineColor,
       foregroundColor,
       linkColor,
@@ -612,9 +310,7 @@ function AccordionForeground(props) {
       lineartColor,
       selectionFGColor,
       selectionBGColor,
-      foregroundHeadlineFont,
-      foregroundCopyFont,
-      foregroundCaptionFont
+      keyGradient
     },
     setAttributes
   } = props;
@@ -699,6 +395,13 @@ function AccordionForeground(props) {
         onChange: lineartColor => setAttributes({
           lineartColor
         })
+      })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+        className: "px-gradientbox"
+      }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Key Gradient"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.GradientPicker, {
+        value: keyGradient,
+        onChange: keyGradient => setAttributes({
+          keyGradient
+        })
       })));
     }
 
@@ -733,7 +436,7 @@ function AccordionForeground(props) {
     }
   };
 
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, styleMode == 'custom' && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
     title: __("Foreground", "pxblocks"),
     className: "panel-foreground",
     initialOpen: false
@@ -751,7 +454,7 @@ function AccordionForeground(props) {
       title: "Selection",
       className: "tab-two"
     }]
-  }, tab => getForegroundTab(tab.name)))))));
+  }, tab => getForegroundTab(tab.name))))));
 }
 
 /***/ }),
@@ -771,14 +474,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PxColorBox/PxColorBox.js */ "./src/components/PxColorBox/PxColorBox.js");
+/* harmony import */ var _ColorBox_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ColorBox.js */ "./src/components/ColorBox.js");
 
 const {
   __
 } = wp.i18n;
-
 
 
 
@@ -809,7 +509,7 @@ function AccordionInterface(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "px-sidepanel"
   }, colorboxes.map(currentValue => {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ColorBox_js__WEBPACK_IMPORTED_MODULE_2__["default"], {
       name: currentValue.name,
       title: currentValue.title,
       attributes: attributes,
@@ -821,55 +521,32 @@ function AccordionInterface(_ref) {
 
 /***/ }),
 
-/***/ "./src/components/AccordionSavedstyles.js":
+/***/ "./src/components/AccordionSavedStyles.js":
 /*!************************************************!*\
-  !*** ./src/components/AccordionSavedstyles.js ***!
+  !*** ./src/components/AccordionSavedStyles.js ***!
   \************************************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AccordionSavedstyles": function() { return /* binding */ AccordionSavedstyles; }
+/* harmony export */   "AccordionSavedStyles": function() { return /* binding */ AccordionSavedStyles; }
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _PxColorBox_PxColorBox_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PxColorBox/PxColorBox.js */ "./src/components/PxColorBox/PxColorBox.js");
 
 const {
   __
 } = wp.i18n;
 
 
-
-
-function AccordionSavedstyles(props) {
+function AccordionSavedStyles(props) {
   const {
     attributes: {
       namedstyle,
-      styleEnabled,
-      styleMode,
-      heightEnabled,
-      bgColorEnabled,
-      bgGradientEnabled,
-      bgImageEnabled,
-      bgGelEnabled,
-      backgroundStackFirst,
-      headlineColor,
-      foregroundColor,
-      linkColor,
-      dropcapColor,
-      blockquoteColor,
-      lineartColor,
-      selectionFGColor,
-      selectionBGColor,
-      foregroundHeadlineFont,
-      foregroundCopyFont,
-      foregroundCaptionFont
+      styleMode
     },
     setAttributes
   } = props; // don't show the control when it is disabled, or a named styled
@@ -913,7 +590,14 @@ function AccordionSavedstyles(props) {
       padding: "0px 20px 0px 10px"
     },
     "aria-label": "select style " + option.value
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null)), option.label)))))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h3", null, "Aa"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Lorem Ipsum eget tortor risus."), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null)), option.label))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: "post-new.php?post_type=style",
+    style: {
+      padding: "5px"
+    }
+  }, "+ Create New Style"))))));
 }
 
 /***/ }),
@@ -1139,11 +823,7 @@ class BGImgControl extends Component {
         backgroundImageSizeCustomSm,
         backgroundImageSizeCustomMd,
         backgroundImageRepeat,
-        backgroundImageAttachment,
-        backgroundImageAlignVert,
-        backgroundImageAlignHori,
-        backgroundImageAlignVertCustom,
-        backgroundImageAlignHoriCustom
+        backgroundImageAttachment
       },
       setAttributes
     } = this.props;
@@ -1165,9 +845,9 @@ class BGImgControl extends Component {
       value: 'px'
     }];
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow  px-simplerow--shortheadline"
+      className: "px-simplerow  px-simplerow--shortheadline"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Background Size")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup px-buttongroup--small"
+      className: "px-buttongroup px-buttongroup--small"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
       "aria-label": __("Column Layout")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
@@ -1228,9 +908,9 @@ class BGImgControl extends Component {
       value: backgroundImageSizeCustom,
       units: defaultUnits
     })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow px-simplerow--shortheadline"
+      className: "px-simplerow px-simplerow--shortheadline"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Background Repeat")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup px-buttongroup--small"
+      className: "px-buttongroup px-buttongroup--small"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
       "aria-label": __("Column Layout")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
@@ -1262,9 +942,9 @@ class BGImgControl extends Component {
         });
       }
     }, "Repeat-y"))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-simplerow px-simplerow--shortheadline"
+      className: "px-simplerow px-simplerow--shortheadline"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Background Attachment")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      class: "px-buttongroup"
+      className: "px-buttongroup"
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ButtonGroup, {
       "aria-label": __("Column Layout")
     }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
@@ -1309,37 +989,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _BGImgControl__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./BGImgControl */ "./src/components/BGImgControl.js");
-/* harmony import */ var _assets_BGGradControl__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../assets/BGGradControl */ "./assets/BGGradControl.js");
-/* harmony import */ var _CalculatedTabset__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CalculatedTabset */ "./src/components/CalculatedTabset.js");
-/* harmony import */ var _library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../library/calculated/calculatedRgbaString */ "./src/library/calculated/calculatedRgbaString.js");
+/* harmony import */ var _CalculatedTabset__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CalculatedTabset */ "./src/components/CalculatedTabset.js");
+/* harmony import */ var _library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../library/calculated/calculatedRgbaString */ "./src/library/calculated/calculatedRgbaString.js");
 
 
-
-/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
 // Node modules
-
-/*  Internal block libraries */
+ // WordPress modules
 
 const {
   __
 } = wp.i18n;
 
 
-
-const {
-  TabPanel,
-  Button,
-  ButtonGroup,
-  RangeControl,
-  IconButton,
-  Placeholder,
-  ColorIndicator,
-  ColorPicker
-} = wp.components; // My helper code
+ // Custom Modules
 
 
-
- // Function Component
 
 
 /* Create a Block Controls wrapper Component */
@@ -1353,41 +1017,27 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
 
   render() {
     const {
-      positionVert,
       attributes: {
-        blockID,
-        styleEnabled,
-        heightEnabled,
-        bgColorEnabled,
-        bgGradientEnabled,
-        bgImageEnabled,
         bgGelEnabled,
         backgroundColorCount,
-        foregroundColor,
         backgroundColor,
-        backgroundColor1,
-        backgroundColor2,
-        backgroundColor3,
-        backgroundColor1Start,
-        backgroundColor2Start,
+        backgroundGrad1,
+        backgroundGrad2,
+        backgroundGel,
+        backgroundGrad1Start,
+        backgroundGrad2Start,
         backgroundImage,
-        backgroundStackFirst,
         backgroundGradientAttachment,
         gradientType,
         gradientLinearAngle,
         gradientAlignRadialHori,
         gradientAlignRadialVert,
-        selectionFGColor,
-        selectionBGColor,
-        foregroundHeadlineFont,
-        foregroundCopyFont,
-        foregroundCaptionFont,
         focalPoint
       },
       setAttributes
     } = this.props;
     const rendermyComponent = true;
-    const themTabs = (0,_CalculatedTabset__WEBPACK_IMPORTED_MODULE_7__["default"])(this.props);
+    const themTabs = (0,_CalculatedTabset__WEBPACK_IMPORTED_MODULE_6__["default"])(this.props);
     const backgroundTabClasses = classnames__WEBPACK_IMPORTED_MODULE_2___default()("px-tabwrap px-tabwrap--margintop", {
       "px-tabwrap--centered": themTabs.length > 0,
       "px-tabwrap--single": themTabs.length === 1
@@ -1403,12 +1053,6 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         backgroundColor: colorValue
       });
     };
-    /*
-    const onSelect = tabName => {
-    	console.log("Selecting tab", tabName);
-          };
-          */
-
 
     const bgcolor1classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()("px-colorbox", "px-colorbox--marginabove", {
       "px-colorbox--paddingbelow": backgroundColorCount == "gradient"
@@ -1417,7 +1061,6 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
     });
 
     const getBackgroundTab = name => {
-      // console.log("got here!");
       // Help Tab
       if (name == "bghelptab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h1", null, "Halp"));
@@ -1434,14 +1077,12 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bgcolorSwatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundColor // onChange={backgroundColor => setAttributes({ backgroundColor })} 
-          ,
+          value: backgroundColor,
           onChange: onColorChange,
-          enableAlpha: true // clearable={false}
-
+          enableAlpha: true
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: bgcolor1classes
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
           color: backgroundColor,
           onChangeComplete: value => setAttributes({
             backgroundColor: value.hex
@@ -1459,9 +1100,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           }
         }, "Gradient Type")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-buttongroup px-buttongroup--split"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ButtonGroup, {
           "aria-label": __("Column Layout")
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
           isDefault: true,
           isPrimary: gradientType === "linear",
           onClick: () => {
@@ -1469,7 +1110,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
               gradientType: "linear"
             });
           }
-        }, "Linear"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
+        }, "Linear"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
           isDefault: true,
           isPrimary: gradientType === "radial",
           onClick: () => {
@@ -1483,7 +1124,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           style: {
             textAlign: "center"
           }
-        }, "Gradient Settings")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TabPanel, {
+        }, "Gradient Settings")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabPanel, {
           className: "px-tabwrap px-tabwrap--centered",
           activeClass: "active-tab",
           initialTabName: "gradcolortab",
@@ -1495,32 +1136,20 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
             name: "gradsettingstab",
             title: "Settings",
             className: "tab-gradsettings"
-          } // ,
-          // {
-          // 	name: "gradbgtab",
-          // 	title: "Background",
-          // 	className: "tab-gradbg"
-          // }
-          ]
+          }]
         }, tab => getGradientTab(tab.name)));
-      }
+      } // Image Tab
 
-      const dimensions = {
-        width: 400,
-        height: 100
-      }; // Image Tab
 
       if (name == "bgimagetab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, backgroundImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-simplerow px-simplerow--shortheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Background Image")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FocalPointPicker, {
-          url: backgroundImage // dimensions={ dimensions }
-          ,
+          url: backgroundImage,
           value: focalPoint,
           onChange: focalPoint => setAttributes({
             focalPoint: focalPoint
-          }) // onChange={ ( focalPoint ) => setFocalPoint( { focalPoint } ) }
-
+          })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-simplerow px-simplerow--mediaupload"
         }, !backgroundImage && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUploadCheck, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.MediaUpload, {
@@ -1531,7 +1160,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
             let {
               open
             } = _ref;
-            return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
+            return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
               onClick: open
             }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("span", null, "Select Image"));
           }
@@ -1559,18 +1188,18 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bg3Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundColor3,
-          onChange: backgroundColor3 => setAttributes({
-            backgroundColor3
+          value: backgroundGel,
+          onChange: backgroundGel => setAttributes({
+            backgroundGel
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-simplerow px-simplerow--padleft"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: mycurrentproblem
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
-          color: backgroundColor3,
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
+          color: backgroundGel,
           onChangeComplete: value => setAttributes({
-            backgroundColor3: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
+            backgroundGel: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
           })
         }))));
       }
@@ -1581,10 +1210,10 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
       if (name == "gradcolortab") {
         return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
-          color: backgroundColor1,
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 1"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
+          color: backgroundGrad1,
           onChangeComplete: value => setAttributes({
-            backgroundColor1: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
+            backgroundGrad1: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox px-colorbox--nopicker"
@@ -1595,16 +1224,16 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bg1Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundColor1,
-          onChange: backgroundColor1 => setAttributes({
-            backgroundColor1
+          value: backgroundGrad1,
+          onChange: backgroundGrad1 => setAttributes({
+            backgroundGrad1
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ColorPicker, {
-          color: backgroundColor2,
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Gradient Color 2"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ColorPicker, {
+          color: backgroundGrad2,
           onChangeComplete: value => setAttributes({
-            backgroundColor2: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_8__["default"])(value)
+            backgroundGrad2: (0,_library_calculated_calculatedRgbaString__WEBPACK_IMPORTED_MODULE_7__["default"])(value)
           })
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-colorbox px-colorbox--nopicker"
@@ -1615,9 +1244,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
         }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("label", {
           htmlFor: "bg2Swatch"
         }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.ColorPalette, {
-          value: backgroundColor2,
-          onChange: backgroundColor2 => setAttributes({
-            backgroundColor2
+          value: backgroundGrad2,
+          onChange: backgroundGrad2 => setAttributes({
+            backgroundGrad2
           })
         })));
       } // Gradient Tab
@@ -1628,31 +1257,31 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           className: "px-simplerow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Start Position")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-columnrow"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("Color 1"),
-          value: backgroundColor1Start,
-          onChange: backgroundColor1Start => {
+          value: backgroundGrad1Start,
+          onChange: backgroundGrad1Start => {
             setAttributes({
-              backgroundColor1Start
+              backgroundGrad1Start
             });
           },
           min: -50,
           max: 200
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-columnrow"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("Color 2"),
-          value: backgroundColor2Start,
-          onChange: backgroundColor2Start => {
+          value: backgroundGrad2Start,
+          onChange: backgroundGrad2Start => {
             setAttributes({
-              backgroundColor2Start
+              backgroundGrad2Start
             });
           },
           min: -50,
           max: 200
         })), gradientType === "linear" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-columnrow"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("Angle"),
           value: gradientLinearAngle,
           onChange: gradientLinearAngle => {
@@ -1666,7 +1295,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           className: "px-simplerow"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Alignment")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-columnrow"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("From Top"),
           value: gradientAlignRadialVert,
           onChange: gradientAlignRadialVert => {
@@ -1678,7 +1307,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           max: 200
         })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-columnrow"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(RangeControl, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
           label: __("From Left"),
           value: gradientAlignRadialHori,
           onChange: gradientAlignRadialHori => {
@@ -1692,9 +1321,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           className: "px-simplerow px-simplerow--shortheadline"
         }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("h2", null, "Background Attachment")), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
           className: "px-buttongroup"
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(ButtonGroup, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.ButtonGroup, {
           "aria-label": __("Column Layout")
-        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
+        }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
           isDefault: true,
           isPrimary: backgroundGradientAttachment === "scroll",
           onClick: () => {
@@ -1702,7 +1331,7 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
               backgroundGradientAttachment: "scroll"
             });
           }
-        }, "Scroll"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(Button, {
+        }, "Scroll"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.Button, {
           isDefault: true,
           isPrimary: backgroundGradientAttachment === "fixed",
           onClick: () => {
@@ -1712,22 +1341,9 @@ class BGTabs extends _wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Component {
           }
         }, "Fixed"))));
       }
-
-      {
-        /* 
-        // Image Tab
-        if (name == "gradbgtab") {
-        return (
-        	<Fragment>
-        		<BGGradControl {...{ setAttributes, ...this.props }} />
-        	</Fragment>
-        );
-        }
-        */
-      }
     };
 
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, themTabs.length > 0 && rendermyComponent && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(TabPanel, {
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, themTabs.length > 0 && rendermyComponent && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.TabPanel, {
       className: backgroundTabClasses,
       activeClass: "active-tab",
       tabs: themTabs
@@ -1816,6 +1432,62 @@ const CalculatedTabset = props => {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CalculatedTabset);
+
+/***/ }),
+
+/***/ "./src/components/ColorBox.js":
+/*!************************************!*\
+  !*** ./src/components/ColorBox.js ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ ColorBox; }
+/* harmony export */ });
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../library/calculated/calculated */ "./src/library/calculated/calculated.js");
+
+// WordPress modules
+ // Custom Modules
+
+ // Export colorbox
+
+function ColorBox(props) {
+  const {
+    name,
+    title,
+    attributes,
+    setAttributes
+  } = props;
+
+  const onColorChange = function (colorValue) {
+    let cleanColor = colorValue !== undefined ? colorValue : ''; // let colorTransparent = calculated.calculatedRgbaString(cleanColor);
+    // console.log("cleanColor, colorTransparent", cleanColor, colorTransparent);
+
+    setAttributes({
+      [name]: cleanColor
+    });
+  };
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "px-colorbox px-colorbox--nudgecontentleft"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "checkbox",
+    id: `${name}Swatch`,
+    name: `${name}Swatch`
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
+    htmlFor: `${name}Swatch`
+  }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
+    value: attributes[name],
+    onChange: onColorChange,
+    enableAlpha: true
+  }));
+}
 
 /***/ }),
 
@@ -2095,62 +1767,6 @@ if (global_current_posttype !== 'styled') {
 
 /***/ }),
 
-/***/ "./src/components/PxColorBox/PxColorBox.js":
-/*!*************************************************!*\
-  !*** ./src/components/PxColorBox/PxColorBox.js ***!
-  \*************************************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": function() { return /* binding */ PxColorBox; }
-/* harmony export */ });
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../library/calculated/calculated */ "./src/library/calculated/calculated.js");
-
-// WordPress modules
- // Custom Modules
-
- // Export colorbox
-
-function PxColorBox(props) {
-  const {
-    name,
-    title,
-    attributes,
-    setAttributes
-  } = props;
-
-  const onColorChange = function (colorValue) {
-    let cleanColor = colorValue !== undefined ? colorValue : ''; // let colorTransparent = calculated.calculatedRgbaString(cleanColor);
-    // console.log("cleanColor, colorTransparent", cleanColor, colorTransparent);
-
-    setAttributes({
-      [name]: cleanColor
-    });
-  };
-
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "px-colorbox px-colorbox--nudgecontentleft"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, title), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "checkbox",
-    id: `${name}Swatch`,
-    name: `${name}Swatch`
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", {
-    htmlFor: `${name}Swatch`
-  }, "Palette"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ColorPalette, {
-    value: attributes[name],
-    onChange: onColorChange,
-    enableAlpha: true
-  }));
-}
-
-/***/ }),
-
 /***/ "./src/components/StyleControls.js":
 /*!*****************************************!*\
   !*** ./src/components/StyleControls.js ***!
@@ -2166,7 +1782,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StyledPreview/StyledPreview */ "./src/components/StyledPreview/StyledPreview.js");
 /* harmony import */ var _StyledTypeToggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StyledTypeToggle */ "./src/components/StyledTypeToggle.js");
-/* harmony import */ var _AccordionSavedstyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AccordionSavedstyles */ "./src/components/AccordionSavedstyles.js");
+/* harmony import */ var _AccordionSavedStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AccordionSavedStyles */ "./src/components/AccordionSavedStyles.js");
 /* harmony import */ var _AccordionForeground__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AccordionForeground */ "./src/components/AccordionForeground.js");
 /* harmony import */ var _AccordionBackground__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AccordionBackground */ "./src/components/AccordionBackground.js");
 /* harmony import */ var _AccordionInterface__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AccordionInterface */ "./src/components/AccordionInterface.js");
@@ -2197,7 +1813,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
   }
 
   render() {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledTypeToggle__WEBPACK_IMPORTED_MODULE_2__.StyledTypeToggle, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionSavedstyles__WEBPACK_IMPORTED_MODULE_3__.AccordionSavedstyles, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionForeground__WEBPACK_IMPORTED_MODULE_4__.AccordionForeground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionBackground__WEBPACK_IMPORTED_MODULE_5__.AccordionBackground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionInterface__WEBPACK_IMPORTED_MODULE_6__.AccordionInterface, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionDimensions__WEBPACK_IMPORTED_MODULE_7__.AccordionDimensions, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionTypography__WEBPACK_IMPORTED_MODULE_8__.AccordionTypography, this.props));
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledTypeToggle__WEBPACK_IMPORTED_MODULE_2__.StyledTypeToggle, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionSavedStyles__WEBPACK_IMPORTED_MODULE_3__.AccordionSavedStyles, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionForeground__WEBPACK_IMPORTED_MODULE_4__.AccordionForeground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionBackground__WEBPACK_IMPORTED_MODULE_5__.AccordionBackground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionInterface__WEBPACK_IMPORTED_MODULE_6__.AccordionInterface, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionDimensions__WEBPACK_IMPORTED_MODULE_7__.AccordionDimensions, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionTypography__WEBPACK_IMPORTED_MODULE_8__.AccordionTypography, this.props));
   }
 
 }
@@ -2217,21 +1833,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _StyledPreview_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StyledPreview.scss */ "./src/components/StyledPreview/StyledPreview.scss");
-/* harmony import */ var _StyledTile_StyledTile_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../StyledTile/StyledTile.scss */ "./src/components/StyledTile/StyledTile.scss");
-/* harmony import */ var _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../library/calculated/calculated */ "./src/library/calculated/calculated.js");
+/* harmony import */ var _StyledPreview_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StyledPreview.scss */ "./src/components/StyledPreview/StyledPreview.scss");
+/* harmony import */ var _StyledTile_StyledTile_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../StyledTile/StyledTile.scss */ "./src/components/StyledTile/StyledTile.scss");
+/* harmony import */ var _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../library/calculated/calculated */ "./src/library/calculated/calculated.js");
 
-
-/* BGGradControl is meant to be generic, it can be reused any time a background image or radial gradient bckground control is needed */
-// Node modules
- //  WP Libraries
-
+//  WordPress modules
 const {
   __
 } = wp.i18n;
- // Project Files
+ // Custom modules
 
 
 
@@ -2247,7 +1857,6 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
 
   render() {
     const {
-      positionVert,
       attributes: {
         bgColorEnabled,
         bgGradientEnabled,
@@ -2257,17 +1866,15 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
         headlineColor,
         linkColor,
         backgroundColor,
-        backgroundColor3,
+        backgroundGel,
         backgroundImage,
         backgroundStackFirst,
         foregroundHeadlineFont,
         foregroundCopyFont,
-        foregroundCaptionFont,
         styleMode
-      },
-      setAttributes
+      }
     } = this.props;
-    const bgImageStack = _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedBgImage(this.props.attributes);
+    const bgImageStack = _library_calculated_calculated__WEBPACK_IMPORTED_MODULE_3__["default"].calculatedBgImage(this.props.attributes);
     var combinedCss = ` 
 			.fgtext{
 				color: ${foregroundColor};
@@ -2285,14 +1892,14 @@ class StyledPreview extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
 				color: ${linkColor};
 			}
 			.fgcolor{
-				background: ${backgroundColor3};
+				background: ${backgroundGel};
 				// outline: solid 1px red;
 			}
 			.bgimage{
 				background-image: url(${backgroundImage});
 			}
 			.gradient{
-				background: ${_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedGradient(this.props.attributes)};
+				background: ${_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_3__["default"].calculatedGradient(this.props.attributes)};
 			}
 			.base{
 				background: ${backgroundColor};
@@ -2364,20 +1971,10 @@ const {
 } = wp.i18n;
 
 
-
 function StyledTypeToggle(props) {
-  console.log("have props", props);
+  // console.log("have props", props);
   const {
     attributes: {
-      bgColorEnabled,
-      bgGradientEnabled,
-      bgImageEnabled,
-      bgGelEnabled,
-      toggleGelEnabled,
-      toggleImageEnabled,
-      toggleGradientEnabled,
-      backgroundStackFirst,
-      toggleBgColorEnabled,
       styleMode
     },
     setAttributes
@@ -2394,9 +1991,6 @@ function StyledTypeToggle(props) {
       setAttributes({
         styleMode: "disabled"
       });
-      setAttributes({
-        styleEnabled: false
-      });
     }
   }, "Disabled"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     isDefault: true,
@@ -2405,9 +1999,6 @@ function StyledTypeToggle(props) {
       setAttributes({
         styleMode: "named"
       });
-      setAttributes({
-        styleEnabled: true
-      });
     }
   }, "Named"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.Button, {
     isDefault: true,
@@ -2415,9 +2006,6 @@ function StyledTypeToggle(props) {
     onClick: () => {
       setAttributes({
         styleMode: "custom"
-      });
-      setAttributes({
-        styleEnabled: true
       });
     }
   }, "Custom"))));
@@ -2490,6 +2078,31 @@ function edit(props) {
 
 /***/ }),
 
+/***/ "./src/icon.js":
+/*!*********************!*\
+  !*** ./src/icon.js ***!
+  \*********************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+
+const PluginIcon = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("svg", {
+  width: "20px",
+  height: "20px",
+  viewBox: "0 0 100 100",
+  xmlns: "http://www.w3.org/2000/svg"
+}, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "m5 95h90v-90h-90zm10-70h10v-10h10v10h10v10h-10v10h-10v-10h-10zm70-10v70h-70z"
+}), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("path", {
+  d: "m45 65h30v10h-30z"
+}));
+/* harmony default export */ __webpack_exports__["default"] = (PluginIcon);
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -2500,11 +2113,12 @@ function edit(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./save */ "./src/save.js");
-/* harmony import */ var _components_PoststylePlugin_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/PoststylePlugin.js */ "./src/components/PoststylePlugin.js");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./src/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./src/save.js");
+/* harmony import */ var _icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./icon */ "./src/icon.js");
+/* harmony import */ var _components_PoststylePlugin_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/PoststylePlugin.js */ "./src/components/PoststylePlugin.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 // WorePress modules
 const {
   __
@@ -2515,12 +2129,13 @@ const {
 
 
 
- // import './components/BlockVariations.js';
-// Register "Styled Area" Block
+
+ // Register "Styled Area" Block
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('xx/styled', {
-  edit: _edit__WEBPACK_IMPORTED_MODULE_3__["default"],
-  save: _save__WEBPACK_IMPORTED_MODULE_4__["default"],
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"],
+  // icon,
   category: 'design',
 
   getEditWrapperProps(attributes) {
@@ -2946,33 +2561,10 @@ __webpack_require__.r(__webpack_exports__);
 const calculatedBgPos = attributes => {
   // Get all of these variables
   const {
-    focalPoint,
-    backgroundImageAlignHori,
-    backgroundImageAlignVert,
-    backgroundImageAlignVertCustom,
-    backgroundImageAlignHoriCustom
+    focalPoint
   } = attributes;
   var combined = focalPoint.x * 100 + "% " + focalPoint.y * 100 + "%";
   return combined;
-  /*
-  let hSelect, vSelect;
-  // Horizontal
-  if (backgroundImageAlignHori == "custom") {
-  	hSelect = backgroundImageAlignHoriCustom + "%";
-  } else {
-  	hSelect = backgroundImageAlignHori;
-  }
-  	// Vertical
-  if (backgroundImageAlignVert == "custom") {
-  	vSelect = backgroundImageAlignVertCustom + "%";
-  } else {
-  	vSelect = backgroundImageAlignVert;
-  }
-  //  ${backgroundImageAlignHori} ${backgroundImageAlignVert};
-  const composed = hSelect + " " + vSelect;
-  console.log(composed);
-  return composed;
-  */
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculatedBgPos);
@@ -2991,10 +2583,10 @@ __webpack_require__.r(__webpack_exports__);
 const calculatedGel = attributes => {
   // Get all of these variables
   const {
-    backgroundColor3
+    backgroundGel
   } = attributes; // Return a Linear Gradient
 
-  return "linear-gradient(" + backgroundColor3 + ", " + backgroundColor3 + ")";
+  return "linear-gradient(" + backgroundGel + ", " + backgroundGel + ")";
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (calculatedGel);
@@ -3013,10 +2605,10 @@ __webpack_require__.r(__webpack_exports__);
 const calculatedGradient = attributes => {
   // Get all of these variables
   const {
-    backgroundColor1,
-    backgroundColor2,
-    backgroundColor1Start,
-    backgroundColor2Start,
+    backgroundGrad1,
+    backgroundGrad2,
+    backgroundGrad1Start,
+    backgroundGrad2Start,
     gradientType,
     gradientLinearAngle,
     gradientAlignRadialHori,
@@ -3024,12 +2616,12 @@ const calculatedGradient = attributes => {
   } = attributes; // Return a Linear Gradient
 
   if (gradientType == "linear") {
-    return "linear-gradient(" + gradientLinearAngle + "deg, " + backgroundColor1 + " " + backgroundColor1Start + "%, " + backgroundColor2 + " " + backgroundColor2Start + "%)";
+    return "linear-gradient(" + gradientLinearAngle + "deg, " + backgroundGrad1 + " " + backgroundGrad1Start + "%, " + backgroundGrad2 + " " + backgroundGrad2Start + "%)";
   } // Return a Radial Gradient
 
 
   if (gradientType == "radial") {
-    var gradient = "radial-gradient(circle at " + gradientAlignRadialHori + "% " + gradientAlignRadialVert + "%, " + backgroundColor1 + " " + backgroundColor1Start + "%, " + backgroundColor2 + " " + backgroundColor2Start + "%)";
+    var gradient = "radial-gradient(circle at " + gradientAlignRadialHori + "% " + gradientAlignRadialVert + "%, " + backgroundGrad1 + " " + backgroundGrad1Start + "%, " + backgroundGrad2 + " " + backgroundGrad2Start + "%)";
     return gradient;
   }
 };
@@ -3093,15 +2685,14 @@ const calculatedInlineVars = attributes => {
     dropcapColor,
     blockquoteColor,
     lineartColor,
+    keyGradient,
     styleMode,
     selectionFGColor,
     selectionBGColor,
     backgroundColor,
-    backgroundColor3,
     foregroundHeadlineFont,
     foregroundCopyFont,
     foregroundCaptionFont,
-    styleEnabled,
     interfaceFGColor,
     interfaceBGColor,
     interfaceKeyColor
@@ -3164,6 +2755,10 @@ const calculatedInlineVars = attributes => {
 
   if (lineartColor) {
     fgbgCss += `--lineartColor: ${lineartColor};`;
+  }
+
+  if (keyGradient) {
+    fgbgCss += `--keyGradient: ${keyGradient};`;
   }
 
   if (selectionFGColor) {
@@ -3246,7 +2841,7 @@ const calculatedInlineVars = attributes => {
 
   compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim(); // Return style when enabled
 
-  if (styleEnabled) {
+  if (styleMode !== 'disabled') {
     return compressedCSS;
   } // Otherwise Return False
 
@@ -3337,6 +2932,7 @@ const calculatedStyleObj = attributes => {
     selectionFGColor,
     selectionBGColor,
     lineartColor,
+    keyGradient,
     foregroundHeadlineFont,
     foregroundCopyFont,
     foregroundCaptionFont,
@@ -3370,7 +2966,8 @@ const calculatedStyleObj = attributes => {
     '--blockquoteColor': blockquoteColor,
     '--selectionFGColor': selectionFGColor,
     '--selectionBGColor': selectionBGColor,
-    '--lineartColor': lineartColor
+    '--lineartColor': lineartColor,
+    '--keyGradient': keyGradient
   }; // Add Background Image properties as a group (depends on stack)
 
   if (bgImageStack) {
@@ -3486,7 +3083,7 @@ function save(props) {
 
   const inlineVarCSS = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedInlineVars(props.attributes); // Set classnames (font-classes allow for fine-tuning)
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", {
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", "xx-styled--block", {
     [`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit'
   }, {
     [`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit'

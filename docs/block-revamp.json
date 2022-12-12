@@ -45,7 +45,7 @@
 				"dropcapColor": "#000000",
 				"blockquoteColor": "#000000",
 				"lineartColor": "#000000",
-				"babygradient": "",
+				"keyGradient": "",
 				"selectionFGColor": "#000000",
 				"selectionBGColor": "#ffffff" 
             }
@@ -60,9 +60,9 @@
 				"backgroundColorCount": "flat",
 				"backgroundStackFirst": "image",
 				"backgroundColor": "#ddd",
-				"backgroundColor1": "#ffffff",
-				"backgroundColor2": "#ffffff",
-				"backgroundColor3": "transparent",
+				"backgroundGrad1": "#ffffff",
+				"backgroundGrad2": "#ffffff",
+				"backgroundGel": "transparent",
 				"gradientType": "linear",
 				"gradientLinearAngle": 45,
 				"backgroundGradientSize": "cover",
@@ -76,8 +76,8 @@
 				"backgroundGradientAlignHoriCustom": 100,
 				"gradientAlignRadialHori": 50,
 				"gradientAlignRadialVert": 50,
-				"backgroundColor1Start": 0,
-				"backgroundColor2Start": 100,
+				"backgroundGrad1Start": 0,
+				"backgroundGrad2Start": 100,
 				// New
 				"backgroundGradientAlign": { "vertical":"center", "horizontal":"center" },
 				"backgroundGradientAlignCustom": { "vertical":100, "horizontal":100 },

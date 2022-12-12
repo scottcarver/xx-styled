@@ -19,11 +19,7 @@ export default class BGImgControl extends Component {
 				backgroundImageSizeCustomSm,
 				backgroundImageSizeCustomMd,
 				backgroundImageRepeat,
-				backgroundImageAttachment,
-				backgroundImageAlignVert,
-				backgroundImageAlignHori,
-				backgroundImageAlignVertCustom,
-				backgroundImageAlignHoriCustom
+				backgroundImageAttachment
 			},
 			setAttributes
 		} = this.props;
@@ -54,10 +50,10 @@ export default class BGImgControl extends Component {
 		return (
 			<Fragment>
 				{/* BACKGROUND SIZE */}
-				<div class="px-simplerow  px-simplerow--shortheadline">
+				<div className="px-simplerow  px-simplerow--shortheadline">
 					<h2>Background Size</h2>
 				</div>
-				<div class="px-buttongroup px-buttongroup--small">
+				<div className="px-buttongroup px-buttongroup--small">
 					<ButtonGroup aria-label={__("Column Layout")}>
 						<Button
 							isPrimary={backgroundImageSize === "cover"}
@@ -128,7 +124,7 @@ export default class BGImgControl extends Component {
 						</div>
 {/* 						
 						Two
-						<div class="px-columnrow px-columnrow--nolabel px-columnrow--spaceabove">
+						<div className="px-columnrow px-columnrow--nolabel px-columnrow--spaceabove">
 							<RangeControl
 								label={__("Custom")}
 								value={backgroundImageSizeCustom}
@@ -146,10 +142,10 @@ export default class BGImgControl extends Component {
 				)}
 
 				{/* BACKGROUND REPEAT */}
-				<div class="px-simplerow px-simplerow--shortheadline">
+				<div className="px-simplerow px-simplerow--shortheadline">
 					<h2>Background Repeat</h2>
 				</div>
-				<div class="px-buttongroup px-buttongroup--small">
+				<div className="px-buttongroup px-buttongroup--small">
 					<ButtonGroup aria-label={__("Column Layout")}>
 						<Button
 							isPrimary={backgroundImageRepeat === "no-repeat"}
@@ -195,10 +191,10 @@ export default class BGImgControl extends Component {
 				</div>
 
 				{/* BACKGROUND ATTACHMENT */}
-				<div class="px-simplerow px-simplerow--shortheadline">
+				<div className="px-simplerow px-simplerow--shortheadline">
 					<h2>Background Attachment</h2>
 				</div>
-				<div class="px-buttongroup">
+				<div className="px-buttongroup">
 					<ButtonGroup aria-label={__("Column Layout")}>
 						<Button
 							isPrimary={backgroundImageAttachment === "scroll"}
@@ -223,127 +219,6 @@ export default class BGImgControl extends Component {
 					</ButtonGroup>
 				</div>
 
-				{/* BACKGROUND POSITION 
-				backgroundImageAlignVert
-				backgroundImageAlignHori
-				backgroundImageAlignHoriCustom
-				backgroundImageAlignVertCustom
-				<div class="px-simplerow px-simplerow--shortheadline">
-					<h2>Background Position</h2>
-					{this.props.position}
-				</div>
-				<div class="px-sidepanel">
-					<div class="px-simplerow">
-						<label>Vertical</label>
-					</div>
-					<div class="px-buttongroup px-buttongroup--small">
-						<ButtonGroup aria-label={__("Column Layout")}>
-							<Button
-								isPrimary={backgroundImageAlignVert === "top"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignVert: "top" });
-								}}
-							>
-								Top
-							</Button>
-							<Button
-								isPrimary={backgroundImageAlignVert === "center"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignVert: "center" });
-								}}
-							>
-								Center
-							</Button>
-							<Button
-								isPrimary={backgroundImageAlignVert === "bottom"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignVert: "bottom" });
-								}}
-							>
-								Bottom
-							</Button>
-							<Button
-								isPrimary={backgroundImageAlignVert === "custom"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignVert: "custom" });
-								}}
-							>
-								Custom
-							</Button>
-						</ButtonGroup>
-					</div>
-					{backgroundImageAlignVert == "custom" && (
-						<div class="px-columnrow px-columnrow--smallspaceabove">
-							<RangeControl
-								label={__("Custom")}
-								value={backgroundImageAlignVertCustom}
-								onChange={backgroundImageAlignVertCustom => {
-									setAttributes({
-										backgroundImageAlignVertCustom
-									});
-								}}
-								min={-50}
-								max={200}
-							/>
-						</div>
-					)}
-					<div class="px-simplerow px-simplerow--padtop">
-						<label>Horizontal</label>
-						<br />
-					</div>
-					<div class="px-buttongroup px-buttongroup--small">
-						<ButtonGroup aria-label={__("Column Layout")}>
-							<Button
-								isPrimary={backgroundImageAlignHori === "left"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignHori: "left" });
-								}}
-							>
-								Left
-							</Button>
-							<Button
-								isPrimary={backgroundImageAlignHori === "center"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignHori: "center" });
-								}}
-							>
-								Center
-							</Button>
-							<Button
-								isPrimary={backgroundImageAlignHori === "right"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignHori: "right" });
-								}}
-							>
-								Right
-							</Button>
-							<Button
-								isPrimary={backgroundImageAlignHori === "custom"}
-								onClick={() => {
-									setAttributes({ backgroundImageAlignHori: "custom" });
-								}}
-							>
-								Custom
-							</Button>
-						</ButtonGroup>
-					</div>
-					{backgroundImageAlignHori == "custom" && (
-						<div class="px-columnrow px-columnrow--smallspaceabove">
-							<RangeControl
-								label={__("Custom")}
-								value={backgroundImageAlignHoriCustom}
-								onChange={backgroundImageAlignHoriCustom => {
-									setAttributes({
-										backgroundImageAlignHoriCustom
-									});
-								}}
-								min={-50}
-								max={200}
-							/>
-						</div>
-					)}
-				</div>
-				*/ }
 			</Fragment>
 		);
 	}

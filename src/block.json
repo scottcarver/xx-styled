@@ -17,26 +17,17 @@
 	"attributes" : {
 		"align": {
 			"type": "string",
-			"default": ""
-		},
-		"elementType": {
-			"type": "string",
-			"default": "div"
+			"default": "",
+			"comment" : "needed for fullwidth control"
 		},
 		"blockID": {
 			"type": "string",
-			"default": ""
-		},
-		"babygradient": {
-			"type": "string",
-			"default": ""
+			"default": "",
+			"comment" : "used for unique naming"
 		},
 		"namedstyle": {
-			"type": "string"
-		},
-		"styleEnabled": {
-			"type": "boolean",
-			"default": true
+			"type": "string",
+			"comment" : "slug that matches url-name"
 		},
 		"styleMode": {
 			"type": "string",
@@ -57,18 +48,6 @@
 		"bgGelEnabled": {
 			"type": "boolean",
 			"default": false
-		},
-		"heightEnabled": {
-			"type": "boolean",
-			"default": false
-		},
-		"backgroundColorCount": {
-			"type": "string",
-			"default": "flat"
-		},
-		"backgroundStackFirst": {
-			"type": "string",
-			"default": "image"
 		},
 		"foregroundColor": {
 			"type": "string",
@@ -94,6 +73,10 @@
 			"type": "string",
 			"default": ""
 		},
+		"keyGradient": {
+			"type": "string",
+			"default": ""
+		},
 		"foregroundHeadlineFont": {
 			"type": "string",
 			"default": "inherit"
@@ -114,37 +97,45 @@
 			"type": "string",
 			"default": ""
 		},
+		"backgroundColorCount": {
+			"type": "string",
+			"default": "flat"
+		},
+		"backgroundStackFirst": {
+			"type": "string",
+			"default": "image"
+		},
 		"backgroundColor": {
 			"type": "string",
 			"default": "",
 			"comment":"used as the base color in the generated style"
 		},
-		"backgroundColor1": {
-			"type": "string",
-			"default": "",
-			"comment":"used as gradient color 1"
-		},
-		"backgroundColor2": {
-			"type": "string",
-			"default": "",
-			"comment":"used as gradient color 2"
-		},
-		"backgroundColor3": {
+		"backgroundGel": {
 			"type": "string",
 			"default": "",
 			"comment":"used as the gel color"
 		},
-		"gradientType": {
+		"backgroundGrad1": {
 			"type": "string",
-			"default": "linear"
+			"default": "",
+			"comment":"used as gradient color 1"
 		},
-		"backgroundColor1Start": {
+		"backgroundGrad2": {
+			"type": "string",
+			"default": "",
+			"comment":"used as gradient color 2"
+		},
+		"backgroundGrad1Start": {
 			"type": "number",
 			"default": 0
 		},
-		"backgroundColor2Start": {
+		"backgroundGrad2Start": {
 			"type": "number",
 			"default": 100
+		},
+		"gradientType": {
+			"type": "string",
+			"default": "linear"
 		},
 		"gradientLinearAngle": {
 			"type": "number",
@@ -190,53 +181,9 @@
 			"type": "string",
 			"default": "scroll"
 		},
-		"backgroundImageAlignVert": {
-			"type": "string",
-			"default": "center"
-		},
-		"backgroundImageAlignHori": {
-			"type": "string",
-			"default": "center"
-		},
-		"backgroundImageAlignVertCustom": {
-			"type": "number",
-			"default": 100
-		},
-		"backgroundImageAlignHoriCustom": {
-			"type": "number",
-			"default": 100
-		},
-		"backgroundGradientSize": {
-			"type": "string",
-			"default": "cover"
-		},
-		"backgroundGradientSizeCustom": {
-			"type": "number",
-			"default": 100
-		},
-		"backgroundGradientRepeat": {
-			"type": "string",
-			"default": "no-repeat"
-		},
 		"backgroundGradientAttachment": {
 			"type": "string",
 			"default": "scroll"
-		},
-		"backgroundGradientAlignVert": {
-			"type": "string",
-			"default": "center"
-		},
-		"backgroundGradientAlignHori": {
-			"type": "string",
-			"default": "center"
-		},
-		"backgroundGradientAlignVertCustom": {
-			"type": "number",
-			"default": 100
-		},
-		"backgroundGradientAlignHoriCustom": {
-			"type": "number",
-			"default": 100
 		},
 		"blockAlignment": {
 			"type": "string"

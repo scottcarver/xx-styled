@@ -28,6 +28,7 @@ export default function save(props) {
 	// Set classnames (font-classes allow for fine-tuning)
 	const classes = classnames(
 		"xx-styled",
+		"xx-styled--block",
 		{[`xx-styled--headlinefont-${foregroundHeadlineFont}`]: foregroundHeadlineFont !== 'inherit' },
 		{[`xx-styled--copyfont-${foregroundCopyFont}`]: foregroundCopyFont !== 'inherit' },
 		{[`xx-styled--captionfont-${foregroundCaptionFont}`]: foregroundCaptionFont !== 'inherit' }

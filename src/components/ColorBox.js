@@ -2,11 +2,10 @@
 import { ColorPalette } from '@wordpress/block-editor';
 
 // Custom Modules
-import calculated from "../../library/calculated/calculated";
-
+import calculated from "../library/calculated/calculated";
 
 // Export colorbox
-export default function PxColorBox(props){
+export default function ColorBox(props){
 
     const {
         name, 

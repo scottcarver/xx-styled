@@ -1,9 +1,8 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow} from '@wordpress/components';
-import { ColorPalette } from '@wordpress/block-editor';
 
-import PxColorBox from "./PxColorBox/PxColorBox.js"
+import ColorBox from "./ColorBox.js"
 
 export function AccordionInterface({ attributes, setAttributes }){
 
@@ -25,7 +24,7 @@ export function AccordionInterface({ attributes, setAttributes }){
                         {/* Add as a Component */}
                         {colorboxes.map((currentValue) => {  
                             return( 
-                                <PxColorBox 
+                                <ColorBox 
                                     name={currentValue.name}
                                     title={currentValue.title}
                                     attributes={attributes} 

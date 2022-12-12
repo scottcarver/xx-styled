@@ -53,7 +53,8 @@ function register_styled_template() {
         array( 'core/separator', array('align'=>'center')),
         array( 'core/paragraph', array('content' => 'ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
         array( 'core/quote', array('value'=>'<p>Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://oregon.gov">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat</p>', 'citation'=>'Great Person')),
-        array( 'core/paragraph', array('content' => 'Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.'))
+        array( 'core/paragraph', array('content' => '<div style="background-image:var(--keyGradient);">Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.</div>')),
+        array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
       )
     )
   );
@@ -63,9 +64,6 @@ function register_styled_template() {
 
 
 // Add tags to <html> using the language_attributes hook
-
-
-
 function new_language_attributes($lang){
 
   // Do not attempt to alter the wp-admin area
@@ -77,7 +75,7 @@ function new_language_attributes($lang){
   // Allow the theme or plugin to add html classes
   if(defined('CUSTOM_CLASSES_HTML')){ $customstyles .= CUSTOM_CLASSES_HTML; }
 
-  $bodystyles = 'wp-site-xx-styled xx-styled ' . $customstyles;
+  $bodystyles = 'xx-styled xx-styled--html ' . $customstyles;
   
   if (function_exists('get_field')) {
       $namedstyle= get_field("poststylemeta_type");

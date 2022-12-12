@@ -5,7 +5,7 @@ import { Component, Fragment} from '@wordpress/element';
 // Custom modules
 import StyledPreview from "./StyledPreview/StyledPreview";
 import { StyledTypeToggle } from "./StyledTypeToggle";
-import { AccordionSavedstyles } from "./AccordionSavedstyles";
+import { AccordionSavedStyles } from "./AccordionSavedStyles";
 import { AccordionForeground } from "./AccordionForeground";
 import { AccordionBackground } from "./AccordionBackground";
 import {AccordionInterface} from "./AccordionInterface";
@@ -28,7 +28,7 @@ export default class StyleControls extends Component {
 
 				<StyledPreview {...this.props} />
 
-				<AccordionSavedstyles {...this.props} />
+				<AccordionSavedStyles {...this.props} />
 
 				<AccordionForeground {...this.props} />
 				
