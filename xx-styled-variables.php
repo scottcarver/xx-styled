@@ -26,10 +26,17 @@ function xxstyled_printadminscripts() {
 
   // Create Font name/label pairs based on theme.json
   $themejson_fontlabels = [];
-  foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
-    $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
-    array_push($themejson_fontlabels, $selectDropData);
+
+  // Inquire about Font families
+  if(isset($themejson_data['settings']['typography']['fontFamilies'])){
+    // And then process them
+    foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
+      $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
+      array_push($themejson_fontlabels, $selectDropData);
+    }
   }
+
+
   ?>
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;

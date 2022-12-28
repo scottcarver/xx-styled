@@ -1,5 +1,5 @@
 # Styled Areas - Gutenberg Block
-"*Styled Areas*" is a WordPress Plugin which provides the user with an alternative visual-editing interface for creating color themes inside of a WP website using a new Block and Posttype. 
+"*Styled Areas*" is a WordPress Plugin which provides the user with an alternative visual-editing interface for creating color-themes inside of a WP website using a new *Block* and *Posttype*. 
 
 ![Screenshot of Styled Areas interface](src/library/img/styled-controlswithpreview.jpg)
 
@@ -7,7 +7,7 @@ Practically speaking, a Styled Area is a container element which uses CSS Variab
 
 ## Installation
 
-1. Download this repo and add the "xx-styled" directory to the "plugins" directory of your WordPress installation `/wp-content/plugins/`
+1. Download this repo and add the entire "xx-styled" directory to the "plugins" directory of your WordPress installation `/wp-content/plugins/`
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. New controls/editors are now available! A new "Styled Areas" posttype in the admin sidebar, a block called "Styled Area" available in the block editor, and a sidebar plugin for managing post styles.
 
@@ -56,3 +56,5 @@ In addition to the 'single' entry, additional helper urls are added:
 ## Styled Areas versus Global Styles
 I began working on this block in 2019, and it developed alongside the core styling tools in WordPress. While the core WP features focus on 1) Global Styles and 2) inline styles, this project is more focus on streamlining the creation of reusable styles. Both approaches may be useful in different cases!
 
+## Todos
+For items that need fixing, see the todo.md file in this project.

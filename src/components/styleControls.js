@@ -1,6 +1,7 @@
 // WordPress modules
 const { __ } = wp.i18n;
 import { Component, Fragment} from '@wordpress/element';
+import { InspectorControls } from '@wordpress/block-editor';
 
 // Custom modules
 import StyledPreview from "./StyledPreview/StyledPreview";
@@ -23,23 +24,23 @@ export default class StyleControls extends Component {
 	render() {
 		return (
 			<Fragment>
-								
-				<StyledTypeToggle {...this.props} />	
+				<InspectorControls>		
+					<StyledTypeToggle {...this.props} />	
 
-				<StyledPreview {...this.props} />
+					<StyledPreview {...this.props} />
 
-				<AccordionSavedStyles {...this.props} />
+					<AccordionSavedStyles {...this.props} />
 
-				<AccordionForeground {...this.props} />
-				
-				<AccordionBackground {...this.props} />
+					<AccordionForeground {...this.props} />
+					
+					<AccordionBackground {...this.props} />
 
-				<AccordionInterface {...this.props} />
+					<AccordionInterface {...this.props} />
 
-				<AccordionDimensions {...this.props} />
+					<AccordionDimensions {...this.props} />
 
-				<AccordionTypography {...this.props} />
-			
+					<AccordionTypography {...this.props} />
+				</InspectorControls>			
 			</Fragment>
 		);
 	}

@@ -13,7 +13,8 @@ export default class AdminStyle extends Component {
 				blockID,
 				spacingMobile,
 				spacingTablet,
-				spacingDesktop
+				spacingDesktop,
+				styleMode
 			},
 			setAttributes,
 			clientId
@@ -54,6 +55,11 @@ export default class AdminStyle extends Component {
 		// Remove extraneous spaces
 		compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim();
 		//  style={{position:'absolute',width:'100%',height:'100%', top:0, left:0, maxWidth:"none"}}
+
+		// Return Nothing when this feature is disabled
+		if(styleMode!="custom"){ return false; }
+
+		// Return the Padding Preview
 		return (
              <Fragment>
 			    <div className='paddingpreview' style={{position:'absolute'}}>

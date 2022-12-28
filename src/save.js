@@ -19,8 +19,10 @@ export default function save(props) {
 			fgHeadlineFont,
 			fgCopyFont,
 			fgCaptionFont,
-			blockID
-		}
+			blockID,
+			clientUUID
+		},
+		clientId
 	} = props;
 
 	// Retrieve Inline CSS using helper function
@@ -30,6 +32,7 @@ export default function save(props) {
 	const classes = classnames(
 		"xx-styled",
 		"xx-styled--block",
+		clientUUID,
 		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont)},
 		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont) },
 		{[`xx-styled--captionfont-${fgCaptionFont}`]: (fgCaptionFont !== 'inherit' && fgCaptionFont) }
@@ -38,7 +41,7 @@ export default function save(props) {
 	// Create a BlockProps Object
 	const blockProps = {
 		className: classes,
-		id: blockID
+		id: "yep",
 	}
 
 	// Conditionally add style

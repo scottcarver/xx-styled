@@ -1,0 +1,143 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "xx/styled",
+	"version": "0.1.0",
+	"title": "Styled Area",
+	"category": "common",
+	"icon": "art",
+	"description": "A complete portable thematic set of FG/BG styles.",
+	"supports": {
+		"html": true,
+		"anchor": true,
+		"layout": true,
+		"__experimentalLayout": {
+			"allowSizingOnChildren": false,
+			"allowInheriting": true,
+			"allowEditing": true
+		}
+		"align": ["wide", "full"]
+	},
+	"attributes" : {
+		"align": { 
+			"type": "string",
+			"default": "full",
+			"comment": "this data is needed/used by the core align feature affecting maxwidth controls"
+		},
+		"settings": {
+            "type" : "object",
+            "default" : {
+				"namedStyle": "",
+				"blockID": "",
+				"styleEnabled": true,
+				"styleMode": "custom",
+				"heightEnabled": false,
+				"blockAlignment": "",
+				"sectionWidth": ""
+            }
+        },
+        "foreground": {
+            "type" : "object",
+            "default" : {
+				"foregroundColor": "#000000",
+				"headlineColor": "#000000",
+				"linkColor": "#000000",
+				"dropcapColor": "#000000",
+				"blockquoteColor": "#000000",
+				"lineartColor": "#000000",
+				"keyGradient": "",
+				"selectionFGColor": "#000000",
+				"selectionBGColor": "#ffffff" 
+            }
+        },
+		"background": {
+            "type" : "object",
+            "default" : {
+				"bgColorEnabled": true,
+				"bgGradientEnabled": false,
+				"bgImageEnabled": false,
+				"bgGelEnabled": false,
+				"bgColorCount": "flat",
+				"bgStackFirst": "image",
+				"backgroundColor": "#ddd",
+				"bgGrad1": "#ffffff",
+				"bgGrad2": "#ffffff",
+				"backgroundGel": "transparent",
+				"gradientType": "linear",
+				"gradientLinearAngle": 45,
+				"backgroundGradientSize": "cover",
+				"backgroundGradientSizeCustom": 100,
+				"backgroundGradientRepeat": "no-repeat",
+				"bgGradientAttachment": "scroll",
+				// Consolidated
+				"backgroundGradientAlignVert": "center",
+				"backgroundGradientAlignHori": "center",
+				"backgroundGradientAlignVertCustom": 100,
+				"backgroundGradientAlignHoriCustom": 100,
+				"gradientAlignRadialHori": 50,
+				"gradientAlignRadialVert": 50,
+				"bgGrad1Start": 0,
+				"bgGrad2Start": 100,
+				// New
+				"backgroundGradientAlign": { "vertical":"center", "horizontal":"center" },
+				"backgroundGradientAlignCustom": { "vertical":100, "horizontal":100 },
+				"gradientAlignRadial": { "vertical":50, "horizontal":50 },
+				"gradientRange": { "start":0, "end":100 }
+            }
+        },
+		"image": {
+            "type" : "object",
+            "default" : {
+				"backgroundImage": null ,
+				"focalPoint": { "x": 0.5, "y": 0.1 },
+				"bgImageSizeDefault": "cover",
+				"bgImageRepeat": "no-repeat",
+				"bgImageAttachment": "scroll",
+				// Consolidated
+				"bgImageSizeSm": "100%",
+				"bgImageSizeMd": "100%",
+				"bgImageSize": "100%",
+				"backgroundImageAlignVert": "center",
+				"backgroundImageAlignHori": "center",
+				"backgroundImageAlignVertCustom": 100,
+				"backgroundImageAlignHoriCustom": 100,
+				// New
+				"backgroundSizes" { "small" : "100%", "medium" : "100%", "large" : "100%" },
+				"backgroundImageAlign": { "vertical":"center", "horizontal":"center" },
+				"backgroundImageAlignCustom": { "vertical":100, "horizontal":100}
+            }
+        },
+		"navigation": {
+            "type" : "object",
+            "default" : {
+				"navFGColor": "#000000",
+				"navBGColor": "#000000",
+				"buttonBGColor": "#000000",
+				"dropcapColor": "#000000"
+            }
+        },
+		"typography": {
+            "type" : "object",
+            "default" : {
+                "fgHeadlineFont": "inherit",
+				"fgCopyFont": "inherit",
+				"fgCaptionFont": "inherit"
+            }
+        },
+		"dimensions": {
+            "type" : "object",
+            "default" : {
+				"spacingMin": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+                "spacingXs": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingSm": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingMd": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingLg": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" },
+				"spacingHd": { "top" : "0px", "bottom" : "0px", "left" : "0px", "right" : "0px" }
+            }
+        }
+	},
+	"textdomain": "xx-styled",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

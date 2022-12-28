@@ -717,7 +717,8 @@ class AdminStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compone
         blockID,
         spacingMobile,
         spacingTablet,
-        spacingDesktop
+        spacingDesktop,
+        styleMode
       },
       setAttributes,
       clientId
@@ -753,6 +754,12 @@ class AdminStyle extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Compone
     var compressedCSS = combinedCss.replaceAll("\n", "").replaceAll("\t", " "); // Remove extraneous spaces
 
     compressedCSS = compressedCSS.replace(/\s+/g, ' ').trim(); //  style={{position:'absolute',width:'100%',height:'100%', top:0, left:0, maxWidth:"none"}}
+    // Return Nothing when this feature is disabled
+
+    if (styleMode != "custom") {
+      return false;
+    } // Return the Padding Preview
+
 
     return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
       className: "paddingpreview",
@@ -1763,19 +1770,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./StyledPreview/StyledPreview */ "./src/components/StyledPreview/StyledPreview.js");
-/* harmony import */ var _StyledTypeToggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StyledTypeToggle */ "./src/components/StyledTypeToggle.js");
-/* harmony import */ var _AccordionSavedStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AccordionSavedStyles */ "./src/components/AccordionSavedStyles.js");
-/* harmony import */ var _AccordionForeground__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AccordionForeground */ "./src/components/AccordionForeground.js");
-/* harmony import */ var _AccordionBackground__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AccordionBackground */ "./src/components/AccordionBackground.js");
-/* harmony import */ var _AccordionInterface__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AccordionInterface */ "./src/components/AccordionInterface.js");
-/* harmony import */ var _AccordionDimensions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AccordionDimensions */ "./src/components/AccordionDimensions.js");
-/* harmony import */ var _AccordionTypography__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AccordionTypography */ "./src/components/AccordionTypography.js");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StyledPreview/StyledPreview */ "./src/components/StyledPreview/StyledPreview.js");
+/* harmony import */ var _StyledTypeToggle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StyledTypeToggle */ "./src/components/StyledTypeToggle.js");
+/* harmony import */ var _AccordionSavedStyles__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AccordionSavedStyles */ "./src/components/AccordionSavedStyles.js");
+/* harmony import */ var _AccordionForeground__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AccordionForeground */ "./src/components/AccordionForeground.js");
+/* harmony import */ var _AccordionBackground__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AccordionBackground */ "./src/components/AccordionBackground.js");
+/* harmony import */ var _AccordionInterface__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AccordionInterface */ "./src/components/AccordionInterface.js");
+/* harmony import */ var _AccordionDimensions__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AccordionDimensions */ "./src/components/AccordionDimensions.js");
+/* harmony import */ var _AccordionTypography__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AccordionTypography */ "./src/components/AccordionTypography.js");
 
 // WordPress modules
 const {
   __
 } = wp.i18n;
+
  // Custom modules
 
 
@@ -1796,7 +1806,7 @@ class StyleControls extends _wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Comp
   }
 
   render() {
-    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledTypeToggle__WEBPACK_IMPORTED_MODULE_2__.StyledTypeToggle, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_1__["default"], this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionSavedStyles__WEBPACK_IMPORTED_MODULE_3__.AccordionSavedStyles, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionForeground__WEBPACK_IMPORTED_MODULE_4__.AccordionForeground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionBackground__WEBPACK_IMPORTED_MODULE_5__.AccordionBackground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionInterface__WEBPACK_IMPORTED_MODULE_6__.AccordionInterface, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionDimensions__WEBPACK_IMPORTED_MODULE_7__.AccordionDimensions, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionTypography__WEBPACK_IMPORTED_MODULE_8__.AccordionTypography, this.props));
+    return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledTypeToggle__WEBPACK_IMPORTED_MODULE_3__.StyledTypeToggle, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_StyledPreview_StyledPreview__WEBPACK_IMPORTED_MODULE_2__["default"], this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionSavedStyles__WEBPACK_IMPORTED_MODULE_4__.AccordionSavedStyles, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionForeground__WEBPACK_IMPORTED_MODULE_5__.AccordionForeground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionBackground__WEBPACK_IMPORTED_MODULE_6__.AccordionBackground, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionInterface__WEBPACK_IMPORTED_MODULE_7__.AccordionInterface, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionDimensions__WEBPACK_IMPORTED_MODULE_8__.AccordionDimensions, this.props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_AccordionTypography__WEBPACK_IMPORTED_MODULE_9__.AccordionTypography, this.props)));
   }
 
 }
@@ -2007,20 +2017,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ edit; }
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
-/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
-/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
-/* harmony import */ var _components_StyleControls__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/StyleControls */ "./src/components/StyleControls.js");
-/* harmony import */ var _components_AdminStyle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/AdminStyle */ "./src/components/AdminStyle.js");
-/* harmony import */ var _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../src/library/calculated/calculated */ "./src/library/calculated/calculated.js");
-
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _components_StyleControls__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/StyleControls */ "./src/components/StyleControls.js");
+/* harmony import */ var _components_AdminStyle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/AdminStyle */ "./src/components/AdminStyle.js");
+/* harmony import */ var _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../src/library/calculated/calculated */ "./src/library/calculated/calculated.js");
 
 // Node modules
  // WordPress modules
@@ -2043,17 +2051,26 @@ function edit(props) {
       fgHeadlineFont,
       fgCopyFont,
       fgCaptionFont,
-      blockID
+      blockID,
+      clientUUID
     },
+    clientId,
     className,
     setAttributes
-  } = props; // Retrieve a CSS Object
+  } = props;
+  console.log("clientId was: " + clientId);
 
-  const styleObj = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_8__["default"].calculatedStyleObj(props.attributes); // Retrieve/Set Classes
-  // const classes = classnames( className, "xx-styled");
+  if (!clientUUID) {
+    console.log("no unique id was set");
+    setAttributes({
+      clientUUID: clientId
+    });
+  } // Retrieve a CSS Object
 
-  console.log("the cycle ", fgHeadlineFont, fgCopyFont, fgCaptionFont);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_2___default()("xx-styled", "xx-styled--block", {
+
+  const styleObj = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_7__["default"].calculatedStyleObj(props.attributes); // Retrieve/Set Classes
+
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", clientId, "xx-styled--block", {
     [`xx-styled--headlinefont-${fgHeadlineFont}`]: fgHeadlineFont !== 'inherit' && fgHeadlineFont
   }, {
     [`xx-styled--copyfont-${fgCopyFont}`]: fgCopyFont !== 'inherit' && fgCopyFont
@@ -2061,15 +2078,14 @@ function edit(props) {
     [`xx-styled--captionfont-${fgCaptionFont}`]: fgCaptionFont !== 'inherit' && fgCaptionFont
   }); // Create a BlockProps Object
 
-  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.useBlockProps)({
+  const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.useBlockProps)({
     className: classes,
-    id: blockID,
+    id: "yep",
     style: styleMode == 'custom' || styleMode == 'named' ? styleObj : undefined,
     'data-theme': styleMode == 'named' ? namedStyle : ''
-  });
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", blockProps, styleMode == "custom" && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_AdminStyle__WEBPACK_IMPORTED_MODULE_7__["default"], (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    setAttributes
-  }, props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_components_StyleControls__WEBPACK_IMPORTED_MODULE_6__["default"], props)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_4__.InnerBlocks, null)));
+  }); //id: blockID,
+
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", blockProps, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_AdminStyle__WEBPACK_IMPORTED_MODULE_6__["default"], props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_StyleControls__WEBPACK_IMPORTED_MODULE_5__["default"], props), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__.InnerBlocks, null)));
 }
 
 /***/ }),
@@ -3061,13 +3077,15 @@ function save(props) {
       fgHeadlineFont,
       fgCopyFont,
       fgCaptionFont,
-      blockID
-    }
+      blockID,
+      clientUUID
+    },
+    clientId
   } = props; // Retrieve Inline CSS using helper function
 
   const inlineVarCSS = _src_library_calculated_calculated__WEBPACK_IMPORTED_MODULE_4__["default"].calculatedInlineVars(props.attributes); // Set classnames (font-classes allow for fine-tuning)
 
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", "xx-styled--block", {
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()("xx-styled", "xx-styled--block", clientUUID, {
     [`xx-styled--headlinefont-${fgHeadlineFont}`]: fgHeadlineFont !== 'inherit' && fgHeadlineFont
   }, {
     [`xx-styled--copyfont-${fgCopyFont}`]: fgCopyFont !== 'inherit' && fgCopyFont
@@ -3077,7 +3095,7 @@ function save(props) {
 
   const blockProps = {
     className: classes,
-    id: blockID
+    id: "yep"
   }; // Conditionally add style
 
   if (inlineVarCSS) {

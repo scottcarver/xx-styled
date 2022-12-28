@@ -3,7 +3,7 @@ import classnames from "classnames";
 
 // WordPress modules
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InnerBlocks, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks} from '@wordpress/block-editor';
 import {Fragment } from '@wordpress/element';
 
 // Custom modules
@@ -23,24 +23,30 @@ export default function edit(props) {
 			fgHeadlineFont,
 			fgCopyFont,
 			fgCaptionFont,
-			blockID
+			blockID,
+			clientUUID,
 		},
+		clientId,
 		className, 
 		setAttributes
 	} = props;
 
+	console.log("clientId was: " + clientId);
+	
+	if(!clientUUID){
+		console.log("no unique id was set");
+		setAttributes({
+			clientUUID: clientId
+		});
+	}
 	
 	// Retrieve a CSS Object
 	const styleObj = calculated.calculatedStyleObj(props.attributes);
 
 	// Retrieve/Set Classes
-	// const classes = classnames( className, "xx-styled");
-
-	console.log("the cycle ", fgHeadlineFont, fgCopyFont, fgCaptionFont);
-
-
 	const classes = classnames(
 		"xx-styled",
+		clientId,
 		"xx-styled--block",
 		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont)},
 		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont) },
@@ -50,11 +56,12 @@ export default function edit(props) {
 	// Create a BlockProps Object
 	const blockProps = useBlockProps( {
 		className: classes,
-		id: blockID,
+		id: "yep",
 		style: (styleMode == 'custom' || styleMode == 'named' ) ? styleObj : undefined,
 		'data-theme': (styleMode == 'named') ? namedStyle : ''
 	});
 	
+	//id: blockID,
 	
 	return (
 		<Fragment>
@@ -62,10 +69,10 @@ export default function edit(props) {
 			<div {...blockProps}>
 
 				{/* Admin Padding Preview */}
-				{styleMode=="custom" && ( <AdminStyle {...{ setAttributes, ...props }} /> )}
+				<AdminStyle {...props } />
 
 				{/* Sidebar Controls */}
-				<InspectorControls><StyleControls {...props} /></InspectorControls>
+				<StyleControls {...props} />
 
 				{/* Inner Blocks */}
 				<InnerBlocks />

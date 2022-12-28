@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "design",
 	"icon": "art",
-	"description": "A complete portable thematic set of FG/BG styles.",
+	"description": "A complete, portable set of Foreground & Background styles as CSS Variables.",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,
@@ -28,6 +28,9 @@
 			"default": "custom"
 		},
 		"headlineColor": {
+			"type": "string"
+		},
+		"clientUUID": {
 			"type": "string"
 		},
 		"foregroundColor": {
@@ -184,6 +187,43 @@
 			"default": "inherit"
 		}
 	},
+	"example": {
+        "attributes": {
+            "message": "This is a notice!"
+        }
+    },
+    "variations": [
+        {
+            "name": "light",
+            "title": "Light Styled",
+            "attributes": {
+                "backgroundColor": "#fff",
+				"foregroundColor": "#000",
+				"spacingMobile":{"top":"30px","right":"30px","bottom":"30px","left":"30px"},
+				"spacingTablet":{"top":"30px","right":"30px","bottom":"30px","left":"30px"},
+				"spacingDesktop":{"top":"50px","right":"50px","bottom":"50px","left":"50px"}
+            },
+			"innerBlocks": [
+				["core/heading", { "level": 3, "content": "To get started with this Styled Area, edit the sidebar, and delete the placeholder text" }],
+				["core/paragraph", { "content": "Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus suscipit tortor eget felis porttitor volutpat." }]
+			]
+        },
+		{
+            "name": "dark",
+            "title": "Dark Styled",
+            "attributes": {
+                "backgroundColor": "#222",
+				"foregroundColor": "#fff",
+				"spacingMobile":{"top":"30px","right":"30px","bottom":"30px","left":"30px"},
+				"spacingTablet":{"top":"30px","right":"30px","bottom":"30px","left":"30px"},
+				"spacingDesktop":{"top":"50px","right":"50px","bottom":"50px","left":"50px"}
+            },
+			"innerBlocks": [
+				["core/heading", { "level": 3, "content": "To get started with this Styled Area, edit the sidebar, and delete the placeholder text" }],
+				["core/paragraph", { "content": "Vivamus suscipit tortor eget felis porttitor volutpat. Cras ultricies ligula sed magna dictum porta. Cras ultricies ligula sed magna dictum porta. Vivamus suscipit tortor eget felis porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim. Vivamus suscipit tortor eget felis porttitor volutpat." }]
+			]
+        }
+    ],
 	"textdomain": "xx-styled",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

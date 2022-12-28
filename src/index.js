@@ -17,4 +17,3 @@ registerBlockType('xx/styled', {
 	// icon,
 	category: 'design'
 });
-
