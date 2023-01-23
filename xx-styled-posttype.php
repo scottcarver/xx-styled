@@ -31,6 +31,7 @@ function initialize_styled_posttype() {
     'description'   => 'Holds our Styles and Style specific data',
     'public'        => true,
     'menu_icon' => 'dashicons-art',
+    'show_in_admin_bar'   => false,
     'menu_position' => 5,
     'supports'      => array( 'title', 'editor'),
     'has_archive'   => false,
