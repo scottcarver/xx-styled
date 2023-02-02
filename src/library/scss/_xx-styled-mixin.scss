@@ -1,8 +1,8 @@
 
 /* xx-styled is used in the frontend and backend, it is isolated here to prevent duplication */
 @mixin xxstyled-innards{
-  box-sizing: border-box;
-  position:relative;
+  	box-sizing: border-box;
+  	position:relative;
 	margin:0px auto;
 
 	// Foreground, Background, Padding
@@ -14,7 +14,7 @@
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
 	background-size: var(--backgroundSizeSm);
-  padding:.01px;
+  	padding:.01px;
 	padding: var(--spacingMobile);
 
   // Modifier: Block

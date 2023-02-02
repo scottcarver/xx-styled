@@ -3,7 +3,7 @@
 @import "library/scss/_xx-styled-mixin.scss"; 
 
 // Add xx-styled specifically for the frontend
-.xx-styled{ @include xxstyled-innards;}
+.xx-styled .xx-hasstyle, .xx-styled.xx-hasstyle, .xx-styled.xx-styled--block{ @include xxstyled-innards;}
 
 // When the HTML tag has a xx-styled, make sure it's tall
 // html.xx-styled{ min-height: 100%; }
