@@ -12,7 +12,7 @@
 }
 
 /* xx-styled is used in the frontend and backend, it is isolated here to prevent duplication */
-.xx-styled .xx-hasstyle, .xx-styled.xx-hasstyle, .xx-styled.xx-styled--block {
+.xx-styled .xx-styled--hasstyle, .xx-styled.xx-styled--hasstyle, .xx-styled.xx-styled--block {
   box-sizing: border-box;
   position: relative;
   margin: 0px auto;
@@ -27,59 +27,59 @@
   padding: 0.01px;
   padding: var(--spacingMobile);
 }
-.xx-styled .xx-hasstyle.xx-styled--block, .xx-styled.xx-hasstyle.xx-styled--block, .xx-styled.xx-styled--block.xx-styled--block {
+.xx-styled .xx-styled--hasstyle.xx-styled--block, .xx-styled.xx-styled--hasstyle.xx-styled--block, .xx-styled.xx-styled--block.xx-styled--block {
   max-width: var(--contentWidth);
 }
-.xx-styled .xx-hasstyle.xx-styled--html, .xx-styled.xx-hasstyle.xx-styled--html, .xx-styled.xx-styled--block.xx-styled--html {
+.xx-styled .xx-styled--hasstyle.xx-styled--html, .xx-styled.xx-styled--hasstyle.xx-styled--html, .xx-styled.xx-styled--block.xx-styled--html {
   min-height: 100%;
 }
 @media (min-width: 992px) {
-  .xx-styled .xx-hasstyle, .xx-styled.xx-hasstyle, .xx-styled.xx-styled--block {
+  .xx-styled .xx-styled--hasstyle, .xx-styled.xx-styled--hasstyle, .xx-styled.xx-styled--block {
     background-size: var(--backgroundSizeMd);
     padding: var(--spacingTablet);
   }
 }
 @media (min-width: 1200px) {
-  .xx-styled .xx-hasstyle, .xx-styled.xx-hasstyle, .xx-styled.xx-styled--block {
+  .xx-styled .xx-styled--hasstyle, .xx-styled.xx-styled--hasstyle, .xx-styled.xx-styled--block {
     background-size: var(--backgroundSize);
     padding: var(--spacingDesktop);
   }
 }
-.xx-styled .xx-hasstyle *, .xx-styled.xx-hasstyle *, .xx-styled.xx-styled--block * {
+.xx-styled .xx-styled--hasstyle *, .xx-styled.xx-styled--hasstyle *, .xx-styled.xx-styled--block * {
   box-sizing: border-box;
 }
-.xx-styled .xx-hasstyle.alignfull, .xx-styled.xx-hasstyle.alignfull, .xx-styled.xx-styled--block.alignfull {
+.xx-styled .xx-styled--hasstyle.alignfull, .xx-styled.xx-styled--hasstyle.alignfull, .xx-styled.xx-styled--block.alignfull {
   max-width: none;
 }
-.xx-styled .xx-hasstyle.alignwide, .xx-styled.xx-hasstyle.alignwide, .xx-styled.xx-styled--block.alignwide {
+.xx-styled .xx-styled--hasstyle.alignwide, .xx-styled.xx-styled--hasstyle.alignwide, .xx-styled.xx-styled--block.alignwide {
   max-width: var(--wideWidth);
 }
-.xx-styled .xx-hasstyle *::-moz-selection, .xx-styled.xx-hasstyle *::-moz-selection, .xx-styled.xx-styled--block *::-moz-selection {
+.xx-styled .xx-styled--hasstyle *::-moz-selection, .xx-styled.xx-styled--hasstyle *::-moz-selection, .xx-styled.xx-styled--block *::-moz-selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled .xx-hasstyle *::selection, .xx-styled.xx-hasstyle *::selection, .xx-styled.xx-styled--block *::selection {
+.xx-styled .xx-styled--hasstyle *::selection, .xx-styled.xx-styled--hasstyle *::selection, .xx-styled.xx-styled--block *::selection {
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled .xx-hasstyle h1, .xx-styled .xx-hasstyle h2, .xx-styled .xx-hasstyle h3, .xx-styled .xx-hasstyle h4, .xx-styled .xx-hasstyle h5, .xx-styled .xx-hasstyle h6, .xx-styled.xx-hasstyle h1, .xx-styled.xx-hasstyle h2, .xx-styled.xx-hasstyle h3, .xx-styled.xx-hasstyle h4, .xx-styled.xx-hasstyle h5, .xx-styled.xx-hasstyle h6, .xx-styled.xx-styled--block h1, .xx-styled.xx-styled--block h2, .xx-styled.xx-styled--block h3, .xx-styled.xx-styled--block h4, .xx-styled.xx-styled--block h5, .xx-styled.xx-styled--block h6 {
+.xx-styled .xx-styled--hasstyle h1, .xx-styled .xx-styled--hasstyle h2, .xx-styled .xx-styled--hasstyle h3, .xx-styled .xx-styled--hasstyle h4, .xx-styled .xx-styled--hasstyle h5, .xx-styled .xx-styled--hasstyle h6, .xx-styled.xx-styled--hasstyle h1, .xx-styled.xx-styled--hasstyle h2, .xx-styled.xx-styled--hasstyle h3, .xx-styled.xx-styled--hasstyle h4, .xx-styled.xx-styled--hasstyle h5, .xx-styled.xx-styled--hasstyle h6, .xx-styled.xx-styled--block h1, .xx-styled.xx-styled--block h2, .xx-styled.xx-styled--block h3, .xx-styled.xx-styled--block h4, .xx-styled.xx-styled--block h5, .xx-styled.xx-styled--block h6 {
   color: var(--headlineColor);
   font-family: var(--foregroundHeadlineFont);
 }
-.xx-styled .xx-hasstyle p.has-drop-cap:not(:focus)::first-letter, .xx-styled.xx-hasstyle p.has-drop-cap:not(:focus)::first-letter, .xx-styled.xx-styled--block p.has-drop-cap:not(:focus)::first-letter {
+.xx-styled .xx-styled--hasstyle p.has-drop-cap:not(:focus)::first-letter, .xx-styled.xx-styled--hasstyle p.has-drop-cap:not(:focus)::first-letter, .xx-styled.xx-styled--block p.has-drop-cap:not(:focus)::first-letter {
   color: var(--dropcapColor);
 }
-.xx-styled .xx-hasstyle a, .xx-styled.xx-hasstyle a, .xx-styled.xx-styled--block a {
+.xx-styled .xx-styled--hasstyle a, .xx-styled.xx-styled--hasstyle a, .xx-styled.xx-styled--block a {
   color: var(--linkColor);
 }
-.xx-styled .xx-hasstyle blockquote, .xx-styled.xx-hasstyle blockquote, .xx-styled.xx-styled--block blockquote {
+.xx-styled .xx-styled--hasstyle blockquote, .xx-styled.xx-styled--hasstyle blockquote, .xx-styled.xx-styled--block blockquote {
   color: var(--blockquoteColor);
   border-color: var(--blockquoteColor);
 }
-.xx-styled .xx-hasstyle figure figcaption, .xx-styled.xx-hasstyle figure figcaption, .xx-styled.xx-styled--block figure figcaption {
+.xx-styled .xx-styled--hasstyle figure figcaption, .xx-styled.xx-styled--hasstyle figure figcaption, .xx-styled.xx-styled--block figure figcaption {
   font-family: var(--foregroundCaptionFont);
 }
-.xx-styled .xx-hasstyle hr.wp-block-separator, .xx-styled.xx-hasstyle hr.wp-block-separator, .xx-styled.xx-styled--block hr.wp-block-separator {
+.xx-styled .xx-styled--hasstyle hr.wp-block-separator, .xx-styled.xx-styled--hasstyle hr.wp-block-separator, .xx-styled.xx-styled--block hr.wp-block-separator {
   background-color: var(--lineartColor);
   border-color: var(--lineartColor);
 }
