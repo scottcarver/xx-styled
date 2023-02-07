@@ -23,7 +23,10 @@ The block is capable of being used in multiple ways:
 3. **Post Styles** - Saved Styles can also be assigned at a high level to a Post/Page (in addition to inside the Gutenberg editing interface). Nothing will added to the entry in the Gutenberg editor, but a callback function allows a named style to be added to a high-level page element: `<body data-theme="my-cool-style">`
 
 
+## Applying Styles
+The inline blocks will have classes like `xx-styled xx-styled--block`. The first class allows the container element access to a set of CSS Variables. With the `xx-styled` class alone there will be no visual changes. To use the variables, apply a second class (in this case `xx-styled--block`).
 
+There is also a class named `xx-styled--hasstyle` which does the same thing. It can be applied to the container itself, or a child. This seperation allows for more deliberate usage.
 <!-- 
 There is default support if you create light/dark modes:
 
