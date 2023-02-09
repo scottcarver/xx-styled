@@ -1,0 +1,37 @@
+@mixin xxstyled-elements{
+
+    // Heading
+    h1:not(.inert), h2:not(.inert), h3:not(.inert), h4:not(.inert), h5:not(.inert), h6:not(.inert){
+        color: var(--headlineColor);
+        font-family:var(--foregroundHeadlineFont);
+    }
+
+    // Dropcap
+    p.has-drop-cap:not(.inert):not(:focus)::first-letter{
+        color: var(--dropcapColor);
+    }
+
+    // Link
+    a:not(.inert){
+        color: var(--linkColor);
+    }
+
+    blockquote:not(.inert){
+        color: var(--blockquoteColor);
+        border-color:var(--blockquoteColor);
+    };
+
+    // Caption	
+    figure:not(.inert){
+        figcaption{
+            font-family:var(--foregroundCaptionFont);
+        }
+    }
+
+    // Lineart
+    hr.wp-block-separator:not(.inert){
+    background-color:var(--lineartColor);
+        border-color:var(--lineartColor);
+    }
+
+}

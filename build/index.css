@@ -621,27 +621,6 @@
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
-.xx-styled--admin .block-editor-block-list__layout h1, .xx-styled--admin .block-editor-block-list__layout h2, .xx-styled--admin .block-editor-block-list__layout h3, .xx-styled--admin .block-editor-block-list__layout h4, .xx-styled--admin .block-editor-block-list__layout h5, .xx-styled--admin .block-editor-block-list__layout h6 {
-  color: var(--headlineColor);
-  font-family: var(--foregroundHeadlineFont);
-}
-.xx-styled--admin .block-editor-block-list__layout p.has-drop-cap:not(:focus)::first-letter {
-  color: var(--dropcapColor);
-}
-.xx-styled--admin .block-editor-block-list__layout a {
-  color: var(--linkColor);
-}
-.xx-styled--admin .block-editor-block-list__layout blockquote {
-  color: var(--blockquoteColor);
-  border-color: var(--blockquoteColor);
-}
-.xx-styled--admin .block-editor-block-list__layout figure figcaption {
-  font-family: var(--foregroundCaptionFont);
-}
-.xx-styled--admin .block-editor-block-list__layout hr.wp-block-separator {
-  background-color: var(--lineartColor);
-  border-color: var(--lineartColor);
-}
 
 body.post-type-styled #styledarea-toggle {
   display: none;

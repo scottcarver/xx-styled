@@ -1,9 +1,19 @@
 // Frontend Styles
 @import "library/common/_px-variables.scss"; 
 @import "library/scss/_xx-styled-mixin.scss"; 
+@import "library/scss/_xx-styled-mixin-elements.scss"; 
 
 // Add xx-styled specifically for the frontend
-.xx-styled .xx-styled--hasstyle, .xx-styled.xx-styled--hasstyle, .xx-styled.xx-styled--block{ @include xxstyled-innards;}
+.xx-styled .xx-styled--hasstyle, 
+.xx-styled.xx-styled--hasstyle, 
+.xx-styled.xx-styled--block{ 
+    @include xxstyled-innards;
+    @include xxstyled-innards-elements;
+}
+
+
+
+
 
 // When the HTML tag has a xx-styled, make sure it's tall
 // html.xx-styled{ min-height: 100%; }

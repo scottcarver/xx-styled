@@ -26,7 +26,9 @@ The block is capable of being used in multiple ways:
 ## Applying Styles
 The inline blocks will have classes like `xx-styled xx-styled--block`. The first class allows the container element access to a set of CSS Variables. With the `xx-styled` class alone there will be no visual changes. To use the variables, apply a second class (in this case `xx-styled--block`).
 
-There is also a class named `xx-styled--hasstyle` which does the same thing. It can be applied to the container itself, or a child. This seperation allows for more deliberate usage.
+There is also a class named `xx-styled--hasstyle` which does the same thing. It can be applied to the container itself, or a child. This seperation allows for more deliberate usage. With this technique you can apply styles to a high-level element (like `html` or `body`) but only use the styles in certain islands (areas with .`xx-styled--hasstyle`)
+
+<strong>Opting out:</strong> although it may be useful to pass variables to a lot of elements inside a container, it can also result in some hierarchy issues. You can prevent any element (h1, p, hr, etc) from displaying variables by adding the class `inert` - this is particularly useful for blocks with complexity inside.
 <!-- 
 There is default support if you create light/dark modes:
 

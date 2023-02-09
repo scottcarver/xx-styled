@@ -54,38 +54,4 @@
 		background-color: var(--selectionBGColor);
 	}
 
-	// Heading
-	h1, h2, h3, h4, h5, h6{
-		color: var(--headlineColor);
-		font-family:var(--foregroundHeadlineFont);
-	}
-
-	// Dropcap
-	p.has-drop-cap:not(:focus)::first-letter{
-		color: var(--dropcapColor);
-	}
-
-	// Link
-	a{
-		color: var(--linkColor);
-	}
-
-	blockquote{
-		color: var(--blockquoteColor);
-    border-color:var(--blockquoteColor);
-	};
-
-	// Caption	
-	figure{
-		figcaption{
-			font-family:var(--foregroundCaptionFont);
-		}
-	}
-
-	// Lineart
-	hr.wp-block-separator{
-    background-color:var(--lineartColor);
-		border-color:var(--lineartColor);
-	}
-
 }
