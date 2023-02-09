@@ -8,7 +8,7 @@
 .xx-styled.xx-styled--hasstyle, 
 .xx-styled.xx-styled--block{ 
     @include xxstyled-innards;
-    @include xxstyled-innards-elements;
+    @include xxstyled-elements;
 }
 
 

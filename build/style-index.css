@@ -80,5 +80,48 @@
   color: var(--selectionFGColor);
   background-color: var(--selectionBGColor);
 }
+.xx-styled .xx-styled--hasstyle h1:not(.inert), .xx-styled .xx-styled--hasstyle h2:not(.inert), .xx-styled .xx-styled--hasstyle h3:not(.inert), .xx-styled .xx-styled--hasstyle h4:not(.inert), .xx-styled .xx-styled--hasstyle h5:not(.inert), .xx-styled .xx-styled--hasstyle h6:not(.inert),
+.xx-styled.xx-styled--hasstyle h1:not(.inert),
+.xx-styled.xx-styled--hasstyle h2:not(.inert),
+.xx-styled.xx-styled--hasstyle h3:not(.inert),
+.xx-styled.xx-styled--hasstyle h4:not(.inert),
+.xx-styled.xx-styled--hasstyle h5:not(.inert),
+.xx-styled.xx-styled--hasstyle h6:not(.inert),
+.xx-styled.xx-styled--block h1:not(.inert),
+.xx-styled.xx-styled--block h2:not(.inert),
+.xx-styled.xx-styled--block h3:not(.inert),
+.xx-styled.xx-styled--block h4:not(.inert),
+.xx-styled.xx-styled--block h5:not(.inert),
+.xx-styled.xx-styled--block h6:not(.inert) {
+  color: var(--headlineColor);
+  font-family: var(--foregroundHeadlineFont);
+}
+.xx-styled .xx-styled--hasstyle p.has-drop-cap:not(.inert):not(:focus)::first-letter,
+.xx-styled.xx-styled--hasstyle p.has-drop-cap:not(.inert):not(:focus)::first-letter,
+.xx-styled.xx-styled--block p.has-drop-cap:not(.inert):not(:focus)::first-letter {
+  color: var(--dropcapColor);
+}
+.xx-styled .xx-styled--hasstyle a:not(.inert),
+.xx-styled.xx-styled--hasstyle a:not(.inert),
+.xx-styled.xx-styled--block a:not(.inert) {
+  color: var(--linkColor);
+}
+.xx-styled .xx-styled--hasstyle blockquote:not(.inert),
+.xx-styled.xx-styled--hasstyle blockquote:not(.inert),
+.xx-styled.xx-styled--block blockquote:not(.inert) {
+  color: var(--blockquoteColor);
+  border-color: var(--blockquoteColor);
+}
+.xx-styled .xx-styled--hasstyle figure:not(.inert) figcaption,
+.xx-styled.xx-styled--hasstyle figure:not(.inert) figcaption,
+.xx-styled.xx-styled--block figure:not(.inert) figcaption {
+  font-family: var(--foregroundCaptionFont);
+}
+.xx-styled .xx-styled--hasstyle hr.wp-block-separator:not(.inert),
+.xx-styled.xx-styled--hasstyle hr.wp-block-separator:not(.inert),
+.xx-styled.xx-styled--block hr.wp-block-separator:not(.inert) {
+  background-color: var(--lineartColor);
+  border-color: var(--lineartColor);
+}
 
 /*# sourceMappingURL=style-index.css.map*/
