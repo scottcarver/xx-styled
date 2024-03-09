@@ -81,7 +81,7 @@ export function AccordionForeground(props){
                         <input type="checkbox" id="selectionfgSwatch" name="selectionfgSwatch"></input>
                         <label htmlFor="selectionfgSwatch">Palette</label>
                         <ColorPalette
-                            value={selectionFGColor}
+                            value={selectionFGColor ? selectionFGColor : "white"}
                             onChange={selectionFGColor => setAttributes({ selectionFGColor })}
                         />
                     </div>
@@ -90,7 +90,7 @@ export function AccordionForeground(props){
                         <input type="checkbox" id="selectionbgSwatch" name="selectionbgSwatch"></input>
                         <label htmlFor="selectionbgSwatch">Palette</label>
                         <ColorPalette
-                            value={selectionBGColor}
+                            value={selectionBGColor ? selectionBGColor : "black"}
                             onChange={selectionBGColor => setAttributes({ selectionBGColor })}
                         />
                     </div>

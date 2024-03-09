@@ -1,4 +1,8 @@
-<?php  header("Content-type: text/css"); 
+<?php
+// CSS Header
+header("Content-type: text/css"); 
+
+// Prepare Variables
 $stylename = get_query_var('namedstyle');
 $iscompiled = $stylename === 'compiled';
 $the_slug = $stylename;
@@ -10,17 +14,19 @@ $args = array(
 );
 $styled_areas = get_posts($args);
 $styled_array = array();
+
+// Process Styles
 if($styled_areas) :
     foreach($styled_areas as $area){
       $post_slug = get_post_field( 'post_name',$area->ID);
       $post_content = $area->post_content;
       $pieces = explode('style="', $post_content);
+      // Ignore empty values
       if(isset($pieces[1])){
         $styledbit = explode('" ', $pieces[1]);
         $styleclean = $styledbit[0];
         $rules = explode(';', $styleclean);
         $nonulltext = '';
-
         // Loop over CSS Rules
         foreach($rules as $rule){
           $keyvalue =  explode(': ', $rule);
@@ -32,11 +38,11 @@ if($styled_areas) :
             $nonulltext .= $key . ":" . $value . ";";
           }
         }
-        
         $styleformatted = '.styled-' . $post_slug . ', [data-theme="' . $post_slug . '"]{' . $nonulltext . '}';
        array_push($styled_array, $styleformatted);
       }
     }
 endif;
 
+// Output styles
 foreach($styled_array as $style){ echo($style); }

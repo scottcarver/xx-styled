@@ -1,9 +1,10 @@
-<?php // Add JSON Header
+<?php 
+// Add JSON Header
 header("Content-type: application/json"); 
+
+// Prepare Variables
 $stylename = get_query_var('namedstyle');
 $iscompiled = $stylename  === 'compiled';
-?>
-<?php
 $the_slug = $stylename;
 $args = array(
   'name'        =>  $iscompiled  ? null : $the_slug,
@@ -11,10 +12,10 @@ $args = array(
   'post_status' => 'publish',
   'numberposts' => $iscompiled ? -1 : 1
 );
-
 $styled_areas = new WP_Query($args);
 $styled_array = array();
-// var_dump($styled_areas);
+
+// Process JSON
 if($styled_areas){
   foreach($styled_areas->posts as $area){
     $post_content = $area->post_content;
@@ -22,7 +23,7 @@ if($styled_areas){
     $pieces = explode(' ', $post_content);
     if(isset($pieces[2])){
       $cleanjson = JSON_DECODE($pieces[2]);
-      // var_dump($cleanjson);
+      // Add decoded entry
       if($cleanjson){
         $cleanjson->slug = get_post_field( 'post_name',$area->ID);
         array_push($styled_array, $cleanjson);
@@ -32,9 +33,9 @@ if($styled_areas){
   }
 };
 
+// Output JSON, always return an array
+if(isset($styled_array)){ 
+  echo(JSON_ENCODE($styled_array));
+} 
 
 ?>
-<?php if(isset($styled_array)){ 
-  // Always return an array
-  echo(JSON_ENCODE($styled_array));
- } ?>

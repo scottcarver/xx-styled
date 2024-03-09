@@ -63,7 +63,13 @@ const calculatedBgImage = attributes => {
 		bgLayersString += "";
 	}
 
-	return bgLayersString;
+	if(bgLayersString){
+		return bgLayersString;
+	} else {
+		return "none";
+	}
+
+	
 };
 
 export default calculatedBgImage;

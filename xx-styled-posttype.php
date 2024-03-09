@@ -15,11 +15,11 @@ function initialize_styled_posttype() {
     'name'               => _x( 'Styled Areas', 'post type general name' ),
     'singular_name'      => _x( 'Style Area', 'post type singular name' ),
     'add_new'            => _x( 'Add New', 'book' ),
-    'add_new_item'       => __( 'Add New Styled Area' ),
+    'add_new_item'       => __( 'Add New Style' ),
     'edit_item'          => __( 'Edit Styled Area' ),
     'new_item'           => __( 'New Styled Area' ),
     'all_items'          => __( 'All Styled Areas' ),
-    'view_item'          => __( 'View Styled Area' ),
+    'view_item'          => __( 'View Style' ),
     'search_items'       => __( 'Search Styled Areas' ),
     'not_found'          => __( 'No Styled Areas found' ),
     'not_found_in_trash' => __( 'No Styled Areas found in the Trash' ), 
@@ -54,15 +54,15 @@ function register_styled_template() {
         array( 'core/separator', array('align'=>'center')),
         array( 'core/paragraph', array('content' => 'ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
         array( 'core/quote', array('value'=>'<p>Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://oregon.gov">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat</p>', 'citation'=>'Great Person')),
-        array( 'core/paragraph', array('content' => '<div style="background-image:var(--keyGradient);">Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.</div>')),
+        array( 'core/paragraph', array('content' => '<p class="has-key-gradient">Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.</p>')),
         array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
       )
     )
   );
-  $post_type_object->template_lock = 'all';
+  // $post_type_object->template_lock = 'all';
 }
 
-
+// <p style="background-image:var(--keyGradient);"> was causing an error within a post template
 
 // Add tags to <html> using the language_attributes hook
 function new_language_attributes($lang){

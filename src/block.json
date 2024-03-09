@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "design",
 	"icon": "art",
-	"description": "A complete, portable set of Foreground & Background styles as CSS Variables.",
+	"description": "A thematic color, type and spacing set used in FG/BG styling",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,
@@ -15,6 +15,9 @@
 		"html": true
 	},
 	"attributes" : {
+		"clientUUID": {
+			"type": "string"
+		},
 		"align": {
 			"type": "string",
 			"comment" : "needed for fullwidth control"
@@ -30,19 +33,16 @@
 		"headlineColor": {
 			"type": "string"
 		},
-		"clientUUID": {
-			"type": "string"
-		},
 		"foregroundColor": {
 			"type": "string"
 		},
 		"linkColor": {
 			"type": "string"
 		},
-		"dropcapColor": {
+		"blockquoteColor": {
 			"type": "string"
 		},
-		"blockquoteColor": {
+		"dropcapColor": {
 			"type": "string"
 		},
 		"lineartColor": {
@@ -176,15 +176,15 @@
 		},
 		"fgHeadlineFont": {
 			"type": "string",
-			"default": "inherit"
+			"default": ""
 		},
 		"fgCopyFont": {
 			"type": "string",
-			"default": "inherit"
+			"default": ""
 		},
 		"fgCaptionFont": {
 			"type": "string",
-			"default": "inherit"
+			"default": ""
 		}
 	},
 	"example": {

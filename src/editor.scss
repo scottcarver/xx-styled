@@ -7,12 +7,14 @@
 // Add xx-styled specifically for the admin
 .xx-styled--admin{
 	// Make the editor wrapper fullwidth
+	/*
 	.editor-styles-wrapper{
 		max-width: none;
 		width: 100%;
 	}
+	*/
 	// Add xx-styles to the editor's content area
-	.block-editor-block-list__layout{
+	.wp-block-post-content.block-editor-block-list__layout{
 		@include xxstyled-innards;
 		max-width:none;
 	}

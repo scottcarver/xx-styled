@@ -37,7 +37,7 @@ export function AccordionBackground(props){
         
         
     // Don't show when disabled
-    if(styleMode=='disabled'){ return false; }
+    if(styleMode!=='custom'){ return false; }
 
     return (
         <Fragment>

@@ -13,7 +13,6 @@ import {AccordionInterface} from "./AccordionInterface";
 import {AccordionDimensions} from "./AccordionDimensions";
 import { AccordionTypography } from "./AccordionTypography";
 
-
 /**
  * Create a Block Controls wrapper Component
  */
@@ -26,19 +25,12 @@ export default class StyleControls extends Component {
 			<Fragment>
 				<InspectorControls>		
 					<StyledTypeToggle {...this.props} />	
-
 					<StyledPreview {...this.props} />
-
 					<AccordionSavedStyles {...this.props} />
-
 					<AccordionForeground {...this.props} />
-					
 					<AccordionBackground {...this.props} />
-
 					<AccordionInterface {...this.props} />
-
 					<AccordionDimensions {...this.props} />
-
 					<AccordionTypography {...this.props} />
 				</InspectorControls>			
 			</Fragment>

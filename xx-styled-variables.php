@@ -35,8 +35,6 @@ function xxstyled_printadminscripts() {
       array_push($themejson_fontlabels, $selectDropData);
     }
   }
-
-
   ?>
 	<script>
 		var global_named_styles = <?php echo json_encode($style_array); ?>;

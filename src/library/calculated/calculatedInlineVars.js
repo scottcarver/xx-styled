@@ -47,8 +47,10 @@ const calculatedInlineVars = attributes => {
 	var combinedCss = '';
 
 	var fgbgCss = ``;
+
+	console.log("bgImageStack wwas ", bgImageStack);
 	
-	if(bgImageStack){ 
+	if(bgImageStack != 'none'){ 
 		fgbgCss += `
 		--backgroundImage: ${bgImageStack};
 		--backgroundSizeSm: ${bgSizeSm};

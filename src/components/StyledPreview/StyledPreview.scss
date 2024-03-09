@@ -9,6 +9,7 @@
   border:solid 4px green;
   outline:solid 1px grey;
   border-radius:5px;
+  overflow: hidden;
   *{transition:.15s all;}
 
   &:hover, &:focus, &:active{
@@ -57,6 +58,16 @@
   border: 1px dashed rgba(100,100,100,1);
   line-height: 2em;
   transition: .25s ease transform;
+
+  label{
+    position:absolute;
+    left:-65px;
+    width:60px;
+    top:0;
+    color:black;
+    font-size:10px;
+    text-align: right;
+  }
 }
 
 .layer-1{transform: translateZ(50px);}

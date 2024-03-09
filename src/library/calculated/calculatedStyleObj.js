@@ -59,7 +59,7 @@ const calculatedStyleObj = attributes => {
 
  
 	// Add Background Image properties as a group (depends on stack)
-	if(bgImageStack){
+	if(bgImageStack && bgImageStack != 'none'){
 		fgbgObj['--backgroundImage'] = bgImageStack;
 		fgbgObj['--backgroundSizeSm'] = bgSizeSm;
 		fgbgObj['--backgroundSizeMd'] = bgSizeMd;
@@ -67,6 +67,11 @@ const calculatedStyleObj = attributes => {
 		fgbgObj['--backgroundPosition'] = bgPosition;
 		fgbgObj['--backgroundAttachment'] = bgAttachment;
 		fgbgObj['--backgroundRepeat'] = bgRepeat;
+	}
+
+	// None option
+	if(bgImageStack && bgImageStack == 'none'){
+		fgbgObj['--backgroundImage'] = bgImageStack;
 	}
 
 	// Build Up Interface Support
