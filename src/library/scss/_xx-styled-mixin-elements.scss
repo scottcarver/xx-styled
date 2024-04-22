@@ -7,10 +7,39 @@
     }
 
     // Dropcap
-    p.has-drop-cap:not(.inert):not(:focus)::first-letter{
-        color: var(--dropcapColor);
+    p.has-drop-cap{
+        
+        &:not(.inert):not(:focus)::first-letter{
+            color: var(--dropcapColor);
+        }
+
+       
     }
 
+    *::selection {
+        color: var(--selectionFGColor);
+        background-color: var(--selectionBGColor);
+    }
+
+    p, h1, h2, h3, h4, h5, h6{
+        &.has-key-gradient{
+            background-image: var(--keyGradient);
+
+            &:not(&::selection){
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent; 
+                -moz-background-clip: text;
+                -moz-text-fill-color: transparent;
+            }
+    
+            /*
+            &::selection {
+				color: var(--selectionFGColor);
+				background-color: var(--selectionBGColor);
+			}
+            */
+        }
+    }
     // Link
     a:not(.inert){
         color: var(--linkColor);
@@ -30,8 +59,12 @@
 
     // Lineart
     hr.wp-block-separator:not(.inert){
-    background-color:var(--lineartColor);
+        background-color:var(--lineartColor);
         border-color:var(--lineartColor);
+
+        &.has-style-gradient{
+            outline:solid 20px red;
+        }
     }
 
 }

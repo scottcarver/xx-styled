@@ -1,15 +1,14 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow} from '@wordpress/components';
-
 import ColorBox from "./ColorBox.js"
 
 export function AccordionInterface({ attributes, setAttributes }){
 
     let colorboxes = [
-        {'name':'interfaceFGColor', 'title':'UI Foreground Color'},
-        {'name':'interfaceBGColor', 'title':'UI Background Color'},
-        {'name':'interfaceKeyColor', 'title':'UI Key Color'} 
+        {'id':'fgcolor', 'label':'UI Foreground Color', 'target':'interfaceFGColor'},
+        {'id':'bgcolor', 'label':'UI Background Color', 'target':'interfaceBGColor'},
+        {'id':'keycolor', 'label':'UI Key Color', 'target':'interfaceKeyColor'} 
     ];
     
     // don't show the control when it is disabled, or a named styled
@@ -25,32 +24,15 @@ export function AccordionInterface({ attributes, setAttributes }){
                         {colorboxes.map((currentValue) => {  
                             return( 
                                 <ColorBox 
-                                    name={currentValue.name}
-                                    title={currentValue.title}
+                                    label={currentValue.label}
+                                    id={currentValue.id}
+                                    target={currentValue.target}
                                     attributes={attributes} 
                                     setAttributes={setAttributes}
-                                    key={currentValue.name}
+                                    key={currentValue.id}
                                 /> 
                             )
                         })}
-
-                        {/* Add as a raw html */}
-                        {/*  
-                        {colorboxes.map((currentValue) => {
-                            const onColorChange = function(colorValue){
-                                let cleanColor = (colorValue !== undefined) ? colorValue : '';
-                                setAttributes({ [currentValue.name] : cleanColor });
-                            }
-                            return (
-                                <div className="px-colorbox" key={currentValue.name}>
-                                    <h2>UI {currentValue.title} Color</h2>
-                                    <input type="checkbox" id={`${currentValue.name}Swatch`}  name={`${currentValue.name}Swatch`}></input>
-                                    <label htmlFor={`${currentValue.name}Swatch`}>Palette</label>
-                                    <ColorPalette value={`${attributes[currentValue.name]}`} onChange={onColorChange} enableAlpha={true} />
-                                </div>
-                            )
-                        })}
-                         */}
                     </div>
                     
                 </PanelRow>

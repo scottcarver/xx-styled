@@ -5,7 +5,7 @@ import {ComboboxControl} from '@wordpress/components';
 
 export function AccordionTypography({ attributes, setAttributes }){
 
-const fontOptions = global_named_fonts;
+const fontOptions = (typeof global_named_fonts !== 'undefined') ? global_named_fonts : [];
     
     if(attributes.styleMode=='disabled'){ return false; }
 

@@ -1,32 +1,27 @@
 // WordPress modules
 import { ColorPalette } from '@wordpress/block-editor';
 
-// Custom Modules
-import calculated from "../library/calculated/calculated";
-
-// Export colorbox
+// Export ColorBox
 export default function ColorBox(props){
 
     const {
-        name, 
-        title,
+        label,
+        id,
+        target,
         attributes,
 		setAttributes
 	} = props;
-
+    
     const onColorChange = function(colorValue){
-        let cleanColor = (colorValue !== undefined) ? colorValue : '';
-        // let colorTransparent = calculated.calculatedRgbaString(cleanColor);
-        // console.log("cleanColor, colorTransparent", cleanColor, colorTransparent);
-        setAttributes({ [name] : cleanColor });
+        setAttributes({ [target] : colorValue });
     }
 
     return (
         <div className="px-colorbox px-colorbox--nudgecontentleft">
-            <h2>{title}</h2>
-            <input type="checkbox" id={`${name}Swatch`}  name={`${name}Swatch`}></input>
-            <label htmlFor={`${name}Swatch`}>Palette</label>
-            <ColorPalette value={attributes[name]} onChange={onColorChange} enableAlpha={true} />
+            <h2>{label}</h2>
+            <input type="checkbox" id={`${id}Swatch`}  name={`${id}Swatch`}></input>
+            <label htmlFor={`${id}Swatch`}>Palette</label>
+            <ColorPalette value={attributes[target]} onChange={onColorChange} enableAlpha={true} />
         </div>
     );
 }

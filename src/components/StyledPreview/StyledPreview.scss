@@ -6,7 +6,7 @@
   width:260px;
   margin-left:10px;
   height: 180px;
-  border:solid 4px green;
+  // border:solid 4px green;
   outline:solid 1px grey;
   border-radius:5px;
   overflow: hidden;
@@ -32,6 +32,9 @@
 .styled-preview[data-viewtype="stack"]{
   border-color:transparent;
   perspective: 600px;
+  .cube {
+    animation-name: boxshift;
+  }
 }
 
 // Topdown
@@ -45,7 +48,7 @@
   margin: 0 auto;
   transform-style: preserve-3d;
   transform: rotateX(-25deg) rotateY(30deg) translateY(40px);
-  animation-name: boxshift;
+  
   animation-play-state: paused;
   animation-duration: 10s;
   animation-iteration-count: infinite;
@@ -67,14 +70,36 @@
     color:black;
     font-size:10px;
     text-align: right;
+    transition: all .25s ease;
+
+    &.nudged{
+      opacity:0;
+      transform:translate(10px, 0);
+      transition: none;
+    }
   }
 }
 
-.layer-1{transform: translateZ(50px);}
-.layer-2{transform: translateZ(15px);}
-.layer-3{transform: translateZ(-15px);}
-.layer-4{transform: translateZ(-50px);}
-.layer-5{transform: translateZ(-85px);}
+.layer-1{
+  transform: translateZ(50px);
+  // label{transform: translateY(80px);}
+}
+.layer-2{
+  transform: translateZ(15px);
+  // label{transform: translateY(60px);}
+}
+.layer-3{
+  transform: translateZ(-15px);
+  // label{transform: translateY(40px);}
+}
+.layer-4{
+  transform: translateZ(-50px);
+  // label{transform: translateY(20px);}
+}
+.layer-5{
+  transform: translateZ(-85px);
+  // label{transform: translateY(0px);}
+}
 
 .fgtext {}
 .fgcolor {}

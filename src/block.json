@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "design",
 	"icon": "art",
-	"description": "A thematic color, type and spacing set used in FG/BG styling",
+	"description": "A set of Design Tokens used for theming Foreground, Background, Typography & Spacing.",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,

@@ -57,6 +57,7 @@
 				"bgGradientEnabled": false,
 				"bgImageEnabled": false,
 				"bgGelEnabled": false,
+				"bgLayers": ["color","gradient","image","gel"],
 				"bgColorCount": "flat",
 				"bgStackFirst": "image",
 				"backgroundColor": "#ddd",

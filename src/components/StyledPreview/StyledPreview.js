@@ -1,7 +1,7 @@
 //  WordPress modules
 const { __ } = wp.i18n;
-import { Component, Fragment } from '@wordpress/element';
-import { RangeControl } from '@wordpress/components';
+import { Component, Fragment, useState } from '@wordpress/element';
+import { RangeControl, FormToggle } from '@wordpress/components';
 
 
 // Custom modules
@@ -17,9 +17,37 @@ import calculatedBGIMGRepeat from "../../library/calculated/calculatedBGIMGRepea
 export default class StyledPreview extends Component {
 	constructor() {
 		super(...arguments);
+		this.state = { 
+			count: 0,
+			hasLabels : false,
+			hasPerspective : true
+		}
 	}
+	toggleLabels = (value) => {
+		//	console.log("value is, ", value.target.checked);
+		this.setState({ hasLabels: value.target.checked });
+        // this.setState({ count: this.state.count + 1 });
+		//	console.log("Has labels?", this.state.hasLabels);
+	};
+	togglePerspective = (value) => {
+		
+		this.setState({ 
+			hasPerspective: value.target.checked,
+			hasLabels: false
+		});
+	};
+
+	dynamicOutput = (value) => {
+		if(typeof(value) === 'undefined'){
+			return "inherit";
+		}
+		return value;
+	}
+
 	componentDidMount() { }
+
 	render() {
+
 		const {
 			attributes: {
 				bgColorEnabled,
@@ -60,15 +88,20 @@ export default class StyledPreview extends Component {
 		const bgPosition = calculatedBgPos(this.props.attributes);
 		const bgAttachment = calculatedBGIMGAtt(this.props.attributes);
 		const bgRepeat = calculatedBGIMGRepeat(this.props.attributes);
+		const hasClearance = this.state.hasLabels && this.state.hasPerspective;
 		var showLabels = false;
 
+
 		var combinedCss = ` 
+			.cube{
+				color: ${foregroundColor ? foregroundColor : 'inherit'};
+			}
 			.fgtext{
-				color: ${foregroundColor};
+				color: ${this.dynamicOutput(foregroundColor)};
 				font-family: ${fgCopyFont}
 			}
 			.fgtext h1{
-				color: ${headlineColor};
+				color: ${this.dynamicOutput(headlineColor)};
 				font-family: ${fgHeadlineFont}
 			}
 			.fgtext p{
@@ -76,7 +109,7 @@ export default class StyledPreview extends Component {
 				
 			}
 			.fgtext a{
-				color: ${linkColor};
+				color: ${this.dynamicOutput(linkColor)};
 			}
 			.fgcolor{
 				background: ${backgroundGel};
@@ -107,7 +140,38 @@ export default class StyledPreview extends Component {
             <Fragment>
 				<div className="px-sidepanel">
 					<div className="px-simplerow px-simplerow--padleft px-simplerow--padtop px-simplerow--padbottom">
-						<strong>Preview:</strong>
+						<div>
+							<strong>Preview:</strong>
+						</div>
+						
+
+						<div style={{padding:"0 0 0 20px", marginRight:"auto"}}>
+							<label htmlFor="showlabel-perspective-toggle" style={{marginRight:"5px"}}>{__("Explode", "pxblocks")}</label>
+							<FormToggle
+								id="showlabel-perspective-toggle"
+								label={__("Exploded", "pxblocks")}
+						
+								checked={this.state.hasPerspective}
+								onChange={this.togglePerspective}
+							/>
+						</div>
+
+						{this.state.hasPerspective &&
+							<div style={{paddingRight:"10px"}}>
+								<label htmlFor="showlabel-label-toggle" style={{marginRight:"5px"}}>{__("Labels", "pxblocks")}</label>
+								<FormToggle
+									id="showlabel-label-toggle"
+									label={__("Labels", "pxblocks")}
+									checked={this.state.hasLabels}
+									disabled={!this.state.hasPerspective}
+									onChange={this.toggleLabels}
+								/>
+							</div>
+						}
+
+				
+
+					
 					</div>
 
 					{/* <RangeControl
@@ -119,27 +183,41 @@ export default class StyledPreview extends Component {
 						min={0}
 					/> */}
 				</div>
+
 				<div className="px-sidepanel">
+
 					<div className="px-simplerow px-simplerow--padbottom">
 						{/* Styled Preview */}
-						<div className={`styled-preview ${bgStackFirst=="gradient" ? "styled-preview--gradientfirst" : ""}`} data-viewtype="stack">
+						<div className={`styled-preview ${bgStackFirst=="gradient" ? "styled-preview--gradientfirst" : ""}`} data-viewtype={this.state.hasPerspective ? "stack" : "topdown"}>
+
 							<div className="cube">
 								<div className="layer layer-1 fgtext textual">
-									<label>Foreground</label>
+									<label className={(hasClearance ? '' : 'nudged')}>Foreground</label>
 									<h1>Headline</h1>
 									<p>Text Ipsum Preview <a href="#">Link</a> halibut</p>
 								</div>
-								<div className={`layer layer-2 ${bgGelEnabled ? "fgcolor" : ""}`}><label>BG Gel</label></div>
-								<div className={`layer layer-3 ${bgImageEnabled ? "bgimage" : ""}`}><label>BG Image</label></div>
-								<div className={`layer layer-4 ${bgGradientEnabled ? "gradient" : ""}`}><label>Gradient</label></div>
-								<div className={`layer layer-5 ${bgColorEnabled ? "base" : ""}`}><label>BG Base</label></div>
+								<div className={`layer layer-2 ${bgGelEnabled ? "fgcolor" : ""}`}>
+									<label className={(this.state.hasLabels && this.state.hasPerspective  ? '' : 'nudged')}>BG Gel</label>
+								</div>
+								<div className={`layer layer-3 ${bgImageEnabled ? "bgimage" : ""}`}>
+									<label className={(this.state.hasLabels && this.state.hasPerspective  ? '' : 'nudged')}>BG Image</label>
+								</div>
+								<div className={`layer layer-4 ${bgGradientEnabled ? "gradient" : ""}`}>
+									<label className={(this.state.hasLabels && this.state.hasPerspective  ? '' : 'nudged')}>Gradient</label>
+									</div>
+								<div className={`layer layer-5 ${bgColorEnabled ? "base" : ""}`}>
+									<label className={(this.state.hasLabels && this.state.hasPerspective  ? '' : 'nudged')}>BG Base</label>
+								</div>
 							</div>
 						</div>
 
 						<style type="text/css" dangerouslySetInnerHTML={{ __html: compressedCSS }} />
 					</div>
+
+		
 				</div>
-              
+
+
             </Fragment>
         );
     

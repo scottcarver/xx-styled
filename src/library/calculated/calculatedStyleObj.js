@@ -86,7 +86,7 @@ const calculatedStyleObj = attributes => {
 	const typographyObj = {}
 	
 	// Selectively add Font Objects to respect "inherit" option
-	if(fgHeadlineFont !== null && fgHeadlineFont !== 'inherit'){
+	if(fgHeadlineFont && fgHeadlineFont !== 'inherit'){
 		typographyObj['--foregroundHeadlineFont'] = 'var(--'+fgHeadlineFont+')';
 	}
 	if(fgCopyFont !== null && fgCopyFont !== 'inherit'){

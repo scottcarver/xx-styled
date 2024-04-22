@@ -17,31 +17,38 @@ add_action('admin_print_scripts', 'xxstyled_printadminscripts');
  */
 
 function xxstyled_printadminscripts() { 
-  // Read the JSON file 
-  $themejson = file_get_contents(get_template_directory_uri().'/theme.json');
-  // Decode the JSON file
-  $themejson_data = json_decode($themejson,true);
-  // Retrieve the style array
-  $style_array = xxstyle_getstylearray();
 
-  // Create Font name/label pairs based on theme.json
-  $themejson_fontlabels = [];
+  $filepath = get_stylesheet_directory().'/theme.json';
+  $filepath_clean = str_replace(get_site_url(), "", $filepath);
+  // echo("FILEPATH IS " . $filepath);
 
-  // Inquire about Font families
-  if(isset($themejson_data['settings']['typography']['fontFamilies'])){
-    // And then process them
-    foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
-      $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
-      array_push($themejson_fontlabels, $selectDropData);
+  if (file_exists($filepath)) {
+    // Read the JSON file 
+    $themejson = file_get_contents($filepath);
+    // Decode the JSON file
+    $themejson_data = json_decode($themejson,true);
+    // Retrieve the style array
+    $style_array = xxstyle_getstylearray();
+
+    // Create Font name/label pairs based on theme.json
+    $themejson_fontlabels = [];
+
+    // Inquire about Font families
+    if(isset($themejson_data['settings']['typography']['fontFamilies'])){
+      // And then process them
+      foreach($themejson_data['settings']['typography']['fontFamilies'] as $font){
+        $selectDropData = (object) array('label' => $font['name'], 'value' => $font['slug']);
+        array_push($themejson_fontlabels, $selectDropData);
+      }
     }
+    ?>
+    <script>
+      var global_named_styles = <?php echo json_encode($style_array); ?>;
+      var global_named_fonts = <?php echo json_encode($themejson_fontlabels); ?>;
+      var global_current_posttype = "<?php echo get_post_type(); ?>";
+    </script>
+    <?php
   }
-  ?>
-	<script>
-		var global_named_styles = <?php echo json_encode($style_array); ?>;
-    var global_named_fonts = <?php echo json_encode($themejson_fontlabels); ?>;
-    var global_current_posttype = "<?php echo get_post_type(); ?>";
-	</script>
-	<?php
 }
 
 

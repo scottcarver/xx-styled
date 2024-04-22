@@ -27,3 +27,13 @@ require( __DIR__ . '/xx-styled-routes.php');
 
 // PHP Variables
 require( __DIR__ . '/xx-styled-variables.php');
+
+
+/*
+function modify_custom_post_type_rewrite() {
+    // Add your custom post type base
+    global $wp_post_types;
+    $wp_post_types['web-story']->rewrite['slug'] = 'new-base'; // Change 'book' to your custom post type slug
+}
+add_action('init', 'modify_custom_post_type_rewrite', 9999); // Use a high priority
+*/

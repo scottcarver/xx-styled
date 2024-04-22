@@ -16,6 +16,7 @@ import "../editor.scss";
 
 // PostStyle Sidebar Plugin
 function PoststylePlugin(props) {
+
 	const {
 		updateMyPostMetaType,
 		updateMyPostMetaHeadline,
@@ -27,7 +28,7 @@ function PoststylePlugin(props) {
 		postStyleCaptions,
 	} = props;
 
-	const fontOptions = global_named_fonts;
+	const fontOptions = (typeof global_named_fonts !== 'undefined') ? global_named_fonts : [];
 
 	const PostsDropdownControl = compose(
 		// withSelect allows to collect posts for our SelectControl
@@ -76,13 +77,13 @@ function PoststylePlugin(props) {
 		var stylestring = '';
 		var classstring = 'xx-styled--admin';
 		var allstyles = '';
-		var styles = global_named_fonts;
+		// var styles = global_named_fonts;
 		var types = ['xx-styled--headlinefont', 'xx-styled--copyfont', 'xx-styled--captionfont']
 		
 		// Build a string of classes that include all font/type combinations
-		for (let s = 0; s < styles.length; s++) {
+		for (let s = 0; s < fontOptions.length; s++) {
 			for (let t = 0; t < types.length; t++) {
-				allstyles +=  (types[t] + "-" + styles[s].value + " ");
+				allstyles +=  (types[t] + "-" + fontOptions[s].value + " ");
 			 }
 		 }
 		 
@@ -206,7 +207,7 @@ const applyWithDispatch = withDispatch(dispatch => {
 });
 
 // Run the Sidebar plugin (but not for the 'styled' posttype)
-if(global_current_posttype !== 'styled'){
+if((typeof global_current_posttype !== 'undefined') && global_current_posttype !== 'styled'){
 	registerPlugin("sidebar-poststyle-plugin", {
 		render: compose(
 			applyWithSelect,
