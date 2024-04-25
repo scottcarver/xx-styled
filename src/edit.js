@@ -33,6 +33,7 @@ export default function edit(props) {
 
 	console.log("clientId was: " + clientId);
 	
+	// This will be set upon initial creation, then saved
 	if(!clientUUID){
 		console.log("no unique id was set");
 		setAttributes({
@@ -45,8 +46,8 @@ export default function edit(props) {
 
 	// Retrieve/Set Classes
 	const classes = classnames(
-		"xx-styled",
 		clientId,
+		"xx-styled",
 		"xx-styled--block",
 		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont)},
 		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont) },

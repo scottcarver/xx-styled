@@ -21,28 +21,19 @@ export function StyledTypeToggle(props){
             <div id="styledarea-toggle" className="px-buttongroup px-buttongroup--centered px-buttongroup--padbottom">
                 <ButtonGroup aria-label={__("Style Mode")}>
                     <Button
-                        isDefault
-                        isPrimary={styleMode === "disabled"}
-                        onClick={() => {
-                            setAttributes({ styleMode: "disabled" });
-                        }}>
-                        Disabled
+                        variant={styleMode === "custom" ? "primary" : ""}
+                        onClick={() => { setAttributes({ styleMode: "custom" }); }}>
+                        Custom
                     </Button>
                     <Button
-                        isDefault
-                        isPrimary={styleMode === "named"}
-                        onClick={() => {
-                            setAttributes({ styleMode: "named" });
-                        }}>
+                        variant={styleMode === "named" ? "primary" : ""}
+                        onClick={() => { setAttributes({ styleMode: "named" }); }}>
                         Named
                     </Button>
                     <Button
-                        isDefault
-                        isPrimary={styleMode === "custom"}
-                        onClick={() => {
-                            setAttributes({ styleMode: "custom" });
-                        }}>
-                        Custom
+                        variant={styleMode === "disabled" ? "primary" : ""}
+                        onClick={() => { setAttributes({ styleMode: "disabled" }); }}>
+                        Disabled
                     </Button>
                 </ButtonGroup>
             </div>

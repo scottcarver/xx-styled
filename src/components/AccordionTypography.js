@@ -16,7 +16,21 @@ const fontOptions = (typeof global_named_fonts !== 'undefined') ? global_named_f
                     {/* Dropdown */}
                     {fontOptions.length > 0 && (
                         <div className="px-sidepanel">
-                             {/* Headline Select Menu */}
+                             {/* Copy Select Menu */}
+                             <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+                                <ComboboxControl
+                                    label="Copy Font Family"
+                                    placeholder= 'Initial'
+                                    value={attributes.fgCopyFont}
+                                    allowReset={true}
+                                    options={fontOptions}
+                                    onChange={(newval) => setAttributes({ fgCopyFont: newval })}
+                                    onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
+                                        option.label.toLowerCase().startsWith(newval.toLowerCase())
+                                    ))}
+                                />
+                            </div>
+                            {/* Headline Select Menu */}
                             <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
                                 <ComboboxControl
                                     label="Headline Font Family"
@@ -30,21 +44,7 @@ const fontOptions = (typeof global_named_fonts !== 'undefined') ? global_named_f
                                     ))}
                                 />
                             </div>
-                             {/* Copy Select Menu */}
-                            <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-                                <ComboboxControl
-                                    label="Copy Font Family"
-                                    placeholder= 'Initial'
-                                    value={attributes.fgCopyFont}
-                                    allowReset={true}
-                                    options={fontOptions}
-                                    onChange={(newval) => setAttributes({ fgCopyFont: newval })}
-                                    onInputChange = {(newval) => setFilteredOptions(options.filter(option =>
-                                        option.label.toLowerCase().startsWith(newval.toLowerCase())
-                                    ))}
-                                />
-                            </div>
-                             {/* Caption Select Menu */}
+                            {/* Caption Select Menu */}
                             <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
                                 <ComboboxControl
                                     label="Caption Font Family"

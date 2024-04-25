@@ -6,20 +6,25 @@
   width:260px;
   margin-left:10px;
   height: 180px;
+  z-index: 1;
   // border:solid 4px green;
   outline:solid 1px grey;
-  border-radius:5px;
+  border-radius:5px 5px 0 0;
   overflow: hidden;
   *{transition:.15s all;}
 
-  &:hover, &:focus, &:active{
-    perspective: 5000px;
-    .cube{
-       transform: translateY(30px);  
-       animation-play-state: running;
+  // While Viewing the Exploded View
+  &[data-viewtype="stack"]{
+      perspective: 5000px;
+    &:hover, &:focus, &:active{
+      .cube{
+         transform: translateY(30px);  
+         animation-play-state: running;
       }
+    }
   }
 
+  // Restack the Layer Order in the Visualization
   &.styled-preview--gradientfirst{
     .layer-3{transform: translateZ(-50px);}
     .layer-4{transform: translateZ(-15px);}
@@ -167,4 +172,18 @@
   75%   {transform: rotateX(25deg) rotateY(30deg) translateY(40px);}
   // Bottom Right
   100% {transform: rotateX(-25deg) rotateY(30deg) translateY(40px);}
+}
+
+
+.box-legend{
+  background: #e0e0e0;
+  margin: -12px 10px 25px;
+  width: calc(100% - 20px);
+  padding-bottom: 5px;
+  border-radius: 0 0 10px 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 5px;
+  outline: 1px solid gray;
+  // outline-width: 0 1px 0 1px;
 }

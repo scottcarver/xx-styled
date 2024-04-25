@@ -14,19 +14,21 @@ export default function save(props) {
 	// Destructure props
 	const {
 		attributes: {
+			clientUUID,
 			namedStyle,
 			styleMode,
 			fgHeadlineFont,
 			fgCopyFont,
-			fgCaptionFont,
-			blockID,
-			clientUUID
+			fgCaptionFont
 		},
 		clientId
 	} = props;
 
 	// Retrieve Inline CSS using helper function
 	const inlineVarCSS =  calculated.calculatedInlineVars(props.attributes);
+
+	// console.log("the inline stuff was,", inlineVarCSS);
+	console.log("client id is: " + clientId + " while clientUUID is " + clientUUID);
 
 	// Set classnames (font-classes allow for fine-tuning)
 	const classes = classnames(

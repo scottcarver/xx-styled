@@ -20,20 +20,18 @@ export default class StyledPreview extends Component {
 		this.state = { 
 			count: 0,
 			hasLabels : false,
-			hasPerspective : true
+			hasPerspective : false
 		}
 	}
+	
 	toggleLabels = (value) => {
-		//	console.log("value is, ", value.target.checked);
 		this.setState({ hasLabels: value.target.checked });
-        // this.setState({ count: this.state.count + 1 });
-		//	console.log("Has labels?", this.state.hasLabels);
 	};
+
 	togglePerspective = (value) => {
-		
 		this.setState({ 
 			hasPerspective: value.target.checked,
-			hasLabels: false
+			hasLabels: value.target.checked
 		});
 	};
 
@@ -75,8 +73,10 @@ export default class StyledPreview extends Component {
 			arrayofEmpties.push(headlineColor);
 		}
 
-		console.log("empties", arrayofEmpties);
+
 		/*
+				
+		console.log("empties", arrayofEmpties);
 		this.props.attributes.forEach(function(currentValue, index, arr){
 			console.log(currentValue);
 		});
@@ -91,7 +91,7 @@ export default class StyledPreview extends Component {
 		const hasClearance = this.state.hasLabels && this.state.hasPerspective;
 		var showLabels = false;
 
-
+		// background-image: linear-gradient(transparent, transparent), url(${backgroundImage});
 		var combinedCss = ` 
 			.cube{
 				color: ${foregroundColor ? foregroundColor : 'inherit'};
@@ -116,7 +116,7 @@ export default class StyledPreview extends Component {
 				// outline: solid 1px red;
 			}
 			.bgimage{
-				background-image: linear-gradient(transparent, transparent), url(${backgroundImage});
+				background-image: url(${backgroundImage});
 				background-size: ${bgSize};
 				background-position: ${bgPosition};
 				background-attachment: ${bgAttachment};
@@ -139,40 +139,7 @@ export default class StyledPreview extends Component {
         return (
             <Fragment>
 				<div className="px-sidepanel">
-					<div className="px-simplerow px-simplerow--padleft px-simplerow--padtop px-simplerow--padbottom">
-						<div>
-							<strong>Preview:</strong>
-						</div>
-						
-
-						<div style={{padding:"0 0 0 20px", marginRight:"auto"}}>
-							<label htmlFor="showlabel-perspective-toggle" style={{marginRight:"5px"}}>{__("Explode", "pxblocks")}</label>
-							<FormToggle
-								id="showlabel-perspective-toggle"
-								label={__("Exploded", "pxblocks")}
-						
-								checked={this.state.hasPerspective}
-								onChange={this.togglePerspective}
-							/>
-						</div>
-
-						{this.state.hasPerspective &&
-							<div style={{paddingRight:"10px"}}>
-								<label htmlFor="showlabel-label-toggle" style={{marginRight:"5px"}}>{__("Labels", "pxblocks")}</label>
-								<FormToggle
-									id="showlabel-label-toggle"
-									label={__("Labels", "pxblocks")}
-									checked={this.state.hasLabels}
-									disabled={!this.state.hasPerspective}
-									onChange={this.toggleLabels}
-								/>
-							</div>
-						}
-
-				
-
 					
-					</div>
 
 					{/* <RangeControl
 						disabled
@@ -217,6 +184,35 @@ export default class StyledPreview extends Component {
 		
 				</div>
 
+				{/* Preview Label and Toggles */}
+				<div className="px-simplerow box-legend">
+						
+						<div><strong>Preview:</strong></div>
+						
+						{/* Expand Toggle */}
+						<div style={{padding:"0 0 0 10px", marginRight:"auto"}}>
+							<label htmlFor="showlabel-perspective-toggle" style={{marginRight:"5px"}}>{__("Expand", "pxblocks")}</label>
+							<FormToggle
+								id="showlabel-perspective-toggle"
+								label={__("Expand", "pxblocks")}
+								checked={this.state.hasPerspective}
+								onChange={this.togglePerspective}
+							/>
+						</div>
+
+						{/* Labels Toggle */}
+							<div>
+								<label htmlFor="showlabel-label-toggle" style={{marginRight:"5px"}}>{__("Labels", "pxblocks")}</label>
+								<FormToggle
+									id="showlabel-label-toggle"
+									label={__("Labels", "pxblocks")}
+									checked={this.state.hasLabels}
+									disabled={!this.state.hasPerspective}
+									onChange={this.toggleLabels}
+								/>
+							</div>
+
+					</div>
 
             </Fragment>
         );

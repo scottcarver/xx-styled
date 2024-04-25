@@ -38,8 +38,6 @@ export function AccordionSavedStyles(props){
 
                         <div className="px-simplerow px-simplerow--hasstyletiles">
                             {global_named_styles.map((option) => (
-                                // className={"style-tile " + "style-tile--active"}
-                                // className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`} 
                                 <div className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`}
                                 key={option.value}>
                                     <button className={"xx-styled"} data-theme={option.value} onClick={() => setAttributes({ namedStyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
@@ -47,7 +45,11 @@ export function AccordionSavedStyles(props){
                                         <p>Lorem Ipsum eget tortor risus.</p>
                                         <span></span><span></span><span></span><span></span>
                                     </button>
-                                    {option.label}
+                                    {option.label}  
+                                    <br />
+                                    <a href={`../styled/${option.value}/`}>View</a> &nbsp;
+                                    <a href={`post.php?post=${option.id}&action=edit`}>Edit</a>
+                                    {/* {JSON.stringify(option)} */}
                                 </div>
                             ))}
                         </div>

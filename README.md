@@ -66,3 +66,6 @@ For items that need fixing, see the todo.md file in this project.
 
 ## Interesting Blog post
 [This article](https://mxb.dev/blog/color-theme-switcher/) is really interesting, and uses a very similar technique.
+
+## Icon Sourcing
+Some icons were pasted from [iconify.design](https://icon-sets.iconify.design/?query=globe)

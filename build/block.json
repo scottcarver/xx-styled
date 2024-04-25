@@ -42,6 +42,9 @@
 		"blockquoteColor": {
 			"type": "string"
 		},
+		"captionColor": {
+			"type": "string"
+		},
 		"dropcapColor": {
 			"type": "string"
 		},

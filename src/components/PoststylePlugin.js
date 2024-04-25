@@ -118,7 +118,7 @@ function PoststylePlugin(props) {
 			<PluginSidebar name="post-style-sidebar-plugin" icon="art" title="Entry Style">
 				<Fragment>
 
-					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright  px-simplerow--hascomboboxcontrol">
+					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol">
 						<PostsDropdownControl /> 
 					</div>
 
@@ -129,22 +129,22 @@ function PoststylePlugin(props) {
 								<div className="px-sidepanel">
 									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
 										<ComboboxControl
-											label="Headline Font Family"
-											placeholder= 'Initial'
-											value={postStyleHeadline}
-											allowReset={true}
-											options={fontOptions}
-											onChange={(newval) => updateMyPostMetaHeadline(newval)}
-										/>
-									</div>
-									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
-										<ComboboxControl
 											label="Copy Font Family"
 											placeholder= 'Initial'
 											value={postStyleCopy}
 											allowReset={true}
 											options={fontOptions}
 											onChange={(newval) => updateMyPostMetaCopy(newval)}
+										/>
+									</div>
+									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">
+										<ComboboxControl
+											label="Headline Font Family"
+											placeholder= 'Initial'
+											value={postStyleHeadline}
+											allowReset={true}
+											options={fontOptions}
+											onChange={(newval) => updateMyPostMetaHeadline(newval)}
 										/>
 									</div>
 									<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--hascomboboxcontrol">

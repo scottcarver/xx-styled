@@ -1,163 +1,85 @@
 const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
-import {PanelBody, PanelRow} from '@wordpress/components';
-import {TabPanel,  GradientPicker} from '@wordpress/components';
-import { ColorPalette} from '@wordpress/block-editor';
+import {PanelBody, PanelRow, TabPanel,  GradientPicker} from '@wordpress/components';
 import { useSetting } from '@wordpress/block-editor';
 import ColorBox from "./ColorBox";
 
 
 export function AccordionForeground(props){
 
-    // console.log("have props", props);
+    console.log("have props", props);
 
     const {
-        attributes: {
-            styleMode,
-            headlineColor,
-            foregroundColor,
-            linkColor,
-            dropcapColor,
-            blockquoteColor,
-            lineartColor,
-            selectionFGColor,
-            selectionBGColor,
-            keyGradient,
-        },
+        attributes,
         setAttributes
     } = props;
 
     const themeColors = useSetting( 'color.palette' )
     const hasThemeColors = Array.isArray(themeColors) && themeColors.length > 0;
    
-    /*
-    // FG Colorbox Data
+
+    // Foreground Colorbox Data
     let fgcolorboxes = [
-        {'id':'fgcolor', 'label':'UI Foreground Color', 'target':'interfaceFGColor'},
-        {'id':'bgcolor', 'label':'UI Background Color', 'target':'interfaceBGColor'},
-        {'id':'keycolor', 'label':'UI Key Color', 'target':'interfaceKeyColor'} 
+        {'id':'text', 'label':'Text', 'target':'foregroundColor'},
+        {'id':'headline', 'label':'Headline', 'target':'headlineColor'},
+        {'id':'link', 'label':'Link', 'target':'linkColor'},
+        {'id':'blockquote', 'label':'Block Quote', 'target':'blockquoteColor'},
+        {'id':'caption', 'label':'Caption', 'target':'captionColor'},
+        {'id':'dropcap', 'label':'Dropcap', 'target':'dropcapColor'},
+        {'id':'lineart', 'label':'Lineart', 'target':'lineartColor'}
     ];
 
-    // FG Colorbox Selection Data
+    // Forground Colorbox Selection Data
     let selectioncolorboxes = [
-        {'id':'fgcolor', 'label':'UI Foreground Color', 'target':'interfaceFGColor'},
-        {'id':'bgcolor', 'label':'UI Background Color', 'target':'interfaceBGColor'},
-        {'id':'keycolor', 'label':'UI Key Color', 'target':'interfaceKeyColor'} 
+        {'id':'selectionfg', 'label':'Selected Text', 'target':'selectionFGColor'},
+        {'id':'selectionbg', 'label':'Selected Text BG', 'target':'selectionBGColor'}
     ];
-    */
    
+    // Foreground Tab Contents
     const getForegroundTab = name => {
-			
+        // Conditinal Interface for "Foreground" Colors
         if (name == "fgcolor") {
             return (
                 <Fragment>
-
-                    <ColorBox 
-                        label="Headline" 
-                        id="headline" 
-                        target="headlineColor" 
-                        setAttributes={setAttributes} 
-                        attributes={props.attributes} 
-                        key="headlinea"
-                    />
-                    
-                    <div className="px-colorbox">
-                        <h2>Headline</h2>
-                        {hasThemeColors && 
-                            <>
-                            <input type="checkbox" id="headlineSwatch" name="headlineSwatch"></input>
-                            <label htmlFor="headlineSwatch">Palette</label> 
-                            </>
-                        }
-                        <ColorPalette value={headlineColor} onChange={headlineColor => setAttributes({ headlineColor })} />
-                    </div>
-                    <div className="px-colorbox">
-                        <h2>Text</h2>
-                        {hasThemeColors && 
-                            <>
-                            <input type="checkbox" id="textSwatch" name="textSwatch"></input>
-                            <label htmlFor="textSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette value={foregroundColor} onChange={foregroundColor => setAttributes({ foregroundColor })} />
-                    </div>
-                    <div className="px-colorbox">
-                        <h2>Link</h2>
-                        {hasThemeColors && 
-                            <>
-                            <input type="checkbox" id="linkSwatch" name="linkSwatch"></input>
-                            <label htmlFor="linkSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette value={linkColor} onChange={linkColor => setAttributes({ linkColor })} />
-                    </div>
-                    <div className="px-colorbox">
-                        <h2>Block Quote</h2>
-                        {hasThemeColors && 
-                            <>
-                            <input type="checkbox" id="blockquoteSwatch" name="blockquoteSwatch"></input>
-                            <label htmlFor="blockquoteSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette value={blockquoteColor} onChange={blockquoteColor => setAttributes({ blockquoteColor })} />
-                    </div>
-                    <div className="px-colorbox">
-                        <h2>Dropcap</h2>
-                        {hasThemeColors && 
-                            <>
-                            <input type="checkbox" id="dropcapSwatch" name="dropcapSwatch"></input>
-                            <label htmlFor="dropcapSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette value={dropcapColor} onChange={dropcapColor => setAttributes({ dropcapColor })} />
-                    </div>
-                    <div className="px-colorbox">
-                        <h2>Lineart</h2>
-                        {hasThemeColors && 
-                            <>
-                                <input type="checkbox" id="lineartSwatch" name="lineartSwatch"></input>
-                                <label htmlFor="lineartSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette value={lineartColor} onChange={lineartColor => setAttributes({ lineartColor })} />
-                    </div>
+                    {/* Display all Foreground Colorboxes */}
+                    {fgcolorboxes.map((currentValue) => {  
+                        return( 
+                            <ColorBox 
+                                label={currentValue.label}
+                                id={currentValue.id}
+                                target={currentValue.target}
+                                key={currentValue.id}
+                                attributes={attributes} 
+                                setAttributes={setAttributes}
+                            /> 
+                        )
+                    })}
+                    {/* Display Key Gradient */}
                     <div className="px-gradientbox">
                         <h2>Key Gradient</h2>
-                        <GradientPicker value={keyGradient} onChange={keyGradient => setAttributes({ keyGradient })} />
+                        <GradientPicker value={attributes.keyGradient} onChange={keyGradient => setAttributes({ keyGradient })} />
                     </div>
                     
                 </Fragment>
             );
         }
+        // Conditinal Interface for "Foreground Selection" Colors
         if (name == "fgselection") {
             return (
                 <Fragment>
-                    <div className="px-colorbox px-colorbox--paddingbelow px-colorbox--linebelow">
-                        <h2>Selected Text</h2>
-                        {hasThemeColors && 
-                            <>
-                                <input type="checkbox" id="selectionfgSwatch" name="selectionfgSwatch"></input>
-                                <label htmlFor="selectionfgSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette
-                            value={selectionFGColor ? selectionFGColor : "white"}
-                            onChange={selectionFGColor => setAttributes({ selectionFGColor })}
-                        />
-                    </div>
-                    <div className="px-colorbox px-colorbox--marginabove">
-                        <h2>Selected Text BG</h2>
-                        {hasThemeColors && 
-                            <>
-                                <input type="checkbox" id="selectionbgSwatch" name="selectionbgSwatch"></input>
-                                <label htmlFor="selectionbgSwatch">Palette</label>
-                            </>
-                        }
-                        <ColorPalette
-                            value={selectionBGColor ? selectionBGColor : "black"}
-                            onChange={selectionBGColor => setAttributes({ selectionBGColor })}
-                        />
-                    </div>
+                    {/* Add as a Component */}
+                    {selectioncolorboxes.map((currentValue) => {  
+                        return( 
+                            <ColorBox 
+                                label={currentValue.label}
+                                id={currentValue.id}
+                                target={currentValue.target}
+                                key={currentValue.id}
+                                attributes={attributes} 
+                                setAttributes={setAttributes}
+                            /> 
+                        )
+                    })}
                 </Fragment>
             );
         }
@@ -165,7 +87,7 @@ export function AccordionForeground(props){
 
     return (
         <Fragment>
-            {styleMode=='custom' && (
+            {attributes.styleMode=='custom' && (
                 <PanelBody title={__("Foreground", "pxblocks")}  className="panel-foreground" initialOpen={false}>
                     <PanelRow>
                         <div className="px-sidepanel">
@@ -176,12 +98,12 @@ export function AccordionForeground(props){
                                     {
                                         name: "fgcolor",
                                         title: "Color",
-                                        className: "tab-one"
+                                        className: "tab-fgcolor"
                                     },
                                     {
                                         name: "fgselection",
                                         title: "Selection",
-                                        className: "tab-two"
+                                        className: "tab-fgselection"
                                     },
                                 ]}>
                                 {tab => getForegroundTab(tab.name)}

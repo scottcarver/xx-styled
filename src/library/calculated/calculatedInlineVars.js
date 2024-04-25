@@ -15,6 +15,7 @@ const calculatedInlineVars = attributes => {
 		foregroundColor,
 		headlineColor,
 		linkColor,
+		captionColor,
 		dropcapColor,
 		blockquoteColor,
 		lineartColor,
@@ -69,6 +70,7 @@ const calculatedInlineVars = attributes => {
 	if(linkColor){ fgbgCss += `--linkColor: ${linkColor};`; }
 	if(dropcapColor){ fgbgCss += `--dropcapColor: ${dropcapColor};`; }
 	if(blockquoteColor){ fgbgCss += `--blockquoteColor: ${blockquoteColor};`; }
+	if(captionColor){ fgbgCss += `--captionColor: ${captionColor};`; }
 	if(lineartColor){ fgbgCss += `--lineartColor: ${lineartColor};`; }
 	if(keyGradient){ fgbgCss += `--keyGradient: ${keyGradient};`; }
 	if(selectionFGColor){ fgbgCss += `--selectionFGColor: ${selectionFGColor};`; }

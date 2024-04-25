@@ -81,6 +81,7 @@ function xxstyle_getstylearray() {
         $pieces = explode(' ', $post_content);
         $parsedjson = isset($pieces[2]) ? JSON_DECODE($pieces[2]) : '';
         $cleanjson = (object)[];
+        $cleanjson->id = $area->ID;
         $cleanjson->label = get_the_title($area->ID) ?: 'Style ID ' . $area->ID ;
         $cleanjson->value = get_post_field( 'post_name',$area->ID);
         array_push($styled_array, $cleanjson);
