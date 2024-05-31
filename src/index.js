@@ -17,6 +17,6 @@ const category = 'design';
 registerBlockType('xx/styled', {
 	edit,
 	save,
-	icon,
+	// icon,
 	category
 });

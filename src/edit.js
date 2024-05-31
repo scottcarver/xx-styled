@@ -57,7 +57,7 @@ export default function edit(props) {
 	// Create a BlockProps Object
 	const blockProps = useBlockProps( {
 		className: classes,
-		id: "yep",
+		// id: "yep",
 		style: (styleMode == 'custom' || styleMode == 'named' ) ? styleObj : undefined,
 		'data-theme': (styleMode == 'named') ? namedStyle : ''
 	});
@@ -65,7 +65,7 @@ export default function edit(props) {
 	//id: blockID,
 	
 	return (
-		<Fragment>
+		// <Fragment>
 			{/* Apply BlockProps */}
 			<div {...blockProps}>
 
@@ -78,6 +78,6 @@ export default function edit(props) {
 				{/* Inner Blocks */}
 				<InnerBlocks />
 			</div>
-		</Fragment>
+		{/* </Fragment> */}
 	);
 }

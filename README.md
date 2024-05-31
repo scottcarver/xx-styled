@@ -69,3 +69,5 @@ For items that need fixing, see the todo.md file in this project.
 
 ## Icon Sourcing
 Some icons were pasted from [iconify.design](https://icon-sets.iconify.design/?query=globe)
+
+## Use BGImageStack instead of BackgroundImage

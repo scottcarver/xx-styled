@@ -8,7 +8,7 @@ export function AccordionInterface({ attributes, setAttributes }){
     let colorboxes = [
         {'id':'fgcolor', 'label':'UI Foreground Color', 'target':'interfaceFGColor'},
         {'id':'bgcolor', 'label':'UI Background Color', 'target':'interfaceBGColor'},
-        {'id':'keycolor', 'label':'UI Key Color', 'target':'interfaceKeyColor'} 
+        {'id':'keycolor', 'label':'UI Key Color', 'target':'interfaceKeyColor'}
     ];
     
     // don't show the control when it is disabled, or a named styled

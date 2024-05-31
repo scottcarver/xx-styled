@@ -45,27 +45,59 @@ function initialize_styled_posttype() {
 function register_styled_template() {
   $post_type_object = get_post_type_object( 'styled' );
   $post_type_object->template = array(
-      array( 'xx/styled', array('align'=>'full'), array(
+      // Styled Area
+      array( 'xx/styled', array('align'=>'full', 'backgroundColor'=>'#DDDDDD'), array(
+        // Spacer
         array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
+        // Heading
         array( 'core/heading', array('level' => 1, 'textAlign'=>'center', 'content' => 'Welcome to Your Styled Area' )),
+        // Paragraph
         array( 'core/paragraph', array('dropCap' => true, 'content' => 'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<strong> Vivamus magna justo,</strong> lacisssnia eget <a href="#">consectetur</a> sed, convallis at tellus. Donec sollicitudin <em>molestie malesuada.</em> Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' )),
-        array( 'core/image', array('className'=>'alignfull', 'align'=>'center', 'caption'=>'An Image Example', 'url' => 'https://via.placeholder.com/1200x700')), // wp_get_attachment_url(2182)
+        // Image
+        array( 'core/image', array('className'=>'alignfull', 'align'=>'full', 'caption'=>'An Image Example', 'url' => 'https://via.placeholder.com/1200x700')), // wp_get_attachment_url(2182)
+        // Separator
         array( 'core/separator', array('align'=>'center','className'=>'is-style-wide')),
+        // Paragraph
         array( 'core/paragraph', array('content' => 'ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
+        // Quote
         array( 'core/quote', array( 'citation' => 'Great Person' ), array(array(  'core/paragraph', array( 'content' => 'Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.' )))),
+        // Separator
         array( 'core/separator', array('align'=>'center')),
+        // Paragraph
         array( 'core/paragraph', array('content' => 'ras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
-        array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
+        // Spacer
+        array( 'core/spacer', array('height'=>'50px')),
+        // Table (see example here https://www.calliaweb.co.uk/table-block-in-block-template/)
+        array( 'core/table', array(
+          'caption'=>'A Table Example',
+          'head' => array(
+              array('cells' => array(array('tag' => 'th','content' => 'Film'), array('tag' => 'th','content' => 'Director'), array('tag' => 'th','content' => 'Producer'), array('tag' => 'th','content' => 'Actors'))),
+          ),
+          'body' => array(
+             array('cells' => array(array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'))),
+             array('cells' => array(array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'))),
+             array('cells' => array(array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'))),
+          ),
+         )),
+         // Spacer
+         array( 'core/spacer', array('height'=>'50px')),
       )
     )
   );
-  //  $post_type_object->template_lock = 'all';
+
+  // Causes the template to be locked (although content can still be edited)
+  // $post_type_object->template_lock = 'all';
 }
+
+
 
 // <p style="background-image:var(--keyGradient);"> was causing an error within a post template
 
 // Add tags to <html> using the language_attributes hook
 function new_language_attributes($lang){
+
+  // Needed to introspect inside
+  global $post;
 
   // Do not attempt to alter the wp-admin area
   if(is_admin()){ return $lang; }
@@ -77,13 +109,22 @@ function new_language_attributes($lang){
   if(defined('CUSTOM_CLASSES_HTML')){ $customstyles .= CUSTOM_CLASSES_HTML; }
 
   $bodystyles = 'xx-styled xx-styled--html ' . $customstyles;
-  
-  if (function_exists('get_field')) {
+  $style = '';
+
+  if (function_exists('get_field') && isset($post)) {
+
+     
+     $namedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
+     $headlineTypography = get_post_meta(get_the_ID(), 'poststylemeta_headline', true);
+     $copyTypography  = get_post_meta(get_the_ID(), 'poststylemeta_copy', true);
+     $captionTypography = get_post_meta(get_the_ID(), 'poststylemeta_captions', true);
+
+    /*
       $namedstyle= get_field("poststylemeta_type");
       $headlineTypography = get_field("poststylemeta_headline");
       $copyTypography  = get_field("poststylemeta_copy");
       $captionTypography = get_field("poststylemeta_captions");
-      $style = '';
+      */
 
       if($headlineTypography !== null && $headlineTypography !== '' && $headlineTypography !== 'inherit'){
         $style .= '--foregroundHeadlineFont: var(--'.$headlineTypography.');';
@@ -107,7 +148,8 @@ function new_language_attributes($lang){
       }
 
   } else {
-      $namedstyle= "NONE";
+      // Include a warning that no style has been set
+      $namedstyle= " data-nostyle";
   }
 
   return $lang . ' class="'.$bodystyles.'"' . $namedstyle . $style;

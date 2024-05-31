@@ -43,7 +43,7 @@ export default function save(props) {
 	// Create a BlockProps Object
 	const blockProps = {
 		className: classes,
-		id: "yep",
+		// id: "yep",
 	}
 
 	// Conditionally add style
