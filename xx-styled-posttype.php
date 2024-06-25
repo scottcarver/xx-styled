@@ -26,17 +26,38 @@ function initialize_styled_posttype() {
     'menu_name'          => 'Styled Areas',
   );
   // Prepare Arts
+
   $args = array(
     'labels'        => $labels,
     'description'   => 'Holds our Styles and Style specific data',
     'public'        => true,
+		'publicly_queryable' => true,
     'menu_icon' => 'dashicons-art',
     'show_in_admin_bar'   => true,
     'menu_position' => 5,
-    'supports'      => array( 'title', 'editor'),
+    // 'supports'      => array( 'title', 'editor', 'custom-fields'),
+    'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields'),
     'has_archive'   => false,
-    'show_in_rest' => true
+    'show_in_rest' => true,
+        'show_ui'            => true,
+    'show_in_menu'       => true,
   );
+  /*
+  $args = array(
+    'labels'             => $labels,
+    'public'             => true,
+    'publicly_queryable' => true,
+    'show_ui'            => true,
+    'show_in_menu'       => true,
+    'query_var'          => true,
+    'rewrite'            => array( 'slug' => 'book' ),
+    // 'capability_type'    => 'post',
+    'has_archive'        => true,
+    'hierarchical'       => false,
+    'menu_position'      => null,
+    'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+);
+  */
   // Register Posttype
   register_post_type( 'styled', $args ); 
 }
