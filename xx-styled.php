@@ -4,7 +4,7 @@
  * Description:       A full, reusable set of background/foreground CSS for a thematicly styled area.
  * Requires at least: 6.0
  * Requires PHP:      7.0
- * Version:           0.0.1
+ * Version:           0.0.2
  * Author:            Scott Carver
  * Author:            Scott Carver
  * License:           Protected
