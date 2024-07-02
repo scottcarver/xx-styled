@@ -121,16 +121,18 @@
 
 	// Padding Control
 	&.px-simplerow--paddingcontrol{
-		// background:red;
-		/*
-		.component-box-control__input-controls-wrapper{
-			left:40px;
-			position:relative;
-			margin-top:-38px;
-			// outline:solid 10px red;
+		// outline:solid 1px red;
+
+		> .components-grid{
+			// outline:solid 1px blue;
+			width:100%;
 		}
-		*/
+
+		.components-base-control{
+			margin-bottom: 0;
+		}
 	}
+
 	/*
 	&.px-simplerow--nounitsplit{
 		.component-box-control__header-control-wrapper{

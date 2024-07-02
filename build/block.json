@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "design",
 	"icon": "art",
-	"description": "A set of Design Tokens used for theming Foreground, Background, Typography & Spacing.",
+	"description": "A boundary area for theming Foreground, Background, Typography & Dimensions.",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,

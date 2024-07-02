@@ -63,21 +63,15 @@ export default function edit(props) {
 	});
 	
 	//id: blockID,
-	
+
 	return (
-		// <Fragment>
-			{/* Apply BlockProps */}
-			<div {...blockProps}>
-
-				{/* Admin Padding Preview */}
-				<AdminStyle {...props } />
-
-				{/* Sidebar Controls */}
-				<StyleControls {...props} />
-
-				{/* Inner Blocks */}
-				<InnerBlocks />
-			</div>
-		{/* </Fragment> */}
+		<div {...blockProps}>
+			{/* Admin Padding Preview */}
+			<AdminStyle {...props } />
+			{/* Sidebar Controls */}
+			<StyleControls {...props} />
+			{/* Inner Blocks */}
+			<InnerBlocks />
+		</div>
 	);
 }

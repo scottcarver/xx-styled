@@ -2,11 +2,11 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
 	"name": "xx/styled",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"title": "Styled Area",
 	"category": "design",
 	"icon": "art",
-	"description": "A set of Design Tokens used for theming Foreground, Background, Typography & Spacing.",
+	"description": "A boundary area for theming Foreground, Background, Typography & Dimensions.",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,

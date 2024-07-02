@@ -10,6 +10,7 @@ import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
 const { PanelRow, PanelBody, ComboboxControl } = wp.components;
 const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
+import icon from '../icon';
 
 // Custom Modules
 import "../editor.scss";
@@ -111,11 +112,11 @@ function PoststylePlugin(props) {
 	return (
 		<Fragment>
 			{/* Menu Item */}
-			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon="art">
+			<PluginSidebarMoreMenuItem target="post-style-sidebar-plugin" icon={icon}>
 				Entry Style
 			</PluginSidebarMoreMenuItem>
 			{/* Sidebar Component */}
-			<PluginSidebar name="post-style-sidebar-plugin" icon="art" title="Entry Style">
+			<PluginSidebar name="post-style-sidebar-plugin" title="Entry Style" icon={icon}>
 				<Fragment>
 
 					<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft px-simplerow--padright px-simplerow--hascomboboxcontrol">

@@ -13,7 +13,8 @@ export function AccordionDimensions({ attributes, setAttributes }){
 			<PanelBody title={__("Dimensions", "pxblocks")} className="panel-dimensions" initialOpen={false}>
 				<PanelRow>
 					<div className="px-sidepanel px-sidepanel--grey">
-						<div className="px-simplerow px-simplerow--padtop px-simplerow--borderbottom px-simplerow--paddingcontrol">
+						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--borderbottom px-simplerow--paddingcontrol">
+							
 							<BoxControl 
 								label="Mobile Spacing"
 								values={attributes.spacingMobile}
@@ -21,9 +22,10 @@ export function AccordionDimensions({ attributes, setAttributes }){
 								resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
 								defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
 								onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
+								resetValues={""}
 							/>
 						</div>
-						<div className="px-simplerow px-simplerow--borderbottom px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
+						<div className="px-simplerow px-simplerow--borderbottom px-simplerow--padbottom  px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
 							<BoxControl 
 								label="Tablet Spacing (992+)"
 								values={attributes.spacingTablet}
@@ -31,6 +33,7 @@ export function AccordionDimensions({ attributes, setAttributes }){
 								resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
 								defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
 								onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
+								resetValues={""}
 							/>
 						</div>
 						<div className="px-simplerow  px-simplerow--paddingcontrol">
@@ -41,6 +44,7 @@ export function AccordionDimensions({ attributes, setAttributes }){
 								resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
 								defaultValues={ { top: '0', bottom: '0', left:'0', right:'0' }} 
 								onChange={(newdata) => { setAttributes({ spacingDesktop: newdata }); }} 
+								resetValues={""}
 							/>
 						</div>
 					</div>

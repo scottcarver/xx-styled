@@ -28,7 +28,7 @@ export function StyledTypeToggle(props){
                     <Button
                         variant={styleMode === "named" ? "primary" : ""}
                         onClick={() => { setAttributes({ styleMode: "named" }); }}>
-                        Named
+                        Saved
                     </Button>
                     <Button
                         variant={styleMode === "disabled" ? "primary" : ""}
