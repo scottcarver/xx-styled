@@ -26,7 +26,7 @@ export default function save(props) {
 
 	// Retrieve Inline CSS using helper function
 	const inlineVarCSS =  calculated.calculatedInlineVars(props.attributes);
-
+	const isEnabled = styleMode !== 'disabled';
 	// console.log("the inline stuff was,", inlineVarCSS);
 	console.log("client id is: " + clientId + " while clientUUID is " + clientUUID);
 
@@ -35,9 +35,9 @@ export default function save(props) {
 		"xx-styled",
 		"xx-styled--block",
 		clientUUID,
-		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont)},
-		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont) },
-		{[`xx-styled--captionfont-${fgCaptionFont}`]: (fgCaptionFont !== 'inherit' && fgCaptionFont) }
+		{[`xx-styled--headlinefont-${fgHeadlineFont}`]: (fgHeadlineFont !== 'inherit' && fgHeadlineFont && isEnabled)},
+		{[`xx-styled--copyfont-${fgCopyFont}`]: (fgCopyFont !== 'inherit' && fgCopyFont && isEnabled) },
+		{[`xx-styled--captionfont-${fgCaptionFont}`]: (fgCaptionFont !== 'inherit' && fgCaptionFont && isEnabled) }
 	);
 
 	// Create a BlockProps Object

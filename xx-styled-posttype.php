@@ -119,49 +119,73 @@ function register_styled_template() {
 // <p style="background-image:var(--keyGradient);"> was causing an error within a post template
 
 // Add tags to <html> using the language_attributes hook
+// This has these steps: 
+// 1) check for font from a saved style, and use those 
+// 2) if a metakey exists, it will then override the previous value
+// 3) inline style blocks also have these properties, which allows for nesting
 function new_language_attributes($lang){
 
   // Needed to introspect inside
   global $post;
-
   // Do not attempt to alter the wp-admin area
   if(is_admin()){ return $lang; }
-
   // Allow the user to add some additional classes (by adding this constant)
   $customstyles = '';
-  
   // Allow the theme or plugin to add html classes
   if(defined('CUSTOM_CLASSES_HTML')){ $customstyles .= CUSTOM_CLASSES_HTML; }
-
+  // Classes on the body, and styles
   $bodystyles = 'xx-styled xx-styled--html ' . $customstyles;
+  // A dynamically built style tag
   $style = '';
+  
 
-  if (function_exists('get_field') && isset($post)) {
 
+  // Step 1: attain values from the saved entry (not styles)
+  $parsed = parse_blocks($post->post_content);
+  // var_dump(get_post_type());
+  // $isStyledArea = $parsed[0]["blockName"] == "xx/styled" ;
+  $isStyledArea = get_post_type() == 'styled';
+  [$fgCopyFont, $fgHeadlineFont, $fgCaptionFont, $namedstyle] = "";
+
+  // Setup Fonts using outer element
+  /*
+  if($isStyledArea){
+    $fgCopyFont = isset($parsed[0]["attrs"]["fgCopyFont"]) ? $parsed[0]["attrs"]["fgCopyFont"] : "";
+    $fgHeadlineFont = isset($parsed[0]["attrs"]["fgHeadlineFont"]) ? $parsed[0]["attrs"]["fgHeadlineFont"] : ""; // $fgCopyFont
+    $fgCaptionFont = isset($parsed[0]["attrs"]["fgCaptionFont"]) ? $parsed[0]["attrs"]["fgCaptionFont"] : ""; //$fgCopyFont
+  }
+  */
+  // echo("font is: " . $fgCopyFont . ", thx. ");
+
+
+  // Step 2: Override values using post metadata, but not for Styled Areas
+  if (true) {
      
-     $namedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
-     $headlineTypography = get_post_meta(get_the_ID(), 'poststylemeta_headline', true);
-     $copyTypography  = get_post_meta(get_the_ID(), 'poststylemeta_copy', true);
-     $captionTypography = get_post_meta(get_the_ID(), 'poststylemeta_captions', true);
-
-    /*
-      $namedstyle= get_field("poststylemeta_type");
-      $headlineTypography = get_field("poststylemeta_headline");
-      $copyTypography  = get_field("poststylemeta_copy");
-      $captionTypography = get_field("poststylemeta_captions");
-      */
-
-      if($headlineTypography !== null && $headlineTypography !== '' && $headlineTypography !== 'inherit'){
-        $style .= '--foregroundHeadlineFont: var(--'.$headlineTypography.');';
-        $bodystyles .= ' xx-styled--headlinefont-'.$headlineTypography;
+      if(!$isStyledArea && isset($post)){
+        $namedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
+        $style_id = url_to_postid( site_url('the_slug') );
+        $fgCopyFont  = get_post_meta(get_the_ID(), 'poststylemeta_copy', true);
+        $fgHeadlineFont = get_post_meta($post->ID, 'poststylemeta_headline', true);
+        $fgCaptionFont = get_post_meta(get_the_ID(), 'poststylemeta_captions', true);
       }
-      if($copyTypography !== null && $copyTypography !== '' && $copyTypography !== 'inherit'){
-        $style .= '--foregroundCopyFont: var(--'.$copyTypography.');';
-        $bodystyles .= ' xx-styled--copyfont-'.$copyTypography;
+
+
+      // Copy
+      if($fgCopyFont !== null && $fgCopyFont !== '' && $fgCopyFont !== 'inherit'){
+        $style .= '--foregroundCopyFont: var(--'.$fgCopyFont.');';
+        $bodystyles .= ' xx-styled--copyfont-'.$fgCopyFont;
       }
-      if($captionTypography !== null && $captionTypography !== '' && $captionTypography !== 'inherit'){
-        $style .= '--foregroundCaptionFont: var(--'.$captionTypography.');';
-        $bodystyles .= ' xx-styled--captionfont-'.$captionTypography;
+      
+      // Headline
+      if($fgHeadlineFont !== null && $fgHeadlineFont !== '' && $fgHeadlineFont !== 'inherit'){
+        $style .= '--foregroundHeadlineFont: var(--'.$fgHeadlineFont.');';
+        $bodystyles .= ' xx-styled--headlinefont-'.$fgHeadlineFont;
+      }
+   
+      // Caption
+      if($fgCaptionFont !== null && $fgCaptionFont !== '' && $fgCaptionFont !== 'inherit'){
+        $style .= '--foregroundCaptionFont: var(--'.$fgCaptionFont.');';
+        $bodystyles .= ' xx-styled--captionfont-'.$fgCaptionFont;
       }
 
       if($namedstyle){
