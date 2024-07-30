@@ -163,6 +163,10 @@ function new_language_attributes($lang){
      
       if(!$isStyledArea && isset($post)){
         $namedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
+        // Make all locations dark by default, when no page template is defined
+        if(!$namedstyle && (get_page_template_slug() === "") && (is_singular(array( 'attraction', 'city', 'county', 'museum', 'park', 'route', 'structure', 'water' ) ))){
+          $namedstyle = 'dark';
+        }
         $style_id = url_to_postid( site_url('the_slug') );
         $fgCopyFont  = get_post_meta(get_the_ID(), 'poststylemeta_copy', true);
         $fgHeadlineFont = get_post_meta($post->ID, 'poststylemeta_headline', true);
