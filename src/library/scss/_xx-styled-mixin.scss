@@ -55,7 +55,14 @@
 	}
 
 	h1, h2, h3, h4, h5, h6{
+		// outline:solid 1px orange;
         color: var(--headlineColor);
+		font-family:var(--foregroundHeadlineFont);
+	}
+
+	figure figcaption{
+		color: var(--captionColor);
+		font-family: var(--foregroundCaptionFont);
 	}
 }
 

@@ -141,7 +141,8 @@ function new_language_attributes($lang){
 
 
   // Step 1: attain values from the saved entry (not styles)
-  $parsed = parse_blocks($post->post_content);
+  $cleaned = isset($post) ? $post->post_content : '';
+  $parsed = parse_blocks($cleaned);
   // var_dump(get_post_type());
   // $isStyledArea = $parsed[0]["blockName"] == "xx/styled" ;
   $isStyledArea = get_post_type() == 'styled';
@@ -157,7 +158,32 @@ function new_language_attributes($lang){
   */
   // echo("font is: " . $fgCopyFont . ", thx. ");
 
+    // var_dump($parsed);
 
+  // Detect Linked Typography Styles 
+  $savedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
+  
+  if(isset($savedstyle)){
+
+    // The Query.
+    $style_query = new WP_Query( array( 'name' => $savedstyle, 'post_type' => 'styled' ) );
+    $style_parsed = parse_blocks($style_query->posts[0]->post_content);
+    $style_object = is_array($style_parsed) ? $style_parsed[0]["attrs"] : false;
+    
+    // Only define array keys if there is a valid style
+    if(isset($style_object)){
+    
+      $style_initial = array(
+        "headline" => array_key_exists("fgHeadlineFont", $style_object) ? $style_object["fgHeadlineFont"] : false,
+        "copy" => array_key_exists("fgCopyFont", $style_object) ? $style_object["fgCopyFont"] : false,
+        "caption" => array_key_exists("fgCaptionFont", $style_object) ? $style_object["fgCaptionFont"] : false,
+      );
+
+    }
+
+  }
+
+    
   // Step 2: Override values using post metadata, but not for Styled Areas
   if (true) {
      
@@ -168,28 +194,36 @@ function new_language_attributes($lang){
           $namedstyle = 'dark';
         }
         $style_id = url_to_postid( site_url('the_slug') );
-        $fgCopyFont  = get_post_meta(get_the_ID(), 'poststylemeta_copy', true);
+        $fgCopyFont  = get_post_meta($post->ID, 'poststylemeta_copy', true);
         $fgHeadlineFont = get_post_meta($post->ID, 'poststylemeta_headline', true);
-        $fgCaptionFont = get_post_meta(get_the_ID(), 'poststylemeta_captions', true);
+        $fgCaptionFont = get_post_meta($post->ID, 'poststylemeta_captions', true);
       }
 
-
-      // Copy
+      // Copy: Override Using Font Assigned on Page
       if($fgCopyFont !== null && $fgCopyFont !== '' && $fgCopyFont !== 'inherit'){
         $style .= '--foregroundCopyFont: var(--'.$fgCopyFont.');';
         $bodystyles .= ' xx-styled--copyfont-'.$fgCopyFont;
+      } else {
+        // Extract Font from Saved Style
+        if(isset($style_initial) && $style_initial["copy"]){ $bodystyles .= ' xx-styled--copyfont-'.$style_initial["copy"]; }
       }
       
-      // Headline
+      // Headline: Override Using Font Assigned on Page
       if($fgHeadlineFont !== null && $fgHeadlineFont !== '' && $fgHeadlineFont !== 'inherit'){
         $style .= '--foregroundHeadlineFont: var(--'.$fgHeadlineFont.');';
         $bodystyles .= ' xx-styled--headlinefont-'.$fgHeadlineFont;
+      } else {
+        // Extract Font from Saved Style 
+        if(isset($style_initial) && $style_initial["headline"]){ $bodystyles .= ' xx-styled--headlinefont-'.$style_initial["headline"]; }
       }
    
-      // Caption
+      // Caption: Override Using Font Assigned on Page
       if($fgCaptionFont !== null && $fgCaptionFont !== '' && $fgCaptionFont !== 'inherit'){
         $style .= '--foregroundCaptionFont: var(--'.$fgCaptionFont.');';
         $bodystyles .= ' xx-styled--captionfont-'.$fgCaptionFont;
+      } else {
+        // Fallback to Font from Saved Style 
+        if(isset($style_initial) && $style_initial["caption"]){ $bodystyles .= ' xx-styled--captionfont-'.$style_initial["caption"]; }
       }
 
       if($namedstyle){

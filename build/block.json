@@ -6,7 +6,7 @@
 	"title": "Styled Area",
 	"category": "design",
 	"icon": "art",
-	"description": "A boundary area for theming Foreground, Background, Typography & Dimensions.",
+	"description": "A styled area for theming foreground, background, typography & dimensions.",
 	"supports": {
 		"align": ["wide", "full"],
 		"anchor": true,

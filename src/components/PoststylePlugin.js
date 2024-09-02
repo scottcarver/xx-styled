@@ -174,6 +174,10 @@ function PoststylePlugin(props) {
 
 // Apply With Select
 const applyWithSelect = withSelect(select => {
+
+	console.log(applyWithSelect);
+
+
 	const { getEditedPostAttribute } = select("core/editor");
 	const { poststylemeta_type: postStyleType } = getEditedPostAttribute("meta");
 	const { poststylemeta_headline: postStyleHeadline } = getEditedPostAttribute("meta");
@@ -190,6 +194,7 @@ const applyWithSelect = withSelect(select => {
 
 // Apply With Dispatch
 const applyWithDispatch = withDispatch(dispatch => {
+	console.log("apply with displatch");
 	const { editPost } = dispatch("core/editor");
 	return {
 		updateMyPostMetaType(value) {
