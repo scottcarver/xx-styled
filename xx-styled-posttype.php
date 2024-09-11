@@ -161,10 +161,10 @@ function new_language_attributes($lang){
     // var_dump($parsed);
 
   // Detect Linked Typography Styles 
-  $savedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
-  
-  if(isset($savedstyle)){
+  if(isset($post)){
 
+    $savedstyle= get_post_meta($post->ID, 'poststylemeta_type', true);
+  
     // The Query.
     $style_query = new WP_Query( array( 'name' => $savedstyle, 'post_type' => 'styled' ) );
     $style_parsed = parse_blocks($style_query->posts[0]->post_content);

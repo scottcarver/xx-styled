@@ -4,7 +4,7 @@
  * Description:       A full, reusable set of background/foreground CSS for a thematicly styled area.
  * Requires at least: 6.0
  * Requires PHP:      7.0
- * Version:           0.0.4
+ * Version:           0.0.5
  * Author:            Scott Carver
  * Author:            Scott Carver
  * License:           Protected
@@ -15,6 +15,9 @@
 
 // Define 'xx/styled' Block
 require( __DIR__ . '/xx-styled-block.php');
+
+// Define Pattern with example content
+require( __DIR__ . '/xx-styled-pattern.php');
 
 // Define Meta Fields
 require( __DIR__ . '/xx-styled-meta.php');

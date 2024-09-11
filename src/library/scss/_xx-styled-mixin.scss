@@ -54,7 +54,8 @@
 		background-color: var(--selectionBGColor);
 	}
 
-	h1, h2, h3, h4, h5, h6{
+	// h1, h2, h3, h4, h5, h6{
+	h1:not(.inert), h2:not(.inert), h3:not(.inert), h4:not(.inert), h5:not(.inert), h6:not(.inert){
 		// outline:solid 1px orange;
         color: var(--headlineColor);
 		font-family:var(--foregroundHeadlineFont);
