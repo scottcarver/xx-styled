@@ -7,6 +7,8 @@ const { __ } = wp.i18n;
 import { Component, Fragment } from '@wordpress/element';
 import { ColorPalette, MediaUpload, MediaUploadCheck } from '@wordpress/block-editor';
 import { FocalPointPicker, TabPanel, Button, ButtonGroup, RangeControl, ColorPicker } from '@wordpress/components';
+import ColorBox from "./ColorBox";
+
 
 // Custom Modules
 import BGImgControl from "./BGImgControl";
@@ -246,11 +248,40 @@ export default class BGTabs extends Component {
 			}
 		};
 
+		let gradientcolorboxes = [
+			{'id':'grad1', 'label':'Gradient Color 1', 'target':'bgGrad1'},
+			{'id':'grad2', 'label':'Gradient Color 2', 'target':'bgGrad2'},
+			// {'id':'link', 'label':'Link', 'target':'linkColor'},
+			// {'id':'blockquote', 'label':'Block Quote', 'target':'blockquoteColor'},
+			// {'id':'caption', 'label':'Caption', 'target':'captionColor'},
+			// {'id':'dropcap', 'label':'Dropcap', 'target':'dropcapColor'},
+			// {'id':'lineart', 'label':'Lineart', 'target':'lineartColor'}
+		];
+
+
 		const getGradientTab = name => {
 			// Color Tab
 			if (name == "gradcolortab") {
 				return (
 					<Fragment>
+
+
+
+				{gradientcolorboxes.map((currentValue) => {  
+                        return( 
+                            <ColorBox 
+                                label={currentValue.label}
+                                id={currentValue.id}
+                                target={currentValue.target}
+                                key={currentValue.id}
+                                attributes={this.props.attributes} 
+                                setAttributes={setAttributes}
+                            /> 
+                        )
+                    })}
+
+					
+				{/* 
 				
 						<div className="px-colorbox">
 							<h2>Gradient Color 1</h2>
@@ -262,9 +293,10 @@ export default class BGTabs extends Component {
 									})
 								}
 							/>
+
+
 						</div>
 						<div className="px-colorbox px-colorbox--nopicker">
-							{/* <ColorIndicator colorValue={selectionFGColor} /> */}
 							<input type="checkbox" id="bg1Swatch" name="bg1Swatch"></input>
 							<label htmlFor="bg1Swatch">Palette</label>
 							<ColorPalette
@@ -290,7 +322,7 @@ export default class BGTabs extends Component {
 								value={bgGrad2}
 								onChange={bgGrad2 => setAttributes({ bgGrad2 })}
 							/>
-						</div>
+						</div> */}
 					</Fragment>
 				);
 			}

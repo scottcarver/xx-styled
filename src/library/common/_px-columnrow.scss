@@ -44,15 +44,24 @@
 	.components-base-control {
 		width: 100%;
 	}
-	// The labels are wide for some reason
+	
+
+	// Expand Wrapper
+	.components-range-control__wrapper{
+		min-width: 140px;
+	}
+	// Adjust the labels
 	.components-range-control .components-base-control__label {
 		width: auto;
 		padding-right: 10px;
 	}
 
+	
+}
 	label {
 		// color:red;
 		font-size: 12px;
 		margin-bottom: 0.25em;
 	}
-}
+
+	

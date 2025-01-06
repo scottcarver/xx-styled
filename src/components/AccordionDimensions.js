@@ -14,15 +14,13 @@ export function AccordionDimensions({ attributes, setAttributes }){
 				<PanelRow>
 					<div className="px-sidepanel px-sidepanel--grey">
 						<div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--borderbottom px-simplerow--paddingcontrol">
-							
 							<BoxControl 
 								label="Mobile Spacing"
 								values={attributes.spacingMobile}
 								sides={ [ 'top', 'bottom', 'left', 'right'  ] } 
-								resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								defaultValues={''}
+								resetValues={''}
 								onChange={(newdata) => { setAttributes({ spacingMobile: newdata }); }} 
-								resetValues={""}
 							/>
 						</div>
 						<div className="px-simplerow px-simplerow--borderbottom px-simplerow--padbottom  px-simplerow--marginbottom px-simplerow--margintop  px-simplerow--paddingcontrol">
@@ -30,10 +28,9 @@ export function AccordionDimensions({ attributes, setAttributes }){
 								label="Tablet Spacing (992+)"
 								values={attributes.spacingTablet}
 								sides={ [ 'top', 'bottom', 'left', 'right'  ] } 
-								resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								defaultValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
+								defaultValues={''} 
+								resetValues={''}
 								onChange={(newdata) => { setAttributes({ spacingTablet: newdata }); }} 
-								resetValues={""}
 							/>
 						</div>
 						<div className="px-simplerow  px-simplerow--paddingcontrol">
@@ -41,10 +38,9 @@ export function AccordionDimensions({ attributes, setAttributes }){
 								label="Desktop Spacing (1200+)"
 								values={attributes.spacingDesktop}
 								sides={ [ 'top',  'bottom', 'left', 'right' ] } 
-								resetValues={ { top: '0',bottom: '0', left:'0', right:'0' }} 
-								defaultValues={ { top: '0', bottom: '0', left:'0', right:'0' }} 
+								defaultValues={''} 
+								resetValues={''}
 								onChange={(newdata) => { setAttributes({ spacingDesktop: newdata }); }} 
-								resetValues={""}
 							/>
 						</div>
 					</div>

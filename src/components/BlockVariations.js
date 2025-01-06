@@ -9,8 +9,9 @@ poststylemeta_captions : postStyleCaptions
 /* Most of the ideas were taken from here Lifted from here https://github.com/HardeepAsrani/gutenberg-boilerplate/blob/master/src/sidebar.js */
 const { createElement, Fragment } = wp.element;
 import { registerPlugin } from '@wordpress/plugins';
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+// import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
 // const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editPost;
+// const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editor;
 const { Button, ButtonGroup, PanelRow, PanelBody, ToggleControl, SelectControl, ComboboxControl } = wp.components;
 const { withSelect, withDispatch, useSelect } = wp.data;
 const { compose } = wp.compose;
@@ -56,21 +57,23 @@ const styles = [
 	{ name: 'outline', label: __( 'Outline' ) },
 	{ name: 'squared', label: __( 'Squared' ) },
 ]
-
+*/
 domReady( function() {
+
 
 	wp.blocks.registerBlockVariation( 'xx/styled', {
 		name: 'blue-light',
 		label: 'Itza Light Blu',
 		title: 'BG Light Blue',
 		category: 'wholesome-blocks',
-		attributes: { backgroundColor: '#FF0000' }
+		attributes: { backgroundColor: '#FF0000' },
+		// isDefault: true
 	} );
 	
+	/*
 	wp.blocks.registerBlockStyle( 'xx/styled', {
 		name: 'rounded',
 		label: 'Rounded Corners',
 	} );
-	
+	*/
 } );
-*/

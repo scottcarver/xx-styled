@@ -4,6 +4,9 @@
     padding:8px;
     margin-top:10px;
 
+
+
+
     &.styled-tile--active{
         button{
             outline:solid 3px black;
@@ -13,22 +16,48 @@
         }
     }
 
+    
+
     button{
         width:100%;
         height:90px;
         border:0;
         border-radius:5px;
         position:relative;
-        margin-bottom:5px;
+        margin-bottom:5px !important;
+
+        /* LIST IN PROGRESSS */
+        // background-color: var(--backgroundColor);
+        // color:var(--foregroundColor);
+        /*background: var(--backgroundImage);
+        background-attachment: var(--backgroundAttachment);
+        background-color: var(--backgroundColor);
+        background-position: var(--backgroundPosition);
+        background-repeat: var(--backgroundRepeat);
+        background-size: var(--backgroundSizeSm);
+        box-sizing: border-box;
+        color: var(--foregroundColor);
+        font-family: var(--foregroundCopyFont);
+        margin: 0 auto;
+        padding: .01px;
+        padding: var(--spacingMobile);
+        position: relative;
+
+     
+         LIST IN PROGRESSS */
+
 
         &:hover, &:focus{
             outline:solid 3px var(--wp-admin-theme-color);
         }
 
         h3{
+          //  color: var(--headlineColor, --foregroundColor);
             font-size:20px;
             margin:0;
+            padding:0;
             text-transform: inherit;
+            text-align:left;
         }
         p{
             font-size:10px;

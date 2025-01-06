@@ -27,8 +27,6 @@ export default function save(props) {
 	// Retrieve Inline CSS using helper function
 	const inlineVarCSS =  calculated.calculatedInlineVars(props.attributes);
 	const isEnabled = styleMode !== 'disabled';
-	// console.log("the inline stuff was,", inlineVarCSS);
-	console.log("client id is: " + clientId + " while clientUUID is " + clientUUID);
 
 	// Set classnames (font-classes allow for fine-tuning)
 	const classes = classnames(

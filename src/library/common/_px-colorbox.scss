@@ -122,9 +122,13 @@
 	// Hide Swatches by default
 	.components-circular-option-picker__swatches{
 		display:none;
-		width: calc(100% + 4px);
-		margin-bottom: 20px;
+		// width: calc(100% + 4px);
+		// margin-bottom: 20px;
 		// padding-bottom: 10px;
+
+		width: 190px;
+		align-items: center;
+		margin: auto;
 	}
 	
 	/*

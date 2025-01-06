@@ -20,6 +20,7 @@
 		},
 		"align": {
 			"type": "string",
+			"default": "full",
 			"comment" : "needed for fullwidth control"
 		},
 		"namedStyle": {

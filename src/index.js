@@ -3,6 +3,8 @@ const { __ } = wp.i18n;
 import { registerBlockType } from '@wordpress/blocks';
 // import { cover as icon } from '@wordpress/icons';
 
+// import variations from "./variations";
+
 // Custom Modules
 import edit from './edit';
 import save from './save';

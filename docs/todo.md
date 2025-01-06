@@ -1,5 +1,6 @@
 
 ## Todo
+- working with SVGs is not ergonomic, to make this better take the steps described here: https://mor10.com/a-simpler-way-to-add-svgs-to-custom-wordpress-gutenberg-blocks-using-svgr/
 - in all cases, check the "enabled" values before returning anything in css/js. [issue] regarding linear-gradient showing when Gel is enabled but no color value is set.
 - there is a known issue with nesting multiple deep where the wide/full does not display. A solution is possible but in the short term just add the classes to get the same effect
 - padding function has an issue where if you only input 1 value (and leave others blank), the *others* are rendered as "undefined" - likely fix is inside of calclatedPadding.js

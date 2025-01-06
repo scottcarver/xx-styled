@@ -49,7 +49,7 @@ const calculatedInlineVars = attributes => {
 
 	var fgbgCss = ``;
 
-	console.log("bgImageStack wwas ", bgImageStack);
+	// console.log("bgImageStack wwas ", bgImageStack);
 	
 	if(bgImageStack != 'none'){ 
 		fgbgCss += `
@@ -111,12 +111,11 @@ const calculatedInlineVars = attributes => {
 		fontCss+=`--foregroundCaptionFont: var(--${fgCaptionFont});`
 	}
 
-
 	// Sizing CSS
 	var sizingCss = ``;
-	if(spacingMobileStack !== "undefined"){ sizingCss+=`--spacingMobile: ${spacingMobileStack};` }
-	if(spacingTabletStack !== "undefined"){ sizingCss+=`--spacingTablet: ${spacingTabletStack};` }
-	if(spacingDesktopStack !== "undefined"){ sizingCss+=`--spacingDesktop: ${spacingDesktopStack};` }
+	if(spacingMobileStack !== "undefined" && spacingMobileStack !== "" ){ sizingCss+=`--spacingMobile: ${spacingMobileStack};` }
+	if(spacingTabletStack !== "undefined" && spacingTabletStack !== ""){ sizingCss+=`--spacingTablet: ${spacingTabletStack};` }
+	if(spacingDesktopStack !== "undefined" && spacingDesktopStack !== ""){ sizingCss+=`--spacingDesktop: ${spacingDesktopStack};` }
 	
 	// Add CSS based on the mode
 	if(styleMode == 'custom') { combinedCss += fgbgCss + fontCss + sizingCss; }

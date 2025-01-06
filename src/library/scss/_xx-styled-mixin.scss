@@ -7,15 +7,13 @@
 	// Foreground, Background, Padding
 	font-family:var(--foregroundCopyFont);
 	color: var(--foregroundColor);
-	// background-image: var(--backgroundImage);
 	background:  var(--backgroundImage);
 	background-color: var(--backgroundColor);
 	background-position: var(--backgroundPosition);
 	background-attachment: var(--backgroundAttachment);
 	background-repeat: var(--backgroundRepeat);
 	background-size: var(--backgroundSizeSm);
-  	padding:.01px;
-	padding: var(--spacingMobile);
+	padding: var(--spacingMobile, .01px);
 
 	// Modifier: Block
 	&.xx-styled--block{
@@ -30,13 +28,13 @@
 	// Medium Screens
 	@media(min-width: 992px){ 
 		background-size: var(--backgroundSizeMd);
-		padding: var(--spacingTablet); 
+		padding: var(--spacingTablet, var(--spacingMobile)); 
 	}
 
 	// Large Screens 
 	@media(min-width:1200px){ 
 		background-size: var(--backgroundSize);
-		padding: var(--spacingDesktop); 
+		padding: var(--spacingDesktop, var(--spacingTablet, var(--spacingMobile))); 
 	}
 
 	// Box Sizing
@@ -54,11 +52,12 @@
 		background-color: var(--selectionBGColor);
 	}
 
-	// h1, h2, h3, h4, h5, h6{
-	h1:not(.inert), h2:not(.inert), h3:not(.inert), h4:not(.inert), h5:not(.inert), h6:not(.inert){
-		// outline:solid 1px orange;
-        color: var(--headlineColor);
-		font-family:var(--foregroundHeadlineFont);
+	// h1, h2, h3, h4, h5, h6 (without .inert class)
+	h1, h2, h3, h4, h5, h6{
+		&:not(.inert){
+			color: var(--headlineColor);
+			font-family:var(--foregroundHeadlineFont);
+		}
 	}
 
 	figure figcaption{

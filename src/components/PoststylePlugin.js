@@ -6,7 +6,8 @@ const { __ } = wp.i18n;
 const { createElement, Fragment } = wp.element;
 import { registerPlugin } from '@wordpress/plugins';
 import domReady from "@wordpress/dom-ready";
-import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/edit-post';
+import { PluginSidebar, PluginSidebarMoreMenuItem } from '@wordpress/editor';
+// const { PluginSidebar, PluginSidebarMoreMenuItem } = wp.editor;
 const { PanelRow, PanelBody, ComboboxControl } = wp.components;
 const { withSelect, withDispatch } = wp.data;
 const { compose } = wp.compose;
@@ -46,7 +47,7 @@ function PoststylePlugin(props) {
 				options.push({ value: '', label: 'Default' });
 				// Add one value/label options per entry
 				props.posts.forEach((post) => {
-					console.log("a post! ", post);
+					// console.log("a post! ", post);
 					const dynamicLabel = (post.title.rendered !== '') ? post.title.rendered : 'Style ID ' + post.id;
 					options.push({value:post.slug, label:dynamicLabel});
 				});
@@ -100,6 +101,7 @@ function PoststylePlugin(props) {
 		}
 		if(postStyleCaptions){ 
 			stylestring += '--foregroundCaptionFont: var(--'+postStyleCaptions+');'; 
+			// console.log("postStyleCaptions ", postStyleCaptions);
 			classstring += ' xx-styled--captionfont-'+postStyleCaptions; 
 		}
 
@@ -175,7 +177,7 @@ function PoststylePlugin(props) {
 // Apply With Select
 const applyWithSelect = withSelect(select => {
 
-	console.log(applyWithSelect);
+	// console.log(applyWithSelect);
 
 
 	const { getEditedPostAttribute } = select("core/editor");
@@ -194,8 +196,9 @@ const applyWithSelect = withSelect(select => {
 
 // Apply With Dispatch
 const applyWithDispatch = withDispatch(dispatch => {
-	console.log("apply with displatch");
+	// console.log("apply with displatch");
 	const { editPost } = dispatch("core/editor");
+
 	return {
 		updateMyPostMetaType(value) {
 			editPost({ meta: { poststylemeta_type: value } });

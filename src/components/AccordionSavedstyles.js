@@ -2,7 +2,6 @@ const { __ } = wp.i18n;
 import {Fragment} from '@wordpress/element';
 import {PanelBody, PanelRow, ComboboxControl} from '@wordpress/components';
 
-
 export function AccordionSavedStyles(props){
 
     const {
@@ -38,12 +37,12 @@ export function AccordionSavedStyles(props){
 
                         <div className="px-simplerow px-simplerow--hasstyletiles">
                             {global_named_styles.map((option) => (
-                                <div className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`}
+                                 <div className={`styled-tile ${namedStyle == option.value ? "styled-tile--active" : ""}`}
                                 key={option.value}>
-                                    <button className={"xx-styled"} data-theme={option.value} onClick={() => setAttributes({ namedStyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
+                                    <button className={"xx-styled xx-styled--hasstyle"} data-theme={option.value} onClick={() => setAttributes({ namedStyle: option.value })} style={{padding:"0px 20px 0px 10px"}} aria-label={"select style " + option.value}>
                                         <h3>Aa</h3>
                                         <p>Lorem Ipsum eget tortor risus.</p>
-                                        <span></span><span></span><span></span><span></span>
+                                        {/* <span></span><span></span><span></span><span></span> */}
                                     </button>
                                     {option.label}  
                                     <br />
@@ -53,7 +52,6 @@ export function AccordionSavedStyles(props){
                                 </div>
                             ))}
                         </div>
-                        {/* 		*/}				
                         <div className="px-simplerow px-simplerow--padtop px-simplerow--padbottom px-simplerow--padleft">
                             <a href="post-new.php?post_type=styled" style={{padding: "5px"}}>+ Create New Style</a>	
                         </div> 

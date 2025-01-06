@@ -67,7 +67,7 @@ export default class StyledPreview extends Component {
 
 		const arrayofEmpties = [];
 
-		console.log(this.props.attributes);
+		// console.log(this.props.attributes);
 
 		if(!headlineColor){
 			arrayofEmpties.push(headlineColor);

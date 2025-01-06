@@ -73,23 +73,23 @@ function register_styled_template() {
       // Styled Area
       array( 'xx/styled', array('align'=>'full', 'backgroundColor'=>'#DDDDDD'), array(
         // Spacer
-        array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area' )),
+        array( 'core/spacer', array('align'=>'center', 'content' => 'Welcome to Your Styled Area',  'lock' => array('move' => true,'remove' => true) )),
         // Heading
-        array( 'core/heading', array('level' => 1, 'textAlign'=>'center', 'content' => 'Welcome to Your Styled Area' )),
+        array( 'core/heading', array('level' => 1, 'textAlign'=>'center', 'content' => 'Welcome to Your Styled Area',  'lock' => array('move' => true,'remove' => true) )),
         // Paragraph
-        array( 'core/paragraph', array('dropCap' => true, 'content' => 'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<strong> Vivamus magna justo,</strong> lacisssnia eget <a href="#">consectetur</a> sed, convallis at tellus. Donec sollicitudin <em>molestie malesuada.</em> Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' )),
+        array( 'core/paragraph', array('dropCap' => true, 'content' => 'Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<strong> Vivamus magna justo,</strong> lacisssnia eget <a href="#">consectetur</a> sed, convallis at tellus. Donec sollicitudin <em>molestie malesuada.</em> Cras ultricies ligula sed magna dictum porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',  'lock' => array('move' => true,'remove' => true) )),
         // Image
-        array( 'core/image', array('className'=>'alignfull', 'align'=>'full', 'caption'=>'An Image Example', 'url' => 'https://via.placeholder.com/1200x700')), // wp_get_attachment_url(2182)
+        array( 'core/image', array('className'=>'alignfull', 'align'=>'full', 'caption'=>'An Image Example', 'url' => 'https://via.placeholder.com/1200x700',  'lock' => array('move' => true,'remove' => true))), // wp_get_attachment_url(2182)
         // Separator
-        array( 'core/separator', array('align'=>'center','className'=>'is-style-wide')),
+        array( 'core/separator', array('align'=>'center','className'=>'is-style-wide',  'lock' => array('move' => true,'remove' => true))),
         // Paragraph
-        array( 'core/paragraph', array('content' => 'ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
+        array( 'core/paragraph', array('content' => 'ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin <a href="https://wikipedia.org">molestie malesuada</a>. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.',  'lock' => array('move' => true,'remove' => true))),
         // Quote
-        array( 'core/quote', array( 'citation' => 'Great Person' ), array(array(  'core/paragraph', array( 'content' => 'Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.' )))),
+        array( 'core/quote', array( 'citation' => 'Great Person' ), array(array(  'core/paragraph', array( 'content' => 'Cras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.',  'lock' => array('move' => true,'remove' => true) )))),
         // Separator
-        array( 'core/separator', array('align'=>'center')),
+        array( 'core/separator', array('align'=>'center',  'lock' => array('move' => true,'remove' => true))),
         // Paragraph
-        array( 'core/paragraph', array('content' => 'ras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.')),
+        array( 'core/paragraph', array('content' => 'ras ultricies ligula sed magna dictum porta. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Donec sollicitudin molestie malesuada. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla quis lorem ut libero malesuada feugiat.',  'lock' => array('move' => true,'remove' => true))),
         // Spacer
         array( 'core/spacer', array('height'=>'50px')),
         // Table (see example here https://www.calliaweb.co.uk/table-block-in-block-template/)
@@ -102,10 +102,11 @@ function register_styled_template() {
              array('cells' => array(array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'))),
              array('cells' => array(array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'))),
              array('cells' => array(array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'), array('tag' => 'td','content' => 'Lorem Ipsum'))),
-          ),
+          ),  
+          'lock' => array('move' => true,'remove' => true)
          )),
          // Spacer
-         array( 'core/spacer', array('height'=>'50px')),
+         array( 'core/spacer', array('height'=>'50px',  'lock' => array('move' => true,'remove' => true))),
       )
     )
   );

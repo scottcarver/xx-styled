@@ -79,7 +79,7 @@ export default class OnPageStyle extends Component {
 		`;
 
 		// body[data-color='custom'] 
-		// body[data-color='custom'] 
+
 		var combinedCss = ` 
 			.wp-block-section--${blockID} { 
 				background-image: ${bgImageStack};

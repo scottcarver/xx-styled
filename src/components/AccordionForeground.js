@@ -7,16 +7,17 @@ import ColorBox from "./ColorBox";
 
 export function AccordionForeground(props){
 
-    console.log("have props", props);
+    // console.log("have props", props);
 
     const {
         attributes,
         setAttributes
     } = props;
 
-    const themeColors = useSetting( 'color.palette' )
+    const themeColors = useSetting( 'color.palette' );
+    // upgrade to use "wp.blockEditor.useSettings" instead
+
     const hasThemeColors = Array.isArray(themeColors) && themeColors.length > 0;
-   
 
     // Foreground Colorbox Data
     let fgcolorboxes = [
